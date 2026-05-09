@@ -1,0 +1,46 @@
+# Wrangler config for Cloudflare Pages + Functions.
+#
+# This file configures the bindings (D1 database, KV namespace, secrets) that
+# the Pages Function at functions/api/developer-license.ts consumes.
+#
+# Operator actions (one-time, see Phase 3 of the bootstrap plan):
+#
+#   1. Create the D1 database:
+#        npx wrangler d1 create verbara-license-audit
+#      Copy the returned database_id into [[d1_databases]] below.
+#
+#   2. Create the KV namespace for IP rate limit:
+#        npx wrangler kv namespace create RATE_LIMIT_KV
+#      Copy the id into [[kv_namespaces]] below.
+#
+#   3. Apply the schema migration:
+#        npx wrangler d1 migrations apply verbara-license-audit --remote
+#
+#   4. Upload secrets (one per command):
+#        npx wrangler pages secret put VERBARA_LICENSE_SIGNING_KEY
+#        npx wrangler pages secret put RESEND_API_KEY
+#        npx wrangler pages secret put TURNSTILE_SECRET_KEY
+#      Each prompts for the value — paste once and Cloudflare stores it
+#      encrypted; never appears in logs or this file.
+
+name = "verbara-website"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./dist"
+
+# D1: append-only audit log of every Tier 0.5 license issuance.
+[[d1_databases]]
+binding = "LICENSE_AUDIT_DB"
+database_name = "verbara-license-audit"
+database_id = "REPLACE_WITH_database_id_FROM_d1_create_OUTPUT"
+migrations_dir = "migrations"
+
+# KV: per-IP rate-limit counters (5 issuances per IP per 24 h).
+# Email-level dedup (1 per email per 30 d) lives in D1, not KV.
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "REPLACE_WITH_id_FROM_kv_namespace_create_OUTPUT"
+
+# Build configuration matches Cloudflare Pages dashboard settings.
+[build]
+command = "npm run build"
