@@ -119,6 +119,36 @@ export interface Messages {
     coming_soon_title: string;
     coming_soon_body: string;
     contact_label: string;
+    // Form fields (rendered when PUBLIC_TURNSTILE_SITE_KEY is configured)
+    form_email_label: string;
+    form_email_placeholder: string;
+    form_fullName_label: string;
+    form_fullName_placeholder: string;
+    form_company_label: string;
+    form_company_placeholder: string;
+    form_useCase_label: string;
+    form_useCase_placeholder: string;
+    form_eula_label: string;
+    form_submit: string;
+    // States
+    state_submitting: string;
+    state_success_title: string;
+    state_success_body_html: string; // contains {email} placeholder
+    // Errors
+    error_email_invalid: string;
+    error_fullName_required: string;
+    error_eula_required: string;
+    error_captcha_required: string;
+    error_rate_limited: string;
+    error_service_unavailable: string;
+    error_generic: string;
+    // Sidebar
+    what_you_get_title: string;
+    what_you_get_agents: string;
+    what_you_get_node: string;
+    what_you_get_duration: string;
+    what_you_get_features: string;
+    what_you_get_mode: string;
   };
   legal_eula: {
     title: string;
@@ -251,6 +281,37 @@ const es_419: Messages = {
     coming_soon_body:
       'El portal de auto-emisión Tier 0.5 entra en línea con nuestro lanzamiento público. Mientras tanto, escribe a licensing@verbara.io para recibir una licencia de developer emitida manualmente — usualmente respondemos en menos de 24 horas.',
     contact_label: 'Contactar a licensing@verbara.io',
+    form_email_label: 'Correo electrónico',
+    form_email_placeholder: 'tu@empresa.com',
+    form_fullName_label: 'Nombre completo',
+    form_fullName_placeholder: 'Alicia García',
+    form_company_label: 'Empresa (opcional)',
+    form_company_placeholder: 'Acme Corp',
+    form_useCase_label: 'Caso de uso (opcional)',
+    form_useCase_placeholder: 'Describe brevemente cómo planeas evaluar Verbara Pro',
+    form_eula_label: 'Acepto el EULA y la Política de privacidad',
+    form_submit: 'Solicitar licencia gratuita',
+    state_submitting: 'Enviando…',
+    state_success_title: 'Solicitud recibida',
+    state_success_body_html:
+      'Revisa <strong>{email}</strong> en los próximos 5 minutos para recibir tu licencia. Para renovar, completa este mismo formulario en cualquier momento.',
+    error_email_invalid: 'Ingresa una dirección de correo válida',
+    error_fullName_required: 'El nombre completo es obligatorio',
+    error_eula_required: 'Debes aceptar el EULA y la Política de privacidad',
+    error_captcha_required: 'Por favor completa la verificación captcha',
+    error_rate_limited:
+      'Ya solicitaste una licencia recientemente. Inténtalo más tarde.',
+    error_service_unavailable:
+      'El servicio de emisión no está disponible en este momento. Intenta de nuevo en unos minutos o escribe a licensing@verbara.io.',
+    error_generic:
+      'Algo salió mal. Intenta de nuevo o escribe a licensing@verbara.io',
+    what_you_get_title: 'Qué incluye',
+    what_you_get_agents: 'Hasta 5 agentes concurrentes',
+    what_you_get_node: '1 nodo de clúster',
+    what_you_get_duration: 'Licencia de 30 días, renovación gratuita',
+    what_you_get_features:
+      'Todas las funciones Pro (multi-tenant, analítica, marcador, AgentAssist, CallAnalytics)',
+    what_you_get_mode: 'Modo WarnOnly — nunca bloquea tu aplicación',
   },
   legal_eula: {
     title: 'Acuerdo de licencia de usuario final (EULA)',
@@ -383,6 +444,37 @@ const en_US: Messages = {
     coming_soon_body:
       'The Tier 0.5 self-issue portal launches with our public release. In the meantime, email licensing@verbara.io to receive a manually-issued developer license — we usually respond within 24 hours.',
     contact_label: 'Contact licensing@verbara.io',
+    form_email_label: 'Email address',
+    form_email_placeholder: 'you@company.com',
+    form_fullName_label: 'Full name',
+    form_fullName_placeholder: 'Alice Smith',
+    form_company_label: 'Company (optional)',
+    form_company_placeholder: 'Acme Corp',
+    form_useCase_label: 'Use case (optional)',
+    form_useCase_placeholder: 'Briefly describe how you plan to evaluate Verbara Pro',
+    form_eula_label: 'I accept the EULA and the Privacy Policy',
+    form_submit: 'Request free license',
+    state_submitting: 'Sending…',
+    state_success_title: 'Request received',
+    state_success_body_html:
+      'Check <strong>{email}</strong> for your developer license within 5 minutes. To extend, request a renewal from this same form anytime.',
+    error_email_invalid: 'Enter a valid email address',
+    error_fullName_required: 'Full name is required',
+    error_eula_required: 'You must accept the EULA and Privacy Policy',
+    error_captcha_required: 'Please complete the captcha verification',
+    error_rate_limited:
+      'You already requested a license recently. Please try again later.',
+    error_service_unavailable:
+      'The issuance service is not available right now. Please try again in a few minutes or email licensing@verbara.io.',
+    error_generic:
+      'Something went wrong. Please try again or email licensing@verbara.io.',
+    what_you_get_title: "What's included",
+    what_you_get_agents: 'Up to 5 concurrent agents',
+    what_you_get_node: '1 cluster node',
+    what_you_get_duration: '30-day license, free renewal',
+    what_you_get_features:
+      'All Pro features (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
+    what_you_get_mode: 'Runs in WarnOnly mode — never blocks your application',
   },
   legal_eula: {
     title: 'End-User License Agreement',
@@ -515,6 +607,37 @@ const pt_BR: Messages = {
     coming_soon_body:
       'O portal de autoemissão Tier 0.5 entra no ar com nosso lançamento público. Enquanto isso, escreva para licensing@verbara.io para receber uma licença de developer emitida manualmente — geralmente respondemos em menos de 24 horas.',
     contact_label: 'Contato licensing@verbara.io',
+    form_email_label: 'Endereço de e-mail',
+    form_email_placeholder: 'voce@empresa.com',
+    form_fullName_label: 'Nome completo',
+    form_fullName_placeholder: 'Alice Silva',
+    form_company_label: 'Empresa (opcional)',
+    form_company_placeholder: 'Acme Corp',
+    form_useCase_label: 'Caso de uso (opcional)',
+    form_useCase_placeholder: 'Descreva brevemente como planeja avaliar o Verbara Pro',
+    form_eula_label: 'Aceito o EULA e a Política de Privacidade',
+    form_submit: 'Solicitar licença gratuita',
+    state_submitting: 'Enviando…',
+    state_success_title: 'Solicitação recebida',
+    state_success_body_html:
+      'Verifique <strong>{email}</strong> nos próximos 5 minutos para receber sua licença. Para renovar, preencha este mesmo formulário a qualquer momento.',
+    error_email_invalid: 'Insira um endereço de e-mail válido',
+    error_fullName_required: 'Nome completo é obrigatório',
+    error_eula_required: 'Você deve aceitar o EULA e a Política de Privacidade',
+    error_captcha_required: 'Por favor complete a verificação captcha',
+    error_rate_limited:
+      'Você já solicitou uma licença recentemente. Tente novamente mais tarde.',
+    error_service_unavailable:
+      'O serviço de emissão não está disponível no momento. Tente novamente em alguns minutos ou escreva para licensing@verbara.io.',
+    error_generic:
+      'Algo deu errado. Tente novamente ou escreva para licensing@verbara.io.',
+    what_you_get_title: 'O que está incluído',
+    what_you_get_agents: 'Até 5 agentes simultâneos',
+    what_you_get_node: '1 nó de cluster',
+    what_you_get_duration: 'Licença de 30 dias, renovação gratuita',
+    what_you_get_features:
+      'Todas as funcionalidades Pro (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
+    what_you_get_mode: 'Modo WarnOnly — nunca bloqueia seu aplicativo',
   },
   legal_eula: {
     title: 'Contrato de licença de usuário final (EULA)',
