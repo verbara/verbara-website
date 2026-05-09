@@ -1,0 +1,32 @@
+---
+interface Props {
+  level: 1 | 2 | 3 | 4;
+  eyebrow?: string;
+  class?: string;
+  align?: 'left' | 'center';
+}
+const { level, eyebrow, class: extra = '', align = 'left' } = Astro.props;
+
+const sizes: Record<Props['level'], string> = {
+  1: 'text-5xl md:text-6xl',
+  2: 'text-3xl md:text-4xl',
+  3: 'text-2xl md:text-3xl',
+  4: 'text-xl md:text-2xl',
+};
+
+const Tag = `h${level}` as `h${1 | 2 | 3 | 4}`;
+const cls = [
+  sizes[level],
+  'font-bold tracking-tight text-balance',
+  align === 'center' ? 'text-center' : '',
+  extra,
+].filter(Boolean).join(' ');
+
+const wrapCls = align === 'center' ? 'text-center space-y-2' : 'space-y-2';
+const eyebrowCls = 'text-xs uppercase tracking-wider font-mono text-signal';
+---
+
+<div class={wrapCls}>
+  {eyebrow && <p class={eyebrowCls}>{eyebrow}</p>}
+  <Tag class={cls}><slot /></Tag>
+</div>
