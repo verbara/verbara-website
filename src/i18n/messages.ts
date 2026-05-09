@@ -663,6 +663,9 @@ export const messages: Record<Locale, Messages> = {
   'pt-BR': pt_BR,
 };
 
+// Alias for use in scripts
+export const MESSAGES = messages;
+
 /**
  * Get the messages bundle for a locale, falling back to the default.
  */
