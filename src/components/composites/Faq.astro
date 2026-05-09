@@ -35,6 +35,7 @@ const items = [
           return (
             <li class="rounded-lg border border-line-strong bg-ink-3/40">
               <button
+                id={`${id}-q`}
                 type="button"
                 class="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
                 aria-expanded="false"
@@ -52,14 +53,13 @@ const items = [
                   <path d="M4 6 L8 10 L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
-              <div
+              <section
                 id={`${id}-panel`}
                 class="hidden px-5 pb-4 text-sm text-bone-2 leading-relaxed"
-                role="region"
                 aria-labelledby={`${id}-q`}
               >
                 {item.a}
-              </div>
+              </section>
             </li>
           );
         })}
