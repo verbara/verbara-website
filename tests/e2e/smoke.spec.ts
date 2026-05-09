@@ -24,7 +24,8 @@ for (const prefix of LOCALE_PREFIXES) {
 
       await expect(pw).toHaveTitle(page.title);
       await expect(pw.locator('h1').first()).toBeVisible();
-      await expect(pw.locator('header nav')).toBeVisible();
+      // Use first() to disambiguate between desktop and mobile-panel <nav> elements.
+      await expect(pw.locator('header nav').first()).toBeVisible();
       await expect(pw.locator('footer')).toBeVisible();
 
       expect(errors, `console errors on ${url}: ${errors.join(' | ')}`).toEqual([]);
