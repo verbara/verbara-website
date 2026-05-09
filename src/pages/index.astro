@@ -4,6 +4,7 @@ import { getMessages } from '../i18n/messages';
 import { getLocaleFromPath, localiseHref } from '../i18n/utils';
 import Button from '../components/primitives/Button.astro';
 import Badge from '../components/primitives/Badge.astro';
+import Card from '../components/primitives/Card.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
@@ -42,10 +43,10 @@ const t = getMessages(locale);
         </p>
       </header>
       <div class="grid gap-6 md:grid-cols-3">
-        <article class="rounded-lg border border-black/5 dark:border-white/10 p-6 space-y-2">
+        <Card as="article">
           <h3 class="text-lg font-semibold">{t.landing.why_b1_title}</h3>
           <p class="text-sm opacity-80 leading-relaxed">{t.landing.why_b1_body}</p>
-        </article>
+        </Card>
         <article class="rounded-lg border border-black/5 dark:border-white/10 p-6 space-y-2">
           <h3 class="text-lg font-semibold">{t.landing.why_b2_title}</h3>
           <p class="text-sm opacity-80 leading-relaxed">{t.landing.why_b2_body}</p>
