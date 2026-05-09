@@ -32,14 +32,14 @@ pages_build_output_dir = "./dist"
 [[d1_databases]]
 binding = "LICENSE_AUDIT_DB"
 database_name = "verbara-license-audit"
-database_id = "REPLACE_WITH_database_id_FROM_d1_create_OUTPUT"
+database_id = "83f40aa0-d408-46a2-9227-c1f396dcb420"
 migrations_dir = "migrations"
 
 # KV: per-IP rate-limit counters (5 issuances per IP per 24 h).
 # Email-level dedup (1 per email per 30 d) lives in D1, not KV.
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
-id = "REPLACE_WITH_id_FROM_kv_namespace_create_OUTPUT"
+id = "3b4730d6fb444c18afad7029496920f6"
 
 # Build configuration matches Cloudflare Pages dashboard settings.
 [build]
