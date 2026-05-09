@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getMessages } from '../i18n/messages';
 import { getLocaleFromPath, localiseHref } from '../i18n/utils';
 import Button from '../components/primitives/Button.astro';
+import Badge from '../components/primitives/Badge.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
@@ -11,6 +12,7 @@ const t = getMessages(locale);
 <Layout>
   <section class="px-6 py-20 text-center">
     <div class="mx-auto max-w-3xl space-y-6">
+      <Badge variant="mono">MIT SDK · Apache Platform · 0 vulns</Badge>
       <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-balance">
         {t.landing.hero_title}
       </h1>
