@@ -1,0 +1,15 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+const { size = 'lg', class: extra = '' } = Astro.props;
+const sizes: Record<NonNullable<Props['size']>, string> = {
+  sm: 'max-w-3xl',
+  md: 'max-w-5xl',
+  lg: 'max-w-7xl',
+};
+const cls = ['mx-auto px-6', sizes[size], extra].filter(Boolean).join(' ');
+---
+
+<div class={cls}><slot /></div>
