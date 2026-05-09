@@ -9,12 +9,12 @@ const t = getMessages(locale);
 
 // Each row is [labelKey, verbara, genesys, asterisk, vicidial]
 const rows: Array<[keyof typeof t.home, string, string, string, string]> = [
-  ['ap_row_source',       '✓ MIT + Apache',  '—',                '✓',                       '✓'],
-  ['ap_row_selfhost',     '✓',               '—',                '✓',                       '✓'],
-  ['ap_row_modern_ui',    '✓',               '✓',                '—',                       '—'],
-  ['ap_row_ai',           '✓',               '✓',                '—',                       '—'],
-  ['ap_row_multitenant',  '✓ Pro',           '✓',                '—',                       'partial'],
-  ['ap_row_latam',        '✓',               '—',                'n/a',                     '—'],
+  ['ap_row_source',       '✓ MIT + Apache',  '✗ closed cloud',     '✓',                  '✓'],
+  ['ap_row_selfhost',     '✓',               '✗ or restricted',    '✓ entirely DIY',     '✓'],
+  ['ap_row_modern_ui',    '✓',               '✓',                  '✗',                  '✗'],
+  ['ap_row_ai',           '✓ native',        '✓ proprietary',      '✗',                  '✗'],
+  ['ap_row_multitenant',  '✓ Pro',           '✓ enterprise',       '✗',                  'partial'],
+  ['ap_row_latam',        '✓',               'translated',         'n/a',                'community-translated'],
 ];
 ---
 
