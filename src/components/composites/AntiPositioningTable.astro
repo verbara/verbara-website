@@ -1,0 +1,60 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+// Each row is [labelKey, verbara, genesys, asterisk, vicidial]
+const rows: Array<[keyof typeof t.home, string, string, string, string]> = [
+  ['ap_row_source',       '✓ MIT + Apache',  '—',                '✓',                       '✓'],
+  ['ap_row_selfhost',     '✓',               '—',                '✓',                       '✓'],
+  ['ap_row_modern_ui',    '✓',               '✓',                '—',                       '—'],
+  ['ap_row_ai',           '✓',               '✓',                '—',                       '—'],
+  ['ap_row_multitenant',  '✓ Pro',           '✓',                '—',                       'partial'],
+  ['ap_row_latam',        '✓',               '—',                'n/a',                     '—'],
+];
+---
+
+<Section tone="inset" id="what-you-replace">
+  <Container size="lg">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.home.ap_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.home.ap_h2_pre} <span class="text-amber">{t.home.ap_h2_accent}</span>
+        </h2>
+        <p class="text-lg text-bone-2 text-balance">{t.home.ap_sub}</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-line-strong">
+        <table class="w-full text-sm">
+          <thead class="bg-ink-3">
+            <tr>
+              <th class="text-left px-4 py-3 font-mono text-xs uppercase tracking-wider text-bone-3">&nbsp;</th>
+              <th class="text-left px-4 py-3 font-medium text-signal">{t.home.ap_col_verbara}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{t.home.ap_col_genesys}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{t.home.ap_col_asterisk}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{t.home.ap_col_vicidial}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line">
+            {rows.map(([labelKey, v, g, a, vd]) => (
+              <tr>
+                <td class="px-4 py-3 font-medium">{t.home[labelKey]}</td>
+                <td class="px-4 py-3 text-signal font-mono text-xs">{v}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{g}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{a}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{vd}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Container>
+</Section>
