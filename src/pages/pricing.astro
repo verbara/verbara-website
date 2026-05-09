@@ -59,6 +59,12 @@ function ctaLabel(cta: CtaKind): string {
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {TIERS.map((tier) => (
             <article
+              id={
+                tier.id === 'tier_0' ? 'group-free' :
+                tier.id === 'tier_1' ? 'group-self' :
+                tier.id === 'tier_3' ? 'group-managed' :
+                undefined
+              }
               class={[
                 'flex flex-col rounded-lg border p-6',
                 tier.badge === 'popular'
