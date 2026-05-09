@@ -13,7 +13,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "rm -rf dist && PUBLIC_TURNSTILE_SITE_KEY=$(grep '^TURNSTILE_SITE_KEY=' ~/.verbara/secrets.env | cut -d= -f2-) astro build && npx wrangler deploy"
+    "deploy": "rm -rf dist && PUBLIC_TURNSTILE_SITE_KEY=$(grep '^TURNSTILE_SITE_KEY=' ~/.verbara/secrets.env | cut -d= -f2-) astro build && npx wrangler deploy",
+    "check": "astro check",
+    "lint": "eslint .",
+    "validate:html": "html-validate 'dist/**/*.html'",
+    "test:i18n": "node scripts/check-i18n-parity.mjs",
+    "test:e2e": "playwright test",
+    "test:lhci": "lhci autorun",
+    "test:all": "npm run check && npm run lint && npm run test:i18n && npm run build && npm run validate:html && npm run test:e2e && npm run test:lhci"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -21,6 +28,13 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.0"
+    "@eslint/js": "^9.39.4",
+    "@lhci/cli": "^0.14.0",
+    "@playwright/test": "^1.59.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-astro": "^1.7.0",
+    "html-validate": "^9.7.1",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.59.2"
   }
 }
