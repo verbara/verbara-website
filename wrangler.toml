@@ -41,6 +41,6 @@ migrations_dir = "migrations"
 binding = "RATE_LIMIT_KV"
 id = "3b4730d6fb444c18afad7029496920f6"
 
-# Build configuration matches Cloudflare Pages dashboard settings.
-[build]
-command = "npm run build"
+# Build configuration is set in the Cloudflare Pages dashboard
+# (Settings -> Build & deployments). Pages projects do not accept a [build]
+# section in wrangler.toml — Workers-only directive.
