@@ -5,7 +5,6 @@
     "void-style": ["error", { "style": "omit" }],
     "wcag/h30": "warn",
     "wcag/h32": "warn",
-    "unique-landmark": "warn",
     "long-title": "warn"
   }
 }

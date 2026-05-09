@@ -24,11 +24,13 @@ export interface Messages {
     product: string;
     pricing: string;
     developer_license: string;
-    docs: string;
     github: string;
   };
   footer: {
     tagline: string;
+    column_product: string;
+    column_resources: string;
+    column_legal: string;
     legal_eula: string;
     legal_privacy: string;
     legal_terms: string;
@@ -175,11 +177,13 @@ const es_419: Messages = {
     product: 'Producto',
     pricing: 'Precios',
     developer_license: 'Licencia gratuita',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
+    column_product: 'Producto',
+    column_resources: 'Recursos',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidad',
     legal_terms: 'Términos',
@@ -339,11 +343,13 @@ const en_US: Messages = {
     product: 'Product',
     pricing: 'Pricing',
     developer_license: 'Free license',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honest contact-center platform.',
+    column_product: 'Product',
+    column_resources: 'Resources',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacy',
     legal_terms: 'Terms',
@@ -503,11 +509,13 @@ const pt_BR: Messages = {
     product: 'Produto',
     pricing: 'Preços',
     developer_license: 'Licença gratuita',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
+    column_product: 'Produto',
+    column_resources: 'Recursos',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidade',
     legal_terms: 'Termos',

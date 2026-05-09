@@ -24,7 +24,7 @@ const localeLabel = (l: typeof LOCALES[number]) =>
       <span>Verbara<sup class="text-xs opacity-60 ml-0.5">™</sup></span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-7 text-sm text-bone-2">
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 text-sm text-bone-2">
       <a href={`${localiseHref('', locale)}#how-it-works`} class="hover:text-bone">{t.nav.product ?? 'Product'}</a>
       <a href={localiseHref('pricing', locale)} class="hover:text-bone">{t.nav.pricing}</a>
       <a href={localiseHref('developer-license', locale)} class="hover:text-bone">{t.nav.developer_license}</a>
@@ -62,7 +62,7 @@ const localeLabel = (l: typeof LOCALES[number]) =>
     id="nav-mobile-panel"
     class="md:hidden hidden border-t border-line bg-ink"
   >
-    <nav class="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-3 text-sm">
+    <nav aria-label="Mobile" class="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-3 text-sm">
       <a href={`${localiseHref('', locale)}#how-it-works`} class="text-bone-2 hover:text-bone">{t.nav.product ?? 'Product'}</a>
       <a href={localiseHref('pricing', locale)} class="text-bone-2 hover:text-bone">{t.nav.pricing}</a>
       <a href={localiseHref('developer-license', locale)} class="text-bone-2 hover:text-bone">{t.nav.developer_license}</a>
