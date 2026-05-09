@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
 import { LOCALES, MESSAGES } from '../src/i18n/messages.ts';
 
 function flatten(obj, prefix = '') {
@@ -39,4 +40,4 @@ if (failed) {
   console.error('\ni18n parity check FAILED.');
   process.exit(1);
 }
-console.log(`i18n parity OK across ${LOCALES.length} locales (${refKeys.size} keys each).`);
+console.error(`i18n parity OK across ${LOCALES.length} locales (${refKeys.size} keys each).`);

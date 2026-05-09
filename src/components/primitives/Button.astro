@@ -29,7 +29,6 @@ const variants: Record<NonNullable<Props['variant']>, string> = {
 };
 
 const cls = [base, sizes[size], variants[variant], extra].filter(Boolean).join(' ');
-const Tag = href ? 'a' : 'button';
 ---
 
 {href ? (

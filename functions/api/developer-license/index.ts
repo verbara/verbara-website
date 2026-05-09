@@ -56,7 +56,6 @@ const FROM_ADDRESS = 'Verbara <licensing@verbara.io>';
 // Entry point
 // ---------------------------------------------------------------------------
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const onRequestPost: (ctx: PagesContext) => Promise<Response> = async (ctx) => {
   const { request, env } = ctx;
 
