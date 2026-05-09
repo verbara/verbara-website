@@ -1,7 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getMessages } from '../i18n/messages';
-import { getLocaleFromPath, localiseHref } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en-US' } }, { params: { lang: 'pt-BR' } }];
+}
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);

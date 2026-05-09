@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 //
 // Phase 0 is intentionally a minimal static-only landing scaffold.
@@ -11,6 +13,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://verbara.io',
   output: 'static',
+
   i18n: {
     defaultLocale: 'es-419',
     locales: ['es-419', 'en-US', 'pt-BR'],
@@ -18,5 +21,9 @@ export default defineConfig({
       prefixDefaultLocale: false,
       redirectToDefaultLocale: false,
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

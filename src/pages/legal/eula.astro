@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+---
+
+<Layout title={`${t.legal_eula.title} — ${t.meta.site_title}`}>
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-2xl space-y-6">
+      <h1 class="text-3xl font-bold tracking-tight">{t.legal_eula.title}</h1>
+      <p class="text-base leading-relaxed opacity-80">{t.legal_eula.body}</p>
+    </div>
+  </section>
+</Layout>

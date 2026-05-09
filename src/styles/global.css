@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Brand tokens — refine when design system lands. */
 :root {
   --color-brand-primary: oklch(60% 0.18 250);
