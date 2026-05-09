@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
-import { getMessages } from '../i18n/messages';
+import NavBar from '../components/composites/NavBar.astro';
+import Footer from '../components/composites/Footer.astro';
+import { getMessages, LOCALES } from '../i18n/messages';
 import { getLocaleFromPath, getRouteFromPath, localiseHref } from '../i18n/utils';
-import { LOCALES } from '../i18n/messages';
 
 interface Props {
   title?: string;
@@ -25,6 +26,7 @@ const pageDescription = description ?? t.meta.site_description;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
+    <meta name="theme-color" content="#0a1628" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
     <meta property="og:title" content={pageTitle} />
@@ -37,48 +39,11 @@ const pageDescription = description ?? t.meta.site_description;
     ))}
     <link rel="alternate" hreflang="x-default" href={`https://verbara.io${localiseHref(route, 'es-419')}`} />
   </head>
-  <body class="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
-    <header class="border-b border-black/5 dark:border-white/10">
-      <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6">
-        <a href={localiseHref('', locale)} class="font-bold text-lg tracking-tight">
-          Verbara<sup class="text-xs opacity-60 ml-0.5">™</sup>
-        </a>
-        <nav class="flex items-center gap-5 text-sm">
-          <a href={localiseHref('pricing', locale)} class="hover:underline">{t.nav.pricing}</a>
-          <a href={localiseHref('developer-license', locale)} class="hover:underline">{t.nav.developer_license}</a>
-          <a href="https://github.com/verbara" class="hover:underline">{t.nav.github}</a>
-        </nav>
-        <div class="flex items-center gap-2 text-xs opacity-60">
-          {LOCALES.map((l) => (
-            <a
-              href={localiseHref(route, l)}
-              class={l === locale ? 'font-bold underline' : 'hover:underline'}
-              aria-current={l === locale ? 'page' : undefined}
-            >
-              {l === 'es-419' ? 'ES' : l === 'en-US' ? 'EN' : 'PT'}
-            </a>
-          ))}
-        </div>
-      </div>
-    </header>
-
+  <body class="min-h-screen flex flex-col">
+    <NavBar />
     <main class="flex-1">
       <slot />
     </main>
-
-    <footer class="border-t border-black/5 dark:border-white/10 mt-12">
-      <div class="mx-auto max-w-6xl px-6 py-8 space-y-4 text-sm">
-        <p class="opacity-80">{t.footer.tagline}</p>
-        <nav class="flex flex-wrap gap-4 text-xs">
-          <a href={localiseHref('legal/eula', locale)} class="hover:underline opacity-70">{t.footer.legal_eula}</a>
-          <a href={localiseHref('legal/privacy', locale)} class="hover:underline opacity-70">{t.footer.legal_privacy}</a>
-          <a href={localiseHref('legal/terms', locale)} class="hover:underline opacity-70">{t.footer.legal_terms}</a>
-          <a href="https://github.com/verbara" class="hover:underline opacity-70">GitHub</a>
-          <a href="mailto:hello@verbara.io" class="hover:underline opacity-70">hello@verbara.io</a>
-        </nav>
-        <p class="text-xs opacity-50">{t.footer.copyright}</p>
-        <p class="text-xs opacity-50">{t.footer.trademark}</p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

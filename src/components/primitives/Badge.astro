@@ -1,0 +1,23 @@
+---
+interface Props {
+  variant?: 'default' | 'success' | 'warning' | 'info' | 'mono';
+  class?: string;
+}
+const { variant = 'default', class: extra = '' } = Astro.props;
+
+const variants: Record<NonNullable<Props['variant']>, string> = {
+  default: 'border border-line-strong text-bone-2 bg-ink-3',
+  success: 'bg-success/10 text-success border border-success/25',
+  warning: 'bg-amber/10 text-amber border border-amber/30',
+  info: 'bg-signal/10 text-signal border border-signal/25',
+  mono: 'border border-line-strong text-bone-2 font-mono',
+};
+
+const cls = [
+  'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs',
+  variants[variant],
+  extra,
+].filter(Boolean).join(' ');
+---
+
+<span class={cls}><slot /></span>

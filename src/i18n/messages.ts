@@ -21,13 +21,16 @@ export interface Messages {
     site_description: string;
   };
   nav: {
+    product: string;
     pricing: string;
     developer_license: string;
-    docs: string;
     github: string;
   };
   footer: {
     tagline: string;
+    column_product: string;
+    column_resources: string;
+    column_legal: string;
     legal_eula: string;
     legal_privacy: string;
     legal_terms: string;
@@ -171,13 +174,16 @@ const es_419: Messages = {
       'Verbara es una plataforma open-core para contact center: motor auditable, módulos comerciales. Self-host gratis o hosted, sin tarifas por minuto.',
   },
   nav: {
+    product: 'Producto',
     pricing: 'Precios',
     developer_license: 'Licencia gratuita',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
+    column_product: 'Producto',
+    column_resources: 'Recursos',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidad',
     legal_terms: 'Términos',
@@ -334,13 +340,16 @@ const en_US: Messages = {
       'Verbara is an open-core contact-center platform: auditable engine, commercial overlays. Self-host free or hosted, no per-minute fees.',
   },
   nav: {
+    product: 'Product',
     pricing: 'Pricing',
     developer_license: 'Free license',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honest contact-center platform.',
+    column_product: 'Product',
+    column_resources: 'Resources',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacy',
     legal_terms: 'Terms',
@@ -497,13 +506,16 @@ const pt_BR: Messages = {
       'Verbara é uma plataforma open-core para contact center: motor auditável, módulos comerciais. Self-host gratuito ou hospedado, sem tarifas por minuto.',
   },
   nav: {
+    product: 'Produto',
     pricing: 'Preços',
     developer_license: 'Licença gratuita',
-    docs: 'Docs',
     github: 'GitHub',
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
+    column_product: 'Produto',
+    column_resources: 'Recursos',
+    column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidade',
     legal_terms: 'Termos',
@@ -658,6 +670,9 @@ export const messages: Record<Locale, Messages> = {
   'en-US': en_US,
   'pt-BR': pt_BR,
 };
+
+// Alias for use in scripts
+export const MESSAGES = messages;
 
 /**
  * Get the messages bundle for a locale, falling back to the default.

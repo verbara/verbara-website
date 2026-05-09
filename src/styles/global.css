@@ -1,82 +1,133 @@
 @import "tailwindcss";
 
-/* Brand tokens — refine when design system lands. */
+/* ===== Self-hosted Geist Sans + Mono ===== */
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistSans-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistSans-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistSans-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/GeistMono-Medium.woff2") format("woff2");
+}
+
+/* ===== Signal design tokens (Tailwind v4 @theme) ===== */
+@theme {
+  /* Surfaces */
+  --color-ink: #0a1628;
+  --color-ink-2: #050d1a;
+  --color-ink-3: #0f2138;
+
+  /* Text */
+  --color-bone: #e8eef5;
+  --color-bone-2: rgba(232, 238, 245, 0.65);
+  --color-bone-3: rgba(232, 238, 245, 0.4);
+
+  /* Accents */
+  --color-signal: #40d9ff;
+  --color-signal-deep: #1fa8cc;
+  --color-amber: #ffb547;
+
+  /* States */
+  --color-success: #34d399;
+  --color-error: #f87171;
+
+  /* Lines */
+  --color-line: rgba(232, 238, 245, 0.1);
+  --color-line-strong: rgba(232, 238, 245, 0.2);
+
+  /* Type families */
+  --font-display: "Geist Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Geist Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Type scale (rem) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+}
+
+/* ===== Base reset + dark-only application ===== */
 :root {
-  --color-brand-primary: oklch(60% 0.18 250);
-  --color-brand-secondary: oklch(70% 0.10 230);
-  --color-bg: oklch(98% 0 0);
-  --color-fg: oklch(20% 0 0);
-  --color-fg-muted: oklch(50% 0 0);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: oklch(15% 0 0);
-    --color-fg: oklch(95% 0 0);
-    --color-fg-muted: oklch(70% 0 0);
-  }
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  color-scheme: dark;
 }
 
 html {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 body {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1.5rem;
+  background: var(--color-ink);
+  color: var(--color-bone);
 }
 
-main.landing {
-  max-width: 38rem;
-  text-align: center;
-}
-
-main.landing h1 {
-  font-size: 3rem;
-  font-weight: 700;
+/* Display headings use display family + tighter tracking */
+h1, h2, h3 {
+  font-family: var(--font-display);
   letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
 }
 
-main.landing h1 sup {
-  font-size: 1.25rem;
-  font-weight: 400;
-  vertical-align: super;
-  opacity: 0.6;
+/* Mono primitives */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
 }
 
-main.landing p.lead {
-  font-size: 1.25rem;
-  opacity: 0.85;
-  margin-bottom: 2rem;
-  text-wrap: balance;
+/* Focus ring — accessible, signal-cyan */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-main.landing p.note {
-  font-size: 0.875rem;
-  color: var(--color-fg-muted);
-  margin-bottom: 0.5rem;
-}
-
-main.landing a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-main.landing a:hover {
-  text-decoration: none;
+/* Selection */
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
 }

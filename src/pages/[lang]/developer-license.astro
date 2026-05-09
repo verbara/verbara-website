@@ -1,5 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/primitives/Section.astro';
+import Container from '../../components/primitives/Container.astro';
+import Heading from '../../components/primitives/Heading.astro';
 import DeveloperLicenseForm from '../../components/DeveloperLicenseForm.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
@@ -13,13 +16,15 @@ const t = getMessages(locale);
 ---
 
 <Layout title={`${t.developer_license.title} — ${t.meta.site_title}`}>
-  <section class="px-6 py-16">
-    <div class="mx-auto max-w-3xl space-y-8">
-      <header class="space-y-3 text-center">
-        <h1 class="text-4xl font-bold tracking-tight">{t.developer_license.title}</h1>
-        <p class="text-lg opacity-80">{t.developer_license.subtitle}</p>
-      </header>
-      <DeveloperLicenseForm />
-    </div>
-  </section>
+  <Section>
+    <Container size="sm">
+      <div class="space-y-8">
+        <div class="space-y-3 text-center">
+          <Heading level={1} align="center">{t.developer_license.title}</Heading>
+          <p class="text-lg text-bone-2">{t.developer_license.subtitle}</p>
+        </div>
+        <DeveloperLicenseForm />
+      </div>
+    </Container>
+  </Section>
 </Layout>

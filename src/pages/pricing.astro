@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/primitives/Section.astro';
+import Container from '../components/primitives/Container.astro';
+import Heading from '../components/primitives/Heading.astro';
+import Button from '../components/primitives/Button.astro';
 import { getMessages } from '../i18n/messages';
 import { getLocaleFromPath, localiseHref } from '../i18n/utils';
 
@@ -45,75 +49,71 @@ function ctaLabel(cta: CtaKind): string {
 ---
 
 <Layout title={`${t.pricing.title} — ${t.meta.site_title}`}>
-  <section class="px-6 py-16">
-    <div class="mx-auto max-w-7xl space-y-10">
-      <header class="space-y-3 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">{t.pricing.title}</h1>
-        <p class="opacity-70 max-w-2xl mx-auto text-balance">{t.pricing.subtitle}</p>
-      </header>
+  <Section>
+    <Container size="lg">
+      <div class="space-y-10">
+        <Heading level={1} align="center" eyebrow={t.pricing.title}>
+          {t.pricing.subtitle}
+        </Heading>
 
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {TIERS.map((tier) => (
-          <article
-            class={[
-              'flex flex-col rounded-lg border p-6',
-              tier.badge === 'popular'
-                ? 'border-[var(--color-fg)] ring-1 ring-[var(--color-fg)]'
-                : 'border-black/10 dark:border-white/10',
-            ].join(' ')}
-            data-tier={tier.id}
-          >
-            <header class="space-y-2">
-              <div class="flex items-center justify-between gap-2 min-h-6">
-                <h2 class="text-lg font-semibold">{tierName(tier.id)}</h2>
-                {tier.badge === 'popular' && (
-                  <span class="rounded bg-[var(--color-fg)] text-[var(--color-bg)] px-2 py-0.5 text-xs">
-                    {t.pricing.popular_badge}
-                  </span>
-                )}
-                {tier.badge === 'evaluators' && (
-                  <span class="rounded border border-current px-2 py-0.5 text-xs opacity-70">
-                    {t.pricing.evaluators_badge}
-                  </span>
-                )}
-              </div>
-              <p class="text-2xl font-bold">{tierPrice(tier.id)}</p>
-              <p class="text-sm opacity-70 min-h-10">{tierTagline(tier.id)}</p>
-            </header>
-
-            <ul class="my-6 flex-1 space-y-2 text-sm">
-              <li class="flex items-start gap-2">
-                <span aria-hidden class="opacity-50">·</span>
-                <span>{tierFeature(tier.id, 1)}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span aria-hidden class="opacity-50">·</span>
-                <span>{tierFeature(tier.id, 2)}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span aria-hidden class="opacity-50">·</span>
-                <span>{tierFeature(tier.id, 3)}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span aria-hidden class="opacity-50">·</span>
-                <span>{tierFeature(tier.id, 4)}</span>
-              </li>
-            </ul>
-
-            <a
-              href={ctaHref(tier.cta)}
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {TIERS.map((tier) => (
+            <article
               class={[
-                'inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium',
-                tier.cta === 'developer' || tier.cta === 'buy'
-                  ? 'bg-[var(--color-fg)] text-[var(--color-bg)] hover:opacity-90'
-                  : 'border border-[var(--color-fg)]/20 hover:bg-[var(--color-fg)]/5',
+                'flex flex-col rounded-lg border p-6',
+                tier.badge === 'popular'
+                  ? 'border-signal ring-1 ring-signal'
+                  : 'border-line-strong',
               ].join(' ')}
+              data-tier={tier.id}
             >
-              {ctaLabel(tier.cta)}
-            </a>
-          </article>
-        ))}
+              <header class="space-y-2">
+                <div class="flex items-center justify-between gap-2 min-h-6">
+                  <h2 class="text-lg font-semibold">{tierName(tier.id)}</h2>
+                  {tier.badge === 'popular' && (
+                    <span class="rounded bg-signal text-ink px-2 py-0.5 text-xs">
+                      {t.pricing.popular_badge}
+                    </span>
+                  )}
+                  {tier.badge === 'evaluators' && (
+                    <span class="rounded border border-line-strong px-2 py-0.5 text-xs opacity-70">
+                      {t.pricing.evaluators_badge}
+                    </span>
+                  )}
+                </div>
+                <p class="text-2xl font-bold">{tierPrice(tier.id)}</p>
+                <p class="text-sm opacity-70 min-h-10">{tierTagline(tier.id)}</p>
+              </header>
+
+              <ul class="my-6 flex-1 space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <span aria-hidden class="opacity-50">·</span>
+                  <span>{tierFeature(tier.id, 1)}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span aria-hidden class="opacity-50">·</span>
+                  <span>{tierFeature(tier.id, 2)}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span aria-hidden class="opacity-50">·</span>
+                  <span>{tierFeature(tier.id, 3)}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span aria-hidden class="opacity-50">·</span>
+                  <span>{tierFeature(tier.id, 4)}</span>
+                </li>
+              </ul>
+
+              <Button
+                variant={tier.cta === 'developer' || tier.cta === 'buy' ? 'primary' : 'secondary'}
+                href={ctaHref(tier.cta)}
+              >
+                {ctaLabel(tier.cta)}
+              </Button>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </Container>
+  </Section>
 </Layout>

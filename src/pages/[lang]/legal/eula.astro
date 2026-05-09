@@ -1,5 +1,8 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Section from '../../../components/primitives/Section.astro';
+import Container from '../../../components/primitives/Container.astro';
+import Heading from '../../../components/primitives/Heading.astro';
 import { getMessages } from '../../../i18n/messages';
 import { getLocaleFromPath } from '../../../i18n/utils';
 
@@ -12,10 +15,12 @@ const t = getMessages(locale);
 ---
 
 <Layout title={`${t.legal_eula.title} — ${t.meta.site_title}`}>
-  <section class="px-6 py-16">
-    <div class="mx-auto max-w-2xl space-y-6">
-      <h1 class="text-3xl font-bold tracking-tight">{t.legal_eula.title}</h1>
-      <p class="text-base leading-relaxed opacity-80">{t.legal_eula.body}</p>
-    </div>
-  </section>
+  <Section>
+    <Container size="sm">
+      <div class="space-y-6">
+        <Heading level={1}>{t.legal_eula.title}</Heading>
+        <p class="text-base text-bone-2 leading-relaxed">{t.legal_eula.body}</p>
+      </div>
+    </Container>
+  </Section>
 </Layout>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: 'default' | 'highlighted';
+  class?: string;
+  as?: 'article' | 'div' | 'section';
+}
+const { variant = 'default', class: extra = '', as: Tag = 'div' } = Astro.props;
+
+const variants: Record<NonNullable<Props['variant']>, string> = {
+  default: 'border border-line-strong bg-ink-3/40',
+  highlighted: 'border border-signal bg-signal/5 ring-1 ring-signal/30',
+};
+
+const cls = [
+  'rounded-lg p-6',
+  variants[variant],
+  extra,
+].filter(Boolean).join(' ');
+---
+
+<Tag class={cls}><slot /></Tag>

@@ -1,4 +1,5 @@
 ---
+import Button from './primitives/Button.astro';
 import { getMessages } from '../i18n/messages';
 import { getLocaleFromPath } from '../i18n/utils';
 
@@ -35,18 +36,15 @@ const stateStrings = {
 {
   !formEnabled ? (
     <div
-      class="rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950 p-6 space-y-4"
+      class="rounded-lg border border-amber/30 bg-amber/10 p-6 space-y-4"
       role="alert"
       data-testid="devlic-coming-soon"
     >
       <h2 class="text-base font-semibold">{t.developer_license.coming_soon_title}</h2>
       <p class="text-sm leading-relaxed">{t.developer_license.coming_soon_body}</p>
-      <a
-        href="mailto:licensing@verbara.io"
-        class="inline-flex items-center justify-center rounded-md bg-[var(--color-fg)] text-[var(--color-bg)] px-4 py-2 text-sm font-medium hover:opacity-90"
-      >
+      <Button variant="primary" href="mailto:licensing@verbara.io">
         {t.developer_license.contact_label}
-      </a>
+      </Button>
     </div>
   ) : (
     <div class="grid gap-8 md:grid-cols-[1fr_18rem]">
@@ -60,7 +58,7 @@ const stateStrings = {
       >
         <div class="space-y-1.5">
           <label for="devlic-email" class="block text-sm font-medium">
-            {t.developer_license.form_email_label} <span class="text-red-500">*</span>
+            {t.developer_license.form_email_label} <span class="text-error">*</span>
           </label>
           <input
             id="devlic-email"
@@ -69,15 +67,15 @@ const stateStrings = {
             required
             autocomplete="email"
             placeholder={t.developer_license.form_email_placeholder}
-            class="w-full rounded-md border border-black/15 dark:border-white/15 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-fg)]"
+            class="w-full rounded-md border border-line-strong bg-ink-3 text-bone placeholder:text-bone-3 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal"
             aria-describedby="devlic-email-error"
           />
-          <p id="devlic-email-error" class="text-xs text-red-600 hidden" role="alert"></p>
+          <p id="devlic-email-error" class="text-xs text-error hidden" role="alert"></p>
         </div>
 
         <div class="space-y-1.5">
           <label for="devlic-fullName" class="block text-sm font-medium">
-            {t.developer_license.form_fullName_label} <span class="text-red-500">*</span>
+            {t.developer_license.form_fullName_label} <span class="text-error">*</span>
           </label>
           <input
             id="devlic-fullName"
@@ -86,10 +84,10 @@ const stateStrings = {
             required
             autocomplete="name"
             placeholder={t.developer_license.form_fullName_placeholder}
-            class="w-full rounded-md border border-black/15 dark:border-white/15 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-fg)]"
+            class="w-full rounded-md border border-line-strong bg-ink-3 text-bone placeholder:text-bone-3 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal"
             aria-describedby="devlic-fullName-error"
           />
-          <p id="devlic-fullName-error" class="text-xs text-red-600 hidden" role="alert"></p>
+          <p id="devlic-fullName-error" class="text-xs text-error hidden" role="alert"></p>
         </div>
 
         <div class="space-y-1.5">
@@ -102,7 +100,7 @@ const stateStrings = {
             type="text"
             autocomplete="organization"
             placeholder={t.developer_license.form_company_placeholder}
-            class="w-full rounded-md border border-black/15 dark:border-white/15 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-fg)]"
+            class="w-full rounded-md border border-line-strong bg-ink-3 text-bone placeholder:text-bone-3 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal"
           />
         </div>
 
@@ -115,7 +113,7 @@ const stateStrings = {
             name="useCase"
             rows="3"
             placeholder={t.developer_license.form_useCase_placeholder}
-            class="w-full rounded-md border border-black/15 dark:border-white/15 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-fg)] resize-y"
+            class="w-full rounded-md border border-line-strong bg-ink-3 text-bone placeholder:text-bone-3 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal resize-y"
           ></textarea>
         </div>
 
@@ -133,22 +131,22 @@ const stateStrings = {
               {t.developer_license.form_eula_label}
             </span>
           </label>
-          <p id="devlic-eula-error" class="text-xs text-red-600 hidden" role="alert"></p>
+          <p id="devlic-eula-error" class="text-xs text-error hidden" role="alert"></p>
         </div>
 
         <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="flexible"></div>
-        <p id="devlic-captcha-error" class="text-xs text-red-600 hidden" role="alert"></p>
+        <p id="devlic-captcha-error" class="text-xs text-error hidden" role="alert"></p>
 
         <div
           id="devlic-form-error"
-          class="hidden rounded-md border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950 p-3 text-sm text-red-700 dark:text-red-200"
+          class="hidden rounded-md border border-error/30 bg-error/10 p-3 text-sm text-error"
           role="alert"
         ></div>
 
         <button
           id="devlic-submit"
           type="submit"
-          class="inline-flex w-full items-center justify-center rounded-md bg-[var(--color-fg)] text-[var(--color-bg)] px-4 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="inline-flex w-full items-center justify-center rounded-md bg-signal text-ink px-5 py-2.5 text-base font-medium hover:bg-signal-deep disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {t.developer_license.form_submit}
         </button>
@@ -158,7 +156,7 @@ const stateStrings = {
         <h2 class="text-base font-semibold">
           {t.developer_license.what_you_get_title}
         </h2>
-        <ul class="space-y-2 opacity-80">
+        <ul class="space-y-2 text-bone-2">
           <li class="flex gap-2">
             <span class="opacity-50" aria-hidden>·</span>
             <span>{t.developer_license.what_you_get_agents}</span>
@@ -190,7 +188,7 @@ const stateStrings = {
     <Fragment>
       <output
         id="devlic-success"
-        class="hidden block rounded-lg border border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950 p-6 mt-6"
+        class="hidden block rounded-lg border border-success/30 bg-success/10 p-6 mt-6"
         data-testid="devlic-success"
       >
         <h2 class="text-base font-semibold">{t.developer_license.state_success_title}</h2>

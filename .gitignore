@@ -36,3 +36,13 @@ licenses.jsonl
 docs/superpowers/
 CLAUDE.md
 .claude/
+.superpowers/
+.worktrees/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Lighthouse CI
+.lighthouseci/
