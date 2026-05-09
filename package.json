@@ -12,7 +12,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "PUBLIC_TURNSTILE_SITE_KEY=$(grep '^TURNSTILE_SITE_KEY=' ~/.verbara/secrets.env | cut -d= -f2-) astro build && npx wrangler deploy"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
