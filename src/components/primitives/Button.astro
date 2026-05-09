@@ -1,0 +1,43 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  ariaLabel?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: extra = '',
+  ariaLabel,
+} = Astro.props;
+
+const base = 'inline-flex items-center justify-center font-medium rounded-md transition-opacity transition-colors';
+const sizes: Record<NonNullable<Props['size']>, string> = {
+  md: 'px-4 py-2 text-sm',
+  lg: 'px-5 py-2.5 text-base',
+};
+const variants: Record<NonNullable<Props['variant']>, string> = {
+  primary: 'bg-signal text-ink hover:bg-signal-deep',
+  secondary: 'border border-line-strong text-bone hover:bg-ink-3',
+  ghost: 'text-bone hover:text-signal',
+};
+
+const cls = [base, sizes[size], variants[variant], extra].filter(Boolean).join(' ');
+const Tag = href ? 'a' : 'button';
+---
+
+{href ? (
+  <a href={href} class={cls} aria-label={ariaLabel}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={cls} aria-label={ariaLabel}>
+    <slot />
+  </button>
+)}

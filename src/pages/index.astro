@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getMessages } from '../i18n/messages';
 import { getLocaleFromPath, localiseHref } from '../i18n/utils';
+import Button from '../components/primitives/Button.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
@@ -17,12 +18,9 @@ const t = getMessages(locale);
         {t.landing.hero_subtitle}
       </p>
       <div class="flex flex-wrap justify-center gap-3 pt-4">
-        <a
-          href={localiseHref('developer-license', locale)}
-          class="inline-flex items-center justify-center rounded-md bg-[var(--color-fg)] text-[var(--color-bg)] px-5 py-2.5 text-sm font-medium hover:opacity-90"
-        >
+        <Button variant="primary" size="lg" href={localiseHref('developer-license', locale)}>
           {t.landing.cta_developer}
-        </a>
+        </Button>
         <a
           href={localiseHref('pricing', locale)}
           class="inline-flex items-center justify-center rounded-md border border-[var(--color-fg)]/20 px-5 py-2.5 text-sm font-medium hover:bg-[var(--color-fg)]/5"
