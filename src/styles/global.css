@@ -1,0 +1,80 @@
+/* Brand tokens — refine when design system lands. */
+:root {
+  --color-brand-primary: oklch(60% 0.18 250);
+  --color-brand-secondary: oklch(70% 0.10 230);
+  --color-bg: oklch(98% 0 0);
+  --color-fg: oklch(20% 0 0);
+  --color-fg-muted: oklch(50% 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: oklch(15% 0 0);
+    --color-fg: oklch(95% 0 0);
+    --color-fg-muted: oklch(70% 0 0);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+main.landing {
+  max-width: 38rem;
+  text-align: center;
+}
+
+main.landing h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+main.landing h1 sup {
+  font-size: 1.25rem;
+  font-weight: 400;
+  vertical-align: super;
+  opacity: 0.6;
+}
+
+main.landing p.lead {
+  font-size: 1.25rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+
+main.landing p.note {
+  font-size: 0.875rem;
+  color: var(--color-fg-muted);
+  margin-bottom: 0.5rem;
+}
+
+main.landing a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+main.landing a:hover {
+  text-decoration: none;
+}

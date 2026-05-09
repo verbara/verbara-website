@@ -1,0 +1,38 @@
+# Astro build output + generated types
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables (NEVER commit secrets — use Cloudflare Secret store)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Cloudflare Wrangler local cache + secrets
+.wrangler/
+.dev.vars
+
+# License signing artifacts (NEVER commit; only in Cloudflare Secrets)
+private.pem
+private.key
+*.lic
+licenses.jsonl
+
+# Local-only docs (per Option K layout)
+docs/superpowers/
+CLAUDE.md
+.claude/

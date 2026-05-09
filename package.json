@@ -1,0 +1,23 @@
+{
+  "name": "verbara-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site for the Verbara open-core contact-center platform — verbara.io",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}
