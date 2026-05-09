@@ -1,0 +1,84 @@
+---
+import { LOCALES } from '../../i18n/messages';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, getRouteFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const route = getRouteFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const localeLabel = (l: typeof LOCALES[number]) =>
+  l === 'es-419' ? 'ES' : l === 'en-US' ? 'EN' : 'PT';
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3.5">
+    <a
+      href={localiseHref('', locale)}
+      class="flex items-center gap-2 font-bold text-lg tracking-tight text-bone hover:text-signal"
+    >
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M3 6 L11 18 L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 11 H15" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Verbara<sup class="text-xs opacity-60 ml-0.5">™</sup></span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-bone-2">
+      <a href={`${localiseHref('', locale)}#how-it-works`} class="hover:text-bone">{t.nav.product ?? 'Product'}</a>
+      <a href={localiseHref('pricing', locale)} class="hover:text-bone">{t.nav.pricing}</a>
+      <a href={localiseHref('developer-license', locale)} class="hover:text-bone">{t.nav.developer_license}</a>
+      <a href="https://github.com/verbara" class="hover:text-bone">{t.nav.github}</a>
+    </nav>
+
+    <div class="flex items-center gap-1.5 text-xs">
+      {LOCALES.map((l) => (
+        <a
+          href={localiseHref(route, l)}
+          class:list={[
+            'rounded px-1.5 py-1 font-mono',
+            l === locale ? 'text-signal font-semibold' : 'text-bone-3 hover:text-bone',
+          ]}
+          aria-current={l === locale ? 'page' : undefined}
+        >{localeLabel(l)}</a>
+      ))}
+
+      <button
+        type="button"
+        id="nav-mobile-toggle"
+        class="md:hidden ml-2 text-bone p-1"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="nav-mobile-panel"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="nav-mobile-panel"
+    class="md:hidden hidden border-t border-line bg-ink"
+  >
+    <nav class="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-3 text-sm">
+      <a href={`${localiseHref('', locale)}#how-it-works`} class="text-bone-2 hover:text-bone">{t.nav.product ?? 'Product'}</a>
+      <a href={localiseHref('pricing', locale)} class="text-bone-2 hover:text-bone">{t.nav.pricing}</a>
+      <a href={localiseHref('developer-license', locale)} class="text-bone-2 hover:text-bone">{t.nav.developer_license}</a>
+      <a href="https://github.com/verbara" class="text-bone-2 hover:text-bone">{t.nav.github}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-mobile-toggle');
+  const panel = document.getElementById('nav-mobile-panel');
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  }
+</script>

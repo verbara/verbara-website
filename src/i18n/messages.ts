@@ -21,6 +21,7 @@ export interface Messages {
     site_description: string;
   };
   nav: {
+    product: string;
     pricing: string;
     developer_license: string;
     docs: string;
@@ -171,6 +172,7 @@ const es_419: Messages = {
       'Verbara es una plataforma open-core para contact center: motor auditable, módulos comerciales. Self-host gratis o hosted, sin tarifas por minuto.',
   },
   nav: {
+    product: 'Producto',
     pricing: 'Precios',
     developer_license: 'Licencia gratuita',
     docs: 'Docs',
@@ -334,6 +336,7 @@ const en_US: Messages = {
       'Verbara is an open-core contact-center platform: auditable engine, commercial overlays. Self-host free or hosted, no per-minute fees.',
   },
   nav: {
+    product: 'Product',
     pricing: 'Pricing',
     developer_license: 'Free license',
     docs: 'Docs',
@@ -497,6 +500,7 @@ const pt_BR: Messages = {
       'Verbara é uma plataforma open-core para contact center: motor auditável, módulos comerciais. Self-host gratuito ou hospedado, sem tarifas por minuto.',
   },
   nav: {
+    product: 'Produto',
     pricing: 'Preços',
     developer_license: 'Licença gratuita',
     docs: 'Docs',
