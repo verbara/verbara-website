@@ -37,7 +37,7 @@ const localeLabel = (l: typeof LOCALES[number]) =>
           href={localiseHref(route, l)}
           class:list={[
             'rounded px-1.5 py-1 font-mono',
-            l === locale ? 'text-signal font-semibold' : 'text-bone-3 hover:text-bone',
+            l === locale ? 'text-signal font-semibold' : 'text-bone-2 hover:text-bone',
           ]}
           aria-current={l === locale ? 'page' : undefined}
         >{localeLabel(l)}</a>
