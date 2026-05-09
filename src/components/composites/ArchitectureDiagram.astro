@@ -1,0 +1,95 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+---
+
+<Section id="how-it-works">
+  <Container size="md">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.home.hiw_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.home.hiw_h2}
+        </h2>
+      </div>
+
+      <figure class="space-y-4">
+        <svg
+          viewBox="0 0 800 220"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-labelledby="archdiag-title archdiag-desc"
+          class="w-full h-auto max-w-3xl mx-auto"
+        >
+          <title id="archdiag-title">{t.home.hiw_h2}</title>
+          <desc id="archdiag-desc">{t.home.hiw_caption}</desc>
+
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#40D9FF"/>
+            </marker>
+          </defs>
+
+          <!-- Box 1: Asterisk PBX (upstream, dotted) -->
+          <a href="https://www.asterisk.org/" target="_blank" rel="noopener">
+            <rect x="20" y="80" width="130" height="60" rx="8" fill="rgba(232,238,245,0.04)" stroke="rgba(232,238,245,0.4)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="85" y="105" text-anchor="middle" fill="#E8EEF5" font-size="13" font-family="Geist Sans, sans-serif">{t.home.hiw_box_asterisk}</text>
+            <text x="85" y="125" text-anchor="middle" fill="rgba(232,238,245,0.6)" font-size="10" font-family="Geist Mono, monospace">{t.home.hiw_box_asterisk_label}</text>
+          </a>
+
+          <!-- Arrow 1 → 2 -->
+          <line x1="150" y1="110" x2="178" y2="110" stroke="#40D9FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Box 2: Verbara.Sdk -->
+          <a href="https://github.com/verbara/Verbara.Sdk" target="_blank" rel="noopener">
+            <rect x="180" y="80" width="130" height="60" rx="8" fill="rgba(64,217,255,0.05)" stroke="#40D9FF" stroke-width="1.5"/>
+            <text x="245" y="105" text-anchor="middle" fill="#E8EEF5" font-size="13" font-weight="600" font-family="Geist Sans, sans-serif">{t.home.hiw_box_sdk}</text>
+            <text x="245" y="125" text-anchor="middle" fill="#34D399" font-size="10" font-family="Geist Mono, monospace">MIT</text>
+          </a>
+
+          <!-- Arrow 2 → 3 -->
+          <line x1="310" y1="110" x2="338" y2="110" stroke="#40D9FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Box 3: Verbara.Sdk.Pro -->
+          <a href="https://github.com/verbara/Verbara.Sdk.Pro" target="_blank" rel="noopener">
+            <rect x="340" y="80" width="130" height="60" rx="8" fill="rgba(255,181,71,0.05)" stroke="#FFB547" stroke-width="1.5"/>
+            <text x="405" y="105" text-anchor="middle" fill="#E8EEF5" font-size="13" font-weight="600" font-family="Geist Sans, sans-serif">{t.home.hiw_box_pro}</text>
+            <text x="405" y="125" text-anchor="middle" fill="#FFB547" font-size="10" font-family="Geist Mono, monospace">Commercial</text>
+          </a>
+
+          <!-- Arrow 3 → 4 -->
+          <line x1="470" y1="110" x2="498" y2="110" stroke="#40D9FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Box 4: Verbara.Platform -->
+          <a href="https://github.com/verbara/Verbara.Platform" target="_blank" rel="noopener">
+            <rect x="500" y="80" width="130" height="60" rx="8" fill="rgba(64,217,255,0.05)" stroke="#40D9FF" stroke-width="1.5"/>
+            <text x="565" y="105" text-anchor="middle" fill="#E8EEF5" font-size="13" font-weight="600" font-family="Geist Sans, sans-serif">{t.home.hiw_box_platform}</text>
+            <text x="565" y="125" text-anchor="middle" fill="#34D399" font-size="10" font-family="Geist Mono, monospace">Apache 2.0</text>
+          </a>
+
+          <!-- Bidirectional 4 ↔ 5 -->
+          <line x1="630" y1="103" x2="658" y2="103" stroke="#40D9FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="660" y1="117" x2="632" y2="117" stroke="#40D9FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Box 5: Verbara.Platform.Web -->
+          <a href="https://github.com/verbara/Verbara.Platform.Web" target="_blank" rel="noopener">
+            <rect x="660" y="80" width="130" height="60" rx="8" fill="rgba(64,217,255,0.05)" stroke="#40D9FF" stroke-width="1.5"/>
+            <text x="725" y="105" text-anchor="middle" fill="#E8EEF5" font-size="13" font-weight="600" font-family="Geist Sans, sans-serif">{t.home.hiw_box_web}</text>
+            <text x="725" y="125" text-anchor="middle" fill="#34D399" font-size="10" font-family="Geist Mono, monospace">Apache 2.0</text>
+          </a>
+        </svg>
+
+        <figcaption class="text-center text-sm text-bone-2 max-w-2xl mx-auto">
+          {t.home.hiw_caption}
+        </figcaption>
+      </figure>
+    </div>
+  </Container>
+</Section>
