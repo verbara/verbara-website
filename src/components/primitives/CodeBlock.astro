@@ -1,0 +1,63 @@
+---
+import { Code } from 'astro:components';
+
+interface Props {
+  lang: string;
+  code: string;
+  filename?: string;
+  class?: string;
+}
+const { lang, code, filename, class: extra = '' } = Astro.props;
+
+// Stable id for clipboard handler scoping
+const id = `code-${Math.random().toString(36).slice(2, 9)}`;
+
+const cls = [
+  'relative rounded-lg border border-line-strong bg-ink-2 overflow-hidden',
+  extra,
+].filter(Boolean).join(' ');
+---
+
+<div class={cls} data-codeblock={id}>
+  {filename && (
+    <div class="flex items-center justify-between border-b border-line-strong px-4 py-2 text-xs font-mono text-bone-2">
+      <span>{filename}</span>
+      <button
+        type="button"
+        data-copy={id}
+        class="text-bone-2 hover:text-signal text-xs"
+        aria-label="Copy code to clipboard"
+      >Copy</button>
+    </div>
+  )}
+  {!filename && (
+    <button
+      type="button"
+      data-copy={id}
+      class="absolute top-3 right-3 text-xs text-bone-2 hover:text-signal"
+      aria-label="Copy code to clipboard"
+    >Copy</button>
+  )}
+  <div class="p-4 text-sm overflow-x-auto" data-code={id}>
+    <Code code={code} lang={lang} theme="github-dark-default" />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.copy;
+      const codeEl = document.querySelector<HTMLElement>(`[data-code="${id}"]`);
+      if (!codeEl) return;
+      try {
+        await navigator.clipboard.writeText(codeEl.innerText);
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => { btn.textContent = original; }, 1400);
+      } catch {
+        btn.textContent = 'Failed';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
+      }
+    });
+  });
+</script>
