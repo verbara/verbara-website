@@ -1,20 +1,28 @@
-# Wrangler config for the verbara.io marketing site.
+# Wrangler config — Workers + Static Assets + bridged Functions.
 #
-# Cloudflare deploys this via the unified Workers Pages model — uses
-# `pages_build_output_dir` (Pages-style directive) which Cloudflare's build
-# pipeline understands, even though the resulting deployment lives under the
-# Workers script namespace (verbara-website at /workers/scripts).
+# Cloudflare deployed verbara.io as a Worker (script name `verbara-website`).
+# We use the Workers + Static Assets pattern (`main` Worker entry + `[assets]`
+# binding) instead of Pages-style auto-functions because the latter requires
+# a Pages project and this account doesn't have one (only Worker scripts).
 #
-# Bindings (D1 + KV + secrets) consumed by the Tier 0.5 license issuer at
-# functions/api/developer-license/index.ts. Cloudflare's build pipeline reads
-# this file at deploy time and applies the bindings to the deployed Worker.
+# The Worker entry at src/worker.ts manually routes /api/developer-license
+# to the function file under functions/ — that bridges the existing function
+# code into the Workers runtime without rewriting it.
 #
 # Operator runbook lives at docs/operations/issuer-setup.md.
 
 name = "verbara-website"
 compatibility_date = "2026-05-09"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = "./dist"
+main = "src/worker.ts"
+
+# Static assets — the built Astro site (npm run build emits to dist/).
+# `not_found_handling = "404-page"` returns dist/404.html for unknown paths
+# if Astro generated one, otherwise standard 404.
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
 
 # D1: append-only audit log of every Tier 0.5 license issuance.
 [[d1_databases]]
