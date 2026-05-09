@@ -16,9 +16,27 @@ This repository is **not** the contact-center product itself — it is the marke
 
 For licensing, tier model, and how Pro features are gated, see [Verbara.Sdk.Pro/docs/decisions/0010-tier-model-canonical-6-tiers.md](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/decisions/0010-tier-model-canonical-6-tiers.md).
 
-## Status (2026-05-09)
+## Status (2026-05-09 — LIVE)
 
-**Phase 0 of the bootstrap plan.** The repo and Astro scaffold exist; landing page is a "site under construction" placeholder. Subsequent phases (skeleton pages, Tier 0.5 Developer license portal, license-issuer Worker backend, deploy + DNS) are tracked in [Verbara.Sdk.Pro/docs/plans/active/2026-05-09-marketing-site-bootstrap.md](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/plans/active/2026-05-09-marketing-site-bootstrap.md).
+✅ **`https://verbara.io/`** is publicly serving 18 routes × 3 locales (es-419 / en-US / pt-BR).
+✅ **Tier 0.5 Pro Developer self-issuance loop end-to-end operational**:
+  - Form at `/developer-license/` with Cloudflare Turnstile
+  - Worker backend at `/api/developer-license/` (ECDSA P-256 signing, D1 audit log, Resend email)
+  - Validating consumer ships in [Verbara.Sdk.Pro v2.2.0-pro](https://github.com/verbara/Verbara.Sdk.Pro/releases/tag/v2.2.0-pro) (`LicenseTrustAnchor`)
+
+The full bootstrap plan is at [Verbara.Sdk.Pro/docs/plans/completed/2026-05-09-marketing-site-bootstrap.md](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/plans/completed/2026-05-09-marketing-site-bootstrap.md). Operator setup runbook for the issuer Worker is at [`docs/operations/issuer-setup.md`](docs/operations/issuer-setup.md).
+
+### Deploy
+
+The Cloudflare git auto-deploy pipeline is currently detached (manual `wrangler versions secret put` operations during initial setup overrode the auto-pipeline). Use `npm run deploy` from this directory after every change:
+
+```sh
+npm run deploy
+# = rm -rf dist + astro build (with PUBLIC_TURNSTILE_SITE_KEY injected from
+#   ~/.verbara/secrets.env) + npx wrangler deploy
+```
+
+To restore git auto-deploy: Cloudflare dashboard → Workers & Pages → `verbara-website` → Settings → Builds & deployments → Reconnect.
 
 ## Stack
 
