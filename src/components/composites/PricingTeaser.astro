@@ -1,0 +1,68 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import Card from '../primitives/Card.astro';
+import Button from '../primitives/Button.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const pricingHref = localiseHref('pricing', locale);
+---
+
+<Section tone="inset">
+  <Container size="md">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.home.pt_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.home.pt_h2}
+        </h2>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <Card as="article">
+          <h3 class="text-lg font-semibold">{t.home.pt_card_free_title}</h3>
+          <p class="text-xs font-mono text-bone-3 mt-1">{t.home.pt_card_free_tagline}</p>
+          <p class="text-2xl font-bold mt-3">{t.home.pt_card_free_price}</p>
+          <div class="mt-5">
+            <Button variant="secondary" href={`${pricingHref}#group-free`}>
+              {t.home.pt_card_free_cta}
+            </Button>
+          </div>
+        </Card>
+
+        <Card as="article" variant="highlighted">
+          <div class="flex items-baseline justify-between">
+            <h3 class="text-lg font-semibold">{t.home.pt_card_self_title}</h3>
+            <span class="rounded bg-signal text-ink px-2 py-0.5 text-xs font-mono">
+              {t.home.pt_card_self_badge}
+            </span>
+          </div>
+          <p class="text-xs font-mono text-bone-3 mt-1">{t.home.pt_card_self_tagline}</p>
+          <p class="text-2xl font-bold mt-3">{t.home.pt_card_self_price}</p>
+          <div class="mt-5">
+            <Button variant="primary" href={`${pricingHref}#group-self`}>
+              {t.home.pt_card_self_cta}
+            </Button>
+          </div>
+        </Card>
+
+        <Card as="article">
+          <h3 class="text-lg font-semibold">{t.home.pt_card_ent_title}</h3>
+          <p class="text-xs font-mono text-bone-3 mt-1">{t.home.pt_card_ent_tagline}</p>
+          <p class="text-2xl font-bold mt-3">{t.home.pt_card_ent_price}</p>
+          <div class="mt-5">
+            <Button variant="secondary" href={`${pricingHref}#group-managed`}>
+              {t.home.pt_card_ent_cta}
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </Container>
+</Section>
