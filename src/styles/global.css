@@ -87,17 +87,6 @@
   --text-6xl: 3.75rem;
 }
 
-/* ===== Transitional aliases =====
- * Keep the old --color-bg / --color-fg names mapped to the new tokens
- * so existing pages render in the new palette between Task 7 and Task 17
- * (when individual pages are migrated to the new primitives). REMOVE
- * these aliases at the end of Task 17 once no page references them.
- */
-:root {
-  --color-bg: var(--color-ink);
-  --color-fg: var(--color-bone);
-}
-
 /* ===== Base reset + dark-only application ===== */
 :root {
   color-scheme: dark;
