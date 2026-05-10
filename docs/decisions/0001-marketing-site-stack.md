@@ -1,6 +1,6 @@
 # ADR-0001: Marketing Site Stack — Astro + Cloudflare + Resend ($0 baseline)
 
-- **Status:** Accepted
+- **Status:** Accepted (with 2026-05-09 + 2026-05-10 status updates — see below)
 - **Date:** 2026-05-09
 - **Deciders:** Verbara maintainer (Harol A. Reina H.)
 - **Related:**
@@ -8,6 +8,18 @@
   - Pro research: [`Verbara.Sdk.Pro/docs/research/2026-05-09-marketing-site-stack-options.md`](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/research/2026-05-09-marketing-site-stack-options.md)
   - Pro spec: [`Verbara.Sdk.Pro/docs/specs/2026-05-09-developer-license-issuer-contract.md`](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/specs/2026-05-09-developer-license-issuer-contract.md)
   - Pro ADR-0010: tier model (canonical 6 tiers)
+
+## Status updates
+
+**2026-05-09 — Hosting model changed from Cloudflare Pages to Cloudflare Workers + Static Assets.** During initial bootstrap, this account didn't have an active Pages project (only Worker scripts). Commit `bd3f2f6 feat(api): bridge Pages-style Function into Workers + Static Assets entry` migrated to the Worker entry pattern: `wrangler.toml` declares `name = "verbara-website"`, `main = "src/worker.ts"`, and `[assets]` binding for the built `dist/`. The Pages-style function under `functions/api/developer-license/` is bridged into the Worker via `src/worker.ts` rather than running as a Pages Function. The trade-offs analysis below is unchanged because Workers + Static Assets has the same cost model and runtime as Pages Functions — only the deployment topology differs.
+
+**2026-05-10 — Tier 0.5 license duration normalized to 60 days.** The original ADR text below describes Tier 0.5 as "fixed expiry (30 days)". During the website redesign (Phase D, PR #6), the developer-license + pricing copy across all three locales was normalized to 60 days for consistency with the home + final-CTA marketing claim. The Worker signing logic (`functions/api/developer-license/index.ts`) and downstream `LicenseValidator` in `Verbara.Sdk.Pro.Licensing` are independent of this duration change — the duration is encoded per-license at issuance time, not hardcoded in the validator.
+
+**2026-05-10 — Tailwind CSS adoption confirmed.** The original ADR ranked Tailwind as "deferred" pending a Phase 1 decision. The "Signal" design system (Phases A–E of the redesign, PRs #2–#7) is built on Tailwind v4.3 via `@tailwindcss/vite` with token-driven `@theme` blocks in `src/styles/global.css`. No subsequent ADR was authored because the choice didn't surface trade-offs that warranted standalone documentation; it lives in the redesign spec at `docs/specs/2026-05-09-website-redesign.md` §4.
+
+**2026-05-10 — Public Turnstile site key moved to repo.** The plan originally implied the Turnstile site key would be injected from `~/.verbara/secrets.env` at deploy time. PR #4 (`fix(deploy): hardcode public Turnstile site key + drop reliance on Cloudflare dashboard`) moved the public key into `astro.config.mjs` via `vite.define`, eliminating the deploy-path race that was wiping the dev-license form on Cloudflare auto-builds. The key is public information by definition (embedded in client HTML); committing it is safe. `process.env` override remains for future per-tenant scenarios.
+
+---
 
 ## Context
 
