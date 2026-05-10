@@ -1,0 +1,133 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
+
+type TierId = 'tier_0' | 'tier_05' | 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+type FeatureKey =
+  | 'matrix_feat_oss_source'
+  | 'matrix_feat_pro_features'
+  | 'matrix_feat_multitenant'
+  | 'matrix_feat_clustering'
+  | 'matrix_feat_hosted'
+  | 'matrix_feat_sla'
+  | 'matrix_feat_support'
+  | 'matrix_feat_max_agents'
+  | 'matrix_feat_audit_retention'
+  | 'matrix_feat_whitelabel';
+
+interface Row {
+  feature: FeatureKey;
+  values: Record<TierId, string>;
+}
+
+const rows: Row[] = [
+  {
+    feature: 'matrix_feat_oss_source',
+    values: { tier_0: '✓', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+  },
+  {
+    feature: 'matrix_feat_pro_features',
+    values: { tier_0: '—', tier_05: 'warn', tier_1: 'partial', tier_2: 'full', tier_3: 'full', tier_4: 'full', tier_5: 'full' },
+  },
+  {
+    feature: 'matrix_feat_multitenant',
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+  },
+  {
+    feature: 'matrix_feat_clustering',
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+  },
+  {
+    feature: 'matrix_feat_hosted',
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+  },
+  {
+    feature: 'matrix_feat_sla',
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '99.5%', tier_4: '99.9%', tier_5: 'custom' },
+  },
+  {
+    feature: 'matrix_feat_support',
+    values: {
+      tier_0: t.pricing.matrix_support_community,
+      tier_05: t.pricing.matrix_support_community,
+      tier_1: 'email',
+      tier_2: 'email + Slack',
+      tier_3: 'tier',
+      tier_4: '24/7 + CSM',
+      tier_5: t.pricing.matrix_support_dedicated,
+    },
+  },
+  {
+    feature: 'matrix_feat_max_agents',
+    values: { tier_0: '∞', tier_05: '5', tier_1: '25', tier_2: '∞', tier_3: '∞', tier_4: '∞', tier_5: '∞' },
+  },
+  {
+    feature: 'matrix_feat_audit_retention',
+    values: { tier_0: 'self', tier_05: 'self', tier_1: '90 d', tier_2: '1 y', tier_3: '1 y', tier_4: '7 y', tier_5: 'custom' },
+  },
+  {
+    feature: 'matrix_feat_whitelabel',
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '—', tier_4: '—', tier_5: '✓' },
+  },
+];
+
+const tierIds: TierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_3', 'tier_4', 'tier_5'];
+---
+
+<Section tone="inset" id="compare">
+  <Container size="lg">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.pricing.matrix_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.pricing.matrix_h2}
+        </h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-line-strong">
+        <table class="w-full text-sm">
+          <thead class="bg-ink-3">
+            <tr>
+              <th class="text-left px-3 py-3 font-mono text-xs uppercase tracking-wider text-bone-3 sticky left-0 bg-ink-3 min-w-[10rem]">
+                &nbsp;
+              </th>
+              {tierIds.map((id) => (
+                <th class="text-left px-3 py-3 font-medium text-bone whitespace-nowrap">
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-sm">{t.pricing[`${id}_name` as const]}</span>
+                    <span class="text-xs font-mono text-amber">{t.pricing[`${id}_price` as const]}</span>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line">
+            {rows.map((row) => (
+              <tr>
+                <th
+                  scope="row"
+                  class="text-left px-3 py-3 font-medium sticky left-0 bg-ink-3/40 min-w-[10rem]"
+                >
+                  {t.pricing[row.feature]}
+                </th>
+                {tierIds.map((id) => (
+                  <td class="px-3 py-3 font-mono text-xs text-bone-2 whitespace-nowrap">
+                    {row.values[id]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Container>
+</Section>
