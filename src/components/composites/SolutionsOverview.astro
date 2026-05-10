@@ -1,0 +1,81 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import Card from '../primitives/Card.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const cards = [
+  {
+    eyebrow: t.home.solutions_card_cc_eyebrow,
+    title: t.home.solutions_card_cc_title,
+    sub: t.home.solutions_card_cc_sub,
+    cta: t.home.solutions_card_cc_cta,
+    href: localiseHref('use-cases/contact-center', locale),
+    slug: 'cc',
+  },
+  {
+    eyebrow: t.home.solutions_card_voiceai_eyebrow,
+    title: t.home.solutions_card_voiceai_title,
+    sub: t.home.solutions_card_voiceai_sub,
+    cta: t.home.solutions_card_voiceai_cta,
+    href: localiseHref('use-cases/voice-ai', locale),
+    slug: 'voiceai',
+  },
+  {
+    eyebrow: t.home.solutions_card_omnichannel_eyebrow,
+    title: t.home.solutions_card_omnichannel_title,
+    sub: t.home.solutions_card_omnichannel_sub,
+    cta: t.home.solutions_card_omnichannel_cta,
+    href: localiseHref('use-cases/omnichannel', locale),
+    slug: 'omnichannel',
+  },
+  {
+    eyebrow: t.home.solutions_card_cpaas_eyebrow,
+    title: t.home.solutions_card_cpaas_title,
+    sub: t.home.solutions_card_cpaas_sub,
+    cta: t.home.solutions_card_cpaas_cta,
+    href: localiseHref('use-cases/cpaas', locale),
+    slug: 'cpaas',
+  },
+];
+---
+
+<Section id="solutions" data-section="solutions-overview">
+  <Container size="lg">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.home.solutions_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.home.solutions_h2}
+        </h2>
+      </div>
+
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-solutions-grid>
+        {cards.map((card) => (
+          <li>
+            <Card as="article" class="h-full" data-spoke={card.slug}>
+              <p class="text-xs uppercase tracking-wider font-mono text-signal mb-2">
+                {card.eyebrow}
+              </p>
+              <h3 class="text-xl font-semibold mb-2">{card.title}</h3>
+              <p class="text-sm text-bone-2 mb-4">{card.sub}</p>
+              <a
+                href={card.href}
+                class="text-sm font-medium text-signal hover:text-signal-deep"
+                data-spoke-cta={card.slug}
+              >
+                {card.cta}
+              </a>
+            </Card>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+</Section>
