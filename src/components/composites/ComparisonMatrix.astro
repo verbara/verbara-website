@@ -3,8 +3,7 @@ import Section from '../primitives/Section.astro';
 import Container from '../primitives/Container.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
-
-type TierId = 'tier_0' | 'tier_05' | 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5';
+import type { TierId } from './pricing-types';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);

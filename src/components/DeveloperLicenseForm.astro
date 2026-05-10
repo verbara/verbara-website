@@ -47,7 +47,34 @@ const stateStrings = {
       </Button>
     </div>
   ) : (
-    <div class="grid gap-8 md:grid-cols-[1fr_18rem]">
+    <div class="space-y-8">
+      <aside class="rounded-lg border border-line-strong bg-ink-3/40 p-5 space-y-3 text-sm">
+        <h2 class="text-base font-semibold text-bone">
+          {t.developer_license.what_you_get_title}
+        </h2>
+        <ul class="space-y-2 text-bone-2">
+          <li class="flex gap-2">
+            <span class="text-signal" aria-hidden="true">·</span>
+            <span>{t.developer_license.what_you_get_agents}</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-signal" aria-hidden="true">·</span>
+            <span>{t.developer_license.what_you_get_node}</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-signal" aria-hidden="true">·</span>
+            <span>{t.developer_license.what_you_get_duration}</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-signal" aria-hidden="true">·</span>
+            <span>{t.developer_license.what_you_get_features}</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-signal" aria-hidden="true">·</span>
+            <span>{t.developer_license.what_you_get_mode}</span>
+          </li>
+        </ul>
+      </aside>
       <form
         id="devlic-form"
         novalidate
@@ -134,7 +161,7 @@ const stateStrings = {
           <p id="devlic-eula-error" class="text-xs text-error hidden" role="alert"></p>
         </div>
 
-        <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="flexible"></div>
+        <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="flexible" data-theme="dark"></div>
         <p id="devlic-captcha-error" class="text-xs text-error hidden" role="alert"></p>
 
         <div
@@ -152,33 +179,6 @@ const stateStrings = {
         </button>
       </form>
 
-      <aside class="space-y-3 text-sm">
-        <h2 class="text-base font-semibold">
-          {t.developer_license.what_you_get_title}
-        </h2>
-        <ul class="space-y-2 text-bone-2">
-          <li class="flex gap-2">
-            <span class="opacity-50" aria-hidden>·</span>
-            <span>{t.developer_license.what_you_get_agents}</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="opacity-50" aria-hidden>·</span>
-            <span>{t.developer_license.what_you_get_node}</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="opacity-50" aria-hidden>·</span>
-            <span>{t.developer_license.what_you_get_duration}</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="opacity-50" aria-hidden>·</span>
-            <span>{t.developer_license.what_you_get_features}</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="opacity-50" aria-hidden>·</span>
-            <span>{t.developer_license.what_you_get_mode}</span>
-          </li>
-        </ul>
-      </aside>
     </div>
   )
 }

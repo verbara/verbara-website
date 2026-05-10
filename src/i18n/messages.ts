@@ -426,7 +426,7 @@ const es_419: Messages = {
     faq_q5: '¿LATAM (ES, PT) es ciudadano de primera o traducción tardía?',
     faq_a5: 'Primera clase. El locale por defecto es es-419 (español LATAM neutro) — verbara.io/ sirve español, la versión inglesa vive en /en-US/. Documentación, soporte y UI del producto se autoran en tres locales (es-419, en-US, pt-BR) con paridad enforced en CI. Ejemplos en pricing, casos y nombres de tier se inclinan a contextos LATAM (BPO, telcos). Verbara está construido por gente que piensa en español.',
     faq_q6: '¿Cómo evalúo features Pro sin comprometerme?',
-    faq_a6: 'Saca una licencia Pro Developer (Tier 0.5, gratis, auto-emitida en /developer-license/). Desbloquea cada feature Pro en modo WarnOnly por 60 días — puedes correr multi-tenant, clustering, dialer predictivo, todo, con un warning "license expired" en logs. Después de 60 días decides: comprar un tier pago, volver a OSS, o renovar la licencia developer para otro ciclo de evaluación.',
+    faq_a6: 'Saca una licencia Pro Developer (Tier 0.5, gratis, auto-emitida en /developer-license/). Activa cada feature Pro en modo WarnOnly por 60 días — puedes correr multi-tenant, clustering, dialer predictivo, todo, con un warning "license expired" en logs. Después de 60 días decides: comprar un tier pago, volver a OSS, o renovar la licencia developer para otro ciclo de evaluación.',
 
     final_h2_pre: 'Deja de rentar tu contact center.',
     final_h2_accent: 'Empieza a correrlo.',
@@ -455,7 +455,7 @@ const es_419: Messages = {
     tier_05_tagline: 'Todas las funciones Pro en modo WarnOnly. Auto-emitida.',
     tier_05_f1: 'Todas las funciones Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nodo',
-    tier_05_f3: '30 días renovables gratis',
+    tier_05_f3: '60 días renovables gratis',
     tier_05_f4: 'WarnOnly (nunca bloquea)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / año',
@@ -517,7 +517,7 @@ const es_419: Messages = {
     matrix_support_dedicated: 'dedicado',
 
     faq_q1: '¿Puedo subir o bajar de tier?',
-    faq_a1: 'Sí, en cualquier momento. Las features se ajustan al cambio del tier; los datos y configuración persisten. Para tiers self-host, el upgrade desbloquea features Pro adicionales en tu instalación; para SaaS gestionado, ajustamos el plan en la próxima factura prorrateada.',
+    faq_a1: 'Sí, en cualquier momento. Las features se ajustan al cambio del tier; los datos y configuración persisten. Para tiers self-host, el upgrade activa features Pro adicionales en tu instalación; para SaaS gestionado, ajustamos el plan en la próxima factura prorrateada.',
     faq_q2: '¿Hay descuento anual?',
     faq_a2: 'Tiers self-host (1, 2) ya están facturados anualmente — no hay versión mensual. Tiers SaaS (3, 4) facturan mensual por defecto; commit anual con prepago da 15% de descuento. Tier 5 (white-label/OEM) negocia caso a caso.',
     faq_q3: '¿Ofrecen descuento académico o non-profit?',
@@ -526,7 +526,7 @@ const es_419: Messages = {
   developer_license: {
     title: 'Licencia gratuita de Pro Developer',
     subtitle:
-      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 30 días.',
+      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 60 días.',
     coming_soon_title: 'Auto-servicio próximamente',
     coming_soon_body:
       'El portal de auto-emisión Tier 0.5 entra en línea con nuestro lanzamiento público. Mientras tanto, escribe a licensing@verbara.io para recibir una licencia de developer emitida manualmente — usualmente respondemos en menos de 24 horas.',
@@ -558,7 +558,7 @@ const es_419: Messages = {
     what_you_get_title: 'Qué incluye',
     what_you_get_agents: 'Hasta 5 agentes concurrentes',
     what_you_get_node: '1 nodo de clúster',
-    what_you_get_duration: 'Licencia de 30 días, renovación gratuita',
+    what_you_get_duration: 'Licencia de 60 días, renovación gratuita',
     what_you_get_features:
       'Todas las funciones Pro (multi-tenant, analítica, marcador, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloquea tu aplicación',
@@ -710,7 +710,7 @@ const en_US: Messages = {
     faq_q5: 'Is LATAM (ES, PT) a first-class citizen or a translated afterthought?',
     faq_a5: 'First-class. The default locale is es-419 (Spanish for LATAM) — verbara.io/ serves Spanish, the English version lives at /en-US/. Documentation, support, and product UI are authored in three locales (es-419, en-US, pt-BR) with parity enforced in CI. Examples in pricing, case material, and tier names lean toward LATAM contexts (BPOs, telcos). Verbara is built by people who think in Spanish.',
     faq_q6: 'How do I evaluate Pro features without committing?',
-    faq_a6: 'Get a Pro Developer license (Tier 0.5, free, self-issued at /developer-license/). It unlocks every Pro feature in WarnOnly mode for 60 days — you can run multi-tenant, clustering, predictive dialer, the works, with a "license expired" warning in logs. After 60 days you decide: buy a paid tier, drop back to OSS, or extend the dev license for another evaluation cycle.',
+    faq_a6: 'Get a Pro Developer license (Tier 0.5, free, self-issued at /developer-license/). It activates every Pro feature in WarnOnly mode for 60 days — you can run multi-tenant, clustering, predictive dialer, the works, with a "license expired" warning in logs. After 60 days you decide: buy a paid tier, drop back to OSS, or extend the dev license for another evaluation cycle.',
 
     final_h2_pre: 'Stop renting your contact center.',
     final_h2_accent: 'Start running it.',
@@ -739,7 +739,7 @@ const en_US: Messages = {
     tier_05_tagline: 'All Pro features in WarnOnly mode. Auto-issued.',
     tier_05_f1: 'All Pro features unlocked',
     tier_05_f2: '≤5 agents · ≤1 node',
-    tier_05_f3: '30-day rolling, free renewal',
+    tier_05_f3: '60-day rolling, free renewal',
     tier_05_f4: 'WarnOnly (never blocks)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5,000 / yr',
@@ -801,7 +801,7 @@ const en_US: Messages = {
     matrix_support_dedicated: 'dedicated',
 
     faq_q1: 'Can I upgrade or downgrade tiers?',
-    faq_a1: 'Yes, anytime. Features adjust to match the tier change; data and config persist. For self-host tiers, an upgrade unlocks additional Pro features in your installation; for managed SaaS, we prorate the next invoice.',
+    faq_a1: 'Yes, anytime. Features adjust to match the tier change; data and config persist. For self-host tiers, an upgrade enables additional Pro features in your installation; for managed SaaS, we prorate the next invoice.',
     faq_q2: 'Is there an annual discount?',
     faq_a2: 'Self-host tiers (1, 2) are already billed annually — there is no monthly version. Managed SaaS tiers (3, 4) bill monthly by default; an annual commit with prepayment gets 15% off. Tier 5 (white-label/OEM) is case-by-case.',
     faq_q3: 'Do you offer a non-profit or academic discount?',
@@ -810,7 +810,7 @@ const en_US: Messages = {
   developer_license: {
     title: 'Free Pro Developer license',
     subtitle:
-      'Evaluate the full Verbara Pro feature set with no sales contact. 30-day rolling renewal.',
+      'Evaluate the full Verbara Pro feature set with no sales contact. 60-day rolling renewal.',
     coming_soon_title: 'Self-service coming soon',
     coming_soon_body:
       'The Tier 0.5 self-issue portal launches with our public release. In the meantime, email licensing@verbara.io to receive a manually-issued developer license — we usually respond within 24 hours.',
@@ -842,7 +842,7 @@ const en_US: Messages = {
     what_you_get_title: "What's included",
     what_you_get_agents: 'Up to 5 concurrent agents',
     what_you_get_node: '1 cluster node',
-    what_you_get_duration: '30-day license, free renewal',
+    what_you_get_duration: '60-day license, free renewal',
     what_you_get_features:
       'All Pro features (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Runs in WarnOnly mode — never blocks your application',
@@ -994,7 +994,7 @@ const pt_BR: Messages = {
     faq_q5: 'LATAM (ES, PT) é cidadão de primeira ou tradução tardia?',
     faq_a5: 'Primeira classe. O locale padrão é es-419 (espanhol LATAM neutro) — verbara.io/ serve espanhol, a versão inglesa vive em /en-US/. Documentação, suporte e UI do produto são autorados em três locales (es-419, en-US, pt-BR) com paridade enforced em CI. Exemplos em preços, casos e nomes de tier se inclinam a contextos LATAM (BPOs, telcos). Verbara é construído por gente que pensa em espanhol.',
     faq_q6: 'Como avalio features Pro sem me comprometer?',
-    faq_a6: 'Pegue uma licença Pro Developer (Tier 0.5, grátis, auto-emitida em /developer-license/). Desbloqueia cada feature Pro em modo WarnOnly por 60 dias — você roda multi-tenant, clustering, dialer preditivo, tudo, com um warning "license expired" nos logs. Depois de 60 dias você decide: comprar um tier pago, voltar pra OSS, ou renovar a licença developer pra outro ciclo de avaliação.',
+    faq_a6: 'Pegue uma licença Pro Developer (Tier 0.5, grátis, auto-emitida em /developer-license/). Ativa cada feature Pro em modo WarnOnly por 60 dias — você roda multi-tenant, clustering, dialer preditivo, tudo, com um warning "license expired" nos logs. Depois de 60 dias você decide: comprar um tier pago, voltar pra OSS, ou renovar a licença developer pra outro ciclo de avaliação.',
 
     final_h2_pre: 'Pare de alugar seu contact center.',
     final_h2_accent: 'Comece a rodá-lo.',
@@ -1023,7 +1023,7 @@ const pt_BR: Messages = {
     tier_05_tagline: 'Todas as funcionalidades Pro em modo WarnOnly. Autoemitida.',
     tier_05_f1: 'Todas as funcionalidades Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nó',
-    tier_05_f3: '30 dias renováveis grátis',
+    tier_05_f3: '60 dias renováveis grátis',
     tier_05_f4: 'WarnOnly (nunca bloqueia)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / ano',
@@ -1085,7 +1085,7 @@ const pt_BR: Messages = {
     matrix_support_dedicated: 'dedicado',
 
     faq_q1: 'Posso subir ou descer de tier?',
-    faq_a1: 'Sim, a qualquer momento. As features se ajustam à mudança de tier; dados e configuração persistem. Para tiers self-host, o upgrade desbloqueia features Pro adicionais na sua instalação; para SaaS gerenciado, ajustamos o plano no próximo faturamento prorrateado.',
+    faq_a1: 'Sim, a qualquer momento. As features se ajustam à mudança de tier; dados e configuração persistem. Para tiers self-host, o upgrade ativa features Pro adicionais na sua instalação; para SaaS gerenciado, ajustamos o plano no próximo faturamento prorrateado.',
     faq_q2: 'Tem desconto anual?',
     faq_a2: 'Tiers self-host (1, 2) já são faturados anualmente — não tem versão mensal. Tiers SaaS (3, 4) faturam mensal por padrão; commit anual com pré-pagamento ganha 15% de desconto. Tier 5 (white-label/OEM) é negociado caso a caso.',
     faq_q3: 'Oferecem desconto acadêmico ou non-profit?',
@@ -1094,7 +1094,7 @@ const pt_BR: Messages = {
   developer_license: {
     title: 'Licença gratuita de Pro Developer',
     subtitle:
-      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 30 dias.',
+      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 60 dias.',
     coming_soon_title: 'Autoatendimento em breve',
     coming_soon_body:
       'O portal de autoemissão Tier 0.5 entra no ar com nosso lançamento público. Enquanto isso, escreva para licensing@verbara.io para receber uma licença de developer emitida manualmente — geralmente respondemos em menos de 24 horas.',
@@ -1126,7 +1126,7 @@ const pt_BR: Messages = {
     what_you_get_title: 'O que está incluído',
     what_you_get_agents: 'Até 5 agentes simultâneos',
     what_you_get_node: '1 nó de cluster',
-    what_you_get_duration: 'Licença de 30 dias, renovação gratuita',
+    what_you_get_duration: 'Licença de 60 dias, renovação gratuita',
     what_you_get_features:
       'Todas as funcionalidades Pro (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloqueia seu aplicativo',

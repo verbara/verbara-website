@@ -1,0 +1,31 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+
+interface Props {
+  title: string;
+  lastUpdated: string;
+  version?: string;
+}
+
+const { title, lastUpdated, version } = Astro.props;
+---
+
+<Section>
+  <Container size="sm">
+    <article class="space-y-8">
+      <header class="space-y-3 border-b border-line-strong pb-6">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-balance text-bone">
+          {title}
+        </h1>
+        <p class="text-xs font-mono text-bone-3">
+          {lastUpdated}{version ? ` · ${version}` : ''}
+        </p>
+      </header>
+
+      <div class="legal-doc text-bone-2">
+        <slot />
+      </div>
+    </article>
+  </Container>
+</Section>

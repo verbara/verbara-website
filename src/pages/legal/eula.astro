@@ -1,8 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/primitives/Section.astro';
-import Container from '../../components/primitives/Container.astro';
-import Heading from '../../components/primitives/Heading.astro';
+import LegalDoc from '../../components/composites/LegalDoc.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
 
@@ -10,13 +8,39 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
 ---
 
-<Layout title={`${t.legal_eula.title} — ${t.meta.site_title}`}>
-  <Section>
-    <Container size="sm">
-      <div class="space-y-6">
-        <Heading level={1}>{t.legal_eula.title}</Heading>
-        <p class="text-base text-bone-2 leading-relaxed">{t.legal_eula.body}</p>
-      </div>
-    </Container>
-  </Section>
+<Layout title={`${t.footer.legal_eula} — ${t.meta.site_title}`}>
+  <LegalDoc title={t.footer.legal_eula} lastUpdated="2026-05-09">
+    <p>
+      <strong>EULA de Verbara — borrador.</strong>
+      El acuerdo de licencia de usuario final para los módulos comerciales
+      Verbara.Sdk.Pro y los tiers SaaS hospedados se publicará aquí. Los
+      componentes open-source (Verbara.Sdk bajo MIT y Verbara.Platform bajo
+      Apache 2.0) están gobernados por los archivos LICENSE de sus
+      respectivos repositorios, no por este EULA.
+    </p>
+    <p>
+      Mientras llega el texto formal, contacta a
+      <a href="mailto:licensing@verbara.io">licensing@verbara.io</a>
+      para consultas de licencia.
+    </p>
+
+    <h2>1. Alcance</h2>
+    <p>
+      [Placeholder — cubre licencias evaluadoras Tier 0.5, licencias self-host
+      comerciales Tier 1–2 y suscripciones SaaS gestionadas Tier 3–5.]
+    </p>
+
+    <h2>2. Uso permitido</h2>
+    <p>
+      [Placeholder — las features Pro pueden activarse con una licencia válida;
+      el motor OSS sigue operando sin restricción independientemente del
+      estado de la licencia.]
+    </p>
+
+    <h2>3. Terminación</h2>
+    <p>
+      [Placeholder — la terminación de una licencia Pro desactiva las features
+      Pro pero no afecta el motor OSS en ejecución, tus datos o audit logs.]
+    </p>
+  </LegalDoc>
 </Layout>
