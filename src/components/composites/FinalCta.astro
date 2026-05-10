@@ -1,0 +1,26 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import Button from '../primitives/Button.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+---
+
+<Section tone="inset">
+  <Container size="sm">
+    <div class="text-center space-y-5">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+        {t.home.final_h2_pre} <span class="text-signal">{t.home.final_h2_accent}</span>
+      </h2>
+      <p class="text-lg text-bone-2 text-balance">{t.home.final_sub}</p>
+      <div class="pt-2">
+        <Button variant="primary" size="lg" href={localiseHref('developer-license', locale)}>
+          {t.home.final_cta}
+        </Button>
+      </div>
+    </div>
+  </Container>
+</Section>

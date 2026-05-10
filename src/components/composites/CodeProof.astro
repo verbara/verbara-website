@@ -1,0 +1,70 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import CodeBlock from '../primitives/CodeBlock.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const sampleCode = `using Verbara.Sdk.Ami;
+
+await using var client = new AmiClient(
+    host: "pbx.example.com",
+    user: "admin",
+    secret: Environment.GetEnvironmentVariable("AMI_SECRET")!);
+
+await client.ConnectAsync();
+
+await foreach (var ev in client.Events.WithCancellation(cts.Token))
+{
+    Console.WriteLine($"[{ev.EventName}] {ev.Channel}");
+}
+`;
+---
+
+<Section>
+  <Container size="md">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">
+          {t.home.cp_eyebrow}
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+          {t.home.cp_h2_pre} <span class="text-amber">{t.home.cp_h2_accent}</span>
+        </h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-[1fr_18rem] items-start">
+        <div class="space-y-3">
+          <CodeBlock lang="csharp" code={sampleCode} filename={t.home.cp_filename} />
+          <p class="text-xs text-bone-3">
+            <a href="https://www.nuget.org/packages/Verbara.Sdk" class="hover:text-signal">
+              {t.home.cp_caption}
+            </a>
+          </p>
+        </div>
+
+        <ul class="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4 self-stretch">
+          <li class="rounded-lg border border-line-strong bg-ink-3/40 p-4">
+            <div class="text-2xl font-bold text-signal font-mono">{t.home.cp_card_packages_value}</div>
+            <div class="text-xs text-bone-2 mt-1">{t.home.cp_card_packages_label}</div>
+          </li>
+          <li class="rounded-lg border border-line-strong bg-ink-3/40 p-4">
+            <div class="text-2xl font-bold text-signal font-mono">{t.home.cp_card_tests_value}</div>
+            <div class="text-xs text-bone-2 mt-1">{t.home.cp_card_tests_label}</div>
+          </li>
+          <li class="rounded-lg border border-line-strong bg-ink-3/40 p-4">
+            <div class="text-2xl font-bold text-signal font-mono">{t.home.cp_card_vulns_value}</div>
+            <div class="text-xs text-bone-2 mt-1">{t.home.cp_card_vulns_label}</div>
+          </li>
+          <li class="rounded-lg border border-line-strong bg-ink-3/40 p-4">
+            <div class="text-sm font-bold text-signal font-mono">{t.home.cp_card_aot_value}</div>
+            <div class="text-xs text-bone-2 mt-1">{t.home.cp_card_aot_label}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</Section>

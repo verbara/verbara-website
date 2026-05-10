@@ -57,6 +57,101 @@ export interface Messages {
     stack_role_platform: string;
     stack_role_pro: string;
   };
+  home: {
+    // Hero (§7.1.1)
+    hero_eyebrow: string;
+    hero_h1_pre: string;
+    hero_h1_accent: string;
+    hero_sub: string;
+    hero_cta_primary: string;
+    hero_cta_secondary: string;
+    hero_cta_dev_license: string;
+    hero_trust_packages: string;
+    hero_trust_tests: string;
+    hero_trust_vulns: string;
+    hero_trust_oss: string;
+
+    // Anti-positioning (§7.1.2)
+    ap_eyebrow: string;
+    ap_h2_pre: string;
+    ap_h2_accent: string;
+    ap_sub: string;
+    ap_col_verbara: string;
+    ap_col_genesys: string;
+    ap_col_asterisk: string;
+    ap_col_vicidial: string;
+    ap_row_source: string;
+    ap_row_selfhost: string;
+    ap_row_modern_ui: string;
+    ap_row_ai: string;
+    ap_row_multitenant: string;
+    ap_row_latam: string;
+
+    // How it works (§7.1.3)
+    hiw_eyebrow: string;
+    hiw_h2: string;
+    hiw_caption: string;
+    hiw_box_asterisk: string;
+    hiw_box_asterisk_label: string;
+    hiw_box_sdk: string;
+    hiw_box_pro: string;
+    hiw_box_platform: string;
+    hiw_box_web: string;
+
+    // Code proof (§7.1.4)
+    cp_eyebrow: string;
+    cp_h2_pre: string;
+    cp_h2_accent: string;
+    cp_filename: string;
+    cp_caption: string;
+    cp_card_packages_value: string;
+    cp_card_packages_label: string;
+    cp_card_tests_value: string;
+    cp_card_tests_label: string;
+    cp_card_vulns_value: string;
+    cp_card_vulns_label: string;
+    cp_card_aot_value: string;
+    cp_card_aot_label: string;
+
+    // Pricing teaser (§7.1.5)
+    pt_eyebrow: string;
+    pt_h2: string;
+    pt_card_free_title: string;
+    pt_card_free_tagline: string;
+    pt_card_free_price: string;
+    pt_card_free_cta: string;
+    pt_card_self_title: string;
+    pt_card_self_tagline: string;
+    pt_card_self_price: string;
+    pt_card_self_cta: string;
+    pt_card_self_badge: string;
+    pt_card_ent_title: string;
+    pt_card_ent_tagline: string;
+    pt_card_ent_price: string;
+    pt_card_ent_cta: string;
+
+    // FAQ (§7.1.6)
+    faq_eyebrow: string;
+    faq_h2: string;
+    faq_q1: string;
+    faq_a1: string;
+    faq_q2: string;
+    faq_a2: string;
+    faq_q3: string;
+    faq_a3: string;
+    faq_q4: string;
+    faq_a4: string;
+    faq_q5: string;
+    faq_a5: string;
+    faq_q6: string;
+    faq_a6: string;
+
+    // Final CTA (§7.1.7)
+    final_h2_pre: string;
+    final_h2_accent: string;
+    final_sub: string;
+    final_cta: string;
+  };
   pricing: {
     title: string;
     subtitle: string;
@@ -218,6 +313,94 @@ const es_419: Messages = {
     stack_role_platform: 'Backend de aplicación — motor completo de contact center',
     stack_role_pro:
       'Capas comerciales (multi-tenant, analítica, cluster, licensing)',
+  },
+  home: {
+    hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
+    hero_h1_pre: 'El contact center listo para IA que puedes',
+    hero_h1_accent: 'auditar, ejecutar, poseer.',
+    hero_sub: 'Open-core, CCaaS Asterisk-native para operadores cansados del vendor lock-in. Córrelo en tu data center, tu nube, o nuestro plano gestionado — tú decides.',
+    hero_cta_primary: 'Corre el stack →',
+    hero_cta_secondary: 'Hablar con ventas',
+    hero_cta_dev_license: 'o consigue una licencia developer — gratis, firmada, válida 60 días →',
+    hero_trust_packages: '27 paquetes SDK',
+    hero_trust_tests: '2.893 tests unitarios',
+    hero_trust_vulns: '0 paquetes vulnerables',
+    hero_trust_oss: 'Open source en GitHub',
+
+    ap_eyebrow: 'Lo que reemplazas',
+    ap_h2_pre: 'Deja de rentar tu contact center.',
+    ap_h2_accent: 'Empieza a correrlo.',
+    ap_sub: 'Verbara está construido donde los trade-offs de los incumbentes se vuelven inaceptables: código, soberanía, costo total.',
+    ap_col_verbara: 'Verbara',
+    ap_col_genesys: 'Genesys / Five9',
+    ap_col_asterisk: 'Asterisk + scripts',
+    ap_col_vicidial: 'VICIdial / FreePBX',
+    ap_row_source: 'Código disponible',
+    ap_row_selfhost: 'Self-host',
+    ap_row_modern_ui: 'UI de operación moderna',
+    ap_row_ai: 'Pipeline AI nativo',
+    ap_row_multitenant: 'Multi-tenant + clustering',
+    ap_row_latam: 'LATAM por defecto (ES/PT)',
+
+    hiw_eyebrow: 'Cómo funciona',
+    hiw_h2: 'Cinco componentes, un stack, cada capa auditable.',
+    hiw_caption: 'SDK y Platform son open-source. Pro añade overlays empresariales licenciados. Web es la UI de tus operadores.',
+    hiw_box_asterisk: 'Asterisk PBX',
+    hiw_box_asterisk_label: 'upstream',
+    hiw_box_sdk: 'Verbara.Sdk',
+    hiw_box_pro: 'Verbara.Sdk.Pro',
+    hiw_box_platform: 'Verbara.Platform',
+    hiw_box_web: 'Verbara.Platform.Web',
+
+    cp_eyebrow: 'Lee el código',
+    cp_h2_pre: 'Código real. Tests reales.',
+    cp_h2_accent: 'Cero vaporware.',
+    cp_filename: 'Program.cs',
+    cp_caption: 'Usa Verbara.Sdk 2.1.0 — dotnet add package Verbara.Sdk →',
+    cp_card_packages_value: '27',
+    cp_card_packages_label: 'paquetes SDK',
+    cp_card_tests_value: '2.893',
+    cp_card_tests_label: 'tests unitarios pasando',
+    cp_card_vulns_value: '0',
+    cp_card_vulns_label: 'paquetes vulnerables',
+    cp_card_aot_value: '.NET 10 AOT',
+    cp_card_aot_label: 'compilación nativa anticipada',
+
+    pt_eyebrow: 'Precios',
+    pt_h2: 'Gratis para evaluar. Self-host o gestionado cuando escales.',
+    pt_card_free_title: 'Gratis / Dev',
+    pt_card_free_tagline: 'Tier 0 + Tier 0.5',
+    pt_card_free_price: '$0',
+    pt_card_free_cta: 'Ver licencia OSS →',
+    pt_card_self_title: 'Self-Serve',
+    pt_card_self_tagline: 'Tier 1 + Tier 2',
+    pt_card_self_price: 'desde $5k/año',
+    pt_card_self_cta: 'Ver planes self-host →',
+    pt_card_self_badge: 'Recomendado',
+    pt_card_ent_title: 'Enterprise',
+    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
+    pt_card_ent_price: 'desde $99/agente/mes',
+    pt_card_ent_cta: 'Hablar con ventas →',
+
+    faq_eyebrow: 'FAQ',
+    faq_h2: 'Respuestas directas.',
+    faq_q1: '¿Necesito Asterisk instalado antes de adoptar Verbara?',
+    faq_a1: 'Sí. Verbara está construido sobre Asterisk PBX como su substrato de telefonía — no lo reemplazamos, modernizamos la UX del operador, el pipeline de AI y los overlays Pro alrededor de él. Si no tienes Asterisk, lo despliegas junto con Verbara (setup único, bien documentado). Si ya corres Asterisk, Verbara se conecta a tu dialplan y configuración existentes.',
+    faq_q2: '¿Corre en Kubernetes?',
+    faq_a2: 'Sí. La Platform es K8s-native — multi-tenant y multi-clúster desde Tier 2. Los Helm charts vienen en Verbara.Sdk.Pro. También puedes correrlo en una sola VM con Docker Compose si tu escala no justifica K8s todavía — el stack es portable, sin dependencias ocultas de cloud.',
+    faq_q3: '¿Qué pasa con mi deployment si dejo de pagar Pro?',
+    faq_a3: 'El motor OSS (SDK MIT + Platform Apache) sigue corriendo indefinidamente — sin kill switch, sin verificación cloud. Pierdes acceso a las features Pro (multi-tenant, dialer predictivo, agent assist, clustering, overlays de analytics) cuando expira tu licencia. Datos y audit logs siguen siendo tuyos. No podemos ni vamos a desactivar una instalación que dejaste de pagar; simplemente dejamos de enviar releases nuevos de Pro.',
+    faq_q4: '¿Hay SLA en la edición OSS?',
+    faq_a4: 'No. La edición OSS (Tier 0) tiene soporte community vía GitHub issues y Discord público. Tiempo de respuesta best-effort. Los SLA arrancan en Tier 3 (SaaS gestionado, 99.5% uptime) y Tier 4 (99.9% con soporte 24/7 + CSM dedicado). Para tiers comerciales self-host (1, 2), soporte es email o email+Slack — rápido pero no respaldado por SLA.',
+    faq_q5: '¿LATAM (ES, PT) es ciudadano de primera o traducción tardía?',
+    faq_a5: 'Primera clase. El locale por defecto es es-419 (español LATAM neutro) — verbara.io/ sirve español, la versión inglesa vive en /en-US/. Documentación, soporte y UI del producto se autoran en tres locales (es-419, en-US, pt-BR) con paridad enforced en CI. Ejemplos en pricing, casos y nombres de tier se inclinan a contextos LATAM (BPO, telcos). Verbara está construido por gente que piensa en español.',
+    faq_q6: '¿Cómo evalúo features Pro sin comprometerme?',
+    faq_a6: 'Saca una licencia Pro Developer (Tier 0.5, gratis, auto-emitida en /developer-license/). Desbloquea cada feature Pro en modo WarnOnly por 60 días — puedes correr multi-tenant, clustering, dialer predictivo, todo, con un warning "license expired" en logs. Después de 60 días decides: comprar un tier pago, volver a OSS, o renovar la licencia developer para otro ciclo de evaluación.',
+
+    final_h2_pre: 'Deja de rentar tu contact center.',
+    final_h2_accent: 'Empieza a correrlo.',
+    final_sub: 'Licencia developer 60 días, firmada, gratis. Sin tarjeta de crédito.',
+    final_cta: 'Obtén una licencia developer →',
   },
   pricing: {
     title: 'Precios',
@@ -385,6 +568,94 @@ const en_US: Messages = {
     stack_role_pro:
       'Enterprise overlays (multi-tenant, analytics, cluster, licensing)',
   },
+  home: {
+    hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
+    hero_h1_pre: 'The AI-ready contact center you can',
+    hero_h1_accent: 'audit, self-host, own.',
+    hero_sub: 'Open-core, Asterisk-native CCaaS for operators tired of vendor lock-in. Run it in your data center, your cloud, or our managed plane — your call.',
+    hero_cta_primary: 'Run the stack →',
+    hero_cta_secondary: 'Talk to sales',
+    hero_cta_dev_license: 'or get a developer license — free, signed, valid 60 days →',
+    hero_trust_packages: '27 SDK packages',
+    hero_trust_tests: '2,893 unit tests',
+    hero_trust_vulns: '0 vulnerable packages',
+    hero_trust_oss: 'Open source on GitHub',
+
+    ap_eyebrow: 'What you replace',
+    ap_h2_pre: 'Stop renting your contact center.',
+    ap_h2_accent: 'Start running it.',
+    ap_sub: 'Verbara is built where the trade-offs of incumbents become non-negotiable: code, sovereignty, total cost.',
+    ap_col_verbara: 'Verbara',
+    ap_col_genesys: 'Genesys / Five9',
+    ap_col_asterisk: 'Asterisk + scripts',
+    ap_col_vicidial: 'VICIdial / FreePBX',
+    ap_row_source: 'Source available',
+    ap_row_selfhost: 'Self-host option',
+    ap_row_modern_ui: 'Modern operator UI',
+    ap_row_ai: 'AI agent pipeline',
+    ap_row_multitenant: 'Multi-tenant + clustering',
+    ap_row_latam: 'LATAM-default (ES/PT)',
+
+    hiw_eyebrow: 'How it works',
+    hiw_h2: 'Five components, one stack, every layer auditable.',
+    hiw_caption: "SDK and Platform are open. Pro adds licensed enterprise overlays. Web is your operators' UI.",
+    hiw_box_asterisk: 'Asterisk PBX',
+    hiw_box_asterisk_label: 'upstream',
+    hiw_box_sdk: 'Verbara.Sdk',
+    hiw_box_pro: 'Verbara.Sdk.Pro',
+    hiw_box_platform: 'Verbara.Platform',
+    hiw_box_web: 'Verbara.Platform.Web',
+
+    cp_eyebrow: 'Read the source',
+    cp_h2_pre: 'Real code. Real tests.',
+    cp_h2_accent: 'No vaporware.',
+    cp_filename: 'Program.cs',
+    cp_caption: 'Uses Verbara.Sdk 2.1.0 — dotnet add package Verbara.Sdk →',
+    cp_card_packages_value: '27',
+    cp_card_packages_label: 'SDK packages',
+    cp_card_tests_value: '2,893',
+    cp_card_tests_label: 'unit tests passing',
+    cp_card_vulns_value: '0',
+    cp_card_vulns_label: 'vulnerable packages',
+    cp_card_aot_value: '.NET 10 AOT',
+    cp_card_aot_label: 'native ahead-of-time',
+
+    pt_eyebrow: 'Pricing',
+    pt_h2: 'Free to evaluate. Self-host or managed when you scale.',
+    pt_card_free_title: 'Free / Dev',
+    pt_card_free_tagline: 'Tier 0 + Tier 0.5',
+    pt_card_free_price: '$0',
+    pt_card_free_cta: 'See OSS license →',
+    pt_card_self_title: 'Self-Serve',
+    pt_card_self_tagline: 'Tier 1 + Tier 2',
+    pt_card_self_price: 'from $5k/year',
+    pt_card_self_cta: 'See self-host plans →',
+    pt_card_self_badge: 'Recommended',
+    pt_card_ent_title: 'Enterprise',
+    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
+    pt_card_ent_price: 'from $99/agent/mo',
+    pt_card_ent_cta: 'Talk to sales →',
+
+    faq_eyebrow: 'FAQ',
+    faq_h2: 'Direct answers.',
+    faq_q1: 'Do I need an Asterisk install before adopting Verbara?',
+    faq_a1: "Yes. Verbara is built on Asterisk PBX as its telephony substrate — we don't replace it, we modernize the operator UX, AI pipeline, and Pro overlays around it. If you don't have Asterisk yet, you deploy it alongside Verbara's stack (one-time setup, well-documented). If you already run Asterisk, Verbara plugs into your existing dialplan and config.",
+    faq_q2: 'Does this run on Kubernetes?',
+    faq_a2: "Yes. The Platform is K8s-native — multi-tenant, multi-cluster ready in Tier 2 and up. Helm charts ship in Verbara.Sdk.Pro. You can also run it on a single VM with Docker Compose if your scale doesn't justify K8s yet — the stack is portable, no hidden cloud-only dependencies.",
+    faq_q3: 'What happens to my deployment if I stop paying for Pro?',
+    faq_a3: "The OSS engine (SDK MIT + Platform Apache) keeps running indefinitely — no kill switch, no cloud check. You lose access to Pro features (multi-tenant, predictive dialer, agent assist, clustering, analytics overlays) when your license expires. Data and audit logs stay yours. We can't and won't disable an installation you stopped paying for; we just stop shipping new Pro releases to it.",
+    faq_q4: 'Is there an SLA on the OSS edition?',
+    faq_a4: "No. The OSS edition (Tier 0) is community-supported via GitHub issues and the public Discord. Response time is best-effort. SLAs start at Tier 3 (Managed SaaS, 99.5% uptime) and Tier 4 (99.9% with 24/7 support + dedicated CSM). For self-hosted commercial tiers (1, 2), support is email or email+Slack — fast but not SLA-backed.",
+    faq_q5: 'Is LATAM (ES, PT) a first-class citizen or a translated afterthought?',
+    faq_a5: 'First-class. The default locale is es-419 (Spanish for LATAM) — verbara.io/ serves Spanish, the English version lives at /en-US/. Documentation, support, and product UI are authored in three locales (es-419, en-US, pt-BR) with parity enforced in CI. Examples in pricing, case material, and tier names lean toward LATAM contexts (BPOs, telcos). Verbara is built by people who think in Spanish.',
+    faq_q6: 'How do I evaluate Pro features without committing?',
+    faq_a6: 'Get a Pro Developer license (Tier 0.5, free, self-issued at /developer-license/). It unlocks every Pro feature in WarnOnly mode for 60 days — you can run multi-tenant, clustering, predictive dialer, the works, with a "license expired" warning in logs. After 60 days you decide: buy a paid tier, drop back to OSS, or extend the dev license for another evaluation cycle.',
+
+    final_h2_pre: 'Stop renting your contact center.',
+    final_h2_accent: 'Start running it.',
+    final_sub: '60-day developer license, signed, free. No credit card.',
+    final_cta: 'Get a developer license →',
+  },
   pricing: {
     title: 'Pricing',
     subtitle:
@@ -550,6 +821,94 @@ const pt_BR: Messages = {
     stack_role_platform: 'Backend de aplicação — motor completo de contact center',
     stack_role_pro:
       'Camadas comerciais (multi-tenant, analítica, cluster, licensing)',
+  },
+  home: {
+    hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
+    hero_h1_pre: 'O contact center pronto para IA que você pode',
+    hero_h1_accent: 'auditar, executar, possuir.',
+    hero_sub: 'Open-core, CCaaS Asterisk-native para operadores cansados de vendor lock-in. Rode no seu data center, sua nuvem, ou no nosso plano gerenciado — você decide.',
+    hero_cta_primary: 'Rode o stack →',
+    hero_cta_secondary: 'Falar com vendas',
+    hero_cta_dev_license: 'ou pegue uma licença developer — grátis, assinada, válida 60 dias →',
+    hero_trust_packages: '27 pacotes SDK',
+    hero_trust_tests: '2.893 testes unitários',
+    hero_trust_vulns: '0 pacotes vulneráveis',
+    hero_trust_oss: 'Open source no GitHub',
+
+    ap_eyebrow: 'O que você substitui',
+    ap_h2_pre: 'Pare de alugar seu contact center.',
+    ap_h2_accent: 'Comece a rodá-lo.',
+    ap_sub: 'Verbara é construído onde os trade-offs dos incumbentes ficam inaceitáveis: código, soberania, custo total.',
+    ap_col_verbara: 'Verbara',
+    ap_col_genesys: 'Genesys / Five9',
+    ap_col_asterisk: 'Asterisk + scripts',
+    ap_col_vicidial: 'VICIdial / FreePBX',
+    ap_row_source: 'Código disponível',
+    ap_row_selfhost: 'Self-host',
+    ap_row_modern_ui: 'UI de operação moderna',
+    ap_row_ai: 'Pipeline IA nativo',
+    ap_row_multitenant: 'Multi-tenant + clustering',
+    ap_row_latam: 'LATAM padrão (ES/PT)',
+
+    hiw_eyebrow: 'Como funciona',
+    hiw_h2: 'Cinco componentes, um stack, cada camada auditável.',
+    hiw_caption: 'SDK e Platform são open-source. Pro adiciona overlays empresariais licenciados. Web é a UI dos seus operadores.',
+    hiw_box_asterisk: 'Asterisk PBX',
+    hiw_box_asterisk_label: 'upstream',
+    hiw_box_sdk: 'Verbara.Sdk',
+    hiw_box_pro: 'Verbara.Sdk.Pro',
+    hiw_box_platform: 'Verbara.Platform',
+    hiw_box_web: 'Verbara.Platform.Web',
+
+    cp_eyebrow: 'Leia o código',
+    cp_h2_pre: 'Código real. Testes reais.',
+    cp_h2_accent: 'Zero vaporware.',
+    cp_filename: 'Program.cs',
+    cp_caption: 'Usa Verbara.Sdk 2.1.0 — dotnet add package Verbara.Sdk →',
+    cp_card_packages_value: '27',
+    cp_card_packages_label: 'pacotes SDK',
+    cp_card_tests_value: '2.893',
+    cp_card_tests_label: 'testes unitários passando',
+    cp_card_vulns_value: '0',
+    cp_card_vulns_label: 'pacotes vulneráveis',
+    cp_card_aot_value: '.NET 10 AOT',
+    cp_card_aot_label: 'compilação nativa antecipada',
+
+    pt_eyebrow: 'Preços',
+    pt_h2: 'Grátis para avaliar. Self-host ou gerenciado quando escalar.',
+    pt_card_free_title: 'Grátis / Dev',
+    pt_card_free_tagline: 'Tier 0 + Tier 0.5',
+    pt_card_free_price: '$0',
+    pt_card_free_cta: 'Ver licença OSS →',
+    pt_card_self_title: 'Self-Serve',
+    pt_card_self_tagline: 'Tier 1 + Tier 2',
+    pt_card_self_price: 'a partir de $5k/ano',
+    pt_card_self_cta: 'Ver planos self-host →',
+    pt_card_self_badge: 'Recomendado',
+    pt_card_ent_title: 'Enterprise',
+    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
+    pt_card_ent_price: 'a partir de $99/agente/mês',
+    pt_card_ent_cta: 'Falar com vendas →',
+
+    faq_eyebrow: 'FAQ',
+    faq_h2: 'Respostas diretas.',
+    faq_q1: 'Preciso ter Asterisk instalado antes de adotar Verbara?',
+    faq_a1: 'Sim. Verbara é construído sobre Asterisk PBX como seu substrato de telefonia — não o substituímos, modernizamos a UX do operador, o pipeline de IA e os overlays Pro ao redor dele. Se você não tem Asterisk ainda, vai implantá-lo junto com Verbara (setup único, bem documentado). Se já roda Asterisk, Verbara se conecta ao seu dialplan e configuração existentes.',
+    faq_q2: 'Roda em Kubernetes?',
+    faq_a2: 'Sim. A Platform é K8s-native — multi-tenant e multi-cluster a partir do Tier 2. Os Helm charts vêm no Verbara.Sdk.Pro. Também dá pra rodar em uma única VM com Docker Compose se sua escala ainda não justifica K8s — o stack é portátil, sem dependências ocultas de cloud.',
+    faq_q3: 'O que acontece com meu deployment se eu parar de pagar Pro?',
+    faq_a3: 'O motor OSS (SDK MIT + Platform Apache) continua rodando indefinidamente — sem kill switch, sem verificação cloud. Você perde acesso às features Pro (multi-tenant, dialer preditivo, agent assist, clustering, overlays de analytics) quando sua licença expira. Dados e audit logs continuam seus. Não podemos nem vamos desativar uma instalação que você parou de pagar; simplesmente paramos de enviar releases novos de Pro.',
+    faq_q4: 'Tem SLA na edição OSS?',
+    faq_a4: 'Não. A edição OSS (Tier 0) tem suporte community via GitHub issues e Discord público. Tempo de resposta best-effort. SLAs começam no Tier 3 (SaaS gerenciado, 99.5% uptime) e Tier 4 (99.9% com suporte 24/7 + CSM dedicado). Para tiers comerciais self-host (1, 2), suporte é e-mail ou e-mail+Slack — rápido mas sem SLA.',
+    faq_q5: 'LATAM (ES, PT) é cidadão de primeira ou tradução tardia?',
+    faq_a5: 'Primeira classe. O locale padrão é es-419 (espanhol LATAM neutro) — verbara.io/ serve espanhol, a versão inglesa vive em /en-US/. Documentação, suporte e UI do produto são autorados em três locales (es-419, en-US, pt-BR) com paridade enforced em CI. Exemplos em preços, casos e nomes de tier se inclinam a contextos LATAM (BPOs, telcos). Verbara é construído por gente que pensa em espanhol.',
+    faq_q6: 'Como avalio features Pro sem me comprometer?',
+    faq_a6: 'Pegue uma licença Pro Developer (Tier 0.5, grátis, auto-emitida em /developer-license/). Desbloqueia cada feature Pro em modo WarnOnly por 60 dias — você roda multi-tenant, clustering, dialer preditivo, tudo, com um warning "license expired" nos logs. Depois de 60 dias você decide: comprar um tier pago, voltar pra OSS, ou renovar a licença developer pra outro ciclo de avaliação.',
+
+    final_h2_pre: 'Pare de alugar seu contact center.',
+    final_h2_accent: 'Comece a rodá-lo.',
+    final_sub: 'Licença developer 60 dias, assinada, grátis. Sem cartão de crédito.',
+    final_cta: 'Pegue uma licença developer →',
   },
   pricing: {
     title: 'Preços',

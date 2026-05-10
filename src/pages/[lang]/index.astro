@@ -1,105 +1,27 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/primitives/Section.astro';
-import Container from '../../components/primitives/Container.astro';
-import Heading from '../../components/primitives/Heading.astro';
-import Button from '../../components/primitives/Button.astro';
-import Badge from '../../components/primitives/Badge.astro';
-import Card from '../../components/primitives/Card.astro';
-import { getMessages } from '../../i18n/messages';
-import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+import Hero from '../../components/composites/Hero.astro';
+import AntiPositioningTable from '../../components/composites/AntiPositioningTable.astro';
+import ArchitectureDiagram from '../../components/composites/ArchitectureDiagram.astro';
+import CodeProof from '../../components/composites/CodeProof.astro';
+import PricingTeaser from '../../components/composites/PricingTeaser.astro';
+import Faq from '../../components/composites/Faq.astro';
+import FinalCta from '../../components/composites/FinalCta.astro';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'en-US' } }, { params: { lang: 'pt-BR' } }];
+  return [
+    { params: { lang: 'en-US' } },
+    { params: { lang: 'pt-BR' } },
+  ];
 }
-
-const locale = getLocaleFromPath(Astro.url.pathname);
-const t = getMessages(locale);
 ---
 
 <Layout>
-  <Section>
-    <Container size="sm">
-      <div class="space-y-6 text-center">
-        <Badge variant="mono">MIT SDK · Apache Platform · 0 vulns</Badge>
-        <Heading level={1} align="center">{t.landing.hero_title}</Heading>
-        <p class="text-xl text-bone-2 text-balance">{t.landing.hero_subtitle}</p>
-        <div class="flex flex-wrap justify-center gap-3 pt-4">
-          <Button variant="primary" size="lg" href={localiseHref('developer-license', locale)}>
-            {t.landing.cta_developer}
-          </Button>
-          <Button variant="secondary" size="lg" href={localiseHref('pricing', locale)}>
-            {t.landing.cta_pricing}
-          </Button>
-        </div>
-      </div>
-    </Container>
-  </Section>
-
-  <Section tone="inset">
-    <Container size="md">
-      <div class="space-y-10">
-        <Heading level={2} align="center" eyebrow={t.landing.why_title}>
-          {t.landing.why_subtitle}
-        </Heading>
-        <div class="grid gap-6 md:grid-cols-3">
-          <Card as="article">
-            <h3 class="text-lg font-semibold mb-2">{t.landing.why_b1_title}</h3>
-            <p class="text-sm text-bone-2 leading-relaxed">{t.landing.why_b1_body}</p>
-          </Card>
-          <Card as="article">
-            <h3 class="text-lg font-semibold mb-2">{t.landing.why_b2_title}</h3>
-            <p class="text-sm text-bone-2 leading-relaxed">{t.landing.why_b2_body}</p>
-          </Card>
-          <Card as="article">
-            <h3 class="text-lg font-semibold mb-2">{t.landing.why_b3_title}</h3>
-            <p class="text-sm text-bone-2 leading-relaxed">{t.landing.why_b3_body}</p>
-          </Card>
-        </div>
-      </div>
-    </Container>
-  </Section>
-
-  <Section>
-    <Container size="md">
-      <div class="space-y-8">
-        <Heading level={2} align="center" eyebrow={t.landing.stack_title}>
-          {t.landing.stack_subtitle}
-        </Heading>
-        <div class="overflow-x-auto rounded-lg border border-line-strong">
-          <table class="w-full text-sm">
-            <thead class="bg-ink-3">
-              <tr>
-                <th class="text-left px-4 py-3 font-medium">Repository</th>
-                <th class="text-left px-4 py-3 font-medium">License</th>
-                <th class="text-left px-4 py-3 font-medium">Role</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-line">
-              <tr>
-                <td class="px-4 py-3 font-medium"><a href="https://github.com/verbara/Verbara.Sdk" class="hover:text-signal">Verbara Sdk</a></td>
-                <td class="px-4 py-3"><Badge variant="success">MIT</Badge></td>
-                <td class="px-4 py-3 text-bone-2">{t.landing.stack_role_sdk}</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3 font-medium">Verbara Web</td>
-                <td class="px-4 py-3"><Badge variant="info">Apache 2.0</Badge></td>
-                <td class="px-4 py-3 text-bone-2">{t.landing.stack_role_web}</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3 font-medium">Verbara Platform</td>
-                <td class="px-4 py-3"><Badge variant="info">Apache 2.0</Badge></td>
-                <td class="px-4 py-3 text-bone-2">{t.landing.stack_role_platform}</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3 font-medium">Verbara Sdk Pro</td>
-                <td class="px-4 py-3"><Badge variant="warning">Commercial</Badge></td>
-                <td class="px-4 py-3 text-bone-2">{t.landing.stack_role_pro}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </Container>
-  </Section>
+  <Hero />
+  <AntiPositioningTable />
+  <ArchitectureDiagram />
+  <CodeProof />
+  <PricingTeaser />
+  <Faq />
+  <FinalCta />
 </Layout>
