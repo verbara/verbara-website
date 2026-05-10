@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable no-undef */
 import { LOCALES, MESSAGES } from '../src/i18n/messages.ts';
 
 function flatten(obj, prefix = '') {
