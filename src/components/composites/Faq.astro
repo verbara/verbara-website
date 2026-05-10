@@ -1,41 +1,53 @@
 ---
 import Section from '../primitives/Section.astro';
 import Container from '../primitives/Container.astro';
-import { getMessages } from '../../i18n/messages';
-import { getLocaleFromPath } from '../../i18n/utils';
 
-const locale = getLocaleFromPath(Astro.url.pathname);
-const t = getMessages(locale);
+interface FaqItem {
+  q: string;
+  a: string;
+}
 
-const items = [
-  { q: t.home.faq_q1, a: t.home.faq_a1 },
-  { q: t.home.faq_q2, a: t.home.faq_a2 },
-  { q: t.home.faq_q3, a: t.home.faq_a3 },
-  { q: t.home.faq_q4, a: t.home.faq_a4 },
-  { q: t.home.faq_q5, a: t.home.faq_a5 },
-  { q: t.home.faq_q6, a: t.home.faq_a6 },
-];
+interface Props {
+  items: FaqItem[];
+  idPrefix?: string;
+  eyebrow?: string;
+  heading?: string;
+  sectionId?: string;
+}
+
+const {
+  items,
+  idPrefix = 'faq',
+  eyebrow,
+  heading,
+  sectionId = 'faq',
+} = Astro.props;
 ---
 
-<Section id="faq">
+<Section id={sectionId}>
   <Container size="sm">
     <div class="space-y-10">
-      <div class="text-center space-y-3 max-w-3xl mx-auto">
-        <p class="text-xs uppercase tracking-wider font-mono text-signal">
-          {t.home.faq_eyebrow}
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
-          {t.home.faq_h2}
-        </h2>
-      </div>
+      {(eyebrow || heading) && (
+        <div class="text-center space-y-3 max-w-3xl mx-auto">
+          {eyebrow && (
+            <p class="text-xs uppercase tracking-wider font-mono text-signal">
+              {eyebrow}
+            </p>
+          )}
+          {heading && (
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+              {heading}
+            </h2>
+          )}
+        </div>
+      )}
 
       <ul class="space-y-3">
         {items.map((item, idx) => {
-          const id = `faq-${idx + 1}`;
+          const id = `${idPrefix}-${idx + 1}`;
           return (
             <li class="rounded-lg border border-line-strong bg-ink-3/40">
               <button
-                id={`${id}-q`}
                 type="button"
                 class="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
                 aria-expanded="false"

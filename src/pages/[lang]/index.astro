@@ -7,6 +7,8 @@ import CodeProof from '../../components/composites/CodeProof.astro';
 import PricingTeaser from '../../components/composites/PricingTeaser.astro';
 import Faq from '../../components/composites/Faq.astro';
 import FinalCta from '../../components/composites/FinalCta.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath } from '../../i18n/utils';
 
 export function getStaticPaths() {
   return [
@@ -14,6 +16,9 @@ export function getStaticPaths() {
     { params: { lang: 'pt-BR' } },
   ];
 }
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
 ---
 
 <Layout>
@@ -22,6 +27,17 @@ export function getStaticPaths() {
   <ArchitectureDiagram />
   <CodeProof />
   <PricingTeaser />
-  <Faq />
+  <Faq
+    eyebrow={t.home.faq_eyebrow}
+    heading={t.home.faq_h2}
+    items={[
+      { q: t.home.faq_q1, a: t.home.faq_a1 },
+      { q: t.home.faq_q2, a: t.home.faq_a2 },
+      { q: t.home.faq_q3, a: t.home.faq_a3 },
+      { q: t.home.faq_q4, a: t.home.faq_a4 },
+      { q: t.home.faq_q5, a: t.home.faq_a5 },
+      { q: t.home.faq_q6, a: t.home.faq_a6 },
+    ]}
+  />
   <FinalCta />
 </Layout>
