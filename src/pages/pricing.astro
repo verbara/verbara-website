@@ -3,123 +3,67 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/primitives/Section.astro';
 import Container from '../components/primitives/Container.astro';
 import Heading from '../components/primitives/Heading.astro';
-import Button from '../components/primitives/Button.astro';
+import TierGroup from '../components/composites/TierGroup.astro';
+import ComparisonMatrix from '../components/composites/ComparisonMatrix.astro';
+import Faq from '../components/composites/Faq.astro';
 import { getMessages } from '../i18n/messages';
-import { getLocaleFromPath, localiseHref } from '../i18n/utils';
+import { getLocaleFromPath } from '../i18n/utils';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
-
-type CtaKind = 'community' | 'developer' | 'buy' | 'sales';
-
-interface TierConfig {
-  id: 'tier_0' | 'tier_05' | 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5';
-  cta: CtaKind;
-  badge: 'popular' | 'evaluators' | null;
-}
-
-const TIERS: readonly TierConfig[] = [
-  { id: 'tier_0', cta: 'community', badge: null },
-  { id: 'tier_05', cta: 'developer', badge: 'evaluators' },
-  { id: 'tier_1', cta: 'buy', badge: null },
-  { id: 'tier_2', cta: 'buy', badge: 'popular' },
-  { id: 'tier_3', cta: 'sales', badge: null },
-  { id: 'tier_4', cta: 'sales', badge: null },
-  { id: 'tier_5', cta: 'sales', badge: null },
-];
-
-const tierName = (id: TierConfig['id']) => t.pricing[`${id}_name` as const];
-const tierPrice = (id: TierConfig['id']) => t.pricing[`${id}_price` as const];
-const tierTagline = (id: TierConfig['id']) => t.pricing[`${id}_tagline` as const];
-const tierFeature = (id: TierConfig['id'], n: 1 | 2 | 3 | 4) =>
-  t.pricing[`${id}_f${n}` as const];
-
-function ctaHref(cta: CtaKind): string {
-  if (cta === 'community') return 'https://github.com/verbara/Verbara.Sdk';
-  if (cta === 'developer') return localiseHref('developer-license', locale);
-  return 'mailto:licensing@verbara.io';
-}
-
-function ctaLabel(cta: CtaKind): string {
-  if (cta === 'community') return t.pricing.cta_community;
-  if (cta === 'developer') return t.pricing.cta_developer;
-  if (cta === 'buy') return t.pricing.cta_buy;
-  return t.pricing.cta_sales;
-}
 ---
 
 <Layout title={`${t.pricing.title} — ${t.meta.site_title}`}>
   <Section>
     <Container size="lg">
-      <div class="space-y-10">
-        <Heading level={1} align="center" eyebrow={t.pricing.title}>
-          {t.pricing.subtitle}
-        </Heading>
-
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {TIERS.map((tier) => (
-            <article
-              id={
-                tier.id === 'tier_0' ? 'group-free' :
-                tier.id === 'tier_1' ? 'group-self' :
-                tier.id === 'tier_3' ? 'group-managed' :
-                undefined
-              }
-              class={[
-                'flex flex-col rounded-lg border p-6',
-                tier.badge === 'popular'
-                  ? 'border-signal ring-1 ring-signal'
-                  : 'border-line-strong',
-              ].join(' ')}
-              data-tier={tier.id}
-            >
-              <header class="space-y-2">
-                <div class="flex items-center justify-between gap-2 min-h-6">
-                  <h2 class="text-lg font-semibold">{tierName(tier.id)}</h2>
-                  {tier.badge === 'popular' && (
-                    <span class="rounded bg-signal text-ink px-2 py-0.5 text-xs">
-                      {t.pricing.popular_badge}
-                    </span>
-                  )}
-                  {tier.badge === 'evaluators' && (
-                    <span class="rounded border border-line-strong px-2 py-0.5 text-xs opacity-70">
-                      {t.pricing.evaluators_badge}
-                    </span>
-                  )}
-                </div>
-                <p class="text-2xl font-bold">{tierPrice(tier.id)}</p>
-                <p class="text-sm opacity-70 min-h-10">{tierTagline(tier.id)}</p>
-              </header>
-
-              <ul class="my-6 flex-1 space-y-2 text-sm">
-                <li class="flex items-start gap-2">
-                  <span aria-hidden class="opacity-50">·</span>
-                  <span>{tierFeature(tier.id, 1)}</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span aria-hidden class="opacity-50">·</span>
-                  <span>{tierFeature(tier.id, 2)}</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span aria-hidden class="opacity-50">·</span>
-                  <span>{tierFeature(tier.id, 3)}</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span aria-hidden class="opacity-50">·</span>
-                  <span>{tierFeature(tier.id, 4)}</span>
-                </li>
-              </ul>
-
-              <Button
-                variant={tier.cta === 'developer' || tier.cta === 'buy' ? 'primary' : 'secondary'}
-                href={ctaHref(tier.cta)}
-              >
-                {ctaLabel(tier.cta)}
-              </Button>
-            </article>
-          ))}
-        </div>
+      <div class="space-y-3 text-center max-w-3xl mx-auto">
+        <Heading level={1} align="center">{t.pricing.hero_h1}</Heading>
+        <p class="text-lg text-bone-2 text-balance">{t.pricing.hero_sub}</p>
       </div>
     </Container>
   </Section>
+
+  <Section>
+    <Container size="lg">
+      <div class="space-y-12">
+        <TierGroup
+          label={t.pricing.group_free_label}
+          anchorId="group-free"
+          tiers={[
+            { tierId: 'tier_0', cta: 'community' },
+            { tierId: 'tier_05', cta: 'developer', badge: 'evaluators' },
+          ]}
+        />
+        <TierGroup
+          label={t.pricing.group_self_label}
+          anchorId="group-self"
+          tiers={[
+            { tierId: 'tier_1', cta: 'buy' },
+            { tierId: 'tier_2', cta: 'buy', badge: 'popular' },
+          ]}
+        />
+        <TierGroup
+          label={t.pricing.group_managed_label}
+          anchorId="group-managed"
+          tiers={[
+            { tierId: 'tier_3', cta: 'sales' },
+            { tierId: 'tier_4', cta: 'sales' },
+            { tierId: 'tier_5', cta: 'sales' },
+          ]}
+        />
+      </div>
+    </Container>
+  </Section>
+
+  <ComparisonMatrix />
+
+  <Faq
+    sectionId="pricing-faq"
+    idPrefix="pricing-faq"
+    items={[
+      { q: t.pricing.faq_q1, a: t.pricing.faq_a1 },
+      { q: t.pricing.faq_q2, a: t.pricing.faq_a2 },
+      { q: t.pricing.faq_q3, a: t.pricing.faq_a3 },
+    ]}
+  />
 </Layout>
