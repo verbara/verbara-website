@@ -1,8 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/primitives/Section.astro';
-import Container from '../../components/primitives/Container.astro';
-import Heading from '../../components/primitives/Heading.astro';
+import LegalDoc from '../../components/composites/LegalDoc.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
 
@@ -10,13 +8,39 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
 ---
 
-<Layout title={`${t.legal_privacy.title} — ${t.meta.site_title}`}>
-  <Section>
-    <Container size="sm">
-      <div class="space-y-6">
-        <Heading level={1}>{t.legal_privacy.title}</Heading>
-        <p class="text-base text-bone-2 leading-relaxed">{t.legal_privacy.body}</p>
-      </div>
-    </Container>
-  </Section>
+<Layout title={`${t.footer.legal_privacy} — ${t.meta.site_title}`}>
+  <LegalDoc title={t.footer.legal_privacy} lastUpdated="2026-05-09">
+    <p>
+      <strong>Política de privacidad — borrador.</strong>
+      Esta página describirá cómo Verbara recopila, usa y conserva los datos
+      generados a través del sitio <a href="https://verbara.io">verbara.io</a>
+      (incluyendo el formulario de licencia de developer y las analíticas
+      web). Los datos del producto auto-hospedado no aplican aquí; consulta
+      la documentación de cada deployment para esa política específica.
+    </p>
+    <p>
+      Mientras finaliza el texto formal, escribe a
+      <a href="mailto:security@verbara.io">security@verbara.io</a>
+      para preguntas sobre privacidad o solicitudes de borrado.
+    </p>
+
+    <h2>1. Datos recopilados en verbara.io</h2>
+    <ul>
+      <li>Email + nombre + organización + caso de uso vía el formulario de licencia developer.</li>
+      <li>Métricas anónimas vía Cloudflare Web Analytics (sin cookies, sin fingerprinting).</li>
+      <li>Logs de IP del Worker emisor de licencias (rate-limit, audit log en D1).</li>
+    </ul>
+
+    <h2>2. Retención</h2>
+    <p>
+      [Placeholder — emails de licencia se retienen mientras la cuenta esté activa
+      o conforme a la ley aplicable, lo que sea más corto.]
+    </p>
+
+    <h2>3. Tus derechos</h2>
+    <p>
+      [Placeholder — derecho de acceso, rectificación, borrado y portabilidad
+      bajo GDPR / LGPD aplican; envía solicitud a security@verbara.io.]
+    </p>
+  </LegalDoc>
 </Layout>

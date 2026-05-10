@@ -1,26 +1,66 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Section from '../../../components/primitives/Section.astro';
-import Container from '../../../components/primitives/Container.astro';
-import Heading from '../../../components/primitives/Heading.astro';
+import LegalDoc from '../../../components/composites/LegalDoc.astro';
 import { getMessages } from '../../../i18n/messages';
 import { getLocaleFromPath } from '../../../i18n/utils';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'en-US' } }, { params: { lang: 'pt-BR' } }];
+  return [
+    { params: { lang: 'en-US' } },
+    { params: { lang: 'pt-BR' } },
+  ];
 }
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
+
+const placeholderEn = {
+  intro: '<strong>Privacy policy — draft.</strong> This page will describe how Verbara collects, uses, and retains data generated through the <a href="https://verbara.io">verbara.io</a> site (including the developer-license form and web analytics). Data on self-hosted product deployments is out of scope; consult each deployment\'s documentation for its specific policy.',
+  contact: 'While the formal text is in review, contact <a href="mailto:security@verbara.io">security@verbara.io</a> for privacy questions or deletion requests.',
+  s1_title: '1. Data collected on verbara.io',
+  s1_items: [
+    'Email + name + organization + use case via the developer-license form.',
+    'Anonymous metrics via Cloudflare Web Analytics (no cookies, no fingerprinting).',
+    'IP logs from the license-issuer Worker (rate-limit + D1 audit log).',
+  ],
+  s2_title: '2. Retention',
+  s2_body: '[Placeholder — license emails retained for as long as the account is active or as required by applicable law, whichever is shorter.]',
+  s3_title: '3. Your rights',
+  s3_body: '[Placeholder — right of access, rectification, deletion, and portability under GDPR / LGPD apply; submit requests to security@verbara.io.]',
+};
+
+const placeholderPt = {
+  intro: '<strong>Política de privacidade — rascunho.</strong> Esta página descreverá como a Verbara coleta, usa e retém os dados gerados através do site <a href="https://verbara.io">verbara.io</a> (incluindo o formulário de licença de developer e analytics web). Dados sobre deployments do produto self-hosted estão fora do escopo; consulte a documentação de cada deployment para sua política específica.',
+  contact: 'Enquanto o texto formal está em revisão, entre em contato com <a href="mailto:security@verbara.io">security@verbara.io</a> para perguntas de privacidade ou solicitações de exclusão.',
+  s1_title: '1. Dados coletados em verbara.io',
+  s1_items: [
+    'Email + nome + organização + caso de uso via formulário de licença developer.',
+    'Métricas anônimas via Cloudflare Web Analytics (sem cookies, sem fingerprinting).',
+    'Logs de IP do Worker emissor de licenças (rate-limit + audit log em D1).',
+  ],
+  s2_title: '2. Retenção',
+  s2_body: '[Placeholder — e-mails de licença são retidos enquanto a conta estiver ativa ou conforme a lei aplicável, o que for mais curto.]',
+  s3_title: '3. Seus direitos',
+  s3_body: '[Placeholder — direito de acesso, retificação, exclusão e portabilidade sob GDPR / LGPD aplicam-se; envie solicitações para security@verbara.io.]',
+};
+
+const copy = locale === 'en-US' ? placeholderEn : placeholderPt;
 ---
 
-<Layout title={`${t.legal_privacy.title} — ${t.meta.site_title}`}>
-  <Section>
-    <Container size="sm">
-      <div class="space-y-6">
-        <Heading level={1}>{t.legal_privacy.title}</Heading>
-        <p class="text-base text-bone-2 leading-relaxed">{t.legal_privacy.body}</p>
-      </div>
-    </Container>
-  </Section>
+<Layout title={`${t.footer.legal_privacy} — ${t.meta.site_title}`}>
+  <LegalDoc title={t.footer.legal_privacy} lastUpdated="2026-05-09">
+    <p set:html={copy.intro} />
+    <p set:html={copy.contact} />
+
+    <h2>{copy.s1_title}</h2>
+    <ul>
+      {copy.s1_items.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <h2>{copy.s2_title}</h2>
+    <p>{copy.s2_body}</p>
+
+    <h2>{copy.s3_title}</h2>
+    <p>{copy.s3_body}</p>
+  </LegalDoc>
 </Layout>
