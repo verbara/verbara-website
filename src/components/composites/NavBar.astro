@@ -38,7 +38,7 @@ const allSolutionsHref = localiseHref('use-cases', locale);
           type="button"
           id="nav-solutions-toggle"
           class="flex items-center gap-1 hover:text-bone"
-          aria-haspopup="true"
+          aria-haspopup="menu"
           aria-expanded="false"
           aria-controls="nav-solutions-panel"
         >
@@ -151,7 +151,7 @@ const allSolutionsHref = localiseHref('use-cases', locale);
       setOpen(!isOpen);
     });
     document.addEventListener('click', (e) => {
-      if (!dropdownPanel.contains(e.target as Node) && e.target !== dropdownToggle) {
+      if (!dropdownPanel.contains(e.target as Node) && !dropdownToggle.contains(e.target as Node)) {
         setOpen(false);
       }
     });
