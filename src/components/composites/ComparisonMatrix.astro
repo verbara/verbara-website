@@ -109,6 +109,18 @@ const tierIds: TierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_3', 't
             </tr>
           </thead>
           <tbody class="divide-y divide-line">
+            <tr class="bg-ink-3/50">
+              <th scope="row" class="text-left px-4 py-3 font-mono text-xs uppercase tracking-wider text-signal sticky left-0 bg-ink-3/50">
+                {t.pricing.best_for_label}
+              </th>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t0}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t0_5}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t1}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t2}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t3}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t4}</td>
+              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t5}</td>
+            </tr>
             {rows.map((row) => (
               <tr>
                 <th

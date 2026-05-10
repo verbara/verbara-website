@@ -6,6 +6,7 @@ interface TierItem {
   tierId: TierId;
   cta: CtaKind;
   badge?: BadgeKind;
+  bestFor?: string;
 }
 
 interface Props {
@@ -33,6 +34,7 @@ const { label, anchorId, tiers } = Astro.props;
         tierId={tier.tierId}
         cta={tier.cta}
         badge={tier.badge ?? null}
+        bestFor={tier.bestFor}
       />
     ))}
   </div>
