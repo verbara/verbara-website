@@ -4,10 +4,7 @@ import Button from '../primitives/Button.astro';
 import Badge from '../primitives/Badge.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
-
-type TierId = 'tier_0' | 'tier_05' | 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5';
-type CtaKind = 'community' | 'developer' | 'buy' | 'sales';
-type BadgeKind = 'popular' | 'evaluators' | null;
+import type { TierId, CtaKind, BadgeKind } from './pricing-types';
 
 interface Props {
   tierId: TierId;
