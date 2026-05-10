@@ -8,20 +8,35 @@
  *   2. Verify Cloudflare Turnstile token against siteverify
  *   3. Per-IP rate limit (KV)         — 5 issuances per IP per 24 h
  *   4. Per-email dedup (D1)           — 1 license per email per 30 days
- *   5. Sign LicenseKey with ECDSA P-256 SHA-256 (Web Crypto API)
- *   6. INSERT audit row in D1
- *   7. Send email via Resend with the .lic file attached
- *   8. Return 202 Accepted
+ *   5. Select last-6 authorized image digests from data/authorized-digests.json
+ *   6. Sign LicenseKey (incl. AuthorizedImageDigests when non-empty) with
+ *      ECDSA P-256 SHA-256 (Web Crypto API)
+ *   7. INSERT audit row in D1 (incl. embedded digest list as JSON)
+ *   8. Send email via Resend with the .lic file attached
+ *   9. Return 202 Accepted
  *
  * Implements the contract documented in:
  *   Verbara.Sdk.Pro/docs/specs/2026-05-09-developer-license-issuer-contract.md
+ *
+ * Image-binding contract (Pro v2.3.x ADR-0011):
+ *   When `data/authorized-digests.json` `current` array is non-empty, the
+ *   last 6 entries (sorted by `released_at` DESC) are embedded into the
+ *   issued license under `AuthorizedImageDigests`. Pro consumers verify the
+ *   running container's digest matches one of them. Empty registry → field
+ *   omitted entirely (back-compat permissive path; Pro's `LicenseValidator`
+ *   skips the check). See `data/README.md`.
  *
  * Drift considerations: this issuer signs ONLY Tier 0.5 (Developer) licenses
  * with fixed parameters (Tier=1, Features=511, MaxAgents=5, MaxNodes=1, 30-day
  * expiry). The byte-for-byte canonical JSON must match the .NET LicenseGenerator
  * output exactly so that Verbara.Sdk.Pro.Licensing.LicenseValidator accepts it.
- * The Phase 5 smoke test verifies parity.
+ * Field order in the signed payload mirrors Pro's `LicensePayload` record:
+ * LicenseId, Licensee, Tier, ExpiresAt, Features, MaxAgents, MaxNodes,
+ * (AuthorizedImageDigests when non-empty). The Phase 5 smoke test verifies
+ * parity.
  */
+
+import { selectAuthorizedDigests } from './authorized-digests';
 
 interface Env {
   LICENSE_AUDIT_DB: D1Database;
@@ -100,6 +115,12 @@ export const onRequestPost: (ctx: PagesContext) => Promise<Response> = async (ct
 
   const licensee = input.company !== null ? `${input.email} (${input.company})` : input.email;
 
+  // Phase 2.2 (Pro v2.3.x ADR-0011): embed the last-6 authorized Verbara
+  // Platform image digests so Pro consumers reject images outside the allow-
+  // list. Empty array → field omitted from canonical JSON entirely → back-
+  // compat permissive path on the consumer side. See `data/README.md`.
+  const authorizedImageDigests = selectAuthorizedDigests();
+
   let lic: SignedLicense;
   try {
     lic = await signLicense(
@@ -111,6 +132,7 @@ export const onRequestPost: (ctx: PagesContext) => Promise<Response> = async (ct
         features: FEATURES_ALL,
         maxAgents: MAX_AGENTS,
         maxNodes: MAX_NODES,
+        authorizedImageDigests,
       },
       env.VERBARA_LICENSE_SIGNING_KEY,
     );
@@ -120,11 +142,17 @@ export const onRequestPost: (ctx: PagesContext) => Promise<Response> = async (ct
   }
 
   try {
+    // Audit-log the embedded digest list as a JSON-array string. Empty
+    // registry → '[]' so the column is unambiguous across rows pre/post the
+    // registry having entries (Phase 2.2 / migration 0002). Forensics queries
+    // can `SELECT json_extract(authorized_image_digests, '$[0]')` etc.
+    const authorizedImageDigestsJson = JSON.stringify(authorizedImageDigests);
     await env.LICENSE_AUDIT_DB.prepare(
       `INSERT INTO license_audit (
          request_id, issued_at, license_id, email, full_name, company, use_case,
-         tier, features, max_agents, max_nodes, expires_at, source_ip, user_agent
-       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+         tier, features, max_agents, max_nodes, expires_at, source_ip, user_agent,
+         authorized_image_digests
+       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     )
       .bind(
         requestId,
@@ -141,6 +169,7 @@ export const onRequestPost: (ctx: PagesContext) => Promise<Response> = async (ct
         expiresAt.toISOString(),
         sourceIp,
         request.headers.get('user-agent') ?? null,
+        authorizedImageDigestsJson,
       )
       .run();
   } catch (e) {
@@ -307,7 +336,21 @@ async function findRecentLicenseByEmail(
 //
 // Canonical JSON byte order MUST match the .NET LicensePayload record
 // declaration order: LicenseId, Licensee, Tier, ExpiresAt, Features,
-// MaxAgents, MaxNodes. JSON.stringify preserves insertion order.
+// MaxAgents, MaxNodes, [AuthorizedImageDigests]. JSON.stringify preserves
+// insertion order.
+//
+// AuthorizedImageDigests handling (Pro v2.3.x ADR-0011):
+//   - When non-empty (length > 0) → appended after MaxNodes in BOTH the
+//     signed payload AND the .lic file's LicenseKey shape. The ECDSA
+//     signature MUST cover this field — mutating it post-signing is
+//     detected by VerifySignature and returns Invalid.
+//   - When empty (length === 0) → field is OMITTED from the canonical
+//     JSON entirely. This preserves byte-for-byte parity with v2.2.0-pro
+//     licenses (which had no such field) AND matches the .NET source-gen
+//     `[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]`
+//     behaviour on `LicensePayload.AuthorizedImageDigests`. Pro consumers
+//     treat the absent / empty list as the back-compat permissive path
+//     (no image-binding enforcement).
 // ---------------------------------------------------------------------------
 
 interface LicenseInput {
@@ -318,6 +361,11 @@ interface LicenseInput {
   features: number;
   maxAgents: number;
   maxNodes: number;
+  /**
+   * Image-binding allow-list (Pro v2.3.x). Empty array = field is omitted
+   * from the canonical signed JSON; non-empty = appended after MaxNodes.
+   */
+  authorizedImageDigests: string[];
 }
 
 interface SignedLicense {
@@ -325,11 +373,31 @@ interface SignedLicense {
   signature: string;  // base64
 }
 
+// TODO(test-infra): when a test framework (Vitest) lands, add unit tests for
+// signLicense covering AuthorizedImageDigests:
+//   - IssueLicense_ShouldEmbedLastSixDigests_WhenJsonHasMore: pass 8 digests via
+//     LicenseInput.authorizedImageDigests; assert payload + .lic both contain
+//     exactly 6 (the first 6 — already capped by selectAuthorizedDigests).
+//   - IssueLicense_ShouldEmbedAllDigests_WhenJsonHasFewer: pass 3 digests; assert
+//     payload + .lic both contain all 3 in the same order.
+//   - IssueLicense_ShouldOmitField_WhenAuthorizedImageDigestsEmpty: pass []; assert
+//     canonical JSON does NOT contain the substring "AuthorizedImageDigests".
+//   - IssueLicense_ShouldPlaceFieldAfterMaxNodes_WhenNonEmpty: regex-match field
+//     order in the canonical JSON to lock down wire-format ordering.
+//   - IssueLicense_ShouldFail_WhenAuthorizedDigestsRegistryMissingOrMalformed:
+//     simulate a malformed registry (current = null / current = "string"); selectAuthorizedDigests
+//     should return [] and the issuer must succeed (graceful degradation).
+//   - VerifySignature_ShouldRejectMutation_WhenAuthorizedImageDigestsModifiedPostSign:
+//     parity test against Pro's LicenseValidator (round-trip through the .NET side).
 async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<SignedLicense> {
   const key = await importPrivateKey(privateKeyPem);
 
   const expiresAtIso = formatDotNetDateTimeOffset(input.expiresAt);
-  const payload = {
+  // Build the payload in EXACTLY the .NET LicensePayload record-declaration
+  // order. JSON.stringify preserves insertion order, so adding
+  // AuthorizedImageDigests after MaxNodes (only when present) matches the
+  // STJ source-gen output byte-for-byte.
+  const payload: Record<string, unknown> = {
     LicenseId: input.licenseId,
     Licensee: input.licensee,
     Tier: input.tier,
@@ -338,6 +406,9 @@ async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<
     MaxAgents: input.maxAgents,
     MaxNodes: input.maxNodes,
   };
+  if (input.authorizedImageDigests.length > 0) {
+    payload.AuthorizedImageDigests = input.authorizedImageDigests;
+  }
   const canonical = JSON.stringify(payload);
 
   const signature = await crypto.subtle.sign(
@@ -347,8 +418,24 @@ async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<
   );
   const signatureB64 = bytesToBase64(new Uint8Array(signature));
 
-  // The .lic file is the LicenseKey record (payload + signature appended)
-  const licenseKey = { ...payload, Signature: signatureB64 };
+  // The .lic file is the LicenseKey record. Pro's `LicenseKey` declares
+  // fields as: LicenseId..MaxNodes, Signature, AuthorizedImageDigests
+  // (with the same WhenWritingNull omit on the digest list). To match that
+  // shape on disk we append AuthorizedImageDigests AFTER Signature when
+  // non-empty.
+  const licenseKey: Record<string, unknown> = {
+    LicenseId: input.licenseId,
+    Licensee: input.licensee,
+    Tier: input.tier,
+    ExpiresAt: expiresAtIso,
+    Features: input.features,
+    MaxAgents: input.maxAgents,
+    MaxNodes: input.maxNodes,
+    Signature: signatureB64,
+  };
+  if (input.authorizedImageDigests.length > 0) {
+    licenseKey.AuthorizedImageDigests = input.authorizedImageDigests;
+  }
   return {
     json: JSON.stringify(licenseKey, null, 2),
     signature: signatureB64,
