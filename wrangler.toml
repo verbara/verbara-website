@@ -36,3 +36,13 @@ migrations_dir = "migrations"
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
 id = "3b4730d6fb444c18afad7029496920f6"
+
+# Daily drift-detection cron (Phase 2.3 of Pro v2.3.x image-binding plan).
+# Re-resolves every entry in data/authorized-digests.json against ghcr.io
+# and emails security@verbara.io if any manifest-list digest no longer
+# matches the recorded value. See src/drift-detection.ts.
+#
+# Schedule: 03:17 UTC daily — chosen off-hour and off-minute to avoid the
+# 0-minute thundering-herd against ghcr.io that everyone else's cron picks.
+[triggers]
+crons = ["17 3 * * *"]
