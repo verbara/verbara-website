@@ -58,8 +58,8 @@ const pageDescription = description ?? t.meta.site_description;
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-    <!-- hreflang -->
-    {LOCALES.filter((l) => l !== locale).map((l) => (
+    <!-- hreflang (self-reference + alternates per Google spec) -->
+    {LOCALES.map((l) => (
       <link rel="alternate" hreflang={l} href={`https://verbara.io${localiseHref(route, l)}`} />
     ))}
     <link rel="alternate" hreflang="x-default" href={`https://verbara.io${localiseHref(route, 'es-419')}`} />
