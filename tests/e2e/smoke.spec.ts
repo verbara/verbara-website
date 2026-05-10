@@ -35,7 +35,10 @@ for (const prefix of LOCALE_PREFIXES) {
     const url = `${prefix}${page.path}`;
     test(`smoke: ${url} renders`, async ({ page: pw }) => {
       const errors: string[] = [];
-      pw.on('pageerror', (e) => errors.push(e.message));
+      pw.on('pageerror', (e) => {
+        if (isThirdPartyTurnstileNoise(e.message, undefined)) return;
+        errors.push(e.message);
+      });
       pw.on('console', (msg) => {
         if (msg.type() !== 'error') return;
         const text = msg.text();
