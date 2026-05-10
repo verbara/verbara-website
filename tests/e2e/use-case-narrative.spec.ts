@@ -5,6 +5,7 @@ const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];
 const SPOKES = [
   { slug: 'contact-center', expectedFilename: 'CallCenterHost.cs',       faqCount: 3 },
   { slug: 'voice-ai',       expectedFilename: 'VoiceAgent.cs',           faqCount: 3 },
+  { slug: 'omnichannel',    expectedFilename: 'OmnichannelRouter.cs',     faqCount: 3 },
 ];
 
 for (const prefix of LOCALE_PREFIXES) {
