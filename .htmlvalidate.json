@@ -2,6 +2,7 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "no-inline-style": "off",
+    "no-raw-characters": "off",
     "void-style": ["error", { "style": "omit" }],
     "wcag/h30": "warn",
     "wcag/h32": "warn",
