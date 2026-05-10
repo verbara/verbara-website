@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import UseCaseHero from '../../components/composites/UseCaseHero.astro';
+import SpokeAntiPositioning from '../../components/composites/SpokeAntiPositioning.astro';
+import SpokeCodeProof from '../../components/composites/SpokeCodeProof.astro';
+import Faq from '../../components/composites/Faq.astro';
+import SpokePricingPointer from '../../components/composites/SpokePricingPointer.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const apRows = [
+  { label: t.usecases.cpaas_ap_row_1, verbara: '✓ MIT',              a: '✗ closed',         b: '✗ closed',         c: '✓ MIT' },
+  { label: t.usecases.cpaas_ap_row_2, verbara: '✓ telco-direct',     a: '$0.014–0.045/min', b: '$0.012–0.040/min', c: 'telco-direct' },
+  { label: t.usecases.cpaas_ap_row_3, verbara: '✓ AMI/AGI/ARI',      a: 'proprietary',       b: 'proprietary',       c: 'WebRTC' },
+  { label: t.usecases.cpaas_ap_row_4, verbara: '✓ ServerPool',       a: 'opaque',            b: 'opaque',            c: '✗' },
+  { label: t.usecases.cpaas_ap_row_5, verbara: '✓ Activities',       a: '~ TwiML verbs',     b: '~ NCCO',            c: '~ verbs' },
+  { label: t.usecases.cpaas_ap_row_6, verbara: '✓ Smart Turn',       a: '✗',                  b: '✗',                  c: 'basic' },
+  { label: t.usecases.cpaas_ap_row_7, verbara: '✓ Pro',              a: 'enterprise',        b: 'enterprise',        c: '✗' },
+];
+
+const codeSample = `using Verbara.Sdk.Ari;
+using Verbara.Sdk.Activities;
+
+var ari = new AriClient("http://pbx:8088", "verbara", "secret");
+
+// Place outbound call to a customer.
+var outbound = await ari.Channels.OriginateAsync(
+  endpoint: "PJSIP/+15551234567@telco-trunk",
+  extension: "outbound",
+  context: "default");
+
+// Connect them to an agent on a separate channel + record.
+var agent = await ari.Channels.OriginateAsync(
+  endpoint: "PJSIP/agent101@internal",
+  extension: "agent",
+  context: "internal");
+
+var bridge = await ari.Bridges.CreateAsync(type: "mixing");
+await ari.Bridges.AddChannelAsync(bridge.Id, outbound.Id);
+await ari.Bridges.AddChannelAsync(bridge.Id, agent.Id);
+
+var recording = await ari.Channels.RecordAsync(
+  outbound.Id,
+  name: $"call-{outbound.Id}",
+  format: "wav");`;
+---
+
+<Layout>
+  <UseCaseHero
+    eyebrow={t.usecases.cpaas_hero_eyebrow}
+    h1Pre={t.usecases.cpaas_hero_h1_pre}
+    h1Accent={t.usecases.cpaas_hero_h1_accent}
+    sub={t.usecases.cpaas_hero_sub}
+    ctaPrimary={t.usecases.cpaas_hero_cta_primary}
+    ctaPrimaryHref="https://github.com/verbara/Verbara.Sdk"
+    ctaSecondary={t.usecases.cpaas_hero_cta_secondary}
+    ctaSecondaryHref="#code-proof"
+  />
+
+  <SpokeAntiPositioning
+    eyebrow={t.usecases.cpaas_ap_eyebrow}
+    heading={t.usecases.cpaas_ap_h2}
+    sub={t.usecases.cpaas_ap_sub}
+    colVerbara={t.usecases.cpaas_ap_col_verbara}
+    colA={t.usecases.cpaas_ap_col_a}
+    colB={t.usecases.cpaas_ap_col_b}
+    colC={t.usecases.cpaas_ap_col_c}
+    rows={apRows}
+  />
+
+  <div id="code-proof">
+    <SpokeCodeProof
+      eyebrow={t.usecases.cpaas_cp_eyebrow}
+      heading={t.usecases.cpaas_cp_h2}
+      filename={t.usecases.cpaas_cp_filename}
+      caption={t.usecases.cpaas_cp_caption}
+      code={codeSample}
+    />
+  </div>
+
+  <Faq
+    eyebrow={t.usecases.cpaas_faq_eyebrow}
+    heading={t.usecases.cpaas_faq_h2}
+    items={[
+      { q: t.usecases.cpaas_faq_q1, a: t.usecases.cpaas_faq_a1 },
+      { q: t.usecases.cpaas_faq_q2, a: t.usecases.cpaas_faq_a2 },
+      { q: t.usecases.cpaas_faq_q3, a: t.usecases.cpaas_faq_a3 },
+    ]}
+  />
+
+  <SpokePricingPointer
+    eyebrow={t.usecases.cpaas_pp_eyebrow}
+    heading={t.usecases.cpaas_pp_h2}
+    body={t.usecases.cpaas_pp_body}
+    cta={t.usecases.cpaas_pp_cta}
+    ctaHref={localiseHref('pricing', locale)}
+  />
+
+  <section class="py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-6 text-center space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+        {t.usecases.cpaas_final_h2_pre} <span class="text-amber">{t.usecases.cpaas_final_h2_accent}</span>
+      </h2>
+      <p class="text-lg text-bone-2 text-balance">{t.usecases.cpaas_final_sub}</p>
+      <a
+        href={localiseHref('developer-license', locale)}
+        class="inline-flex items-center gap-2 rounded-md bg-signal px-5 py-3 text-sm font-medium text-ink hover:bg-signal-deep"
+      >{t.home.final_cta}</a>
+    </div>
+  </section>
+</Layout>
