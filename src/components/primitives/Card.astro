@@ -1,11 +1,18 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends Omit<HTMLAttributes<'div'>, 'class'> {
   variant?: 'default' | 'highlighted';
   class?: string;
   as?: 'article' | 'div' | 'section';
-  id?: string;
 }
-const { variant = 'default', class: extra = '', as: Tag = 'div', id } = Astro.props;
+
+const {
+  variant = 'default',
+  class: extra = '',
+  as: Tag = 'div',
+  ...rest
+} = Astro.props;
 
 const variants: Record<NonNullable<Props['variant']>, string> = {
   default: 'border border-line-strong bg-ink-3/40',
@@ -19,4 +26,4 @@ const cls = [
 ].filter(Boolean).join(' ');
 ---
 
-<Tag id={id} class={cls}><slot /></Tag>
+<Tag class={cls} {...rest}><slot /></Tag>

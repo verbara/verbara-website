@@ -3,6 +3,7 @@ import process from 'node:process';
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // Cloudflare Turnstile site key — PUBLIC, safe to commit. Embedded in
 // client-side HTML on /developer-license/, anyone can read it via view-source.
@@ -25,6 +26,8 @@ export default defineConfig({
       redirectToDefaultLocale: false,
     },
   },
+
+  integrations: [sitemap()],
 
   vite: {
     define: {
