@@ -87,3 +87,9 @@ The brainstorming session that produced this ADR evaluated 21 distinct moves acr
 (append-only; do not modify the original ADR text above)
 
 - **2026-05-10**: ADR Accepted. Phase F spec drafted at `docs/specs/2026-05-10-website-phase-f-hub-and-spoke.md`. Implementation plan to follow.
+- **2026-05-10**: Phase F shipped. Home reframed (CC anti-pos
+  relocated to Spoke 1, Solutions overview added). 4 use-case spokes
+  + index live in 3 locales. Pricing surface gained Mejor para
+  mapping. ~210 i18n keys added (parity at 457 × 3 locales). 104 E2E
+  cases on chromium (was 27 pre-F.5). Lighthouse thresholds preserved
+  on 11 URLs.

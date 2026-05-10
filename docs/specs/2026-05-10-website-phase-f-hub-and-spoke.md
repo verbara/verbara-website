@@ -1,6 +1,6 @@
 # Verbara.io — Phase F: Hub-and-Spoke Architecture
 
-**Status:** Draft for review
+**Status:** Shipped (2026-05-10)
 **Date:** 2026-05-10
 **Owner:** Harol A. Reina H.
 **Scope:** Reframe `verbara.io` from single-narrative ("contact center") into a hub-and-spoke architecture that surfaces the broader product surface (Voice AI, omnichannel, programmable telephony) without diluting the operator-first audience.
