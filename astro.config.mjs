@@ -1,19 +1,17 @@
 // @ts-check
+import process from 'node:process';
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
-//
-// Phase 1 stack:
-//   - Astro 6.3 static output
-//   - Tailwind v4.3 via @tailwindcss/vite (v4.2 had a tsconfigPaths incompat)
-//   - i18n routing for es-419 (default, no prefix) + en-US + pt-BR
-//   - trailingSlash: 'always' to match Cloudflare Pages convention and avoid
-//     a 307 redirect hop on every navigation
-//
-// @astrojs/cloudflare adapter is added in Phase 3 (Pages Functions for the
-// Tier 0.5 license-issuer endpoint).
+// Cloudflare Turnstile site key — PUBLIC, safe to commit. Embedded in
+// client-side HTML on /developer-license/, anyone can read it via view-source.
+// Hardcoded here as the source of truth so every build path (local
+// `npm run deploy`, Cloudflare Workers Builds auto-build, fresh `npm run dev`
+// without secrets.env) gets the same value. Override via `process.env` below
+// only if a future environment needs a different tenant key (e.g. staging).
+const TURNSTILE_SITE_KEY_DEFAULT = '0x4AAAAAAADMEJaEtXMri3zFa';
+
 export default defineConfig({
   site: 'https://verbara.io',
   output: 'static',
@@ -29,6 +27,11 @@ export default defineConfig({
   },
 
   vite: {
+    define: {
+      'import.meta.env.PUBLIC_TURNSTILE_SITE_KEY': JSON.stringify(
+        process.env.PUBLIC_TURNSTILE_SITE_KEY ?? TURNSTILE_SITE_KEY_DEFAULT,
+      ),
+    },
     plugins: [tailwindcss()],
   },
 });
