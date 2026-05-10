@@ -805,7 +805,7 @@ const es_419: Messages = {
   usecases: {
     index_eyebrow: 'Soluciones',
     index_h1_pre: 'Un runtime,',
-    index_h1_accent: 'cuatro shapes.',
+    index_h1_accent: 'cuatro formas.',
     index_sub: 'El mismo motor open-core sirve cuatro use-cases distintos. Elige el que coincide con cómo operas.',
 
     cc_index_eyebrow: 'Voz humana',
@@ -1418,7 +1418,7 @@ const en_US: Messages = {
     voiceai_ap_row_2: 'Full self-host',
     voiceai_ap_row_3: 'Asterisk-native (no SIP gymnastics)',
     voiceai_ap_row_4: 'Multi-tenant',
-    voiceai_ap_row_5: '6 STT + 6 TTS swappable',
+    voiceai_ap_row_5: '6 STT + 6 TTS swappables',
     voiceai_ap_row_6: 'OpenAI Realtime bridge',
     voiceai_ap_row_7: 'Smart Turn + barge-in',
     voiceai_cp_eyebrow: 'Read the code',
