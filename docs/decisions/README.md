@@ -49,3 +49,4 @@ The decision, stated in one or two sentences.
 ## Catalog
 
 - [ADR-0001](0001-marketing-site-stack.md) — Marketing Site Stack: Astro + Cloudflare + Resend ($0 baseline) (Accepted, 2026-05-09)
+- [ADR-0002](0002-hub-and-spoke-architecture.md) — Hub-and-Spoke Marketing Site Architecture (Accepted, 2026-05-10)
