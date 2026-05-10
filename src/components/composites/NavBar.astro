@@ -9,6 +9,14 @@ const t = getMessages(locale);
 
 const localeLabel = (l: typeof LOCALES[number]) =>
   l === 'es-419' ? 'ES' : l === 'en-US' ? 'EN' : 'PT';
+
+const spokes = [
+  { label: t.nav.solutions_cc,           href: localiseHref('use-cases/contact-center', locale) },
+  { label: t.nav.solutions_voiceai,      href: localiseHref('use-cases/voice-ai', locale) },
+  { label: t.nav.solutions_omnichannel,  href: localiseHref('use-cases/omnichannel', locale) },
+  { label: t.nav.solutions_cpaas,        href: localiseHref('use-cases/cpaas', locale) },
+];
+const allSolutionsHref = localiseHref('use-cases', locale);
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur-md">
@@ -25,7 +33,40 @@ const localeLabel = (l: typeof LOCALES[number]) =>
     </a>
 
     <nav aria-label="Primary" class="hidden md:flex items-center gap-7 text-sm text-bone-2">
-      <a href={`${localiseHref('', locale)}#how-it-works`} class="hover:text-bone">{t.nav.product ?? 'Product'}</a>
+      <div class="relative" data-nav-dropdown="solutions">
+        <button
+          type="button"
+          id="nav-solutions-toggle"
+          class="flex items-center gap-1 hover:text-bone"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="nav-solutions-panel"
+        >
+          {t.nav.solutions}
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M2 3.5 L5 6.5 L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div
+          id="nav-solutions-panel"
+          class="hidden absolute left-0 top-full mt-2 min-w-56 rounded-lg border border-line-strong bg-ink-3 py-2 shadow-lg"
+          role="menu"
+        >
+          {spokes.map((s) => (
+            <a
+              href={s.href}
+              role="menuitem"
+              class="block px-4 py-2 text-sm text-bone-2 hover:bg-ink-2 hover:text-bone"
+            >{s.label}</a>
+          ))}
+          <div class="my-1 border-t border-line"></div>
+          <a
+            href={allSolutionsHref}
+            role="menuitem"
+            class="block px-4 py-2 text-sm font-medium text-signal hover:bg-ink-2"
+          >{t.nav.solutions_all}</a>
+        </div>
+      </div>
       <a href={localiseHref('pricing', locale)} class="hover:text-bone">{t.nav.pricing}</a>
       <a href={localiseHref('developer-license', locale)} class="hover:text-bone">{t.nav.developer_license}</a>
       <a href="https://github.com/verbara" class="hover:text-bone">{t.nav.github}</a>
@@ -63,7 +104,20 @@ const localeLabel = (l: typeof LOCALES[number]) =>
     class="md:hidden hidden border-t border-line bg-ink"
   >
     <nav aria-label="Mobile" class="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-3 text-sm">
-      <a href={`${localiseHref('', locale)}#how-it-works`} class="text-bone-2 hover:text-bone">{t.nav.product ?? 'Product'}</a>
+      <details data-mobile-solutions>
+        <summary class="text-bone-2 hover:text-bone cursor-pointer flex items-center justify-between py-1">
+          {t.nav.solutions}
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M2 3.5 L5 6.5 L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="mt-2 ml-2 flex flex-col gap-2 border-l border-line pl-3">
+          {spokes.map((s) => (
+            <a href={s.href} class="text-bone-2 hover:text-bone text-sm">{s.label}</a>
+          ))}
+          <a href={allSolutionsHref} class="text-signal hover:text-signal-deep text-sm font-medium">{t.nav.solutions_all}</a>
+        </div>
+      </details>
       <a href={localiseHref('pricing', locale)} class="text-bone-2 hover:text-bone">{t.nav.pricing}</a>
       <a href={localiseHref('developer-license', locale)} class="text-bone-2 hover:text-bone">{t.nav.developer_license}</a>
       <a href="https://github.com/verbara" class="text-bone-2 hover:text-bone">{t.nav.github}</a>
@@ -72,6 +126,7 @@ const localeLabel = (l: typeof LOCALES[number]) =>
 </header>
 
 <script>
+  // Mobile menu toggle (unchanged)
   const toggle = document.getElementById('nav-mobile-toggle');
   const panel = document.getElementById('nav-mobile-panel');
   if (toggle && panel) {
@@ -79,6 +134,29 @@ const localeLabel = (l: typeof LOCALES[number]) =>
       const open = panel.classList.toggle('hidden') === false;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  }
+
+  // Desktop solutions dropdown
+  const dropdownToggle = document.getElementById('nav-solutions-toggle');
+  const dropdownPanel = document.getElementById('nav-solutions-panel');
+  if (dropdownToggle && dropdownPanel) {
+    const setOpen = (open: boolean) => {
+      dropdownPanel.classList.toggle('hidden', !open);
+      dropdownToggle.setAttribute('aria-expanded', String(open));
+    };
+    dropdownToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdownPanel.classList.contains('hidden');
+      setOpen(!isOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!dropdownPanel.contains(e.target as Node) && e.target !== dropdownToggle) {
+        setOpen(false);
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
     });
   }
 </script>

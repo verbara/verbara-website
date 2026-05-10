@@ -7,8 +7,8 @@ const t = getMessages(locale);
 ---
 
 <footer class="border-t border-line mt-12 bg-ink-2">
-  <div class="mx-auto max-w-7xl px-6 py-12 grid gap-10 md:grid-cols-4">
-    <div class="space-y-3 md:col-span-1">
+  <div class="mx-auto max-w-7xl px-6 py-12 grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+    <div class="space-y-3 md:col-span-2 lg:col-span-1">
       <a href={localiseHref('', locale)} class="font-bold text-lg text-bone hover:text-signal">
         Verbara<sup class="text-xs opacity-60 ml-0.5">™</sup>
       </a>
@@ -16,11 +16,23 @@ const t = getMessages(locale);
     </div>
 
     <div class="space-y-3">
-      <p class="text-xs font-mono uppercase tracking-wider text-bone-2">{t.footer.column_product}</p>
+      <p class="text-xs font-mono uppercase tracking-wider text-bone-2">{t.footer.column_stack}</p>
       <ul class="space-y-2 text-sm text-bone-2">
         <li><a href={localiseHref('pricing', locale)} class="hover:text-bone">{t.nav.pricing}</a></li>
         <li><a href={localiseHref('developer-license', locale)} class="hover:text-bone">{t.nav.developer_license}</a></li>
         <li><a href="https://github.com/verbara/Verbara.Sdk" class="hover:text-bone">SDK (MIT)</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xs uppercase tracking-wider font-mono text-signal mb-3">
+        {t.footer.column_solutions}
+      </h3>
+      <ul class="space-y-2 text-sm text-bone-2">
+        <li><a href={localiseHref('use-cases/contact-center', locale)} class="hover:text-bone">{t.footer.solutions_cc}</a></li>
+        <li><a href={localiseHref('use-cases/voice-ai', locale)} class="hover:text-bone">{t.footer.solutions_voiceai}</a></li>
+        <li><a href={localiseHref('use-cases/omnichannel', locale)} class="hover:text-bone">{t.footer.solutions_omnichannel}</a></li>
+        <li><a href={localiseHref('use-cases/cpaas', locale)} class="hover:text-bone">{t.footer.solutions_cpaas}</a></li>
       </ul>
     </div>
 
