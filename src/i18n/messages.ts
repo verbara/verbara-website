@@ -210,6 +210,37 @@ export interface Messages {
     tier_5_f2: string;
     tier_5_f3: string;
     tier_5_f4: string;
+    // Phase C — pricing redesign
+    hero_h1: string;
+    hero_sub: string;
+
+    group_free_label: string;
+    group_self_label: string;
+    group_managed_label: string;
+
+    matrix_eyebrow: string;
+    matrix_h2: string;
+
+    matrix_feat_oss_source: string;
+    matrix_feat_pro_features: string;
+    matrix_feat_multitenant: string;
+    matrix_feat_clustering: string;
+    matrix_feat_hosted: string;
+    matrix_feat_sla: string;
+    matrix_feat_support: string;
+    matrix_feat_max_agents: string;
+    matrix_feat_audit_retention: string;
+    matrix_feat_whitelabel: string;
+
+    matrix_support_community: string;
+    matrix_support_dedicated: string;
+
+    faq_q1: string;
+    faq_a1: string;
+    faq_q2: string;
+    faq_a2: string;
+    faq_q3: string;
+    faq_a3: string;
   };
   developer_license: {
     title: string;
@@ -461,6 +492,36 @@ const es_419: Messages = {
     tier_5_f2: 'Theming personalizado + eliminación de marca',
     tier_5_f3: 'Acuerdo de reventa',
     tier_5_f4: 'Soporte de partner Tier-2',
+    hero_h1: 'Elige el tier que coincide con cómo operas.',
+    hero_sub: 'Gratis para evaluar. Self-host con licencia cuando shipees. Gestionado cuando prefieras no operarlo tú.',
+
+    group_free_label: 'Gratis · evaluadores · usuarios OSS',
+    group_self_label: 'Self-host · pago anual',
+    group_managed_label: 'SaaS gestionado · contact sales',
+
+    matrix_eyebrow: 'Comparar features',
+    matrix_h2: 'Cada feature, cada tier — sin asteriscos.',
+
+    matrix_feat_oss_source: 'SDK + Platform open-source',
+    matrix_feat_pro_features: 'Features Pro',
+    matrix_feat_multitenant: 'Multi-tenant',
+    matrix_feat_clustering: 'Clustering / multi-clúster',
+    matrix_feat_hosted: 'Hospedado por Verbara',
+    matrix_feat_sla: 'SLA',
+    matrix_feat_support: 'Soporte',
+    matrix_feat_max_agents: 'Agentes máximos',
+    matrix_feat_audit_retention: 'Retención de audit log',
+    matrix_feat_whitelabel: 'White-label / OEM',
+
+    matrix_support_community: 'community',
+    matrix_support_dedicated: 'dedicado',
+
+    faq_q1: '¿Puedo subir o bajar de tier?',
+    faq_a1: 'Sí, en cualquier momento. Las features se ajustan al cambio del tier; los datos y configuración persisten. Para tiers self-host, el upgrade desbloquea features Pro adicionales en tu instalación; para SaaS gestionado, ajustamos el plan en la próxima factura prorrateada.',
+    faq_q2: '¿Hay descuento anual?',
+    faq_a2: 'Tiers self-host (1, 2) ya están facturados anualmente — no hay versión mensual. Tiers SaaS (3, 4) facturan mensual por defecto; commit anual con prepago da 15% de descuento. Tier 5 (white-label/OEM) negocia caso a caso.',
+    faq_q3: '¿Ofrecen descuento académico o non-profit?',
+    faq_a3: 'Sí. Organizaciones non-profit registradas y universidades acreditadas obtienen 50% de descuento en cualquier tier comercial. Manda licencia + comprobante a licensing@verbara.io.',
   },
   developer_license: {
     title: 'Licencia gratuita de Pro Developer',
@@ -715,6 +776,36 @@ const en_US: Messages = {
     tier_5_f2: 'Custom theming + branding removal',
     tier_5_f3: 'Reseller agreement',
     tier_5_f4: 'Tier-2 partner support',
+    hero_h1: 'Pick the tier that matches how you operate.',
+    hero_sub: 'Free to evaluate. Self-host with a license when you ship. Managed when you would rather not run it.',
+
+    group_free_label: 'Free · evaluators · OSS users',
+    group_self_label: 'Self-host · pay-once-per-year',
+    group_managed_label: 'Managed SaaS · contact sales',
+
+    matrix_eyebrow: 'Compare features',
+    matrix_h2: 'Every feature, every tier — no asterisks.',
+
+    matrix_feat_oss_source: 'SDK + Platform open-source',
+    matrix_feat_pro_features: 'Pro feature set',
+    matrix_feat_multitenant: 'Multi-tenant',
+    matrix_feat_clustering: 'Clustering / multi-cluster',
+    matrix_feat_hosted: 'Hosted by Verbara',
+    matrix_feat_sla: 'SLA',
+    matrix_feat_support: 'Support',
+    matrix_feat_max_agents: 'Maximum agents',
+    matrix_feat_audit_retention: 'Audit log retention',
+    matrix_feat_whitelabel: 'White-label / OEM rights',
+
+    matrix_support_community: 'community',
+    matrix_support_dedicated: 'dedicated',
+
+    faq_q1: 'Can I upgrade or downgrade tiers?',
+    faq_a1: 'Yes, anytime. Features adjust to match the tier change; data and config persist. For self-host tiers, an upgrade unlocks additional Pro features in your installation; for managed SaaS, we prorate the next invoice.',
+    faq_q2: 'Is there an annual discount?',
+    faq_a2: 'Self-host tiers (1, 2) are already billed annually — there is no monthly version. Managed SaaS tiers (3, 4) bill monthly by default; an annual commit with prepayment gets 15% off. Tier 5 (white-label/OEM) is case-by-case.',
+    faq_q3: 'Do you offer a non-profit or academic discount?',
+    faq_a3: 'Yes. Registered non-profits and accredited universities get 50% off any commercial tier. Send your license proof + organization paperwork to licensing@verbara.io.',
   },
   developer_license: {
     title: 'Free Pro Developer license',
@@ -969,6 +1060,36 @@ const pt_BR: Messages = {
     tier_5_f2: 'Theming personalizado + remoção de marca',
     tier_5_f3: 'Acordo de revenda',
     tier_5_f4: 'Suporte de partner Tier-2',
+    hero_h1: 'Escolha o tier que combina com como você opera.',
+    hero_sub: 'Grátis para avaliar. Self-host com licença quando shipar. Gerenciado quando preferir não rodar você.',
+
+    group_free_label: 'Grátis · avaliadores · usuários OSS',
+    group_self_label: 'Self-host · pagamento anual',
+    group_managed_label: 'SaaS gerenciado · contact sales',
+
+    matrix_eyebrow: 'Comparar features',
+    matrix_h2: 'Cada feature, cada tier — sem asteriscos.',
+
+    matrix_feat_oss_source: 'SDK + Platform open-source',
+    matrix_feat_pro_features: 'Features Pro',
+    matrix_feat_multitenant: 'Multi-tenant',
+    matrix_feat_clustering: 'Clustering / multi-cluster',
+    matrix_feat_hosted: 'Hospedado pela Verbara',
+    matrix_feat_sla: 'SLA',
+    matrix_feat_support: 'Suporte',
+    matrix_feat_max_agents: 'Agentes máximos',
+    matrix_feat_audit_retention: 'Retenção de audit log',
+    matrix_feat_whitelabel: 'White-label / OEM',
+
+    matrix_support_community: 'community',
+    matrix_support_dedicated: 'dedicado',
+
+    faq_q1: 'Posso subir ou descer de tier?',
+    faq_a1: 'Sim, a qualquer momento. As features se ajustam à mudança de tier; dados e configuração persistem. Para tiers self-host, o upgrade desbloqueia features Pro adicionais na sua instalação; para SaaS gerenciado, ajustamos o plano no próximo faturamento prorrateado.',
+    faq_q2: 'Tem desconto anual?',
+    faq_a2: 'Tiers self-host (1, 2) já são faturados anualmente — não tem versão mensal. Tiers SaaS (3, 4) faturam mensal por padrão; commit anual com pré-pagamento ganha 15% de desconto. Tier 5 (white-label/OEM) é negociado caso a caso.',
+    faq_q3: 'Oferecem desconto acadêmico ou non-profit?',
+    faq_a3: 'Sim. Organizações non-profit registradas e universidades credenciadas têm 50% de desconto em qualquer tier comercial. Envie comprovante da licença + documentação da organização para licensing@verbara.io.',
   },
   developer_license: {
     title: 'Licença gratuita de Pro Developer',
