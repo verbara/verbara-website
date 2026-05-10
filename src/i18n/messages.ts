@@ -455,7 +455,7 @@ const es_419: Messages = {
     tier_05_tagline: 'Todas las funciones Pro en modo WarnOnly. Auto-emitida.',
     tier_05_f1: 'Todas las funciones Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nodo',
-    tier_05_f3: '30 días renovables gratis',
+    tier_05_f3: '60 días renovables gratis',
     tier_05_f4: 'WarnOnly (nunca bloquea)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / año',
@@ -526,7 +526,7 @@ const es_419: Messages = {
   developer_license: {
     title: 'Licencia gratuita de Pro Developer',
     subtitle:
-      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 30 días.',
+      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 60 días.',
     coming_soon_title: 'Auto-servicio próximamente',
     coming_soon_body:
       'El portal de auto-emisión Tier 0.5 entra en línea con nuestro lanzamiento público. Mientras tanto, escribe a licensing@verbara.io para recibir una licencia de developer emitida manualmente — usualmente respondemos en menos de 24 horas.',
@@ -558,7 +558,7 @@ const es_419: Messages = {
     what_you_get_title: 'Qué incluye',
     what_you_get_agents: 'Hasta 5 agentes concurrentes',
     what_you_get_node: '1 nodo de clúster',
-    what_you_get_duration: 'Licencia de 30 días, renovación gratuita',
+    what_you_get_duration: 'Licencia de 60 días, renovación gratuita',
     what_you_get_features:
       'Todas las funciones Pro (multi-tenant, analítica, marcador, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloquea tu aplicación',
@@ -739,7 +739,7 @@ const en_US: Messages = {
     tier_05_tagline: 'All Pro features in WarnOnly mode. Auto-issued.',
     tier_05_f1: 'All Pro features unlocked',
     tier_05_f2: '≤5 agents · ≤1 node',
-    tier_05_f3: '30-day rolling, free renewal',
+    tier_05_f3: '60-day rolling, free renewal',
     tier_05_f4: 'WarnOnly (never blocks)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5,000 / yr',
@@ -810,7 +810,7 @@ const en_US: Messages = {
   developer_license: {
     title: 'Free Pro Developer license',
     subtitle:
-      'Evaluate the full Verbara Pro feature set with no sales contact. 30-day rolling renewal.',
+      'Evaluate the full Verbara Pro feature set with no sales contact. 60-day rolling renewal.',
     coming_soon_title: 'Self-service coming soon',
     coming_soon_body:
       'The Tier 0.5 self-issue portal launches with our public release. In the meantime, email licensing@verbara.io to receive a manually-issued developer license — we usually respond within 24 hours.',
@@ -842,7 +842,7 @@ const en_US: Messages = {
     what_you_get_title: "What's included",
     what_you_get_agents: 'Up to 5 concurrent agents',
     what_you_get_node: '1 cluster node',
-    what_you_get_duration: '30-day license, free renewal',
+    what_you_get_duration: '60-day license, free renewal',
     what_you_get_features:
       'All Pro features (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Runs in WarnOnly mode — never blocks your application',
@@ -1023,7 +1023,7 @@ const pt_BR: Messages = {
     tier_05_tagline: 'Todas as funcionalidades Pro em modo WarnOnly. Autoemitida.',
     tier_05_f1: 'Todas as funcionalidades Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nó',
-    tier_05_f3: '30 dias renováveis grátis',
+    tier_05_f3: '60 dias renováveis grátis',
     tier_05_f4: 'WarnOnly (nunca bloqueia)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / ano',
@@ -1094,7 +1094,7 @@ const pt_BR: Messages = {
   developer_license: {
     title: 'Licença gratuita de Pro Developer',
     subtitle:
-      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 30 dias.',
+      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 60 dias.',
     coming_soon_title: 'Autoatendimento em breve',
     coming_soon_body:
       'O portal de autoemissão Tier 0.5 entra no ar com nosso lançamento público. Enquanto isso, escreva para licensing@verbara.io para receber uma licença de developer emitida manualmente — geralmente respondemos em menos de 24 horas.',
@@ -1126,7 +1126,7 @@ const pt_BR: Messages = {
     what_you_get_title: 'O que está incluído',
     what_you_get_agents: 'Até 5 agentes simultâneos',
     what_you_get_node: '1 nó de cluster',
-    what_you_get_duration: 'Licença de 30 dias, renovação gratuita',
+    what_you_get_duration: 'Licença de 60 dias, renovação gratuita',
     what_you_get_features:
       'Todas as funcionalidades Pro (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloqueia seu aplicativo',
