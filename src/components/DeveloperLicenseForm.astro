@@ -186,14 +186,16 @@ const stateStrings = {
 {
   formEnabled && (
     <Fragment>
-      <output
+      <div
         id="devlic-success"
+        role="status"
+        aria-live="polite"
         class="hidden block rounded-lg border border-success/30 bg-success/10 p-6 mt-6"
         data-testid="devlic-success"
       >
         <h2 class="text-base font-semibold">{t.developer_license.state_success_title}</h2>
         <p id="devlic-success-body" class="mt-2 text-sm leading-relaxed"></p>
-      </output>
+      </div>
 
       <script
         is:inline
