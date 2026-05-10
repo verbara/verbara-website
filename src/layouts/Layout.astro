@@ -27,17 +27,45 @@ const pageDescription = description ?? t.meta.site_description;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
     <meta name="theme-color" content="#0a1628" />
+
+    <!-- Favicon set -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
     <title>{pageTitle}</title>
+
+    <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={`https://verbara.io${Astro.url.pathname}`} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={locale} />
+    <meta property="og:site_name" content="Verbara" />
+    <meta property="og:image" content="https://verbara.io/og/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Verbara — open-core, Asterisk-native CCaaS" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content="https://verbara.io/og/og-default.png" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- hreflang -->
     {LOCALES.filter((l) => l !== locale).map((l) => (
       <link rel="alternate" hreflang={l} href={`https://verbara.io${localiseHref(route, l)}`} />
     ))}
     <link rel="alternate" hreflang="x-default" href={`https://verbara.io${localiseHref(route, 'es-419')}`} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={`https://verbara.io${Astro.url.pathname}`} />
   </head>
   <body class="min-h-screen flex flex-col">
     <NavBar />
