@@ -96,11 +96,11 @@ const tierIds: TierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_3', 't
         <table class="w-full text-sm">
           <thead class="bg-ink-3">
             <tr>
-              <th class="text-left px-3 py-3 font-mono text-xs uppercase tracking-wider text-bone-3 sticky left-0 bg-ink-3 min-w-[10rem]">
+              <th scope="col" class="text-left px-3 py-3 font-mono text-xs uppercase tracking-wider text-bone-3 sticky left-0 bg-ink-3 min-w-[10rem]">
                 &nbsp;
               </th>
               {tierIds.map((id) => (
-                <th class="text-left px-3 py-3 font-medium text-bone whitespace-nowrap">
+                <th scope="col" class="text-left px-3 py-3 font-medium text-bone whitespace-nowrap">
                   <div class="flex flex-col gap-0.5">
                     <span class="text-sm">{t.pricing[`${id}_name` as const]}</span>
                     <span class="text-xs font-mono text-amber">{t.pricing[`${id}_price` as const]}</span>
