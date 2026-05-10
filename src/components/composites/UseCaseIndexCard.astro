@@ -1,0 +1,31 @@
+---
+import Card from '../primitives/Card.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  sub: string;
+  caps: [string, string, string];
+  cta: string;
+  href: string;
+  slug: string;
+}
+const { eyebrow, title, sub, caps, cta, href, slug } = Astro.props;
+---
+
+<Card as="article" class="h-full flex flex-col" data-spoke-card={slug}>
+  <p class="text-xs uppercase tracking-wider font-mono text-signal mb-2">{eyebrow}</p>
+  <h2 class="text-2xl font-semibold mb-3">{title}</h2>
+  <p class="text-sm text-bone-2 mb-4">{sub}</p>
+  <ul class="text-xs font-mono text-bone-3 space-y-1 mb-6 flex-1">
+    {caps.map((c) => (
+      <li class="flex items-start gap-2">
+        <span aria-hidden="true">·</span>
+        <span>{c}</span>
+      </li>
+    ))}
+  </ul>
+  <a href={href} class="text-sm font-medium text-signal hover:text-signal-deep" data-spoke-cta={slug}>
+    {cta}
+  </a>
+</Card>

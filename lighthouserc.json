@@ -8,7 +8,12 @@
         "http://localhost/pt-BR/index.html",
         "http://localhost/pricing/index.html",
         "http://localhost/en-US/pricing/index.html",
-        "http://localhost/developer-license/index.html"
+        "http://localhost/developer-license/index.html",
+        "http://localhost/use-cases/index.html",
+        "http://localhost/use-cases/contact-center/index.html",
+        "http://localhost/use-cases/voice-ai/index.html",
+        "http://localhost/use-cases/omnichannel/index.html",
+        "http://localhost/use-cases/cpaas/index.html"
       ],
       "settings": {
         "preset": "desktop",

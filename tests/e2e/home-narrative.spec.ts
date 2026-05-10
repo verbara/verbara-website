@@ -5,7 +5,7 @@ const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];
 for (const prefix of LOCALE_PREFIXES) {
   const url = `${prefix}/`;
 
-  test(`home narrative: all 7 sections render at ${url}`, async ({ page }) => {
+  test(`home narrative: all sections render at ${url}`, async ({ page }) => {
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     // Hero — eyebrow badge text is locale-independent
@@ -14,10 +14,14 @@ for (const prefix of LOCALE_PREFIXES) {
     // Hero — single H1 visible
     await expect(page.locator('h1').first()).toBeVisible();
 
-    // Anti-positioning — table with 4 columns + 6 rows + Verbara header
-    await expect(page.locator('text=Verbara').first()).toBeVisible();
-    const tableRows = await page.locator('section table tbody tr').count();
-    expect(tableRows).toBeGreaterThanOrEqual(6);
+    // Solutions overview (Phase F replaces CC anti-pos)
+    const solutionsSection = page.locator('[data-section="solutions-overview"]');
+    await expect(solutionsSection).toBeVisible();
+    const spokeCards = solutionsSection.locator('[data-spoke]');
+    await expect(spokeCards).toHaveCount(4);
+    for (const slug of ['cc', 'voiceai', 'omnichannel', 'cpaas']) {
+      await expect(solutionsSection.locator(`[data-spoke="${slug}"]`)).toBeVisible();
+    }
 
     // ArchitectureDiagram — accessible SVG with title
     await expect(page.locator('svg[role="img"][aria-labelledby*="archdiag"]')).toBeVisible();
@@ -36,6 +40,23 @@ for (const prefix of LOCALE_PREFIXES) {
     // FinalCta — closing CTA links to developer-license
     const finalCta = page.locator('section').last().locator('a[href*="developer-license"]');
     await expect(finalCta).toBeVisible();
+  });
+
+  test(`home narrative: solutions cards link to spokes at ${url}`, async ({ page }) => {
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+
+    const expectedHrefs: Record<string, string> = {
+      cc:           `${prefix}/use-cases/contact-center/`,
+      voiceai:      `${prefix}/use-cases/voice-ai/`,
+      omnichannel:  `${prefix}/use-cases/omnichannel/`,
+      cpaas:        `${prefix}/use-cases/cpaas/`,
+    };
+
+    for (const [slug, expectedHref] of Object.entries(expectedHrefs)) {
+      const cta = page.locator(`[data-spoke-cta="${slug}"]`);
+      await expect(cta).toBeVisible();
+      await expect(cta).toHaveAttribute('href', expectedHref);
+    }
   });
 
   test(`home narrative: FAQ accordion toggles at ${url}`, async ({ page }) => {

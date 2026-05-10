@@ -26,6 +26,7 @@ const t = getMessages(locale);
       <div class="space-y-3 text-center max-w-3xl mx-auto">
         <Heading level={1} align="center">{t.pricing.hero_h1}</Heading>
         <p class="text-lg text-bone-2 text-balance">{t.pricing.hero_sub}</p>
+        <p class="text-base text-bone-3 max-w-2xl mx-auto">{t.pricing.subtitle_2}</p>
       </div>
     </Container>
   </Section>
@@ -37,25 +38,25 @@ const t = getMessages(locale);
           label={t.pricing.group_free_label}
           anchorId="group-free"
           tiers={[
-            { tierId: 'tier_0', cta: 'community' },
-            { tierId: 'tier_05', cta: 'developer', badge: 'evaluators' },
+            { tierId: 'tier_0', cta: 'community', bestFor: t.pricing.best_for_t0 },
+            { tierId: 'tier_05', cta: 'developer', badge: 'evaluators', bestFor: t.pricing.best_for_t0_5 },
           ]}
         />
         <TierGroup
           label={t.pricing.group_self_label}
           anchorId="group-self"
           tiers={[
-            { tierId: 'tier_1', cta: 'buy' },
-            { tierId: 'tier_2', cta: 'buy', badge: 'popular' },
+            { tierId: 'tier_1', cta: 'buy', bestFor: t.pricing.best_for_t1 },
+            { tierId: 'tier_2', cta: 'buy', badge: 'popular', bestFor: t.pricing.best_for_t2 },
           ]}
         />
         <TierGroup
           label={t.pricing.group_managed_label}
           anchorId="group-managed"
           tiers={[
-            { tierId: 'tier_3', cta: 'sales' },
-            { tierId: 'tier_4', cta: 'sales' },
-            { tierId: 'tier_5', cta: 'sales' },
+            { tierId: 'tier_3', cta: 'sales', bestFor: t.pricing.best_for_t3 },
+            { tierId: 'tier_4', cta: 'sales', bestFor: t.pricing.best_for_t4 },
+            { tierId: 'tier_5', cta: 'sales', bestFor: t.pricing.best_for_t5 },
           ]}
         />
       </div>

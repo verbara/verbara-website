@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import UseCaseHero from '../../components/composites/UseCaseHero.astro';
+import SpokeAntiPositioning from '../../components/composites/SpokeAntiPositioning.astro';
+import ArchitectureDiagram from '../../components/composites/ArchitectureDiagram.astro';
+import SpokeCodeProof from '../../components/composites/SpokeCodeProof.astro';
+import Faq from '../../components/composites/Faq.astro';
+import SpokePricingPointer from '../../components/composites/SpokePricingPointer.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const apRows = [
+  { label: t.usecases.cc_ap_row_1, verbara: '✓ MIT + Apache',  a: '✗ closed cloud',     b: '✓',                  c: '✓' },
+  { label: t.usecases.cc_ap_row_2, verbara: '✓',                a: '✗ or restricted',    b: '✓ entirely DIY',     c: '✓' },
+  { label: t.usecases.cc_ap_row_3, verbara: '✓',                a: '✓',                  b: '✗',                  c: '✗' },
+  { label: t.usecases.cc_ap_row_4, verbara: '✓ native',         a: '✓ proprietary',      b: '✗',                  c: '✗' },
+  { label: t.usecases.cc_ap_row_5, verbara: '✓ Pro',            a: '✓ enterprise',       b: '✗',                  c: 'partial' },
+  { label: t.usecases.cc_ap_row_6, verbara: '✓ Pro',            a: '✓ enterprise',       b: '✗',                  c: '✗' },
+  { label: t.usecases.cc_ap_row_7, verbara: '✓',                a: 'translated',         b: 'n/a',                c: 'community-translated' },
+];
+
+const codeSample = `using Verbara.Platform.Api;
+using Verbara.Sdk.Pro.Licensing;
+using Verbara.Sdk.Pro.MultiTenant;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services
+  .AddVerbaraPlatform()
+  .AddPro(opts => {
+    opts.LicenseFile = "/etc/verbara/license.lic";
+    opts.EnableMultiTenant();
+    opts.EnableCallAnalytics();
+    opts.EnableAgentAssist();
+  });
+
+var app = builder.Build();
+app.MapVerbaraPlatform();
+await app.RunAsync();`;
+---
+
+<Layout>
+  <UseCaseHero
+    eyebrow={t.usecases.cc_hero_eyebrow}
+    h1Pre={t.usecases.cc_hero_h1_pre}
+    h1Accent={t.usecases.cc_hero_h1_accent}
+    sub={t.usecases.cc_hero_sub}
+    ctaPrimary={t.usecases.cc_hero_cta_primary}
+    ctaPrimaryHref={localiseHref('developer-license', locale)}
+    ctaSecondary={t.usecases.cc_hero_cta_secondary}
+    ctaSecondaryHref={`${localiseHref('pricing', locale)}#group-self`}
+  />
+
+  <SpokeAntiPositioning
+    eyebrow={t.usecases.cc_ap_eyebrow}
+    heading={t.usecases.cc_ap_h2}
+    sub={t.usecases.cc_ap_sub}
+    colVerbara={t.usecases.cc_ap_col_verbara}
+    colA={t.usecases.cc_ap_col_a}
+    colB={t.usecases.cc_ap_col_b}
+    colC={t.usecases.cc_ap_col_c}
+    rows={apRows}
+  />
+
+  <ArchitectureDiagram />
+
+  <SpokeCodeProof
+    eyebrow={t.usecases.cc_cp_eyebrow}
+    heading={t.usecases.cc_cp_h2}
+    filename={t.usecases.cc_cp_filename}
+    caption={t.usecases.cc_cp_caption}
+    code={codeSample}
+  />
+
+  <Faq
+    eyebrow={t.usecases.cc_faq_eyebrow}
+    heading={t.usecases.cc_faq_h2}
+    items={[
+      { q: t.usecases.cc_faq_q1, a: t.usecases.cc_faq_a1 },
+      { q: t.usecases.cc_faq_q2, a: t.usecases.cc_faq_a2 },
+      { q: t.usecases.cc_faq_q3, a: t.usecases.cc_faq_a3 },
+    ]}
+  />
+
+  <SpokePricingPointer
+    eyebrow={t.usecases.cc_pp_eyebrow}
+    heading={t.usecases.cc_pp_h2}
+    body={t.usecases.cc_pp_body}
+    cta={t.usecases.cc_pp_cta}
+    ctaHref={localiseHref('pricing', locale)}
+  />
+
+  <section class="py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-6 text-center space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+        {t.usecases.cc_final_h2_pre} <span class="text-amber">{t.usecases.cc_final_h2_accent}</span>
+      </h2>
+      <p class="text-lg text-bone-2 text-balance">{t.usecases.cc_final_sub}</p>
+      <a
+        href={localiseHref('developer-license', locale)}
+        class="inline-flex items-center gap-2 rounded-md bg-signal px-5 py-3 text-sm font-medium text-ink hover:bg-signal-deep"
+      >{t.home.final_cta}</a>
+    </div>
+  </section>
+</Layout>

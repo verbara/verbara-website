@@ -1,12 +1,17 @@
 import { test, expect } from '@playwright/test';
 
 const PAGES = [
-  { path: '/',                       title: /Verbara/, h1: /.+/ },
-  { path: '/pricing/',               title: /Pricing|Precios|Preços|Verbara/, h1: /.+/ },
-  { path: '/developer-license/',     title: /Verbara/, h1: /.+/ },
-  { path: '/legal/eula/',            title: /Verbara/, h1: /.+/ },
-  { path: '/legal/privacy/',         title: /Verbara/, h1: /.+/ },
-  { path: '/legal/terms/',           title: /Verbara/, h1: /.+/ },
+  { path: '/',                            title: /Verbara/, h1: /.+/ },
+  { path: '/pricing/',                    title: /Pricing|Precios|Preços|Verbara/, h1: /.+/ },
+  { path: '/developer-license/',          title: /Verbara/, h1: /.+/ },
+  { path: '/legal/eula/',                 title: /Verbara/, h1: /.+/ },
+  { path: '/legal/privacy/',              title: /Verbara/, h1: /.+/ },
+  { path: '/legal/terms/',               title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/',                  title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/contact-center/',   title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/voice-ai/',         title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/omnichannel/',      title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/cpaas/',            title: /Verbara/, h1: /.+/ },
 ];
 
 const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];

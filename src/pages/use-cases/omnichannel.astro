@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import UseCaseHero from '../../components/composites/UseCaseHero.astro';
+import SpokeAntiPositioning from '../../components/composites/SpokeAntiPositioning.astro';
+import SpokeCodeProof from '../../components/composites/SpokeCodeProof.astro';
+import Faq from '../../components/composites/Faq.astro';
+import SpokePricingPointer from '../../components/composites/SpokePricingPointer.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const apRows = [
+  { label: t.usecases.omnichannel_ap_row_1, verbara: '✓ MIT + Apache',  a: '✗ closed cloud',  b: '✗ closed cloud',  c: '✓ MIT' },
+  { label: t.usecases.omnichannel_ap_row_2, verbara: '✓',                a: '✗',                b: '✗',                c: '✓' },
+  { label: t.usecases.omnichannel_ap_row_3, verbara: '✓ 11 channels',    a: '~5',               b: '~7',               c: '~5' },
+  { label: t.usecases.omnichannel_ap_row_4, verbara: '✓ direct',         a: 'via BSP',          b: 'via BSP',          c: 'via BSP' },
+  { label: t.usecases.omnichannel_ap_row_5, verbara: '✓ DAG',            a: '✗',                b: '~ flows',          c: 'basic flows' },
+  { label: t.usecases.omnichannel_ap_row_6, verbara: '✓ Pro',            a: '✓ enterprise',     b: '✓ enterprise',     c: '✗' },
+  { label: t.usecases.omnichannel_ap_row_7, verbara: '✓ native',         a: '✓ separate API',   b: '✓ separate API',   c: '✗' },
+];
+
+const codeSample = `using Verbara.Platform.Routing;
+using Verbara.Platform.Channels.WhatsApp;
+using Verbara.Platform.Channels.Sms;
+using Verbara.Platform.Channels.WebChat;
+using Verbara.Platform.Flows;
+
+routing.UseChannel<WhatsAppChannel>("whatsapp", opts => {
+  opts.WhatsAppBusinessAccountId = Env("WABA_ID");
+  opts.AccessToken = Env("WA_TOKEN");
+});
+routing.UseChannel<SmsChannel>("sms");
+routing.UseChannel<WebChatChannel>("web");
+
+routing.MapInbound("support", flow => flow
+  .Llm("classify", opts => {
+    opts.Model = "gpt-4o-mini";
+    opts.SystemPrompt = "Route to billing, technical, or general queue.";
+  })
+  .Switch("classify.label", route => route
+    .Case("billing",   q => q.ToQueue("billing"))
+    .Case("technical", q => q.ToQueue("technical"))
+    .Default(q => q.ToQueue("general"))));`;
+---
+
+<Layout>
+  <UseCaseHero
+    eyebrow={t.usecases.omnichannel_hero_eyebrow}
+    h1Pre={t.usecases.omnichannel_hero_h1_pre}
+    h1Accent={t.usecases.omnichannel_hero_h1_accent}
+    sub={t.usecases.omnichannel_hero_sub}
+    ctaPrimary={t.usecases.omnichannel_hero_cta_primary}
+    ctaPrimaryHref={localiseHref('developer-license', locale)}
+    ctaSecondary={t.usecases.omnichannel_hero_cta_secondary}
+    ctaSecondaryHref="#code-proof"
+  />
+
+  <SpokeAntiPositioning
+    eyebrow={t.usecases.omnichannel_ap_eyebrow}
+    heading={t.usecases.omnichannel_ap_h2}
+    sub={t.usecases.omnichannel_ap_sub}
+    colVerbara={t.usecases.omnichannel_ap_col_verbara}
+    colA={t.usecases.omnichannel_ap_col_a}
+    colB={t.usecases.omnichannel_ap_col_b}
+    colC={t.usecases.omnichannel_ap_col_c}
+    rows={apRows}
+  />
+
+  <div id="code-proof">
+    <SpokeCodeProof
+      eyebrow={t.usecases.omnichannel_cp_eyebrow}
+      heading={t.usecases.omnichannel_cp_h2}
+      filename={t.usecases.omnichannel_cp_filename}
+      caption={t.usecases.omnichannel_cp_caption}
+      code={codeSample}
+    />
+  </div>
+
+  <Faq
+    eyebrow={t.usecases.omnichannel_faq_eyebrow}
+    heading={t.usecases.omnichannel_faq_h2}
+    items={[
+      { q: t.usecases.omnichannel_faq_q1, a: t.usecases.omnichannel_faq_a1 },
+      { q: t.usecases.omnichannel_faq_q2, a: t.usecases.omnichannel_faq_a2 },
+      { q: t.usecases.omnichannel_faq_q3, a: t.usecases.omnichannel_faq_a3 },
+    ]}
+  />
+
+  <SpokePricingPointer
+    eyebrow={t.usecases.omnichannel_pp_eyebrow}
+    heading={t.usecases.omnichannel_pp_h2}
+    body={t.usecases.omnichannel_pp_body}
+    cta={t.usecases.omnichannel_pp_cta}
+    ctaHref={localiseHref('pricing', locale)}
+  />
+
+  <section class="py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-6 text-center space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">
+        {t.usecases.omnichannel_final_h2_pre} <span class="text-amber">{t.usecases.omnichannel_final_h2_accent}</span>
+      </h2>
+      <p class="text-lg text-bone-2 text-balance">{t.usecases.omnichannel_final_sub}</p>
+      <a
+        href={localiseHref('developer-license', locale)}
+        class="inline-flex items-center gap-2 rounded-md bg-signal px-5 py-3 text-sm font-medium text-ink hover:bg-signal-deep"
+      >{t.home.final_cta}</a>
+    </div>
+  </section>
+</Layout>

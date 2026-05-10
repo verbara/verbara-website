@@ -1,0 +1,26 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import Card from '../primitives/Card.astro';
+import Button from '../primitives/Button.astro';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  cta: string;
+  ctaHref: string;
+}
+const { eyebrow, heading, body, cta, ctaHref } = Astro.props;
+---
+
+<Section>
+  <Container size="md">
+    <Card as="div" variant="default">
+      <p class="text-xs uppercase tracking-wider font-mono text-signal mb-2">{eyebrow}</p>
+      <h2 class="text-2xl font-semibold mb-3">{heading}</h2>
+      <p class="text-bone-2 mb-5">{body}</p>
+      <Button variant="secondary" href={ctaHref}>{cta}</Button>
+    </Card>
+  </Container>
+</Section>

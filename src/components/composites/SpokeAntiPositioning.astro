@@ -1,0 +1,52 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  sub: string;
+  colVerbara: string;
+  colA: string;
+  colB: string;
+  colC: string;
+  rows: Array<{ label: string; verbara: string; a: string; b: string; c: string }>;
+}
+const { eyebrow, heading, sub, colVerbara, colA, colB, colC, rows } = Astro.props;
+---
+
+<Section tone="inset">
+  <Container size="lg">
+    <div class="space-y-10">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">{eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">{heading}</h2>
+        <p class="text-lg text-bone-2 text-balance">{sub}</p>
+      </div>
+      <div class="overflow-x-auto rounded-lg border border-line-strong">
+        <table class="w-full text-sm">
+          <thead class="bg-ink-3">
+            <tr>
+              <th class="text-left px-4 py-3 font-mono text-xs uppercase tracking-wider text-bone-3">&nbsp;</th>
+              <th class="text-left px-4 py-3 font-medium text-signal">{colVerbara}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{colA}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{colB}</th>
+              <th class="text-left px-4 py-3 font-medium text-bone-2">{colC}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line">
+            {rows.map((r) => (
+              <tr>
+                <td class="px-4 py-3 font-medium">{r.label}</td>
+                <td class="px-4 py-3 text-signal font-mono text-xs">{r.verbara}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{r.a}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{r.b}</td>
+                <td class="px-4 py-3 text-bone-2 font-mono text-xs">{r.c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Container>
+</Section>

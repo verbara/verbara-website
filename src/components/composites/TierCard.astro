@@ -10,9 +10,10 @@ interface Props {
   tierId: TierId;
   cta: CtaKind;
   badge?: BadgeKind;
+  bestFor?: string;
 }
 
-const { tierId, cta, badge = null } = Astro.props;
+const { tierId, cta, badge = null, bestFor } = Astro.props;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
@@ -57,6 +58,11 @@ const buttonVariant = cta === 'developer' || cta === 'buy' ? 'primary' : 'second
     </div>
     <p class="text-2xl font-bold">{tierPrice}</p>
     <p class="text-sm text-bone-2 min-h-10">{tierTagline}</p>
+    {bestFor && (
+      <p class="text-xs font-mono text-bone-3 mt-1">
+        <span class="text-signal">{t.pricing.best_for_label}:</span>{' '}{bestFor}
+      </p>
+    )}
   </header>
 
   <ul class="my-6 flex-1 space-y-2 text-sm">
