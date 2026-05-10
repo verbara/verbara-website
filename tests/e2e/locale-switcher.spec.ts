@@ -19,6 +19,21 @@ test('locale switcher: EN → PT on pricing preserves route', async ({ page }) =
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
 });
 
+test('locale switch from spoke (use-cases/contact-center) preserves route', async ({ page }) => {
+  await page.goto('/use-cases/contact-center/', { waitUntil: 'domcontentloaded' });
+  await page.locator('header a[href="/en-US/use-cases/contact-center/"]').click();
+  await page.waitForURL(/\/en-US\/use-cases\/contact-center\/?$/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en-US');
+
+  await page.locator('header a[href="/pt-BR/use-cases/contact-center/"]').click();
+  await page.waitForURL(/\/pt-BR\/use-cases\/contact-center\/?$/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
+
+  await page.locator('header a[href="/use-cases/contact-center/"]').click();
+  await page.waitForURL(/\/use-cases\/contact-center\/?$/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'es-419');
+});
+
 test('mobile menu opens on small viewport', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 800 });
   await page.goto('/');
