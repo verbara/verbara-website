@@ -1,5 +1,12 @@
 {
   "$schema": "https://verbara.io/schemas/authorized-digests-v1.json",
-  "current": [],
+  "current": [
+    {
+      "platform_version": "v2.1.0",
+      "image_ref": "ghcr.io/verbara/platform/api:v2.1.0",
+      "manifest_list_digest": "sha256:f82a9041dc7f26018f6b6b11addf3ddbda6a7833827434f6b8d5ca2486349902",
+      "released_at": "2026-05-10T16:25:00Z"
+    }
+  ],
   "deprecated": []
 }
