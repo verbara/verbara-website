@@ -1,0 +1,77 @@
+---
+import Card from '../primitives/Card.astro';
+import Button from '../primitives/Button.astro';
+import Badge from '../primitives/Badge.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+type TierId = 'tier_0' | 'tier_05' | 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5';
+type CtaKind = 'community' | 'developer' | 'buy' | 'sales';
+type BadgeKind = 'popular' | 'evaluators' | null;
+
+interface Props {
+  tierId: TierId;
+  cta: CtaKind;
+  badge?: BadgeKind;
+}
+
+const { tierId, cta, badge = null } = Astro.props;
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const tierName = t.pricing[`${tierId}_name` as const];
+const tierPrice = t.pricing[`${tierId}_price` as const];
+const tierTagline = t.pricing[`${tierId}_tagline` as const];
+const features = [
+  t.pricing[`${tierId}_f1` as const],
+  t.pricing[`${tierId}_f2` as const],
+  t.pricing[`${tierId}_f3` as const],
+  t.pricing[`${tierId}_f4` as const],
+];
+
+function ctaHref(kind: CtaKind): string {
+  if (kind === 'community') return 'https://github.com/verbara/Verbara.Sdk';
+  if (kind === 'developer') return localiseHref('developer-license', locale);
+  return 'mailto:licensing@verbara.io';
+}
+
+function ctaLabel(kind: CtaKind): string {
+  if (kind === 'community') return t.pricing.cta_community;
+  if (kind === 'developer') return t.pricing.cta_developer;
+  if (kind === 'buy') return t.pricing.cta_buy;
+  return t.pricing.cta_sales;
+}
+
+const cardVariant = badge === 'popular' ? 'highlighted' : 'default';
+const buttonVariant = cta === 'developer' || cta === 'buy' ? 'primary' : 'secondary';
+---
+
+<Card as="article" variant={cardVariant} class="flex flex-col" data-tier={tierId}>
+  <header class="space-y-2">
+    <div class="flex items-center justify-between gap-2 min-h-6">
+      <h2 class="text-lg font-semibold">{tierName}</h2>
+      {badge === 'popular' && (
+        <Badge variant="info">{t.pricing.popular_badge}</Badge>
+      )}
+      {badge === 'evaluators' && (
+        <Badge variant="default">{t.pricing.evaluators_badge}</Badge>
+      )}
+    </div>
+    <p class="text-2xl font-bold">{tierPrice}</p>
+    <p class="text-sm text-bone-2 min-h-10">{tierTagline}</p>
+  </header>
+
+  <ul class="my-6 flex-1 space-y-2 text-sm">
+    {features.map((feat) => (
+      <li class="flex items-start gap-2">
+        <span aria-hidden="true" class="text-bone-3">·</span>
+        <span>{feat}</span>
+      </li>
+    ))}
+  </ul>
+
+  <Button variant={buttonVariant} href={ctaHref(cta)}>
+    {ctaLabel(cta)}
+  </Button>
+</Card>
