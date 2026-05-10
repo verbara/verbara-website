@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/primitives/Section.astro';
+import Container from '../../components/primitives/Container.astro';
+import UseCaseIndexCard from '../../components/composites/UseCaseIndexCard.astro';
+import FinalCta from '../../components/composites/FinalCta.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const cards = [
+  {
+    slug: 'cc',
+    eyebrow: t.usecases.cc_index_eyebrow,
+    title: t.usecases.cc_index_title,
+    sub: t.usecases.cc_index_sub,
+    caps: [t.usecases.cc_index_cap1, t.usecases.cc_index_cap2, t.usecases.cc_index_cap3] as [string, string, string],
+    cta: t.usecases.cc_index_cta,
+    href: localiseHref('use-cases/contact-center', locale),
+  },
+  {
+    slug: 'voiceai',
+    eyebrow: t.usecases.voiceai_index_eyebrow,
+    title: t.usecases.voiceai_index_title,
+    sub: t.usecases.voiceai_index_sub,
+    caps: [t.usecases.voiceai_index_cap1, t.usecases.voiceai_index_cap2, t.usecases.voiceai_index_cap3] as [string, string, string],
+    cta: t.usecases.voiceai_index_cta,
+    href: localiseHref('use-cases/voice-ai', locale),
+  },
+  {
+    slug: 'omnichannel',
+    eyebrow: t.usecases.omnichannel_index_eyebrow,
+    title: t.usecases.omnichannel_index_title,
+    sub: t.usecases.omnichannel_index_sub,
+    caps: [t.usecases.omnichannel_index_cap1, t.usecases.omnichannel_index_cap2, t.usecases.omnichannel_index_cap3] as [string, string, string],
+    cta: t.usecases.omnichannel_index_cta,
+    href: localiseHref('use-cases/omnichannel', locale),
+  },
+  {
+    slug: 'cpaas',
+    eyebrow: t.usecases.cpaas_index_eyebrow,
+    title: t.usecases.cpaas_index_title,
+    sub: t.usecases.cpaas_index_sub,
+    caps: [t.usecases.cpaas_index_cap1, t.usecases.cpaas_index_cap2, t.usecases.cpaas_index_cap3] as [string, string, string],
+    cta: t.usecases.cpaas_index_cta,
+    href: localiseHref('use-cases/cpaas', locale),
+  },
+];
+---
+
+<Layout>
+  <Section>
+    <Container size="md">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">{t.usecases.index_eyebrow}</p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-balance">
+          {t.usecases.index_h1_pre} <span class="text-amber">{t.usecases.index_h1_accent}</span>
+        </h1>
+        <p class="text-lg text-bone-2 text-balance max-w-2xl mx-auto">{t.usecases.index_sub}</p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section>
+    <Container size="lg">
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4" data-usecases-grid>
+        {cards.map((card) => (
+          <li>
+            <UseCaseIndexCard
+              slug={card.slug}
+              eyebrow={card.eyebrow}
+              title={card.title}
+              sub={card.sub}
+              caps={card.caps}
+              cta={card.cta}
+              href={card.href}
+            />
+          </li>
+        ))}
+      </ul>
+    </Container>
+  </Section>
+
+  <FinalCta />
+</Layout>

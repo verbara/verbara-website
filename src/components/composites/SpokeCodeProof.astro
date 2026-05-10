@@ -1,0 +1,28 @@
+---
+import Section from '../primitives/Section.astro';
+import Container from '../primitives/Container.astro';
+import CodeBlock from '../primitives/CodeBlock.astro';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  filename: string;
+  caption: string;
+  code: string;
+  language?: string;
+}
+const { eyebrow, heading, filename, caption, code, language = 'csharp' } = Astro.props;
+---
+
+<Section>
+  <Container size="md">
+    <div class="space-y-8">
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-mono text-signal">{eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-balance">{heading}</h2>
+      </div>
+      <CodeBlock lang={language} code={code} filename={filename} />
+      <p class="text-center text-sm text-bone-3">{caption}</p>
+    </div>
+  </Container>
+</Section>
