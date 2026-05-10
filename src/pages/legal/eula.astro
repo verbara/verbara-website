@@ -1,8 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/primitives/Section.astro';
-import Container from '../../components/primitives/Container.astro';
-import Heading from '../../components/primitives/Heading.astro';
+import LegalDoc from '../../components/composites/LegalDoc.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
 
@@ -10,13 +8,38 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
 ---
 
-<Layout title={`${t.legal_eula.title} — ${t.meta.site_title}`}>
-  <Section>
-    <Container size="sm">
-      <div class="space-y-6">
-        <Heading level={1}>{t.legal_eula.title}</Heading>
-        <p class="text-base text-bone-2 leading-relaxed">{t.legal_eula.body}</p>
-      </div>
-    </Container>
-  </Section>
+<Layout title={`${t.footer.legal_eula} — ${t.meta.site_title}`}>
+  <LegalDoc title={t.footer.legal_eula} lastUpdated="2026-05-09">
+    <p>
+      <strong>Verbara EULA — placeholder.</strong>
+      The end-user license agreement for the commercial Verbara.Sdk.Pro modules
+      and the SaaS-hosted product tiers will be published here. The open-source
+      components (Verbara.Sdk under MIT and Verbara.Platform under Apache 2.0)
+      are governed by their respective repository LICENSE files, not this EULA.
+    </p>
+    <p>
+      Until the formal text lands, contact <a href="mailto:licensing@verbara.io">licensing@verbara.io</a>
+      for license inquiries.
+    </p>
+
+    <h2>1. Scope</h2>
+    <p>
+      [Placeholder — covers Tier 0.5 evaluator licenses, Tier 1–2 self-host
+      commercial licenses, and Tier 3–5 managed SaaS subscriptions.]
+    </p>
+
+    <h2>2. Permitted use</h2>
+    <p>
+      [Placeholder — Pro features may be activated under a valid license; the
+      OSS engine continues to operate without restriction regardless of license
+      status.]
+    </p>
+
+    <h2>3. Termination</h2>
+    <p>
+      [Placeholder — termination of a Pro license disables Pro feature
+      activation but does not affect the running OSS engine, your data, or
+      audit logs.]
+    </p>
+  </LegalDoc>
 </Layout>
