@@ -114,6 +114,14 @@ The single canonical `LicenseValidator` in `Verbara.Sdk.Pro.Licensing` validates
   - **Tailwind CSS** intentionally NOT installed. `@tailwindcss/vite@4.x` + Astro 6.3 (Vite 7 internally) has a config mismatch (`Missing field 'tsconfigPaths' on BindingViteResolvePluginConfig.resolveOptions`). Phase 0 placeholder uses plain CSS in `src/styles/global.css`. Phase 1 will re-evaluate: either pin to compatible @tailwindcss/vite version OR adopt `@astrojs/tailwind` integration with Tailwind v3 (more conservative, more compatible).
   - The static-only Phase 0 build succeeds in <500ms with zero warnings — the deferrals do not block the milestone.
 
+- **2026-05-10 — Phase F (hub-and-spoke architecture) shipped.** See ADR-0002 for the architectural decision. The marketing site stack itself (Astro 6 + Cloudflare Workers Sites + D1 + Resend + Cloudflare Web Analytics + Turnstile) is **unchanged** by Phase F — only the content and component graph grew. New surface area: 5 use-case pages (1 index + 4 spokes) × 3 locales = 15 new page renders, 6 new composites, 4 new E2E specs, ~210 new i18n keys. No new vendor relationships, no infra cost delta.
+
+- **2026-05-10 — `html-validate` config: `no-raw-characters` rule disabled** (PR #11). Phase F's spoke code samples include C# lambda arrow operators (`=>`) and generic types (`List<T>`) which Shiki syntax-highlights into HTML with literal `>` characters in text content. Per [HTML5 spec](https://html.spec.whatwg.org/multipage/syntax.html#syntax-text-content), raw `>` is valid in text content — only `<` and `&` require escape, and those are caught by html-validate's `parser-error` rules. The `relaxed` option for `no-raw-characters` was removed in html-validate v9, so disabling the rule entirely is the cleanest fix.
+
+- **2026-05-10 — `tests/e2e/smoke.spec.ts` Turnstile filter extended to `pageerror` handler** (PR #12). PR #8 (commit `564b607`) added the noise filter for `console.error` events; Phase F surfaced an additional code path where Turnstile emits an uncaught exception (`[Cloudflare Turnstile] Error: 400020.`) caught by `pageerror`. The same `isThirdPartyTurnstileNoise()` predicate is now applied to both event handlers.
+
+- **2026-05-10 — Lighthouse a11y threshold (≥ 0.95) requires `text-bone-2` (≥ 65% opacity) for small body text** (PR #13). The first-pass Phase F TierCard `bestFor` line used `text-bone-3` (40% opacity, ~3.3:1 contrast on `--color-ink`) at `text-xs` (12px) — failed WCAG AA 4.5:1 small-text rule. `text-bone-3` remains valid for dividers and `aria-hidden` decorative use only.
+
 ## References
 
 - Pro plan: `2026-05-09-marketing-site-bootstrap.md`
