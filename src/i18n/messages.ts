@@ -21,7 +21,6 @@ export interface Messages {
     site_description: string;
   };
   nav: {
-    product: string;       // deprecated; remove after F.3 NavBar refactor lands
     pricing: string;
     developer_license: string;
     github: string;
@@ -34,7 +33,6 @@ export interface Messages {
   };
   footer: {
     tagline: string;
-    column_product: string;
     column_resources: string;
     column_legal: string;
     legal_eula: string;
@@ -540,7 +538,6 @@ const es_419: Messages = {
       'Verbara es una plataforma open-core para contact center: motor auditable, módulos comerciales. Self-host gratis o hosted, sin tarifas por minuto.',
   },
   nav: {
-    product: 'Producto',
     pricing: 'Precios',
     developer_license: 'Licencia gratuita',
     github: 'GitHub',
@@ -553,7 +550,6 @@ const es_419: Messages = {
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
-    column_product: 'Producto',
     column_resources: 'Recursos',
     column_legal: 'Legal',
     legal_eula: 'EULA',
@@ -1061,7 +1057,6 @@ const en_US: Messages = {
       'Verbara is an open-core contact-center platform: auditable engine, commercial overlays. Self-host free or hosted, no per-minute fees.',
   },
   nav: {
-    product: 'Product',
     pricing: 'Pricing',
     developer_license: 'Free license',
     github: 'GitHub',
@@ -1074,7 +1069,6 @@ const en_US: Messages = {
   },
   footer: {
     tagline: 'Open-core honest contact-center platform.',
-    column_product: 'Product',
     column_resources: 'Resources',
     column_legal: 'Legal',
     legal_eula: 'EULA',
@@ -1582,7 +1576,6 @@ const pt_BR: Messages = {
       'Verbara é uma plataforma open-core para contact center: motor auditável, módulos comerciais. Self-host gratuito ou hospedado, sem tarifas por minuto.',
   },
   nav: {
-    product: 'Produto',
     pricing: 'Preços',
     developer_license: 'Licença gratuita',
     github: 'GitHub',
@@ -1595,7 +1588,6 @@ const pt_BR: Messages = {
   },
   footer: {
     tagline: 'Open-core honesto para contact center.',
-    column_product: 'Produto',
     column_resources: 'Recursos',
     column_legal: 'Legal',
     legal_eula: 'EULA',
