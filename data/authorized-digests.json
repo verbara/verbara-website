@@ -2,6 +2,12 @@
   "$schema": "https://verbara.io/schemas/authorized-digests-v1.json",
   "current": [
     {
+      "platform_version": "v2.4.0",
+      "image_ref": "ghcr.io/verbara/platform/api:v2.4.0",
+      "manifest_list_digest": "sha256:d6c77cc0894e4c22a2ccafb670b3ddf3ee0f9e3eaeb22524ee03917b5f673d93",
+      "released_at": "2026-05-20T22:21:06Z"
+    },
+    {
       "platform_version": "v2.3.1",
       "image_ref": "ghcr.io/verbara/platform/api:v2.3.1",
       "manifest_list_digest": "sha256:e0c876329fbeb24cfa1fd2c3a14da905ba45953ea12e19f8756b03b313fe0a8d",
