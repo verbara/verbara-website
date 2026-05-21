@@ -6,7 +6,9 @@
       "image_ref": "ghcr.io/verbara/platform/api:v2.4.1",
       "manifest_list_digest": "sha256:ac900df6bf8630e855ebf57bea4b4c035edd7c39de0bcd34f940f7243e506551",
       "released_at": "2026-05-21T02:20:00Z"
-    },
+    }
+  ],
+  "deprecated": [
     {
       "platform_version": "v2.4.0",
       "image_ref": "ghcr.io/verbara/platform/api:v2.4.0",
@@ -37,6 +39,5 @@
       "manifest_list_digest": "sha256:f82a9041dc7f26018f6b6b11addf3ddbda6a7833827434f6b8d5ca2486349902",
       "released_at": "2026-05-10T16:25:00Z"
     }
-  ],
-  "deprecated": []
+  ]
 }
