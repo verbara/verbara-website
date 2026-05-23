@@ -2,13 +2,19 @@
   "$schema": "https://verbara.io/schemas/authorized-digests-v1.json",
   "current": [
     {
+      "platform_version": "v2.4.2",
+      "image_ref": "ghcr.io/verbara/platform/api:v2.4.2",
+      "manifest_list_digest": "sha256:bb5e90123c6520dd881d8a732b4af1959e86af76193ad395a70d0031f7784efb",
+      "released_at": "2026-05-23T10:15:00Z"
+    }
+  ],
+  "deprecated": [
+    {
       "platform_version": "v2.4.1",
       "image_ref": "ghcr.io/verbara/platform/api:v2.4.1",
       "manifest_list_digest": "sha256:ac900df6bf8630e855ebf57bea4b4c035edd7c39de0bcd34f940f7243e506551",
       "released_at": "2026-05-21T02:20:00Z"
-    }
-  ],
-  "deprecated": [
+    },
     {
       "platform_version": "v2.4.0",
       "image_ref": "ghcr.io/verbara/platform/api:v2.4.0",
