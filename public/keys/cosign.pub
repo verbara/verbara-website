@@ -1,0 +1,31 @@
+# Verbara cosign public key (ECDSA P-256).
+#
+# Customer-facing verification of all signed images under ghcr.io/verbara/platform/*.
+# This file is served verbatim from https://verbara.io/keys/cosign.pub and is the
+# canonical public reference for the keypair that signs:
+#   - ghcr.io/verbara/platform/api:vX.Y.Z         (Native AOT — Pro IP)
+#   - ghcr.io/verbara/platform/realtime:vX.Y.Z    (SignalR Hub microservice)
+#   - ghcr.io/verbara/platform/renderer:vX.Y.Z    (PDF/CSV renderer)
+#   - ghcr.io/verbara/platform/mail:vX.Y.Z        (SMTP/MS Graph outbound)
+#   - ghcr.io/verbara/platform/web:vX.Y.Z-web     (React frontend bundle)
+#
+# Verify any pulled image:
+#   cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog \
+#     ghcr.io/verbara/platform/api:v2.4.2
+#
+# The same key is committed in the source repos as `.github/cosign.pub` and
+# `docker/cosign.pub` — operators preferring an independent channel can `diff`
+# the served file against the in-repo copy:
+#   curl -sL https://verbara.io/keys/cosign.pub | diff - docker/cosign.pub
+#
+# Private-key custody and rotation procedure: see
+# Verbara.Sdk.Pro/docs/operations/2026-05-10-cosign-keypair-bootstrap.md.
+#
+# Verbara signing posture: `--tlog-upload=false` (skips Rekor transparency log),
+# documented in customer manuales. Verification consumers must pass
+# `--insecure-ignore-tlog` to match. See ADR-0023 (Verbara.Platform repo) for
+# the full IP-protection layering rationale.
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEBKvVcEKiEr1VKAlS2tnnaBOymdBY
+Il+bfvD2YMK7KQe+QdziuA1dVa8TGmg0NGM082ScomxlxxNI8aMRAGN0aQ==
+-----END PUBLIC KEY-----
