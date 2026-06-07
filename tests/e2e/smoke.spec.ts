@@ -4,6 +4,7 @@ const PAGES = [
   { path: '/',                            title: /Verbara/, h1: /.+/ },
   { path: '/pricing/',                    title: /Pricing|Precios|Preços|Verbara/, h1: /.+/ },
   { path: '/developer-license/',          title: /Verbara/, h1: /.+/ },
+  { path: '/contact-sales/',              title: /Verbara/, h1: /.+/ },
   { path: '/legal/eula/',                 title: /Verbara/, h1: /.+/ },
   { path: '/legal/privacy/',              title: /Verbara/, h1: /.+/ },
   { path: '/legal/terms/',               title: /Verbara/, h1: /.+/ },

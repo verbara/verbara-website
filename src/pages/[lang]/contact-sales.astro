@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/primitives/Section.astro';
+import Container from '../../components/primitives/Container.astro';
+import Heading from '../../components/primitives/Heading.astro';
+import Button from '../../components/primitives/Button.astro';
+import { getMessages } from '../../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en-US' } }, { params: { lang: 'pt-BR' } }];
+}
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const SALES_MAILTO = 'mailto:hello@verbara.io?subject=Verbara%20sales%20inquiry';
+
+const copyEn = {
+  eyebrow: 'Sales',
+  title: "Let's talk about your deployment.",
+  body_1:
+    'Verbara is open-core: the engine is auditable, you can self-host it, and the data is yours. When you need more — managed SaaS, SLA-backed support, multi-tenant at scale, or white-label OEM — that is where sales comes in.',
+  body_2:
+    'Tell us what you are building and where from (we are LATAM-first, ES/PT as first-class citizens) and we will reply with the option that fits — no runaround, no per-minute fees.',
+  cta_primary: 'Email sales →',
+  secondary_intro: 'Still exploring?',
+  link_pricing: 'See all tiers',
+  link_dev: 'Evaluate free first',
+};
+
+const copyPt = {
+  eyebrow: 'Vendas',
+  title: 'Vamos falar sobre seu deployment.',
+  body_1:
+    'A Verbara é open-core: o motor é auditável, você pode fazer self-host e os dados são seus. Quando precisar de mais — SaaS gerenciado, suporte com SLA, multi-tenant em escala ou white-label OEM — é aí que entram as vendas.',
+  body_2:
+    'Conte o que você está construindo e de onde (somos LATAM-first, ES/PT como cidadãos de primeira classe) e respondemos com a opção que encaixa — sem enrolação, sem tarifas por minuto.',
+  cta_primary: 'Escrever para vendas →',
+  secondary_intro: 'Ainda explorando?',
+  link_pricing: 'Ver todos os tiers',
+  link_dev: 'Avalie grátis primeiro',
+};
+
+const copy = locale === 'en-US' ? copyEn : copyPt;
+---
+
+<Layout
+  title={`${copy.title} — ${t.meta.site_title}`}
+  description={copy.body_1}
+>
+  <Section>
+    <Container size="sm">
+      <div class="space-y-8 text-center">
+        <Heading level={1} eyebrow={copy.eyebrow} align="center">
+          {copy.title}
+        </Heading>
+
+        <div class="space-y-4 text-lg text-bone-2">
+          <p>{copy.body_1}</p>
+          <p>{copy.body_2}</p>
+        </div>
+
+        <div class="flex justify-center">
+          <Button href={SALES_MAILTO} variant="primary" size="lg">
+            {copy.cta_primary}
+          </Button>
+        </div>
+
+        <p class="text-sm text-bone-3">
+          {copy.secondary_intro}{' '}
+          <a href={localiseHref('pricing', locale)} class="text-signal hover:underline">
+            {copy.link_pricing}
+          </a>{' · '}
+          <a href={localiseHref('developer-license', locale)} class="text-signal hover:underline">
+            {copy.link_dev}
+          </a>
+        </p>
+      </div>
+    </Container>
+  </Section>
+</Layout>
