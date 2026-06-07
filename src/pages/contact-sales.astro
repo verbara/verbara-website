@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/primitives/Section.astro';
+import Container from '../components/primitives/Container.astro';
+import Heading from '../components/primitives/Heading.astro';
+import Button from '../components/primitives/Button.astro';
+import { getMessages } from '../i18n/messages';
+import { getLocaleFromPath, localiseHref } from '../i18n/utils';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = getMessages(locale);
+
+const SALES_MAILTO = 'mailto:hello@verbara.io?subject=Verbara%20sales%20inquiry';
+
+const copy = {
+  eyebrow: 'Ventas',
+  title: 'Hablemos de tu despliegue.',
+  body_1:
+    'Verbara es open-core: el motor es auditable, lo puedes self-hostear y los datos son tuyos. Cuando necesitas más —SaaS gestionado, soporte con SLA, multi-tenant a escala o white-label OEM— ahí entra ventas.',
+  body_2:
+    'Cuéntanos qué estás construyendo y desde dónde (somos LATAM-first, ES/PT de primera clase) y te respondemos con la opción que encaje, sin rodeos ni tarifas por minuto.',
+  cta_primary: 'Escribir a ventas →',
+  secondary_intro: '¿Aún explorando?',
+  link_pricing: 'Ver todos los tiers',
+  link_dev: 'Evalúa gratis primero',
+};
+---
+
+<Layout
+  title={`${copy.title} — ${t.meta.site_title}`}
+  description={copy.body_1}
+>
+  <Section>
+    <Container size="sm">
+      <div class="space-y-8 text-center">
+        <Heading level={1} eyebrow={copy.eyebrow} align="center">
+          {copy.title}
+        </Heading>
+
+        <div class="space-y-4 text-lg text-bone-2">
+          <p>{copy.body_1}</p>
+          <p>{copy.body_2}</p>
+        </div>
+
+        <div class="flex justify-center">
+          <Button href={SALES_MAILTO} variant="primary" size="lg">
+            {copy.cta_primary}
+          </Button>
+        </div>
+
+        <p class="text-sm text-bone-3">
+          {copy.secondary_intro}{' '}
+          <a href={localiseHref('pricing', locale)} class="text-signal hover:underline">
+            {copy.link_pricing}
+          </a>{' · '}
+          <a href={localiseHref('developer-license', locale)} class="text-signal hover:underline">
+            {copy.link_dev}
+          </a>
+        </p>
+      </div>
+    </Container>
+  </Section>
+</Layout>

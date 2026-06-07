@@ -34,6 +34,7 @@ export interface Messages {
   footer: {
     tagline: string;
     column_resources: string;
+    resources_contact_sales: string;
     column_legal: string;
     legal_eula: string;
     legal_privacy: string;
@@ -569,6 +570,7 @@ const es_419: Messages = {
   footer: {
     tagline: 'Open-core honesto para contact center.',
     column_resources: 'Recursos',
+    resources_contact_sales: 'Contactar ventas',
     column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidad',
@@ -1106,6 +1108,7 @@ const en_US: Messages = {
   footer: {
     tagline: 'Open-core honest contact-center platform.',
     column_resources: 'Resources',
+    resources_contact_sales: 'Contact sales',
     column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacy',
@@ -1643,6 +1646,7 @@ const pt_BR: Messages = {
   footer: {
     tagline: 'Open-core honesto para contact center.',
     column_resources: 'Recursos',
+    resources_contact_sales: 'Contatar vendas',
     column_legal: 'Legal',
     legal_eula: 'EULA',
     legal_privacy: 'Privacidade',
