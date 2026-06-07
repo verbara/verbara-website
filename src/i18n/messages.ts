@@ -80,6 +80,7 @@ export interface Messages {
     hero_trust_tests: string;
     hero_trust_vulns: string;
     hero_trust_oss: string;
+    hero_trust_signed: string;
     solutions_eyebrow: string;
     solutions_h2: string;
     solutions_card_cc_eyebrow: string;
@@ -173,6 +174,8 @@ export interface Messages {
     faq_a5: string;
     faq_q6: string;
     faq_a6: string;
+    faq_q7: string;
+    faq_a7: string;
 
     // Final CTA (§7.1.7)
     final_h2_pre: string;
@@ -259,6 +262,7 @@ export interface Messages {
     matrix_feat_max_agents: string;
     matrix_feat_audit_retention: string;
     matrix_feat_whitelabel: string;
+    matrix_feat_supply_chain: string;
 
     matrix_support_community: string;
     matrix_support_dedicated: string;
@@ -340,6 +344,8 @@ export interface Messages {
     cc_ap_row_5: string;
     cc_ap_row_6: string;
     cc_ap_row_7: string;
+    cc_ap_row_8: string;
+    cc_ap_row_9: string;
     cc_cp_eyebrow: string;
     cc_cp_h2: string;
     cc_cp_filename: string;
@@ -352,6 +358,12 @@ export interface Messages {
     cc_faq_a2: string;
     cc_faq_q3: string;
     cc_faq_a3: string;
+    cc_faq_q4: string;
+    cc_faq_a4: string;
+    cc_faq_q5: string;
+    cc_faq_a5: string;
+    cc_faq_q6: string;
+    cc_faq_a6: string;
     cc_pp_eyebrow: string;
     cc_pp_h2: string;
     cc_pp_body: string;
@@ -392,6 +404,8 @@ export interface Messages {
     voiceai_faq_a2: string;
     voiceai_faq_q3: string;
     voiceai_faq_a3: string;
+    voiceai_faq_q4: string;
+    voiceai_faq_a4: string;
     voiceai_pp_eyebrow: string;
     voiceai_pp_h2: string;
     voiceai_pp_body: string;
@@ -432,6 +446,8 @@ export interface Messages {
     omnichannel_faq_a2: string;
     omnichannel_faq_q3: string;
     omnichannel_faq_a3: string;
+    omnichannel_faq_q4: string;
+    omnichannel_faq_a4: string;
     omnichannel_pp_eyebrow: string;
     omnichannel_pp_h2: string;
     omnichannel_pp_body: string;
@@ -472,6 +488,8 @@ export interface Messages {
     cpaas_faq_a2: string;
     cpaas_faq_q3: string;
     cpaas_faq_a3: string;
+    cpaas_faq_q4: string;
+    cpaas_faq_a4: string;
     cpaas_pp_eyebrow: string;
     cpaas_pp_h2: string;
     cpaas_pp_body: string;
@@ -600,11 +618,12 @@ const es_419: Messages = {
     hero_sub: 'Open-core, Asterisk-native. Corre tu contact center, voice AI, omnichannel y más sobre un solo stack auditable. En tu data center, tu nube, o nuestro plano gestionado.',
     hero_cta_primary: 'Corre el stack →',
     hero_cta_secondary: 'Ver soluciones →',
-    hero_cta_dev_license: 'o consigue una licencia developer — gratis, firmada, válida 60 días →',
+    hero_cta_dev_license: 'o consigue una licencia developer — gratis, firmada, válida 30 días →',
     hero_trust_packages: '27 paquetes SDK',
     hero_trust_tests: '2.893 tests unitarios',
     hero_trust_vulns: '0 paquetes vulnerables',
     hero_trust_oss: 'Open source en GitHub',
+    hero_trust_signed: 'Imágenes firmadas (cosign)',
     solutions_eyebrow: 'Soluciones',
     solutions_h2: 'Cuatro formas del mismo runtime.',
     solutions_card_cc_eyebrow: 'Voz humana',
@@ -692,11 +711,13 @@ const es_419: Messages = {
     faq_q5: '¿LATAM (ES, PT) es ciudadano de primera o traducción tardía?',
     faq_a5: 'Primera clase. El locale por defecto es es-419 (español LATAM neutro) — verbara.io/ sirve español, la versión inglesa vive en /en-US/. Documentación, soporte y UI del producto se autoran en tres locales (es-419, en-US, pt-BR) con paridad enforced en CI. Ejemplos en pricing, casos y nombres de tier se inclinan a contextos LATAM (BPO, telcos). Verbara está construido por gente que piensa en español.',
     faq_q6: '¿Por dónde empiezo según mi use-case?',
-    faq_a6: 'Cada solución tiene su propia página con código, anti-positioning y FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonía programable embebida. Saca una licencia Pro Developer (Tier 0.5, gratis, 60 días) que desbloquea todas las features Pro en modo WarnOnly — evalúa el use-case que más te encaje sin compromiso.',
+    faq_a6: 'Cada solución tiene su propia página con código, anti-positioning y FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonía programable embebida. Saca una licencia Pro Developer (Tier 0.5, gratis, 30 días) que desbloquea todas las features Pro en modo WarnOnly — evalúa el use-case que más te encaje sin compromiso.',
+    faq_q7: '¿Cómo verifico que la imagen que despliego es la real?',
+    faq_a7: 'Cada imagen de Verbara Platform (api, realtime, renderer, mail, web) está firmada con cosign y se ancla por digest de manifest-list — el mismo valor que cosign firma. Verificas cualquier imagen con la llave pública que publicamos en verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. Y va más allá del pull: tu licencia Pro (.lic) embebe los digests autorizados (hoy api + realtime), así que las features Pro quedan atadas a imágenes firmadas por digest. Un cron diario re-verifica los digests contra el registry y avisa si alguno mutó.',
 
     final_h2_pre: 'Deja de rentar tu stack de comunicaciones.',
     final_h2_accent: 'Empieza a correrlo.',
-    final_sub: 'Licencia developer 60 días, firmada, gratis. Sin tarjeta de crédito.',
+    final_sub: 'Licencia developer 30 días, firmada, gratis. Sin tarjeta de crédito.',
     final_cta: 'Obtén una licencia developer →',
   },
   pricing: {
@@ -721,7 +742,7 @@ const es_419: Messages = {
     tier_05_tagline: 'Todas las funciones Pro en modo WarnOnly. Auto-emitida.',
     tier_05_f1: 'Todas las funciones Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nodo',
-    tier_05_f3: '60 días renovables gratis',
+    tier_05_f3: '30 días renovables gratis',
     tier_05_f4: 'WarnOnly (nunca bloquea)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / año',
@@ -778,6 +799,7 @@ const es_419: Messages = {
     matrix_feat_max_agents: 'Agentes máximos',
     matrix_feat_audit_retention: 'Retención de audit log',
     matrix_feat_whitelabel: 'White-label / OEM',
+    matrix_feat_supply_chain: 'Verificación de cadena de suministro',
 
     matrix_support_community: 'community',
     matrix_support_dedicated: 'dedicado',
@@ -790,7 +812,7 @@ const es_419: Messages = {
     faq_a3: 'Sí. Organizaciones non-profit registradas y universidades acreditadas obtienen 50% de descuento en cualquier tier comercial. Manda licencia + comprobante a licensing@verbara.io.',
     best_for_label: 'Mejor para',
     best_for_t0: 'Voice AI · CPaaS · CC (≤5 agentes evaluación)',
-    best_for_t0_5: 'Cualquier use-case en evaluación de 60 días',
+    best_for_t0_5: 'Cualquier use-case en evaluación de 30 días',
     best_for_t1: 'CC · CPaaS pequeño',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI productivo',
     best_for_t3: 'CC hospedado · Voice AI hospedado',
@@ -839,7 +861,7 @@ const es_419: Messages = {
     cc_hero_eyebrow: 'Solución · Contact Center',
     cc_hero_h1_pre: 'El contact center que tu equipo de seguridad',
     cc_hero_h1_accent: 'puede leer.',
-    cc_hero_sub: 'Para BPO ops leads, telco product owners y MSP/integradores que operan tráfico real. Open-core de extremo a extremo, sin tarifas por minuto, multi-tenant nativo.',
+    cc_hero_sub: 'Para BPO ops leads, telco product owners y MSP/integradores que operan tráfico real. Open-core de extremo a extremo, sin tarifas por minuto, multi-tenant nativo y softphone WebRTC en el navegador.',
     cc_hero_cta_primary: 'Licencia developer →',
     cc_hero_cta_secondary: 'Ver pricing CC',
     cc_ap_eyebrow: 'Lo que reemplazas',
@@ -856,6 +878,8 @@ const es_419: Messages = {
     cc_ap_row_5: 'Multi-tenant + clustering',
     cc_ap_row_6: 'Speech analytics',
     cc_ap_row_7: 'LATAM por defecto (ES/PT)',
+    cc_ap_row_8: 'Softphone WebRTC en el navegador',
+    cc_ap_row_9: 'Config de troncales/DID por UI',
     cc_cp_eyebrow: 'Lee el código',
     cc_cp_h2: 'Operación CC en código real.',
     cc_cp_filename: 'CallCenterHost.cs',
@@ -868,13 +892,19 @@ const es_419: Messages = {
     cc_faq_a2: 'Sí, desde Tier 2 self-host. Aislamiento estricto por tenant, routing por skill por tenant, impersonation cross-tenant para administración. Cada cliente del BPO ve solo su data y sus agentes.',
     cc_faq_q3: '¿Compatibilidad con mi PBX existente?',
     cc_faq_a3: 'Si tu PBX es Asterisk (cualquier versión 16+), Verbara conecta a tu dialplan vía AMI/ARI. Si tu PBX es Cisco/Avaya, necesitas un gateway SIP a Asterisk; soportamos los más comunes en docs.',
+    cc_faq_q4: '¿Mis agentes necesitan un teléfono físico o un softphone instalado?',
+    cc_faq_a4: 'No. Verbara trae un softphone WebRTC dentro del workspace del agente: toman y hacen llamadas directo desde el navegador, sin teléfono de escritorio ni software de softphone que instalar y mantener. El agente entra a la URL, registra su extensión y ya está en línea — ideal para equipos remotos y BPOs que no quieren administrar hardware ni perfiles de softphone por puesto.',
+    cc_faq_q5: '¿Tengo que editar el dialplan de Asterisk para conectar troncales y números?',
+    cc_faq_a5: 'No. Las troncales SIP y los DID se configuran desde la UI de administración con un asistente guiado, incluido un test de conectividad que valida el registro de la troncal antes de poner tráfico en producción. Sin editar archivos de dialplan a mano ni reiniciar Asterisk para cada cambio. Si prefieres dialplan crudo, sigue siendo tu Asterisk — pero la mayoría de la operación diaria ya no lo requiere.',
+    cc_faq_q6: '¿Qué pasa si a un agente se le cae el internet o cierra la pestaña a mitad de turno?',
+    cc_faq_a6: 'Verbara lo detecta. Un heartbeat de liveness identifica al agente desconectado o "zombie" y reacciona: el trabajo digital huérfano (chats, WhatsApp, email) se re-encola automáticamente al frente de su cola para el siguiente agente vivo, y si una llamada de voz se cae con el cliente en línea, el cliente recibe un callback prioritario al siguiente agente disponible de su cola de origen. Además, defines límites de capacidad concurrente por canal y un MaxTotal entre canales asíncronos, con default por tenant y override por agente — para que nadie quede sobre-asignado.',
     cc_pp_eyebrow: 'Precios CC',
     cc_pp_h2: '¿Qué tier necesitas?',
     cc_pp_body: 'Tier 1 ($5k/año) para arrancar single-tenant ≤25 agentes. Tier 2 ($30-50k/año) para multi-tenant + multi-clúster. Tier 3 ($99/agente/mes) si prefieres hospedado. Tier 4 ($249/agente/mes) para SOC2/HIPAA + 24/7.',
     cc_pp_cta: 'Ver pricing completo →',
     cc_final_h2_pre: 'El CC que',
     cc_final_h2_accent: 'puedes auditar.',
-    cc_final_sub: 'Licencia developer 60 días, firmada, gratis. Evalúa todo Pro sin compromiso.',
+    cc_final_sub: 'Licencia developer 30 días, firmada, gratis. Evalúa todo Pro sin compromiso.',
 
     voiceai_hero_eyebrow: 'Solución · Voice AI',
     voiceai_hero_h1_pre: 'Voicebots inbound',
@@ -908,13 +938,15 @@ const es_419: Messages = {
     voiceai_faq_a2: 'Con Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 desde fin-de-frase del humano hasta primer phoneme TTS, midiendo en infra propia con VU 100. Latencia exacta depende de tu infra y el LLM upstream.',
     voiceai_faq_q3: '¿Self-host sin telefonía propia?',
     voiceai_faq_a3: 'Necesitas un PBX Asterisk para que el SDK reciba audio (puede ser tuyo, de un cliente, o desplegado junto con Verbara). Si quieres voicebots sin operar telefonía, Tier 3+ SaaS hospedado incluye PBX gestionado.',
+    voiceai_faq_q4: '¿Cómo escalo a agentes humanos cuando el voicebot transfiere?',
+    voiceai_faq_a4: 'El voicebot vive sobre el mismo runtime que el contact center, así que un escalamiento a humano aterriza en un agente real con softphone WebRTC en el navegador — sin teléfono de escritorio ni instalación. Y si a ese agente se le cae la conexión a mitad de la llamada transferida, el liveness de presencia lo detecta y dispara un callback prioritario al cliente hacia el siguiente agente vivo. La voz IA y la humana comparten cola, no son dos productos pegados con cinta.',
     voiceai_pp_eyebrow: 'Precios Voice AI',
     voiceai_pp_h2: '¿Por dónde empiezas?',
-    voiceai_pp_body: 'Tier 0 community gratis para evaluación con SDK MIT directo. Tier 0.5 (Pro Developer, gratis 60 días) para todas las features Pro. Tier 1+ cuando shipees a producción single-tenant.',
+    voiceai_pp_body: 'Tier 0 community gratis para evaluación con SDK MIT directo. Tier 0.5 (Pro Developer, gratis 30 días) para todas las features Pro. Tier 1+ cuando shipees a producción single-tenant.',
     voiceai_pp_cta: 'Ver pricing completo →',
     voiceai_final_h2_pre: 'Voicebots',
     voiceai_final_h2_accent: 'sin renta.',
-    voiceai_final_sub: 'Licencia developer 60 días, firmada, gratis. SDK MIT — léelo entero antes de adoptar.',
+    voiceai_final_sub: 'Licencia developer 30 días, firmada, gratis. SDK MIT — léelo entero antes de adoptar.',
 
     omnichannel_hero_eyebrow: 'Solución · Omnichannel',
     omnichannel_hero_h1_pre: 'Once canales,',
@@ -948,13 +980,15 @@ const es_419: Messages = {
     omnichannel_faq_a2: 'Sí. El conector SMS es provider-agnostic con un provider Twilio incluido por defecto, plus segment calculation. Para LATAM, providers regionales (Infobip, Movile, etc.) se conectan implementando un IProvider — un par de horas de trabajo.',
     omnichannel_faq_q3: '¿Cómo se enrutan conversaciones cross-canal?',
     omnichannel_faq_a3: 'El módulo Conversations correlaciona por contacto: si un cliente escribe por WhatsApp y luego por email, ambos hits aterrizan en la misma conversación con timeline unificada. Routing es por skill/queue/team, no por canal — el operador ve toda la historia.',
+    omnichannel_faq_q4: '¿Cuántas conversaciones simultáneas puede manejar un agente?',
+    omnichannel_faq_a4: 'Tú lo defines. La capacidad concurrente es configurable por canal (chat, email, SMS, voz) más un MaxTotal entre canales asíncronos, con un default por tenant y override por agente — un senior puede llevar más chats que un junior sin tocar a nadie más. Y si un agente se desconecta, su trabajo digital en curso se re-encola al frente de su cola para el siguiente agente vivo, así que la carga no se queda atascada en una pestaña muerta.',
     omnichannel_pp_eyebrow: 'Precios Omnichannel',
     omnichannel_pp_h2: '¿Qué tier necesitas?',
     omnichannel_pp_body: 'Tier 0 community para evaluación self-host. Tier 2 ($30-50k/año) para multi-tenant en SaaS propio. Tier 3+ ($99/agente/mes) si prefieres hospedado con SLA.',
     omnichannel_pp_cta: 'Ver pricing completo →',
     omnichannel_final_h2_pre: 'Once canales,',
     omnichannel_final_h2_accent: 'sin per-message.',
-    omnichannel_final_sub: 'Licencia developer 60 días, firmada, gratis. WhatsApp Meta directo, sin intermediarios.',
+    omnichannel_final_sub: 'Licencia developer 30 días, firmada, gratis. WhatsApp Meta directo, sin intermediarios.',
 
     cpaas_hero_eyebrow: 'Solución · CPaaS',
     cpaas_hero_h1_pre: 'Telefonía como librería,',
@@ -988,18 +1022,20 @@ const es_419: Messages = {
     cpaas_faq_a2: 'El SDK pasa el audio que Asterisk te entrega — soporta los codecs que tu Asterisk soporte (G.711, G.722, Opus, PCM, etc.). El pipeline VoiceAI hace resampling interno entre formatos cuando el LLM/TTS necesita 16kHz PCM.',
     cpaas_faq_q3: '¿Federación multi-servidor de qué escala?',
     cpaas_faq_a3: 'VerbaraServerPool soporta arbitrarios servidores Asterisk con failover y routing por canal/tenant. Hemos validado pools de hasta 8 nodos en R5.5 production validation; más allá depende de tu infra de PBX.',
+    cpaas_faq_q4: '¿Cómo embebo voz para humanos, no solo APIs?',
+    cpaas_faq_a4: 'Además de AMI/AGI/ARI/Live API para tu telefonía programable, la Platform incluye un softphone WebRTC dentro del workspace completo del agente — un puesto de operador en el navegador, no solo audio WebRTC suelto. Toman y hacen llamadas sin teléfono de escritorio ni softphone que instalar. Y conectas tus troncales SIP y DID desde la UI con un asistente guiado y test de conectividad, sin editar dialplan a mano. Las primitivas crudas siguen ahí cuando quieras construir; el puesto humano viene listo cuando lo necesitas.',
     cpaas_pp_eyebrow: 'Precios CPaaS',
     cpaas_pp_h2: '¿Qué necesitas licenciar?',
     cpaas_pp_body: 'Tier 0 community gratis con SDK MIT directo (community + community telephony primitives). Tier 1+ desbloquea features Pro: clustering, multi-tenant, dialer, agent assist. Tier 5 white-label para resellers.',
     cpaas_pp_cta: 'Ver pricing completo →',
     cpaas_final_h2_pre: 'Telefonía',
     cpaas_final_h2_accent: 'que sí posees.',
-    cpaas_final_sub: 'Licencia developer 60 días, firmada, gratis. SDK MIT — la base es tuya para siempre.',
+    cpaas_final_sub: 'Licencia developer 30 días, firmada, gratis. SDK MIT — la base es tuya para siempre.',
   },
   developer_license: {
     title: 'Licencia gratuita de Pro Developer',
     subtitle:
-      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 60 días.',
+      'Evalúa todas las funciones de Verbara Pro sin contactar a ventas. Renovación gratuita cada 30 días.',
     coming_soon_title: 'Auto-servicio próximamente',
     coming_soon_body:
       'El portal de auto-emisión Tier 0.5 entra en línea con nuestro lanzamiento público. Mientras tanto, escribe a licensing@verbara.io para recibir una licencia de developer emitida manualmente — usualmente respondemos en menos de 24 horas.',
@@ -1031,7 +1067,7 @@ const es_419: Messages = {
     what_you_get_title: 'Qué incluye',
     what_you_get_agents: 'Hasta 5 agentes concurrentes',
     what_you_get_node: '1 nodo de clúster',
-    what_you_get_duration: 'Licencia de 60 días, renovación gratuita',
+    what_you_get_duration: 'Licencia de 30 días, renovación gratuita',
     what_you_get_features:
       'Todas las funciones Pro (multi-tenant, analítica, marcador, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloquea tu aplicación',
@@ -1119,11 +1155,12 @@ const en_US: Messages = {
     hero_sub: 'Open-core, Asterisk-native. Run your contact center, voice AI, omnichannel, and more on one auditable stack. In your data center, your cloud, or our managed plane.',
     hero_cta_primary: 'Run the stack →',
     hero_cta_secondary: 'See solutions →',
-    hero_cta_dev_license: 'or get a developer license — free, signed, valid 60 days →',
+    hero_cta_dev_license: 'or get a developer license — free, signed, valid 30 days →',
     hero_trust_packages: '27 SDK packages',
     hero_trust_tests: '2,893 unit tests',
     hero_trust_vulns: '0 vulnerable packages',
     hero_trust_oss: 'Open source on GitHub',
+    hero_trust_signed: 'Cosign-signed images',
     solutions_eyebrow: 'Solutions',
     solutions_h2: 'Four shapes of the same runtime.',
     solutions_card_cc_eyebrow: 'Human voice',
@@ -1211,11 +1248,13 @@ const en_US: Messages = {
     faq_q5: 'Is LATAM (ES, PT) a first-class citizen or a translated afterthought?',
     faq_a5: 'First-class. The default locale is es-419 (Spanish for LATAM) — verbara.io/ serves Spanish, the English version lives at /en-US/. Documentation, support, and product UI are authored in three locales (es-419, en-US, pt-BR) with parity enforced in CI. Examples in pricing, case material, and tier names lean toward LATAM contexts (BPOs, telcos). Verbara is built by people who think in Spanish.',
     faq_q6: 'Where do I start based on my use-case?',
-    faq_a6: "Each solution has its own page with code, anti-positioning, and use-case-specific FAQ: contact-center for BPO/telco, voice-ai for inbound voicebots, omnichannel for WhatsApp/SMS/email, cpaas for embedded programmable telephony. Grab a Pro Developer license (Tier 0.5, free, 60 days) that unlocks every Pro feature in WarnOnly mode — evaluate the use-case that fits without commitment.",
+    faq_a6: "Each solution has its own page with code, anti-positioning, and use-case-specific FAQ: contact-center for BPO/telco, voice-ai for inbound voicebots, omnichannel for WhatsApp/SMS/email, cpaas for embedded programmable telephony. Grab a Pro Developer license (Tier 0.5, free, 30 days) that unlocks every Pro feature in WarnOnly mode — evaluate the use-case that fits without commitment.",
+    faq_q7: 'How do I verify the image I deploy is the real one?',
+    faq_a7: 'Every Verbara Platform image (api, realtime, renderer, mail, web) is cosign-signed and pinned by manifest-list digest — the exact value cosign signs. Verify any image with the public key we publish at verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. And it goes beyond the pull: your Pro license (.lic) embeds the authorized image digests (today api + realtime), so Pro features are bound to signed images by digest. A daily cron re-verifies those digests against the registry and alerts us if any one mutates.',
 
     final_h2_pre: 'Stop renting your comms stack.',
     final_h2_accent: 'Start running it.',
-    final_sub: '60-day developer license, signed, free. No credit card.',
+    final_sub: '30-day developer license, signed, free. No credit card.',
     final_cta: 'Get a developer license →',
   },
   pricing: {
@@ -1240,7 +1279,7 @@ const en_US: Messages = {
     tier_05_tagline: 'All Pro features in WarnOnly mode. Auto-issued.',
     tier_05_f1: 'All Pro features unlocked',
     tier_05_f2: '≤5 agents · ≤1 node',
-    tier_05_f3: '60-day rolling, free renewal',
+    tier_05_f3: '30-day rolling, free renewal',
     tier_05_f4: 'WarnOnly (never blocks)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5,000 / yr',
@@ -1297,6 +1336,7 @@ const en_US: Messages = {
     matrix_feat_max_agents: 'Maximum agents',
     matrix_feat_audit_retention: 'Audit log retention',
     matrix_feat_whitelabel: 'White-label / OEM rights',
+    matrix_feat_supply_chain: 'Supply-chain verification',
 
     matrix_support_community: 'community',
     matrix_support_dedicated: 'dedicated',
@@ -1309,7 +1349,7 @@ const en_US: Messages = {
     faq_a3: 'Yes. Registered non-profits and accredited universities get 50% off any commercial tier. Send your license proof + organization paperwork to licensing@verbara.io.',
     best_for_label: 'Best for',
     best_for_t0: 'Voice AI · CPaaS · CC (≤5 agents eval)',
-    best_for_t0_5: 'Any use-case under 60-day evaluation',
+    best_for_t0_5: 'Any use-case under 30-day evaluation',
     best_for_t1: 'CC · small CPaaS',
     best_for_t2: 'Multi-tenant CC · Omnichannel · Production Voice AI',
     best_for_t3: 'Hosted CC · Hosted Voice AI',
@@ -1358,7 +1398,7 @@ const en_US: Messages = {
     cc_hero_eyebrow: 'Solution · Contact Center',
     cc_hero_h1_pre: 'The contact center your security team',
     cc_hero_h1_accent: 'can actually read.',
-    cc_hero_sub: 'For BPO ops leads, telco product owners, and MSP/integrators running real traffic. Open-core end-to-end, no per-minute fees, multi-tenant from day one.',
+    cc_hero_sub: 'For BPO ops leads, telco product owners, and MSP/integrators running real traffic. Open-core end-to-end, no per-minute fees, multi-tenant from day one, with an in-browser WebRTC softphone.',
     cc_hero_cta_primary: 'Developer license →',
     cc_hero_cta_secondary: 'See CC pricing',
     cc_ap_eyebrow: 'What you replace',
@@ -1375,6 +1415,8 @@ const en_US: Messages = {
     cc_ap_row_5: 'Multi-tenant + clustering',
     cc_ap_row_6: 'Speech analytics',
     cc_ap_row_7: 'LATAM-default (ES/PT)',
+    cc_ap_row_8: 'In-browser WebRTC softphone',
+    cc_ap_row_9: 'Trunk/DID config from the UI',
     cc_cp_eyebrow: 'Read the code',
     cc_cp_h2: 'CC operation as real code.',
     cc_cp_filename: 'CallCenterHost.cs',
@@ -1387,13 +1429,19 @@ const en_US: Messages = {
     cc_faq_a2: 'Yes, from Tier 2 self-host. Strict per-tenant isolation, per-tenant skill routing, cross-tenant admin impersonation. Each BPO client sees only their data and their agents.',
     cc_faq_q3: 'Compatibility with my existing PBX?',
     cc_faq_a3: 'If your PBX is Asterisk (any version 16+), Verbara connects to your dialplan via AMI/ARI. If your PBX is Cisco/Avaya, you need a SIP gateway to Asterisk; the most common ones are documented.',
+    cc_faq_q4: 'Do my agents need a desk phone or an installed softphone?',
+    cc_faq_a4: 'No. Verbara ships a WebRTC softphone inside the agent workspace: they take and make calls straight from the browser, with no desk phone and no softphone software to install and maintain. The agent opens the URL, registers their extension, and they are on the line — ideal for remote teams and BPOs that would rather not manage hardware or per-seat softphone profiles.',
+    cc_faq_q5: 'Do I have to edit the Asterisk dialplan to connect trunks and numbers?',
+    cc_faq_a5: 'No. SIP trunks and DIDs are configured from the admin UI with a guided wizard, including a connectivity test that validates trunk registration before you put production traffic on it. No hand-editing dialplan files, no Asterisk restart for each change. If you prefer raw dialplan, it is still your Asterisk — but most day-to-day operation no longer requires it.',
+    cc_faq_q6: 'What happens if an agent loses internet or closes the tab mid-shift?',
+    cc_faq_a6: "Verbara detects it. A liveness heartbeat identifies the disconnected or \"zombie\" agent and reacts: orphaned digital work (chats, WhatsApp, email) is automatically re-queued to the front of its queue for the next live agent, and if a voice call drops with the customer still on the line, the customer gets a priority callback to the next available agent in their origin queue. On top of that, you set concurrent capacity limits per channel plus a MaxTotal across async channels, with a per-tenant default and per-agent override — so no one gets over-assigned.",
     cc_pp_eyebrow: 'CC pricing',
     cc_pp_h2: 'Which tier do you need?',
     cc_pp_body: 'Tier 1 ($5k/yr) to start single-tenant ≤25 agents. Tier 2 ($30-50k/yr) for multi-tenant + multi-cluster. Tier 3 ($99/agent/mo) if you prefer hosted. Tier 4 ($249/agent/mo) for SOC2/HIPAA + 24/7.',
     cc_pp_cta: 'See full pricing →',
     cc_final_h2_pre: 'The CC',
     cc_final_h2_accent: 'you can audit.',
-    cc_final_sub: '60-day signed developer license, free. Evaluate every Pro feature with no commitment.',
+    cc_final_sub: '30-day signed developer license, free. Evaluate every Pro feature with no commitment.',
 
     voiceai_hero_eyebrow: 'Solution · Voice AI',
     voiceai_hero_h1_pre: 'Inbound voicebots',
@@ -1427,13 +1475,15 @@ const en_US: Messages = {
     voiceai_faq_a2: 'With Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 from human end-of-utterance to first TTS phoneme, measured on dedicated infra at VU 100. Exact latency depends on your infra and upstream LLM.',
     voiceai_faq_q3: 'Self-host without my own telephony?',
     voiceai_faq_a3: "You need an Asterisk PBX so the SDK can receive audio (yours, a customer's, or deployed alongside Verbara). If you want voicebots without operating telephony, Tier 3+ SaaS hosted includes managed PBX.",
+    voiceai_faq_q4: 'How do I escalate to human agents when the voicebot transfers?',
+    voiceai_faq_a4: 'The voicebot runs on the same runtime as the contact center, so an escalation to a human lands on a real agent using the in-browser WebRTC softphone — no desk phone, no install. And if that agent loses connectivity mid-transfer, presence liveness detects it and fires a priority callback to the customer toward the next live agent. AI voice and human voice share one queue; they are not two products taped together.',
     voiceai_pp_eyebrow: 'Voice AI pricing',
     voiceai_pp_h2: 'Where do you start?',
-    voiceai_pp_body: 'Tier 0 community is free for evaluation with the MIT SDK directly. Tier 0.5 (Pro Developer, free 60 days) for every Pro feature. Tier 1+ when you ship to single-tenant production.',
+    voiceai_pp_body: 'Tier 0 community is free for evaluation with the MIT SDK directly. Tier 0.5 (Pro Developer, free 30 days) for every Pro feature. Tier 1+ when you ship to single-tenant production.',
     voiceai_pp_cta: 'See full pricing →',
     voiceai_final_h2_pre: 'Voicebots',
     voiceai_final_h2_accent: 'without rent.',
-    voiceai_final_sub: '60-day signed developer license, free. MIT SDK — read it end-to-end before adopting.',
+    voiceai_final_sub: '30-day signed developer license, free. MIT SDK — read it end-to-end before adopting.',
 
     omnichannel_hero_eyebrow: 'Solution · Omnichannel',
     omnichannel_hero_h1_pre: 'Eleven channels,',
@@ -1467,13 +1517,15 @@ const en_US: Messages = {
     omnichannel_faq_a2: 'Yes. The SMS connector is provider-agnostic with a Twilio provider included by default, plus segment calculation. For LATAM, regional providers (Infobip, Movile, etc.) connect by implementing an IProvider — a few hours of work.',
     omnichannel_faq_q3: 'How are cross-channel conversations routed?',
     omnichannel_faq_a3: 'The Conversations module correlates by contact: if a customer writes via WhatsApp and then via email, both hits land in the same conversation with a unified timeline. Routing is by skill/queue/team, not by channel — the operator sees the full history.',
+    omnichannel_faq_q4: 'How many concurrent conversations can one agent handle?',
+    omnichannel_faq_a4: 'You decide. Concurrent capacity is configurable per channel (chat, email, SMS, voice) plus a MaxTotal across async channels, with a per-tenant default and per-agent override — a senior can carry more chats than a junior without touching anyone else. And if an agent disconnects, their in-flight digital work is re-queued to the front of its queue for the next live agent, so load does not get stuck in a dead tab.',
     omnichannel_pp_eyebrow: 'Omnichannel pricing',
     omnichannel_pp_h2: 'Which tier do you need?',
     omnichannel_pp_body: 'Tier 0 community for self-host evaluation. Tier 2 ($30-50k/yr) for multi-tenant in your own SaaS. Tier 3+ ($99/agent/mo) if you prefer hosted with SLA.',
     omnichannel_pp_cta: 'See full pricing →',
     omnichannel_final_h2_pre: 'Eleven channels,',
     omnichannel_final_h2_accent: 'no per-message fees.',
-    omnichannel_final_sub: '60-day signed developer license, free. WhatsApp Meta direct, no middlemen.',
+    omnichannel_final_sub: '30-day signed developer license, free. WhatsApp Meta direct, no middlemen.',
 
     cpaas_hero_eyebrow: 'Solution · CPaaS',
     cpaas_hero_h1_pre: 'Telephony as a library,',
@@ -1507,18 +1559,20 @@ const en_US: Messages = {
     cpaas_faq_a2: 'The SDK passes the audio Asterisk delivers — it supports whatever codecs your Asterisk supports (G.711, G.722, Opus, PCM, etc.). The VoiceAI pipeline does internal resampling between formats when the LLM/TTS needs 16kHz PCM.',
     cpaas_faq_q3: 'What scale of multi-server federation?',
     cpaas_faq_a3: 'VerbaraServerPool supports arbitrary Asterisk servers with failover and routing by channel/tenant. We have validated pools of up to 8 nodes in R5.5 production validation; beyond that depends on your PBX infrastructure.',
+    cpaas_faq_q4: 'How do I embed voice for humans, not just APIs?',
+    cpaas_faq_a4: 'Beyond AMI/AGI/ARI/Live API for your programmable telephony, the Platform ships a WebRTC softphone inside the full agent workspace — an operator seat in the browser, not just loose WebRTC audio. Agents take and make calls with no desk phone and no softphone to install. And you wire SIP trunks and DIDs from the UI with a guided wizard and connectivity test, no hand-edited dialplan. The raw primitives stay there when you want to build; the human seat is ready when you need it.',
     cpaas_pp_eyebrow: 'CPaaS pricing',
     cpaas_pp_h2: 'What do you need to license?',
     cpaas_pp_body: 'Tier 0 community free with the MIT SDK directly (community telephony primitives included). Tier 1+ unlocks Pro features: clustering, multi-tenant, dialer, agent assist. Tier 5 white-label for resellers.',
     cpaas_pp_cta: 'See full pricing →',
     cpaas_final_h2_pre: 'Telephony',
     cpaas_final_h2_accent: 'you actually own.',
-    cpaas_final_sub: '60-day signed developer license, free. MIT SDK — the foundation is yours forever.',
+    cpaas_final_sub: '30-day signed developer license, free. MIT SDK — the foundation is yours forever.',
   },
   developer_license: {
     title: 'Free Pro Developer license',
     subtitle:
-      'Evaluate the full Verbara Pro feature set with no sales contact. 60-day rolling renewal.',
+      'Evaluate the full Verbara Pro feature set with no sales contact. 30-day rolling renewal.',
     coming_soon_title: 'Self-service coming soon',
     coming_soon_body:
       'The Tier 0.5 self-issue portal launches with our public release. In the meantime, email licensing@verbara.io to receive a manually-issued developer license — we usually respond within 24 hours.',
@@ -1550,7 +1604,7 @@ const en_US: Messages = {
     what_you_get_title: "What's included",
     what_you_get_agents: 'Up to 5 concurrent agents',
     what_you_get_node: '1 cluster node',
-    what_you_get_duration: '60-day license, free renewal',
+    what_you_get_duration: '30-day license, free renewal',
     what_you_get_features:
       'All Pro features (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Runs in WarnOnly mode — never blocks your application',
@@ -1638,11 +1692,12 @@ const pt_BR: Messages = {
     hero_sub: 'Open-core, nativo no Asterisk. Rode seu contact center, voice AI, omnichannel e mais sobre um único stack auditável. No seu data center, na sua nuvem, ou no nosso plano gerenciado.',
     hero_cta_primary: 'Rode o stack →',
     hero_cta_secondary: 'Ver soluções →',
-    hero_cta_dev_license: 'ou pegue uma licença developer — grátis, assinada, válida 60 dias →',
+    hero_cta_dev_license: 'ou pegue uma licença developer — grátis, assinada, válida 30 dias →',
     hero_trust_packages: '27 pacotes SDK',
     hero_trust_tests: '2.893 testes unitários',
     hero_trust_vulns: '0 pacotes vulneráveis',
     hero_trust_oss: 'Open source no GitHub',
+    hero_trust_signed: 'Imagens assinadas (cosign)',
     solutions_eyebrow: 'Soluções',
     solutions_h2: 'Quatro formas do mesmo runtime.',
     solutions_card_cc_eyebrow: 'Voz humana',
@@ -1730,11 +1785,13 @@ const pt_BR: Messages = {
     faq_q5: 'LATAM (ES, PT) é cidadão de primeira ou tradução tardia?',
     faq_a5: 'Primeira classe. O locale padrão é es-419 (espanhol LATAM neutro) — verbara.io/ serve espanhol, a versão inglesa vive em /en-US/. Documentação, suporte e UI do produto são autorados em três locales (es-419, en-US, pt-BR) com paridade enforced em CI. Exemplos em preços, casos e nomes de tier se inclinam a contextos LATAM (BPOs, telcos). Verbara é construído por gente que pensa em espanhol.',
     faq_q6: 'Por onde começo de acordo com meu use-case?',
-    faq_a6: 'Cada solução tem sua própria página com código, anti-positioning e FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonia programável embarcada. Gere uma licença Pro Developer (Tier 0.5, gratuita, 60 dias) que desbloqueia toda feature Pro em modo WarnOnly — avalie o use-case que se encaixa sem compromisso.',
+    faq_a6: 'Cada solução tem sua própria página com código, anti-positioning e FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonia programável embarcada. Gere uma licença Pro Developer (Tier 0.5, gratuita, 30 dias) que desbloqueia toda feature Pro em modo WarnOnly — avalie o use-case que se encaixa sem compromisso.',
+    faq_q7: 'Como verifico que a imagem que eu faço deploy é a real?',
+    faq_a7: 'Cada imagem do Verbara Platform (api, realtime, renderer, mail, web) é assinada com cosign e ancorada por digest de manifest-list — o mesmo valor que o cosign assina. Você verifica qualquer imagem com a chave pública que publicamos em verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. E vai além do pull: sua licença Pro (.lic) embute os digests autorizados (hoje api + realtime), então as features Pro ficam atreladas a imagens assinadas por digest. Um cron diário re-verifica esses digests contra o registry e nos alerta se algum sofrer mutação.',
 
     final_h2_pre: 'Pare de alugar seu stack de comunicações.',
     final_h2_accent: 'Comece a rodá-lo.',
-    final_sub: 'Licença developer 60 dias, assinada, grátis. Sem cartão de crédito.',
+    final_sub: 'Licença developer 30 dias, assinada, grátis. Sem cartão de crédito.',
     final_cta: 'Pegue uma licença developer →',
   },
   pricing: {
@@ -1759,7 +1816,7 @@ const pt_BR: Messages = {
     tier_05_tagline: 'Todas as funcionalidades Pro em modo WarnOnly. Autoemitida.',
     tier_05_f1: 'Todas as funcionalidades Pro desbloqueadas',
     tier_05_f2: '≤5 agentes · ≤1 nó',
-    tier_05_f3: '60 dias renováveis grátis',
+    tier_05_f3: '30 dias renováveis grátis',
     tier_05_f4: 'WarnOnly (nunca bloqueia)',
     tier_1_name: 'Pro Self-Host Startup',
     tier_1_price: '$5.000 / ano',
@@ -1816,6 +1873,7 @@ const pt_BR: Messages = {
     matrix_feat_max_agents: 'Agentes máximos',
     matrix_feat_audit_retention: 'Retenção de audit log',
     matrix_feat_whitelabel: 'White-label / OEM',
+    matrix_feat_supply_chain: 'Verificação de supply-chain',
 
     matrix_support_community: 'community',
     matrix_support_dedicated: 'dedicado',
@@ -1828,7 +1886,7 @@ const pt_BR: Messages = {
     faq_a3: 'Sim. Organizações non-profit registradas e universidades credenciadas têm 50% de desconto em qualquer tier comercial. Envie comprovante da licença + documentação da organização para licensing@verbara.io.',
     best_for_label: 'Melhor para',
     best_for_t0: 'Voice AI · CPaaS · CC (≤5 agentes avaliação)',
-    best_for_t0_5: 'Qualquer use-case em avaliação de 60 dias',
+    best_for_t0_5: 'Qualquer use-case em avaliação de 30 dias',
     best_for_t1: 'CC · CPaaS pequeno',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI produtivo',
     best_for_t3: 'CC hospedado · Voice AI hospedado',
@@ -1877,7 +1935,7 @@ const pt_BR: Messages = {
     cc_hero_eyebrow: 'Solução · Contact Center',
     cc_hero_h1_pre: 'O contact center que sua equipe de segurança',
     cc_hero_h1_accent: 'consegue ler.',
-    cc_hero_sub: 'Para BPO ops leads, telco product owners e MSP/integradores rodando tráfego real. Open-core ponta-a-ponta, sem tarifas por minuto, multi-tenant nativo.',
+    cc_hero_sub: 'Para BPO ops leads, telco product owners e MSP/integradores rodando tráfego real. Open-core ponta-a-ponta, sem tarifas por minuto, multi-tenant nativo e softphone WebRTC no navegador.',
     cc_hero_cta_primary: 'Licença developer →',
     cc_hero_cta_secondary: 'Ver pricing CC',
     cc_ap_eyebrow: 'O que você substitui',
@@ -1894,6 +1952,8 @@ const pt_BR: Messages = {
     cc_ap_row_5: 'Multi-tenant + clustering',
     cc_ap_row_6: 'Speech analytics',
     cc_ap_row_7: 'LATAM por padrão (ES/PT)',
+    cc_ap_row_8: 'Softphone WebRTC no navegador',
+    cc_ap_row_9: 'Config de troncos/DID pela UI',
     cc_cp_eyebrow: 'Leia o código',
     cc_cp_h2: 'Operação CC em código real.',
     cc_cp_filename: 'CallCenterHost.cs',
@@ -1906,13 +1966,19 @@ const pt_BR: Messages = {
     cc_faq_a2: 'Sim, a partir do Tier 2 self-host. Isolamento estrito por tenant, roteamento por skill por tenant, impersonation cross-tenant para administração. Cada cliente do BPO vê apenas seus dados e seus agentes.',
     cc_faq_q3: 'Compatibilidade com meu PBX existente?',
     cc_faq_a3: 'Se seu PBX é Asterisk (qualquer versão 16+), o Verbara conecta no seu dialplan via AMI/ARI. Se seu PBX é Cisco/Avaya, você precisa de um gateway SIP para o Asterisk; os mais comuns estão documentados.',
+    cc_faq_q4: 'Meus agentes precisam de telefone físico ou softphone instalado?',
+    cc_faq_a4: 'Não. O Verbara traz um softphone WebRTC dentro do workspace do agente: eles atendem e fazem chamadas direto do navegador, sem telefone de mesa e sem software de softphone para instalar e manter. O agente abre a URL, registra o ramal e já está em linha — ideal para times remotos e BPOs que não querem administrar hardware nem perfis de softphone por posição.',
+    cc_faq_q5: 'Preciso editar o dialplan do Asterisk para conectar troncos e números?',
+    cc_faq_a5: 'Não. Os troncos SIP e os DIDs são configurados pela UI de administração com um assistente guiado, incluindo um teste de conectividade que valida o registro do tronco antes de colocar tráfego em produção. Sem editar arquivos de dialplan na mão nem reiniciar o Asterisk a cada mudança. Se você prefere dialplan cru, ele continua sendo o seu Asterisk — mas a maior parte da operação diária já não precisa dele.',
+    cc_faq_q6: 'O que acontece se um agente perde a internet ou fecha a aba no meio do turno?',
+    cc_faq_a6: 'O Verbara detecta. Um heartbeat de liveness identifica o agente desconectado ou "zombie" e reage: o trabalho digital órfão (chats, WhatsApp, e-mail) é re-enfileirado automaticamente para a frente da fila para o próximo agente vivo, e se uma chamada de voz cai com o cliente ainda na linha, o cliente recebe um callback prioritário para o próximo agente disponível da fila de origem. Além disso, você define limites de capacidade concorrente por canal mais um MaxTotal entre canais assíncronos, com default por tenant e override por agente — para que ninguém fique sobre-alocado.',
     cc_pp_eyebrow: 'Pricing CC',
     cc_pp_h2: 'Qual tier você precisa?',
     cc_pp_body: 'Tier 1 ($5k/ano) para começar single-tenant ≤25 agentes. Tier 2 ($30-50k/ano) para multi-tenant + multi-cluster. Tier 3 ($99/agente/mês) se preferir hospedado. Tier 4 ($249/agente/mês) para SOC2/HIPAA + 24/7.',
     cc_pp_cta: 'Ver pricing completo →',
     cc_final_h2_pre: 'O CC',
     cc_final_h2_accent: 'que você pode auditar.',
-    cc_final_sub: 'Licença developer 60 dias, assinada, gratuita. Avalie todo Pro sem compromisso.',
+    cc_final_sub: 'Licença developer 30 dias, assinada, gratuita. Avalie todo Pro sem compromisso.',
 
     voiceai_hero_eyebrow: 'Solução · Voice AI',
     voiceai_hero_h1_pre: 'Voicebots inbound',
@@ -1946,13 +2012,15 @@ const pt_BR: Messages = {
     voiceai_faq_a2: 'Com Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 do fim-de-frase humano até o primeiro phoneme TTS, medido em infra própria com VU 100. Latência exata depende da sua infra e do LLM upstream.',
     voiceai_faq_q3: 'Self-host sem telefonia própria?',
     voiceai_faq_a3: 'Você precisa de um PBX Asterisk para o SDK receber áudio (seu, do cliente, ou implantado junto com Verbara). Se quer voicebots sem operar telefonia, Tier 3+ SaaS hospedado inclui PBX gerenciado.',
+    voiceai_faq_q4: 'Como escalo para agentes humanos quando o voicebot transfere?',
+    voiceai_faq_a4: 'O voicebot roda sobre o mesmo runtime do contact center, então um escalonamento para humano cai em um agente real usando o softphone WebRTC no navegador — sem telefone de mesa, sem instalação. E se esse agente perde a conexão no meio da chamada transferida, o liveness de presença detecta e dispara um callback prioritário ao cliente para o próximo agente vivo. A voz IA e a humana compartilham a mesma fila; não são dois produtos colados com fita.',
     voiceai_pp_eyebrow: 'Pricing Voice AI',
     voiceai_pp_h2: 'Por onde você começa?',
-    voiceai_pp_body: 'Tier 0 community gratuito para avaliação com SDK MIT direto. Tier 0.5 (Pro Developer, grátis 60 dias) para toda feature Pro. Tier 1+ quando shippa para produção single-tenant.',
+    voiceai_pp_body: 'Tier 0 community gratuito para avaliação com SDK MIT direto. Tier 0.5 (Pro Developer, grátis 30 dias) para toda feature Pro. Tier 1+ quando shippa para produção single-tenant.',
     voiceai_pp_cta: 'Ver pricing completo →',
     voiceai_final_h2_pre: 'Voicebots',
     voiceai_final_h2_accent: 'sem aluguel.',
-    voiceai_final_sub: 'Licença developer 60 dias, assinada, gratuita. SDK MIT — leia inteiro antes de adotar.',
+    voiceai_final_sub: 'Licença developer 30 dias, assinada, gratuita. SDK MIT — leia inteiro antes de adotar.',
 
     omnichannel_hero_eyebrow: 'Solução · Omnichannel',
     omnichannel_hero_h1_pre: 'Onze canais,',
@@ -1986,13 +2054,15 @@ const pt_BR: Messages = {
     omnichannel_faq_a2: 'Sim. O conector SMS é provider-agnostic com um provider Twilio incluído por padrão, mais cálculo de segmentos. Para LATAM, provedores regionais (Infobip, Movile, etc.) conectam implementando um IProvider — algumas horas de trabalho.',
     omnichannel_faq_q3: 'Como são roteadas conversas cross-canal?',
     omnichannel_faq_a3: 'O módulo Conversations correlaciona por contato: se um cliente escreve pelo WhatsApp e depois por e-mail, ambos os hits chegam na mesma conversa com timeline unificada. O roteamento é por skill/queue/team, não por canal — o operador vê todo o histórico.',
+    omnichannel_faq_q4: 'Quantas conversas simultâneas um agente consegue atender?',
+    omnichannel_faq_a4: 'Você decide. A capacidade concorrente é configurável por canal (chat, e-mail, SMS, voz) mais um MaxTotal entre canais assíncronos, com default por tenant e override por agente — um sênior pode levar mais chats que um júnior sem mexer em mais ninguém. E se um agente desconecta, o trabalho digital em andamento dele é re-enfileirado para a frente da fila para o próximo agente vivo, então a carga não fica presa numa aba morta.',
     omnichannel_pp_eyebrow: 'Pricing Omnichannel',
     omnichannel_pp_h2: 'Qual tier você precisa?',
     omnichannel_pp_body: 'Tier 0 community para avaliação self-host. Tier 2 ($30-50k/ano) para multi-tenant no seu próprio SaaS. Tier 3+ ($99/agente/mês) se preferir hospedado com SLA.',
     omnichannel_pp_cta: 'Ver pricing completo →',
     omnichannel_final_h2_pre: 'Onze canais,',
     omnichannel_final_h2_accent: 'sem per-message.',
-    omnichannel_final_sub: 'Licença developer 60 dias, assinada, gratuita. WhatsApp Meta direto, sem intermediários.',
+    omnichannel_final_sub: 'Licença developer 30 dias, assinada, gratuita. WhatsApp Meta direto, sem intermediários.',
 
     cpaas_hero_eyebrow: 'Solução · CPaaS',
     cpaas_hero_h1_pre: 'Telefonia como biblioteca,',
@@ -2026,18 +2096,20 @@ const pt_BR: Messages = {
     cpaas_faq_a2: 'O SDK passa o áudio que o Asterisk entrega — suporta os codecs que seu Asterisk suportar (G.711, G.722, Opus, PCM, etc.). O pipeline VoiceAI faz resampling interno entre formatos quando o LLM/TTS precisa de 16kHz PCM.',
     cpaas_faq_q3: 'Federação multi-servidor de qual escala?',
     cpaas_faq_a3: 'VerbaraServerPool suporta servidores Asterisk arbitrários com failover e roteamento por canal/tenant. Validamos pools de até 8 nós na validação de produção R5.5; além disso depende da sua infra de PBX.',
+    cpaas_faq_q4: 'Como embarco voz para humanos, não só APIs?',
+    cpaas_faq_a4: 'Além de AMI/AGI/ARI/Live API para sua telefonia programável, a Platform inclui um softphone WebRTC dentro do workspace completo do agente — um posto de operador no navegador, não só áudio WebRTC solto. Os agentes atendem e fazem chamadas sem telefone de mesa e sem softphone para instalar. E você conecta seus troncos SIP e DIDs pela UI com um assistente guiado e teste de conectividade, sem dialplan editado na mão. As primitivas cruas continuam ali quando você quiser construir; o posto humano vem pronto quando você precisa.',
     cpaas_pp_eyebrow: 'Pricing CPaaS',
     cpaas_pp_h2: 'O que você precisa licenciar?',
     cpaas_pp_body: 'Tier 0 community gratuito com SDK MIT direto (primitivas de telefonia community incluídas). Tier 1+ desbloqueia features Pro: clustering, multi-tenant, dialer, agent assist. Tier 5 white-label para revendedores.',
     cpaas_pp_cta: 'Ver pricing completo →',
     cpaas_final_h2_pre: 'Telefonia',
     cpaas_final_h2_accent: 'que você de fato possui.',
-    cpaas_final_sub: 'Licença developer 60 dias, assinada, gratuita. SDK MIT — a base é sua para sempre.',
+    cpaas_final_sub: 'Licença developer 30 dias, assinada, gratuita. SDK MIT — a base é sua para sempre.',
   },
   developer_license: {
     title: 'Licença gratuita de Pro Developer',
     subtitle:
-      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 60 dias.',
+      'Avalie todas as funcionalidades do Verbara Pro sem contato com vendas. Renovação gratuita a cada 30 dias.',
     coming_soon_title: 'Autoatendimento em breve',
     coming_soon_body:
       'O portal de autoemissão Tier 0.5 entra no ar com nosso lançamento público. Enquanto isso, escreva para licensing@verbara.io para receber uma licença de developer emitida manualmente — geralmente respondemos em menos de 24 horas.',
@@ -2069,7 +2141,7 @@ const pt_BR: Messages = {
     what_you_get_title: 'O que está incluído',
     what_you_get_agents: 'Até 5 agentes simultâneos',
     what_you_get_node: '1 nó de cluster',
-    what_you_get_duration: 'Licença de 60 dias, renovação gratuita',
+    what_you_get_duration: 'Licença de 30 dias, renovação gratuita',
     what_you_get_features:
       'Todas as funcionalidades Pro (multi-tenant, analytics, dialer, AgentAssist, CallAnalytics)',
     what_you_get_mode: 'Modo WarnOnly — nunca bloqueia seu aplicativo',
