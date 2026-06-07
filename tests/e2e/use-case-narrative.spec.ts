@@ -3,10 +3,10 @@ import { test, expect } from '@playwright/test';
 const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];
 
 const SPOKES = [
-  { slug: 'contact-center', expectedFilename: 'CallCenterHost.cs',       faqCount: 3 },
-  { slug: 'voice-ai',       expectedFilename: 'VoiceAgent.cs',           faqCount: 3 },
-  { slug: 'omnichannel',    expectedFilename: 'OmnichannelRouter.cs',     faqCount: 3 },
-  { slug: 'cpaas',          expectedFilename: 'OutboundCallExample.cs',   faqCount: 3 },
+  { slug: 'contact-center', expectedFilename: 'CallCenterHost.cs',       faqCount: 6 },
+  { slug: 'voice-ai',       expectedFilename: 'VoiceAgent.cs',           faqCount: 4 },
+  { slug: 'omnichannel',    expectedFilename: 'OmnichannelRouter.cs',     faqCount: 4 },
+  { slug: 'cpaas',          expectedFilename: 'OutboundCallExample.cs',   faqCount: 4 },
 ];
 
 for (const prefix of LOCALE_PREFIXES) {

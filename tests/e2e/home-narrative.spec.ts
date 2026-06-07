@@ -33,9 +33,9 @@ for (const prefix of LOCALE_PREFIXES) {
     const teaserLinks = await page.locator('a[href*="#group-"]').count();
     expect(teaserLinks).toBeGreaterThanOrEqual(3);
 
-    // Faq — 6 toggle buttons
+    // Faq — 7 toggle buttons (added the signed-artifact verification FAQ)
     const faqButtons = await page.locator('[data-faq-toggle]').count();
-    expect(faqButtons).toBe(6);
+    expect(faqButtons).toBe(7);
 
     // FinalCta — closing CTA links to developer-license
     const finalCta = page.locator('section').last().locator('a[href*="developer-license"]');
