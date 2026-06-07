@@ -18,7 +18,8 @@ type FeatureKey =
   | 'matrix_feat_support'
   | 'matrix_feat_max_agents'
   | 'matrix_feat_audit_retention'
-  | 'matrix_feat_whitelabel';
+  | 'matrix_feat_whitelabel'
+  | 'matrix_feat_supply_chain';
 
 interface Row {
   feature: FeatureKey;
@@ -29,6 +30,10 @@ const rows: Row[] = [
   {
     feature: 'matrix_feat_oss_source',
     values: { tier_0: '✓', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+  },
+  {
+    feature: 'matrix_feat_supply_chain',
+    values: { tier_0: '✓ cosign', tier_05: '✓ cosign', tier_1: '✓ +digest', tier_2: '✓ +digest', tier_3: '✓ +digest', tier_4: '✓ +digest', tier_5: '✓ +digest' },
   },
   {
     feature: 'matrix_feat_pro_features',
