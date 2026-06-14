@@ -1,10 +1,12 @@
 name: ci
 
+# Triggers: pull_request validates each PR; merge_group runs the gate on the tentative
+# merge before it lands. push:[main] was dropped — it re-tested the exact tree the PR had
+# already validated (redundant double-run per PR). Matches verbara-meta ADR-0003.
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
+  merge_group:
 
 jobs:
   quality:
@@ -22,6 +24,7 @@ jobs:
       - run: npm run check
       - run: npm run lint
       - run: npm run test:i18n
+      - run: npm run validate:digests
       - run: npm run build
       - run: npm run validate:html
 
