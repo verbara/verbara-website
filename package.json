@@ -20,9 +20,10 @@
     "lint": "eslint .",
     "validate:html": "html-validate 'dist/**/*.html'",
     "test:i18n": "tsx scripts/check-i18n-parity.mjs",
+    "validate:digests": "node scripts/validate-authorized-digests.mjs",
     "test:e2e": "playwright test",
     "test:lhci": "lhci autorun",
-    "test:all": "npm run check && npm run lint && npm run test:i18n && npm run build && npm run validate:html && npm run test:e2e && npm run test:lhci"
+    "test:all": "npm run check && npm run lint && npm run test:i18n && npm run validate:digests && npm run build && npm run validate:html && npm run test:e2e && npm run test:lhci"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
