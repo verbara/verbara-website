@@ -1,0 +1,48 @@
+name: CodeQL
+
+# Static security analysis (SAST) for the site's own JS/TS — the Astro components
+# AND the Cloudflare Pages Functions in functions/api/ that back the trust/licensing
+# surface (D1 license_audit + authorized_image_digests). This is the security-baseline
+# symmetry the other Verbara repos already carry (verbara-meta ADR-0003); ci.yml gates
+# build/lint/i18n/digests, CodeQL scans the source for vulnerabilities. Free on PUBLIC repos.
+#
+# JS/TS needs no build for extraction (build-mode: none is the CodeQL default for this
+# language), so there is no npm install / astro build step here.
+#
+# Triggers mirror the JS/TS sibling (Platform.Web): push:[main] keeps the default-branch
+# baseline fresh (the merge_group ref is not main, so it cannot), pull_request gates each PR,
+# weekly schedule re-scans for newly-disclosed query patterns. Deliberately NO merge_group —
+# CodeQL stays PR-gated, not queue-required, so it can never hang the merge queue.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 0'
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze (JS/TS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4.36.0
+        with:
+          languages: javascript-typescript
+          queries: security-extended,security-and-quality
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v4.36.0
+        with:
+          category: '/language:javascript-typescript'
