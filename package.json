@@ -41,7 +41,7 @@
     "html-validate": "^9.7.1",
     "png-to-ico": "^2.1.8",
     "sharp": "^0.33.5",
-    "tsx": "^4.21.0",
+    "tsx": "^4.22.4",
     "typescript": "^5.9.0",
     "typescript-eslint": "^8.59.2"
   }
