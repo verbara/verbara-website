@@ -1,0 +1,84 @@
+version: 2
+
+# Dependabot configuration for verbara-website (Astro 6 + TailwindCSS 4 + Cloudflare).
+# Mirrors the ecosystem convention (see Verbara.Sdk / Verbara.Platform.Web):
+#   - npm: weekly, grouped to cut PR noise, majors handled manually.
+#   - GitHub Actions: weekly.
+# See https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+updates:
+  # ─────────────────────────────────────────────────────────────────────
+  # npm dependencies (root package.json)
+  # ─────────────────────────────────────────────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Mexico_City"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    # Group related dependencies into a single PR to reduce noise.
+    groups:
+      astro-toolchain:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+        update-types:
+          - "minor"
+          - "patch"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+        update-types:
+          - "minor"
+          - "patch"
+      eslint-toolchain:
+        patterns:
+          - "eslint"
+          - "eslint-*"
+          - "@eslint/*"
+          - "typescript-eslint"
+        update-types:
+          - "minor"
+          - "patch"
+      test-toolchain:
+        patterns:
+          - "@playwright/*"
+          - "playwright"
+          - "@lhci/*"
+          - "html-validate"
+        update-types:
+          - "minor"
+          - "patch"
+    # Major version bumps are reviewed manually to avoid PR noise.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
+  # ─────────────────────────────────────────────────────────────────────
+  # GitHub Actions
+  # ─────────────────────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Mexico_City"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
