@@ -1,0 +1,11 @@
+# CODEOWNERS — review routing for verbara-website (Astro + Cloudflare)
+# One owner today (solo dev). As the team grows, add reviewers per area
+# below; GitHub auto-requests the matching owner on each PR.
+
+# Default owner for everything
+*              @Harol-Reina
+
+# Release-sensitive surfaces (CI/deploy, deps, specs)
+/.github/      @Harol-Reina
+/package.json  @Harol-Reina
+/openspec/     @Harol-Reina
