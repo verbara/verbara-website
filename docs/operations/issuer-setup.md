@@ -1,11 +1,14 @@
 # Issuer Setup — One-Time Operator Runbook
 
+> **Corrected 2026-07-05** after the Pages → Workers migration (ADR-0001): this runbook now
+> targets the Workers + Static Assets deployment (`wrangler secret put`), not Cloudflare Pages.
+
 **Audience:** Verbara maintainer, setting up the Tier 0.5 license-issuer for the first time.
-**Prerequisites:** Cloudflare Pages project `verbara-website` already exists and serves https://verbara.io. Resend account verified for verbara.io. Turnstile site + secret keys generated.
+**Prerequisites:** Cloudflare Worker script `verbara-website` already exists and serves https://verbara.io (Workers + Static Assets, not a Pages project). Resend account verified for verbara.io. Turnstile site + secret keys generated.
 **Estimated time:** ~30 min total (one sitting).
 **Cost:** $0 — all on free tiers.
 
-This runbook turns the Phase 3 code (already shipped in `functions/api/developer-license.ts`) into a working endpoint that a real customer can hit.
+This runbook turns the Phase 3 code (already shipped in `functions/api/developer-license/index.ts`) into a working endpoint that a real customer can hit.
 
 ## What this gives you when complete
 
@@ -106,32 +109,37 @@ npx wrangler d1 migrations apply verbara-license-audit --remote
 
 Confirms creation of the `license_audit` table. Re-running is safe (idempotent IF NOT EXISTS).
 
-## Step 6 — Upload secrets to Cloudflare Pages (~3 min)
+## Step 6 — Upload secrets to the Cloudflare Worker (~3 min)
 
 Three secrets, one command each. Each command prompts for the value — paste once, Cloudflare stores it encrypted; never appears in logs or git.
 
 ```sh
 # 1. ECDSA private key (the entire PKCS8 PEM contents, multi-line)
-cat ~/.verbara/keys/private.pkcs8.pem | npx wrangler pages secret put VERBARA_LICENSE_SIGNING_KEY --project-name verbara-website
+cat ~/.verbara/keys/private.pkcs8.pem | npx wrangler secret put VERBARA_LICENSE_SIGNING_KEY
 
 # 2. Resend API key (from ~/.verbara/secrets.env or your password manager)
-npx wrangler pages secret put RESEND_API_KEY --project-name verbara-website
+npx wrangler secret put RESEND_API_KEY
 # When prompted, paste the re_... key
 
 # 3. Turnstile secret key (the 0x4AAA... PRIVATE one, NOT the site key)
-npx wrangler pages secret put TURNSTILE_SECRET_KEY --project-name verbara-website
+npx wrangler secret put TURNSTILE_SECRET_KEY
 # When prompted, paste the secret key
 ```
 
 ## Step 7 — Add the PUBLIC env var for the form (~1 min)
 
-The form needs `PUBLIC_TURNSTILE_SITE_KEY` to render. Public env vars are NOT secrets — they go in the Cloudflare Pages dashboard's Environment Variables section (Production environment), or via wrangler:
+The form needs `PUBLIC_TURNSTILE_SITE_KEY` to render. In practice this repo hardcodes the public
+Turnstile site key into `astro.config.mjs` via `vite.define` at build time (see ADR-0001's
+2026-05-10 status update) rather than injecting it as a Worker env var — it's public information
+by definition (embedded in client HTML), so committing it is safe and avoids a dashboard step.
+If you do need to override it per-environment, Worker env vars are set via the Cloudflare
+dashboard's Worker Settings → Variables section, or via wrangler:
 
 ```sh
 # Via dashboard (recommended for public env vars):
-#   Cloudflare → verbara-website → Settings → Environment variables → Production
+#   Cloudflare → Workers & Pages → verbara-website → Settings → Variables
 #   Add: PUBLIC_TURNSTILE_SITE_KEY = 0x4AAA... (the SITE key, public)
-#   Save → Cloudflare prompts for redeploy → Save and Deploy
+#   Save → triggers a redeploy
 ```
 
 Without this var, `/developer-license/` falls back to the coming-soon callout. With it, the form renders.

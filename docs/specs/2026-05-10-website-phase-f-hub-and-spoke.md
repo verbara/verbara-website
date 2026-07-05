@@ -199,7 +199,7 @@ The Voice AI / Omnichannel / CPaaS anti-positioning tables live on their respect
 |---|---|---|
 | `home.final_h2_pre` | "Deja de rentar tu contact center." | "Deja de rentar tu stack de comunicaciones." |
 | `home.final_h2_accent` | "Empieza a correrlo." | **Unchanged** |
-| `home.final_sub` | "Licencia developer 60 días, firmada, gratis. Sin tarjeta de crédito." | **Unchanged** |
+| `home.final_sub` | "Licencia developer 30 días, firmada, gratis. Sin tarjeta de crédito." | **Unchanged** |
 | `home.final_cta` | "Obtén una licencia developer →" | **Unchanged** |
 
 ### 6.4 Sections preserved verbatim
@@ -267,7 +267,7 @@ The mapping for both surfaces:
 | Tier | Mejor para |
 |---|---|
 | Community (0) | Voice AI · CPaaS · CC (≤5 agentes evaluación) |
-| Pro Developer (0.5) | Cualquier use-case en evaluación de 60 días |
+| Pro Developer (0.5) | Cualquier use-case en evaluación de 30 días |
 | Pro Self-Host Startup (1) | CC · CPaaS pequeño |
 | Pro Self-Host Business (2) | CC multi-tenant · Omnichannel · Voice AI productivo |
 | SaaS Business (3) | CC hospedado · Voice AI hospedado |
