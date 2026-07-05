@@ -50,3 +50,4 @@ The decision, stated in one or two sentences.
 
 - [ADR-0001](0001-marketing-site-stack.md) — Marketing Site Stack: Astro + Cloudflare + Resend ($0 baseline) (Accepted, 2026-05-09)
 - [ADR-0002](0002-hub-and-spoke-architecture.md) — Hub-and-Spoke Marketing Site Architecture (Accepted, 2026-05-10)
+- [ADR-0003](0003-no-changelog-no-tags.md) — No CHANGELOG.md / no git tags — releases tracked via authorized-digests + PR titles (Accepted, 2026-07-05)

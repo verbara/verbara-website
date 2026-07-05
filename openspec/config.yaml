@@ -17,6 +17,7 @@ rules:
   proposal:
     - "Set a `tier` in frontmatter: GRANDE (>3 days or a product/brand decision), MEDIANO (1-3 days), or PEQUEÑO (small fix, <1 day). PEQUEÑO may keep the proposal light."
     - "Add product-ownership frontmatter: owner, approver, stakeholder, decision_ref (repo-qualified ADR that motivates or records this change, e.g. website/ADR-NNNN, or verbara-meta/ADR-NNNN for ecosystem standards; create or extend an ADR in docs/decisions/ when the change embodies a durable decision). With a single developer, owner = approver."
+    - "Cross-repo ADR citations MUST be repo-qualified in ANY doc, not just decision_ref (verbara-meta/ADR-0011, three-way collision): a bare `ADR-NNNN` always refers to THIS repo's docs/decisions/; cite another repo's ADR as `<repo>/ADR-NNNN` (e.g. website/ADR-0003, Pro/ADR-0012, verbara-meta/ADR-0006)."
     - "State the problem (what pain, for whom) for GRANDE and MEDIANO tiers."
     - "Public-repo content rule (verbara-meta/ADR-0005, applies to ALL artifacts of a change): never include secrets/keys/tokens, customer or personal data, absolute machine paths, partner-specific commercial terms, or reproductions of private-repo content — reference private repos only as opaque names (e.g. verbara-meta/ADR-NNNN, Pro/ADR-NNNN); when in doubt the artifact goes in the private repo's docs and the public change carries the opaque reference."
   specs:
