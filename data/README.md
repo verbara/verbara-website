@@ -20,7 +20,7 @@ nor env var is set.
 For background, see:
 - Pro ADR-0011 — `Verbara.Sdk.Pro/docs/decisions/0011-image-digest-binding-in-license-keys.md`
 - Research — `Verbara.Sdk.Pro/docs/research/2026-05-09-pro-image-binding-research.md`
-- Execution plan — `Verbara.Sdk.Pro/docs/plans/active/2026-05-09-pro-v23x-image-binding-execution.md`
+- Execution plan — Sdk.Pro internal plan — private repo
 
 ## Schema
 
@@ -29,10 +29,10 @@ For background, see:
   "$schema": "https://verbara.io/schemas/authorized-digests-v1.json",
   "current": [
     {
-      "platform_version": "v3.0.0",                          // semver tag
-      "image_ref":        "ghcr.io/verbara/platform:v3.0.0", // canonical pull ref
-      "manifest_list_digest": "sha256:abc...",               // value cosign signs; covers all archs
-      "released_at":      "2026-05-15T00:00:00Z"             // ISO 8601 UTC
+      "platform_version": "v3.0.0",                              // semver tag
+      "image_ref":        "ghcr.io/verbara/platform/api:v3.0.0", // canonical pull ref (api|realtime)
+      "manifest_list_digest": "sha256:abc...",                   // value cosign signs; covers all archs
+      "released_at":      "2026-05-15T00:00:00Z"                 // ISO 8601 UTC
     }
   ],
   "deprecated": [
@@ -84,9 +84,9 @@ After a new Platform release ships a cosign-signed image:
    - `image_ref` — the canonical pull reference
    - `manifest_list_digest` — the SHA-256 manifest-list digest (`sha256:...`)
    - `released_at` — ISO 8601 UTC timestamp of the release
-3. Open a PR titled `feat(data): authorize Platform vX.Y.Z digest`. Merging the
-   PR triggers a Worker re-deploy via the standard `npm run deploy` pipeline
-   (or auto-deploy if reconnected).
+3. Open a PR titled `chore(digests): authorize Platform vX.Y.Z (api + realtime), deprecate vX.Y.Z`
+   (actual convention in use — see merged PR history). Merging the PR triggers a Worker re-deploy
+   via Cloudflare Workers Builds auto-deploy on push to `main`.
 4. If `current.length` exceeds 6, optionally move the oldest non-current entry
    to `deprecated` in the same PR for housekeeping.
 
@@ -95,10 +95,12 @@ manifest-list digest from `ghcr.io` and emails `security@verbara.io` if a
 recorded digest no longer matches the live registry response (catches
 accidental tag-mutation).
 
-## Skeleton state
+## Current state
 
-`current` is intentionally empty until Phase 3 of the image-binding execution
-plan ships the first cosign-signed Platform image. Until then, every issued
-`.lic` carries `AuthorizedImageDigests: []`, which Pro v2.3.x consumers treat
-as the back-compat permissive path (no enforcement). This is by design — the
-registry is the trigger that activates Layer C of the F+B+C defense stack.
+`current` is no longer empty: the image-binding execution plan shipped, and the registry now
+holds the last-6-entries rotation described above (currently 2 entries — the api and realtime
+manifest-list digests for the latest released Platform version, v2.16.0). Every issued `.lic`
+carries a non-empty `AuthorizedImageDigests` claim, activating Layer C of the F+B+C defense
+stack for Pro v2.3.x+ consumers. Older `.lic` files issued before the registry had entries (or
+issued when `dotnet run` dev-mode has neither `/etc/verbara-image-digest` nor `IMAGE_DIGEST` set)
+still fall back to the back-compat permissive path (no enforcement).

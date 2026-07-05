@@ -122,6 +122,14 @@ The single canonical `LicenseValidator` in `Verbara.Sdk.Pro.Licensing` validates
 
 - **2026-05-10 — Lighthouse a11y threshold (≥ 0.95) requires `text-bone-2` (≥ 65% opacity) for small body text** (PR #13). The first-pass Phase F TierCard `bestFor` line used `text-bone-3` (40% opacity, ~3.3:1 contrast on `--color-ink`) at `text-xs` (12px) — failed WCAG AA 4.5:1 small-text rule. `text-bone-3` remains valid for dividers and `aria-hidden` decorative use only.
 
+- **2026-07-05 — Correction: Tier 0.5 license duration is 30 days, not 60.** The 2026-05-10 status
+  update above (duration "normalized to 60 days") was itself superseded by PR #25 (commit
+  `7c4da0c`, `fix(marketing): correct free Pro Developer license duration 60->30 days (matches
+  issuer)`), which reverted the marketing copy back to 30 days to match the issuer's
+  `LICENSE_DAYS = 30` constant (`functions/api/developer-license/index.ts`). All three locales in
+  `src/i18n/messages.ts` currently read "30 días" / "30-day" / "30 dias" throughout. The 60-day
+  figure is stale wherever it still appears in docs (e.g. `docs/specs/2026-05-10-website-phase-f-hub-and-spoke.md`) and should read 30 days.
+
 ## References
 
 - Pro plan: `2026-05-09-marketing-site-bootstrap.md`
