@@ -60,3 +60,14 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:lhci
+
+  # OpenSpec docs gate (2026-07-05 config-drift audit): the living specs + changes are
+  # agent-edited markdown with a strict parser — validate them like code. Pinned CLI
+  # version (upgrade deliberately). Runs on PR + merge_group like every other gate.
+  openspec:
+    name: OpenSpec Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate specs and changes (strict)
+        run: npx -y @fission-ai/openspec@1.4.1 validate --all --strict --no-interactive
