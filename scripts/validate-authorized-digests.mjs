@@ -94,6 +94,7 @@ export function validateDigests(doc) {
   };
 }
 
+/* c8 ignore start -- CLI entry point; the pure validateDigests() above is unit-tested */
 /** CLI entry: read data/authorized-digests.json, validate, print, exit. */
 function main() {
   const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -131,3 +132,4 @@ function main() {
 if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
+/* c8 ignore stop */

@@ -47,6 +47,7 @@ export function checkParity(locales, messages) {
   return { ok, refKeyCount: refKeys.size, problems };
 }
 
+/* c8 ignore start -- CLI entry point; the pure checkParity() above is unit-tested */
 /** CLI entry: run parity over the bundled MESSAGES and exit non-zero on drift. */
 function main() {
   const { ok, refKeyCount, problems } = checkParity(LOCALES, MESSAGES);
@@ -67,3 +68,4 @@ function main() {
 if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
+/* c8 ignore stop */
