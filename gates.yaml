@@ -1,0 +1,101 @@
+# gates.yaml — ADR-0014 §2 Gate Contract manifest for verbara-website.
+# One entry per language-agnostic gate class (G1-G8). Cross-checkable by /xr:doctor.
+#   status: present | partial | na
+#   impl:          (present/partial) the CONCRETE CI job / script / guard that instantiates it — exists in this repo
+#   justification: (na) why the class genuinely does not apply to this repo's stack + chain role
+repo: verbara-website
+role: standalone
+visibility: public
+charter: docs/specs/architecture.md
+decision_ref: verbara-meta/ADR-0014
+
+gates:
+  - id: G1
+    class: build-strictness
+    status: present
+    impl: >-
+      .github/workflows/ci.yml — job `quality` runs `npm run check` (astro check: types +
+      templates) then `npm run build` (astro build → dist/); job `test` runs `vitest run`; jobs
+      `e2e` (Playwright) + `lighthouse` render the built site. A type/template/build error fails
+      the PR. Triggers: pull_request + merge_group (push:[main] dropped per verbara-meta ADR-0003).
+
+  - id: G2
+    class: warnings-as-errors+banned-deps
+    status: partial
+    impl: >-
+      .github/workflows/ci.yml job `quality` step `npm run lint` = `eslint .`
+      (@eslint/js + typescript-eslint + eslint-plugin-astro; eslint.config.mjs) — a lint error
+      fails the PR (the JS/Astro analogue of TWAE). No Dapper-ban-class guard exists because this
+      repo ships no .NET and references no Verbara packages (the ban is N/A by role — see
+      architecture.md §4); there is no size-independent `-D warnings`-style hard fail beyond ESLint,
+      hence `partial` rather than `present`.
+
+  - id: G3
+    class: coverage
+    status: present
+    impl: >-
+      .github/workflows/ci.yml job `coverage` — the coverage-gate-v2 triplet (verbara-meta/ADR-0013)
+      over the vitest v8 report from `npm run test:coverage`:
+      scripts/check-patch-coverage.py (diff-cover, patch ≥ coverage-floor.json.patch=85, needs
+      fetch-depth:0), scripts/check-coverage-floor.py (two-sided band line [96,99] + branch ≥ 90 +
+      lines_valid_min ≥ 300 over coverage-summary.json), scripts/check-exclusion-baseline.py
+      (net-new `c8 ignore` markers fail; coverage-exclusion-baseline.json). vitest.config.ts scopes
+      coverage to the non-Astro logic (scripts/**, functions/**, src/{drift-detection,i18n/utils}.ts);
+      the two .mjs CLIs' entry-guards are c8-ignored. thresholds 86/90/84/86 in vitest.config.ts are
+      a redundant fast-fail liveness backstop. NEW this session (ci #68).
+
+  - id: G4
+    class: architecture-layering
+    status: na
+    justification: >-
+      Small standalone Astro content site with a minimal layering surface. There is a clean
+      primitives→composites→pages component convention (architecture.md §3) but it is a style
+      convention, not a dependency-boundary that could be violated by a cross-module import: the
+      repo has no product-domain modules, no service-locator risk, and imports no Verbara packages.
+      No `no-restricted-imports` rule is configured in eslint.config.mjs (verified) and none is
+      warranted — there is no boundary for it to guard. The one real cross-file contract
+      (AuthorizedDigestEntry / loadRegistry defined once, imported by drift-detection + the license
+      handler) is a single-source-of-truth reuse pattern, not a layered dependency rule.
+
+  - id: G5
+    class: content-invariants
+    status: present
+    impl: >-
+      Two strong grep/schema-expressible guards no analyzer covers, both in ci.yml job `quality`:
+      (1) `npm run validate:digests` → scripts/validate-authorized-digests.mjs — the SECURITY-CRITICAL
+      structural guard on data/authorized-digests.json (exact 4-key shape, vX.Y.Z version, sha256:<64
+      hex> digest, image_ref tag==version, no current/deprecated overlap, no duplicate image_ref);
+      (2) `npm run test:i18n` → scripts/check-i18n-parity.mjs — every key present in EN-US/ES-419/PT-BR.
+      Plus `npm run validate:html` (html-validate on dist/, .htmlvalidate.json). Runtime complement:
+      src/drift-detection.ts daily cron re-resolves each `current` digest against ghcr.io.
+
+  - id: G6
+    class: budgets
+    status: partial
+    impl: >-
+      .github/workflows/ci.yml job `lighthouse` → `npm run test:lhci` (lighthouserc.json) asserts
+      per-category minScore budgets over 11 audited routes: performance ≥ 0.90, accessibility ≥ 0.95,
+      best-practices ≥ 0.95, SEO = 1.0 (`error` level = build fails). This is a performance/quality
+      budget, not a byte-size ceiling — there is no size-limit / bundle-byte gate (Astro emits static
+      HTML/CSS with negligible JS), hence `partial`.
+
+  - id: G7
+    class: publish-reality
+    status: present
+    impl: >-
+      The exact production build runs on EVERY PR: ci.yml job `quality` step `npm run build`
+      (`astro build` → dist/) is the same command Cloudflare Workers Builds uses to auto-deploy
+      `main` (README §Deploy; wrangler.toml `main = src/worker.ts` + `[assets] directory = ./dist`).
+      A build that would not ship cannot merge. The ship-shape invariant here is "the static site +
+      Worker bundle build" (the equivalent of the .NET repos' AOT-probe), validated at PR time.
+      Deploy itself is Cloudflare Workers Builds on push to main (hermetic), not a GH Action.
+
+  - id: G8
+    class: supply-chain
+    status: present
+    impl: >-
+      .github/dependabot.yml — weekly grouped npm updates (astro/tailwind/eslint/test toolchains;
+      majors reviewed manually) + weekly github-actions updates. .github/workflows/codeql.yml —
+      CodeQL SAST (languages: javascript-typescript; queries: security-extended,security-and-quality)
+      over the Astro source AND the functions/api/ edge backend, on pull_request + push:[main] +
+      weekly schedule. Free on this public repo.
