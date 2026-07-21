@@ -1,0 +1,8 @@
+{
+  "_comment": "Coverage-gate-v2 floor (verbara-meta/ADR-0013), verbara-website variant — closes ADR-0014 §2 G3. Manual ratchet, no CI write-back. Read from vitest v8 coverage-summary.json by scripts/check-coverage-floor.py (json path) and scripts/check-patch-coverage.py (lcov.info). Two-sided band on line: fail if measured < line OR measured > line + slack (stale floor -> raise 'line' to floor(measured) in the same PR). 'branch' and 'lines_valid_min' are hard lower bounds; 'patch' is the diff-coverage floor. The redundant vitest.config.ts thresholds (lines 86 / functions 90 / branches 84 / statements 86) STAY as a fast-fail liveness backstop. The unit tier scopes coverage to the non-Astro logic only: the scripts validators, the Cloudflare Pages Functions, and src/{drift-detection,i18n/utils}.ts. Values honest as of the 2026-07-21 baseline run: line 89.61%, branch 87.93%, lines.total 337. Band [line, line+slack] = [87, 90] brackets the measured 89.61.",
+  "line": 87,
+  "slack": 3,
+  "branch": 84,
+  "lines_valid_min": 320,
+  "patch": 85
+}

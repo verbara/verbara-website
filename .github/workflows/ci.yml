@@ -28,6 +28,91 @@ jobs:
       - run: npm run build
       - run: npm run validate:html
 
+  # Vitest unit tier (ADR-0014 §2 G3). Runs the non-Astro logic unit tests:
+  # the security-critical authorized-digests validator, the i18n parity +
+  # path helpers, the Cloudflare Pages Functions (license issuer), and the
+  # drift-detection cron. Fast (~1s, no browser). The coverage job below is the
+  # authoritative ADR-0013 gate; this job is the plain green/red test signal.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  # Coverage-gate-v2 (verbara-meta/ADR-0013), verbara-website variant. Two gates
+  # over the vitest v8 report emitted by `npm run test:coverage`
+  # (coverage-summary.json + lcov.info):
+  #   * band backstop (clause b) — check-coverage-floor.py reads
+  #     coverage-summary.json: fail below floor OR above floor+slack (stale
+  #     floor), plus a blocking branch floor + lines_valid_min denominator floor.
+  #   * patch gate (clause a) — check-patch-coverage.py reads lcov.info: coverage
+  #     of the lines changed vs origin/main must be >= coverage-floor.json.patch.
+  #   * denominator guard — check-exclusion-baseline.py: net-new `c8 ignore`
+  #     markers fail the build (shrinking the denominator games both gates).
+  # The vitest.config.ts thresholds (86/90/84/86) STAY as a redundant fast-fail
+  # liveness backstop. The triplet scripts are byte-identical to Web's.
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # fetch-depth: 0 is REQUIRED by coverage-gate-v2 (verbara-meta/ADR-0013):
+          # check-patch-coverage.py needs `git merge-base origin/main HEAD`, which
+          # a shallow clone cannot resolve. Works on both pull_request and
+          # merge_group refs. The script's liveness self-test fails loud if this
+          # is ever removed (an empty merge-base reads as a shallow clone).
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+
+      - uses: actions/setup-python@v6.3.0
+        with:
+          python-version: '3.13'
+
+      - name: Install diff-cover (pinned)
+        # The only new supply-chain surface for the patch gate. Pinned exactly
+        # (ADR-0013). ubuntu runners ship python3 + pip.
+        run: pip install --disable-pip-version-check diff_cover==10.3.0
+
+      - run: npm ci
+
+      - name: Run coverage
+        # Emits ./coverage/coverage-summary.json (band) + ./coverage/lcov.info
+        # (patch) via the json-summary + lcov vitest reporters.
+        run: npm run test:coverage
+
+      - name: Enforce coverage band (manual ratchet, two-sided)
+        # coverage-gate-v2 backstop (ADR-0013 clause b): fail below floor OR above
+        # floor+slack (stale floor), plus blocking branch floor + lines_valid_min.
+        run: python3 scripts/check-coverage-floor.py ./coverage/coverage-summary.json coverage-floor.json
+
+      - name: Enforce patch coverage (diff-cover)
+        # coverage-gate-v2 primary gate (ADR-0013 clause a): coverage of the lines
+        # changed vs origin/main must be >= coverage-floor.json["patch"].
+        run: python3 scripts/check-patch-coverage.py ./coverage/lcov.info coverage-floor.json
+
+      - name: Enforce coverage-exclusion baseline (denominator guard)
+        # coverage-gate-v2 denominator guard (ADR-0013): net-new `c8 ignore`
+        # markers fail the build (shrinking the denominator would game both gates).
+        run: python3 scripts/check-exclusion-baseline.py coverage-exclusion-baseline.json .
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-${{ github.sha }}
+          path: ./coverage
+          retention-days: 14
+          if-no-files-found: error
+
   e2e:
     runs-on: ubuntu-latest
     needs: quality
