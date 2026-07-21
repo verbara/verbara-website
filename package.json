@@ -19,6 +19,8 @@
     "check": "astro check",
     "lint": "eslint .",
     "validate:html": "html-validate 'dist/**/*.html'",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:i18n": "tsx scripts/check-i18n-parity.mjs",
     "validate:digests": "node scripts/validate-authorized-digests.mjs",
     "test:e2e": "playwright test",
@@ -43,6 +45,13 @@
     "sharp": "^0.35.3",
     "tsx": "^4.23.1",
     "typescript": "^5.9.0",
-    "typescript-eslint": "^8.64.0"
+    "typescript-eslint": "^8.64.0",
+    "vitest": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10"
+  },
+  "overrides": {
+    "html-validate": {
+      "vitest": "$vitest"
+    }
   }
 }
