@@ -102,8 +102,11 @@ Not a SOLID lecture — the shapes this repo genuinely enforces:
 
 Each principle above is backed by a gate that **fails the build** when it is violated. The
 machine-checkable manifest is [`gates.yaml`](../../gates.yaml) (ADR-0014 §2, classes G1–G8);
-this table is its human-readable index. CI lives in `.github/workflows/ci.yml` (jobs `quality`,
-`test`, `coverage`, `e2e`, `lighthouse`, `openspec`) + `.github/workflows/codeql.yml`.
+this table is its human-readable index. CI lives in `.github/workflows/ci.yml` (jobs `gate`,
+`quality`, `test`, `coverage`, `e2e`, `lighthouse`, `openspec`) + `.github/workflows/codeql.yml`.
+`gate` is the verbara-meta/ADR-0016 docs/data-only fast-path classifier: on a docs/data-only diff
+`test`, `coverage`, `e2e` and `lighthouse` skip; `quality` (which also runs vitest) and
+`OpenSpec Validate` always run.
 
 | Invariant (principle) | Gate that enforces it | CI job / script |
 |---|---|---|
