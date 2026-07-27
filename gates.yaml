@@ -18,6 +18,10 @@ gates:
       templates) then `npm run build` (astro build → dist/); job `test` runs `vitest run`; jobs
       `e2e` (Playwright) + `lighthouse` render the built site. A type/template/build error fails
       the PR. Triggers: pull_request + merge_group (push:[main] dropped per verbara-meta ADR-0003).
+      All of the above run on every code PR. Docs/data-only PRs skip `test`, `coverage`, `e2e` and
+      `lighthouse` via the verbara-meta/ADR-0016 §1 gate job (a skipped required check satisfies
+      ruleset 17662978); `quality` — which now also runs `npm test` — and `OpenSpec Validate` stay
+      always-run.
 
   - id: G2
     class: warnings-as-errors+banned-deps
@@ -43,6 +47,9 @@ gates:
       coverage to the non-Astro logic (scripts/**, functions/**, src/{drift-detection,i18n/utils}.ts);
       the two .mjs CLIs' entry-guards are c8-ignored. thresholds 86/90/84/86 in vitest.config.ts are
       a redundant fast-fail liveness backstop. NEW this session (ci #68).
+      The `coverage` job is gated by the ADR-0016 §1 fast-path and does not run on docs/data-only
+      diffs (all three scripts are diff-independent there). The vitest suite itself is NOT skipped:
+      it runs in the always-run required `quality` job.
 
   - id: G4
     class: architecture-layering
@@ -68,6 +75,9 @@ gates:
       (2) `npm run test:i18n` → scripts/check-i18n-parity.mjs — every key present in EN-US/ES-419/PT-BR.
       Plus `npm run validate:html` (html-validate on dist/, .htmlvalidate.json). Runtime complement:
       src/drift-detection.ts daily cron re-resolves each `current` digest against ghcr.io.
+      Both guards run on EVERY PR including docs/data-only ones — `quality` carries no
+      `needs: gate` edge (ADR-0016 §3.3). This is the manifest-level statement of the data-aware
+      carve-out.
 
   - id: G6
     class: budgets
@@ -77,7 +87,8 @@ gates:
       per-category minScore budgets over 11 audited routes: performance ≥ 0.90, accessibility ≥ 0.95,
       best-practices ≥ 0.95, SEO = 1.0 (`error` level = build fails). This is a performance/quality
       budget, not a byte-size ceiling — there is no size-limit / bundle-byte gate (Astro emits static
-      HTML/CSS with negligible JS), hence `partial`.
+      HTML/CSS with negligible JS), hence `partial`. The `lighthouse` job is gated by the ADR-0016
+      §1 fast-path; it does not run on docs/data-only diffs (non-required).
 
   - id: G7
     class: publish-reality
@@ -89,6 +100,7 @@ gates:
       A build that would not ship cannot merge. The ship-shape invariant here is "the static site +
       Worker bundle build" (the equivalent of the .NET repos' AOT-probe), validated at PR time.
       Deploy itself is Cloudflare Workers Builds on push to main (hermetic), not a GH Action.
+      Unaffected by the ADR-0016 fast-path — `npm run build` lives in the always-run `quality` job.
 
   - id: G8
     class: supply-chain

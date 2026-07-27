@@ -19,6 +19,22 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    # Docs/data-only fast-path §2 (verbara-meta/ADR-0016): CodeQL is NON-required — ruleset
+    # 17662978 requires only quality/coverage/e2e/OpenSpec Validate (verified 2026-07-27) — and it
+    # has NO merge_group trigger, so a workflow-level paths-ignore is SAFE here: there is no
+    # required context to strand (unlike ci.yml, where paths-ignore is BANNED and the §1 gate job
+    # is used instead). The list is the allowlist INVERSE of §3.4, deliberately wider than the
+    # classifier's: `data/*.json` is a JSON ledger, not JS/TS, and CodeQL extracts neither it nor
+    # markdown. Do NOT cross-copy this list into the classifier. push:[main] + the weekly schedule
+    # stay UNFILTERED, so the default-branch security baseline is unaffected.
+    # IF `Analyze (JS/TS)` IS EVER ADDED TO ruleset 17662978's REQUIRED CONTEXTS, DELETE THIS
+    # FILTER FIRST — a path-skipped workflow emits NO check-run, so the context would strand in
+    # `Expected` forever on every docs/data-only PR (ADR-0016 §2's banned trap).
+    paths-ignore:
+      - 'data/*.json'
+      - 'docs/**'
+      - 'openspec/**'
+      - '**/*.md'
   schedule:
     - cron: '0 6 * * 0'
 

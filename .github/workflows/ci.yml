@@ -9,6 +9,51 @@ on:
   merge_group:
 
 jobs:
+  # Docs/data-only CI fast-path gate (verbara-meta/ADR-0016 §1 — the DATA-AWARE variant).
+  # Classifies the PR / merge_group diff against the event's OWN base and exposes docs_only.
+  # GATED: required `coverage` + `e2e`, plus non-required `test` and `lighthouse` — all report a
+  # satisfying `skipped` on a docs/data-only diff.
+  # ALWAYS-RUN, no `needs: gate` edge (§3.3): required `quality` and required `OpenSpec Validate`.
+  # `quality` is the data-aware carve-out and now runs the FULL ledger guard set —
+  # `npm run validate:digests` (gates.yaml G5) AND `npm test` (vitest, whose loadRegistry* cases
+  # import data/authorized-digests.json through functions/api/developer-license/
+  # authorized-digests.ts) — plus the 4s production astro build. `coverage` may therefore be gated
+  # without weakening enforcement: vitest is now merge-BLOCKING on every PR class, which it was
+  # not before (the `test` job is not a required context; ruleset 17662978 requires only
+  # OpenSpec Validate / coverage / e2e / quality).
+  # Triggers stay UNCHANGED (pull_request + merge_group, no path filter): a workflow-level
+  # paths-ignore on ci.yml is BANNED — it would strand all four required contexts as `Expected`.
+  # Allowlist (§3.4, website row): data/*.json (top-level only), docs/**, openspec/**,
+  # CHANGELOG.md, top-level *.md, **/README.md — minus src/pages/* and public/*.
+  gate:
+    name: Docs-only gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5 # bounds the new critical-path job (ruleset 17662978 waits 60 min)
+    outputs:
+      docs_only: ${{ steps.classify.outputs.docs_only }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # base sha must be reachable for the diff
+
+      - id: classify
+        env: # §3.1 event-specific base — never hardcode origin/main
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+        # Invoked via `bash` (not ./) so the committed file mode is never load-bearing, and the
+        # verdict is echoed to the LOG as well as to $GITHUB_OUTPUT (wave-1 gap). Command
+        # substitution under the default `bash -e` shell preserves the classifier's exit status,
+        # so a crash FAILS this job => heavy jobs RUN (fail-closed).
+        run: |
+          verdict="$(bash ./scripts/ci/classify-docs-only.sh "$BASE_SHA" "${{ github.sha }}")"
+          echo "classify-docs-only: $verdict"
+          echo "$verdict" >> "$GITHUB_OUTPUT"
+
+  # ALWAYS-RUN — NO `needs: gate` edge (verbara-meta/ADR-0016 §3.3). This is the data-aware
+  # carve-out: `npm run validate:digests` is the security-critical structural guard on
+  # data/authorized-digests.json (gates.yaml G5), `npm test` exercises the real ledger through the
+  # production import path, and `npm run build` is the production astro build (measured 4s — it
+  # already IS the "minimal build" §4 asks for; no cheaper variant is needed). A docs/data diff
+  # must clear all three. This job also hosts the §3.4 classifier unit tests (last step).
   quality:
     runs-on: ubuntu-latest
     steps:
@@ -25,16 +70,36 @@ jobs:
       - run: npm run lint
       - run: npm run test:i18n
       - run: npm run validate:digests
+      # verbara-meta/ADR-0016: vitest moves INTO the required, always-run job. `coverage` (which
+      # ran the same suite) is now gated, and the standalone `test` job is NOT a required context
+      # — without this line a ledger or unit regression on a docs/data-only PR would be advisory
+      # only. ~2s here (npm ci already paid) vs. a whole job elsewhere.
+      - run: npm test
       - run: npm run build
       - run: npm run validate:html
+
+      # Docs/data-only fast-path classifier unit tests (verbara-meta/ADR-0016 §3.4). They ride the
+      # ALWAYS-RUN, REQUIRED `quality` job on purpose: this repo has no script-test job (wave-1's
+      # host) and its required set lives in ruleset 17662978, whose PUT is operator-gated — so this
+      # is the only PUT-free way to make a mis-widened allowlist merge-BLOCKING. `quality` carries
+      # no `needs: gate` edge, so the tests always run on the very PR that edits the classifier
+      # (itself never docs_only: scripts/ci/... is a nested non-doc path, asserted by two cases).
+      # Pure bash + git, no Node/Python, ~2s.
+      - name: Run docs-only classifier unit tests (ADR-0016)
+        run: bash scripts/tests/test_classify_docs_only.sh
 
   # Vitest unit tier (ADR-0014 §2 G3). Runs the non-Astro logic unit tests:
   # the security-critical authorized-digests validator, the i18n parity +
   # path helpers, the Cloudflare Pages Functions (license issuer), and the
   # drift-detection cron. Fast (~1s, no browser). The coverage job below is the
-  # authoritative ADR-0013 gate; this job is the plain green/red test signal.
+  # authoritative ADR-0013 gate. The same `vitest run` now also executes inside the
+  # required always-run `quality` job (ADR-0016); this job is the standalone signal
+  # and is gated — skipping a non-required job strands nothing. Deleting it as fully
+  # redundant is a follow-up, deliberately out of scope for the ADR-0016 rollout.
   test:
     runs-on: ubuntu-latest
+    needs: gate
+    if: ${{ !cancelled() && (needs.gate.result != 'success' || needs.gate.outputs.docs_only != 'true') }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -58,6 +123,8 @@ jobs:
   # liveness backstop. The triplet scripts are byte-identical to Web's.
   coverage:
     runs-on: ubuntu-latest
+    needs: gate
+    if: ${{ !cancelled() && (needs.gate.result != 'success' || needs.gate.outputs.docs_only != 'true') }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -115,7 +182,14 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
-    needs: quality
+    needs: [gate, quality]
+    # ADR-0016 §3.2 adapted for a job that ALREADY had a `needs:` edge: `!cancelled()` drops
+    # GitHub's implicit success() over ALL needs, not just `gate`, so `needs.quality.result ==
+    # 'success'` MUST be re-asserted or e2e would start running on a RED quality (a 3.5-min
+    # regression + a confusing double-red). Trace: quality green + code => RUN; quality green +
+    # docs/data => SKIP (a skipped required context satisfies ruleset 17662978); gate
+    # failed/skipped => RUN (fail-closed); quality red => SKIP, exactly as today.
+    if: ${{ !cancelled() && needs.quality.result == 'success' && (needs.gate.result != 'success' || needs.gate.outputs.docs_only != 'true') }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -135,7 +209,14 @@ jobs:
 
   lighthouse:
     runs-on: ubuntu-latest
-    needs: quality
+    needs: [gate, quality]
+    # Non-required (gates.yaml G6), gated anyway — safe: a non-required job skipping on a
+    # docs/data diff strands nothing (the precedent Platform documented in-repo for
+    # `live-db-tests`). Same COMPOUND guard as `e2e`: this job already had a `needs: quality`
+    # edge, and `!cancelled()` drops GitHub's implicit success() over ALL needs, so
+    # `needs.quality.result == 'success'` MUST be re-asserted or lighthouse would start running
+    # on a RED quality. Never "simplify" this back to the plain §3.2 one-liner.
+    if: ${{ !cancelled() && needs.quality.result == 'success' && (needs.gate.result != 'success' || needs.gate.outputs.docs_only != 'true') }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -149,6 +230,8 @@ jobs:
   # OpenSpec docs gate (2026-07-05 config-drift audit): the living specs + changes are
   # agent-edited markdown with a strict parser — validate them like code. Pinned CLI
   # version (upgrade deliberately). Runs on PR + merge_group like every other gate.
+  # ALWAYS-RUN — no `needs: gate` edge (verbara-meta/ADR-0016 §3.3): cheap, and it validates
+  # exactly the openspec/** part of a docs diff.
   openspec:
     name: OpenSpec Validate
     runs-on: ubuntu-latest
