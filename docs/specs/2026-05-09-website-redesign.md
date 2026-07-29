@@ -252,7 +252,7 @@ All components are Astro `.astro` files. Zero client-side framework JS. Interact
 - **CTAs (asymmetric):**
   - Primary: `Run the stack →` → `https://github.com/verbara/Verbara.Sdk` (opens external).
   - Secondary: `Talk to sales` → `mailto:licensing@verbara.io`.
-  - Below CTAs, smaller text link: "*or get a developer license — free, signed, valid 60 days* →" → `/developer-license/`.
+  - Below CTAs, smaller text link: "*or get a developer license — free, signed, valid 30 days* →" → `/developer-license/`.
 - **Trust strip (mono, dimmed):** `27 SDK packages` · `2,893 unit tests` · `0 vulnerable packages` · `Open source on GitHub` · `ES · EN · PT`. Star count intentionally **not** shown — premature for the project's age and would read as anti-signal.
 - No image. The visual weight is typography + trust strip.
 
@@ -326,7 +326,7 @@ Copy is implementation detail, but answers must be ≤120 words each, technical,
 
 - **Inset Section** (`--color-ink-3` background).
 - **Centered headline:** *"Stop renting your contact center. <span signal>Start running it.</span>"*
-- **Sub:** "*60-day developer license, signed, free. No credit card.*"
+- **Sub:** "*30-day developer license, signed, free. No credit card.*"
 - **Single CTA:** `Get a developer license →` → `/developer-license/`.
 
 #### 7.1.8 Footer
@@ -403,7 +403,7 @@ Visual changes only:
 - Loading state on submit: button disabled, spinner inside, label changes to "Issuing license…".
 - Success screen: replaces form with confirmation — "*Check your inbox for your signed Verbara Pro license.*" + retry link.
 - Turnstile widget themed to dark mode (`data-theme="dark"`).
-- Above the form: 3-bullet "*What you get*": all Pro features in WarnOnly mode · 60-day expiration · ECDSA-signed, verifiable offline.
+- Above the form: 3-bullet "*What you get*": all Pro features in WarnOnly mode · 30-day expiration · ECDSA-signed, verifiable offline.
 
 ### 7.4 Legal pages
 
