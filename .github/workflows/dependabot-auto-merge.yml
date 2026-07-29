@@ -1,0 +1,65 @@
+name: Dependabot auto-merge
+
+# Auto-merge Dependabot PRs for safe (patch + minor) updates after CI passes.
+# Ports the ecosystem convention already running in Verbara.Platform.Web and
+# Verbara.Sdk — without it, green Dependabot PRs here just pile up unmerged.
+#
+# - npm majors are filtered upstream by .github/dependabot.yml, so they never
+#   reach this workflow. GitHub Actions majors are NOT ignored upstream, hence
+#   the explicit update-type guard plus the "manual review" comment below.
+# - Auto-merge only completes when all required status checks (quality, test,
+#   coverage, e2e, OpenSpec Validate) pass — main's ruleset enforces that gate.
+# - main runs a merge queue (merge_group), so the queue ruleset — not this
+#   workflow — picks the merge strategy. Requires the AUTOMERGE_PAT secret to
+#   exist in the *Dependabot* secret store (not the Actions one): a workflow
+#   triggered by Dependabot can only read Dependabot secrets.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    name: auto-merge
+    runs-on: ubuntu-latest
+    # Only run on Dependabot-authored PRs.
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable auto-merge for patch + minor
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        # No merge-method flag: with the merge queue active on main, the queue
+        # ruleset dictates the strategy (SQUASH). Passing --squash here is
+        # rejected ("The merge strategy for main is set by the merge queue") and
+        # silently fails to enqueue the PR. --auto simply adds it to the queue
+        # when ready.
+        run: gh pr merge --auto "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          # Use AUTOMERGE_PAT instead of GITHUB_TOKEN so the merge_group event
+          # this enqueue creates is attributed to a non-bot identity. GitHub's
+          # anti-recursion rule blocks workflows triggered by GITHUB_TOKEN from
+          # triggering further workflows, so a queue enqueue done with
+          # GITHUB_TOKEN leaves the merge_group CI checks never starting and the
+          # PR stuck. See github/community#70310.
+          GH_TOKEN: ${{ secrets.AUTOMERGE_PAT }}
+
+      - name: Comment on major updates (manual review required)
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        run: |
+          gh pr comment "$PR_URL" --body \
+            "Major version update detected. Auto-merge skipped — this one needs manual review before it can be enqueued."
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
