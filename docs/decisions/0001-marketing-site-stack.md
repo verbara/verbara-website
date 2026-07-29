@@ -130,6 +130,16 @@ The single canonical `LicenseValidator` in `Verbara.Sdk.Pro.Licensing` validates
   `src/i18n/messages.ts` currently read "30 días" / "30-day" / "30 dias" throughout. The 60-day
   figure is stale wherever it still appears in docs (e.g. `docs/specs/2026-05-10-website-phase-f-hub-and-spoke.md`) and should read 30 days.
 
+- **2026-07-29 — The 30-day doc sweep above is discharged.** The last three live occurrences of the
+  stale 60-day figure were corrected in `docs/specs/2026-05-09-website-redesign.md` (§7.1.1 hero
+  sub-link, §7.1.7 final-CTA sub, §7.3 "What you get" bullet). The example file cited in the
+  2026-07-05 note (`docs/specs/2026-05-10-website-phase-f-hub-and-spoke.md`) was already clean.
+  Remaining "60-day" strings live only in append-only history — this ADR's own 2026-05-10 status
+  update and `docs/plans/completed/2026-05-09-website-redesign-phase-{c-pricing,d-dev-legal}.md`,
+  which correctly record the normalization as it was executed at the time — and are deliberately
+  left intact. Issuer (`LICENSE_DAYS = 30`) and `src/i18n/messages.ts` were already correct and are
+  untouched.
+
 ## References
 
 - Pro plan: `2026-05-09-marketing-site-bootstrap.md`
