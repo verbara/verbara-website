@@ -88,6 +88,16 @@ jobs:
       - name: Run docs-only classifier unit tests (ADR-0016)
         run: bash scripts/tests/test_classify_docs_only.sh
 
+      # Coverage-script unit tests (verbara-meta/ADR-0013). `check-patch-coverage.py` has run the
+      # patch gate here since #68 with NO suite behind it — the other four ADR-0013 repos each have
+      # a `Coverage Script Tests` job, and this repo was the exception. It rides `quality` for the
+      # same reason the line above does: always-run and required without a ruleset PUT. Crucially
+      # `quality` has no `needs: gate` edge, so the suite runs on the very PR that edits the script.
+      # The file is byte-identical to the other four copies; a green here is what makes that
+      # `cp`-and-checksum replication verifiable rather than merely asserted. ~2s, stdlib only.
+      - name: Run coverage-script unit tests (ADR-0013)
+        run: python3 -m unittest discover scripts/tests
+
   # Vitest unit tier (ADR-0014 §2 G3). Runs the non-Astro logic unit tests:
   # the security-critical authorized-digests validator, the i18n parity +
   # path helpers, the Cloudflare Pages Functions (license issuer), and the
