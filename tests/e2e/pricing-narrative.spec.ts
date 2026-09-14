@@ -13,13 +13,14 @@ for (const prefix of LOCALE_PREFIXES) {
     await expect(page.locator('#group-self')).toBeAttached();
     await expect(page.locator('#group-managed')).toBeAttached();
 
-    // 7 tier articles: 2 in free, 2 in self, 3 in managed
+    // 7 tier articles: 2 in free, 3 in self, 2 in managed. Tier 5 sits in self-host,
+    // not in managed SaaS — it is a self-hosted white-label licence (PDR-0003 §A).
     const freeArticles = await page.locator('#group-free article').count();
     const selfArticles = await page.locator('#group-self article').count();
     const managedArticles = await page.locator('#group-managed article').count();
     expect(freeArticles).toBe(2);
-    expect(selfArticles).toBe(2);
-    expect(managedArticles).toBe(3);
+    expect(selfArticles).toBe(3);
+    expect(managedArticles).toBe(2);
 
     // Comparison matrix table — at minimum 8 column headers in the matrix thead
     const matrixSection = page.locator('section#compare');
