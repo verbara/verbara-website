@@ -17,6 +17,11 @@ context: |
 
   Cross-repo standards live in the private verbara-meta repo as ADRs.
 
+  Where work runs (verbara-meta/ADR-0006): a change whose commits land only in this repo is
+  proposed, applied and archived here. A change that needs a commit in another repo is hosted from
+  the verbara-meta cockpit via `/xr:change`, not here — if a change turns out to need one, record
+  the finding in `tasks.md` and recommend `/xr:change` before capturing more.
+
 rules:
   proposal:
     - "Set a `tier` in frontmatter: GRANDE (>3 days or a product/brand decision), MEDIANO (1-3 days), or PEQUEÑO (small fix, <1 day). PEQUEÑO may keep the proposal light."
