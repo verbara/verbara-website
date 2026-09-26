@@ -36,10 +36,16 @@ private.key
 *.lic
 licenses.jsonl
 
-# Local-only docs (per Option K layout)
-docs/superpowers/
+# Local-only agent instructions and internal development records (never tracked)
+AGENTS.md
 CLAUDE.md
 .claude/
+openspec/
+docs/decisions/
+docs/plans/
+docs/research/
+docs/specs/
+docs/superpowers/
 .superpowers/
 .worktrees/
 

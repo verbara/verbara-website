@@ -6,7 +6,7 @@
 repo: verbara-website
 role: standalone
 visibility: public
-charter: docs/specs/architecture.md
+charter: architecture.md (kept locally, not tracked)
 decision_ref: verbara-meta/ADR-0014
 
 gates:
@@ -20,8 +20,7 @@ gates:
       the PR. Triggers: pull_request + merge_group (push:[main] dropped per verbara-meta ADR-0003).
       All of the above run on every code PR. Docs/data-only PRs skip `test`, `coverage`, `e2e` and
       `lighthouse` via the verbara-meta/ADR-0016 §1 gate job (a skipped required check satisfies
-      ruleset 17662978); `quality` — which now also runs `npm test` — and `OpenSpec Validate` stay
-      always-run.
+      ruleset 17662978); `quality` — which now also runs `npm test` — stays always-run.
 
   - id: G2
     class: warnings-as-errors+banned-deps
@@ -30,8 +29,7 @@ gates:
       .github/workflows/ci.yml job `quality` step `npm run lint` = `eslint .`
       (@eslint/js + typescript-eslint + eslint-plugin-astro; eslint.config.mjs) — a lint error
       fails the PR (the JS/Astro analogue of TWAE). No Dapper-ban-class guard exists because this
-      repo ships no .NET and references no Verbara packages (the ban is N/A by role — see
-      architecture.md §4); there is no size-independent `-D warnings`-style hard fail beyond ESLint,
+      repo ships no .NET and references no Verbara packages (the ban is N/A by role); there is no size-independent `-D warnings`-style hard fail beyond ESLint,
       hence `partial` rather than `present`.
 
   - id: G3
@@ -56,7 +54,7 @@ gates:
     status: na
     justification: >-
       Small standalone Astro content site with a minimal layering surface. There is a clean
-      primitives→composites→pages component convention (architecture.md §3) but it is a style
+      primitives→composites→pages component convention but it is a style
       convention, not a dependency-boundary that could be violated by a cross-module import: the
       repo has no product-domain modules, no service-locator risk, and imports no Verbara packages.
       No `no-restricted-imports` rule is configured in eslint.config.mjs (verified) and none is

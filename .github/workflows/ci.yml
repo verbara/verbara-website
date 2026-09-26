@@ -13,17 +13,17 @@ jobs:
   # Classifies the PR / merge_group diff against the event's OWN base and exposes docs_only.
   # GATED: required `coverage` + `e2e`, plus non-required `test` and `lighthouse` — all report a
   # satisfying `skipped` on a docs/data-only diff.
-  # ALWAYS-RUN, no `needs: gate` edge (§3.3): required `quality` and required `OpenSpec Validate`.
+  # ALWAYS-RUN, no `needs: gate` edge (§3.3): required `quality`.
   # `quality` is the data-aware carve-out and now runs the FULL ledger guard set —
   # `npm run validate:digests` (gates.yaml G5) AND `npm test` (vitest, whose loadRegistry* cases
   # import data/authorized-digests.json through functions/api/developer-license/
   # authorized-digests.ts) — plus the 4s production astro build. `coverage` may therefore be gated
   # without weakening enforcement: vitest is now merge-BLOCKING on every PR class, which it was
   # not before (the `test` job is not a required context; ruleset 17662978 requires only
-  # OpenSpec Validate / coverage / e2e / quality).
+  # coverage / e2e / quality).
   # Triggers stay UNCHANGED (pull_request + merge_group, no path filter): a workflow-level
-  # paths-ignore on ci.yml is BANNED — it would strand all four required contexts as `Expected`.
-  # Allowlist (§3.4, website row): data/*.json (top-level only), docs/**, openspec/**,
+  # paths-ignore on ci.yml is BANNED — it would strand all three required contexts as `Expected`.
+  # Allowlist (§3.4, website row): data/*.json (top-level only), docs/**,
   # CHANGELOG.md, top-level *.md, **/README.md — minus src/pages/* and public/*.
   gate:
     name: Docs-only gate
@@ -236,22 +236,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:lhci
-
-  # OpenSpec docs gate (2026-07-05 config-drift audit): the living specs + changes are
-  # agent-edited markdown with a strict parser — validate them like code. Pinned CLI
-  # version (upgrade deliberately). Runs on PR + merge_group like every other gate.
-  # ALWAYS-RUN — no `needs: gate` edge (verbara-meta/ADR-0016 §3.3): cheap, and it validates
-  # exactly the openspec/** part of a docs diff.
-  openspec:
-    name: OpenSpec Validate
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Validate specs and changes (strict)
-        run: npx -y @fission-ai/openspec@1.13.1 validate --all --strict --no-interactive
-
-      # Archived changes must carry no unticked task. The other four repos wired this
-      # after clearing real debt (ADR-0023 §7); this repo has no archived change yet, so
-      # the step passes vacuously today and guards the FIRST one instead of the 18th.
-      - name: Validate archived changes (no unticked tasks)
-        run: npx -y @fission-ai/openspec@1.13.1 validate --archived --no-interactive
