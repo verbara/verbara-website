@@ -40,16 +40,14 @@ run_case() { # run_case <expected> <description>
 
 # --- true cases (allowlisted) ---
 new_repo; commit_many docs/guide.md;                         run_case true  "docs/ top level"
-new_repo; commit_many docs/decisions/0004-x.md;              run_case true  "docs/ nested"
-new_repo; commit_many openspec/changes/x/proposal.md;        run_case true  "openspec/ nested"
-new_repo; commit_many openspec/config.yaml;                  run_case true  "openspec/ non-md (OpenSpec Validate is always-run)"
+new_repo; commit_many docs/operations/runbook.md;            run_case true  "docs/ nested"
 new_repo; commit_many README.md;                             run_case true  "top-level README.md"
 new_repo; commit_many CONTRIBUTING.md;                       run_case true  "top-level *.md"
 new_repo; commit_many data/README.md;                        run_case true  "data/README.md is prose documenting the ledger format"
 new_repo; commit_many data/authorized-digests.json;          run_case true  "the ledger — the chore(digests) PR class"
 new_repo; commit_many data/authorized-digests.json docs/operations/issuer-setup.md
 run_case true "MULTI-PATH data + docs in one commit"
-new_repo; commit_many README.md data/README.md docs/specs/x.md
+new_repo; commit_many README.md data/README.md docs/operations/x.md
 run_case true "MULTI-PATH prose sweep (PR #52 shape)"
 new_repo; commit_many "docs/café.md";                        run_case true  "non-ASCII path (core.quotePath=false)"
 
@@ -75,6 +73,7 @@ new_repo; commit_many .github/workflows/ci.yml;              run_case false "wor
 new_repo; commit_many scripts/ci/classify-docs-only.sh;      run_case false "the classifier itself"
 new_repo; commit_many scripts/tests/test_classify_docs_only.sh
 run_case false "the classifier's own tests"
+new_repo; commit_many openspec/config.yaml;                  run_case false "openspec/ is not a tracked path (fail-closed)"
 new_repo; commit_many data/authorized-digests.json src/worker.ts
 run_case false "MULTI-PATH data + code"
 new_repo; commit_many docs/a.md src/worker.ts

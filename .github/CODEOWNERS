@@ -5,7 +5,6 @@
 # Default owner for everything
 *              @Harol-Reina
 
-# Release-sensitive surfaces (CI/deploy, deps, specs)
+# Release-sensitive surfaces (CI/deploy, deps)
 /.github/      @Harol-Reina
 /package.json  @Harol-Reina
-/openspec/     @Harol-Reina

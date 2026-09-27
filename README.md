@@ -25,13 +25,12 @@ For licensing, tier model, and how Pro features are gated, see [Verbara.Sdk.Pro/
   - Phase C — Pricing Layout A (3 tier groups + 8×10 comparison matrix + 3 pricing-FAQ)
   - Phase D — Developer-license polish + Legal pages with `LegalDoc` layout + cross-Phase cleanup
   - Phase E — Brand assets (V-mark + 3 lockup SVGs + favicon set + OG image), sitemap, robots.txt, full meta tags
-  - Plans archived in [`docs/plans/completed/`](docs/plans/completed/). Spec at [`docs/specs/2026-05-09-website-redesign.md`](docs/specs/2026-05-09-website-redesign.md).
 ✅ **Tier 0.5 Pro Developer self-issuance loop end-to-end operational**:
   - Form at `/developer-license/` with Cloudflare Turnstile (single-column layout, what-you-get panel above)
   - Worker backend at `/api/developer-license/` (ECDSA P-256 signing, D1 audit log, Resend email)
   - Validating consumer ships in [Verbara.Sdk.Pro v2.2.0-pro](https://github.com/verbara/Verbara.Sdk.Pro/releases/tag/v2.2.0-pro) (`LicenseTrustAnchor`)
 
-✅ **Quality gates in CI** (`.github/workflows/ci.yml`): `astro check`, ESLint, html-validate, i18n parity (476 keys × 3 locales), Playwright e2e (107 cases × chromium + firefox + webkit = 321 tests), OpenSpec validate, Lighthouse CI thresholds (Perf ≥ 0.9, A11y ≥ 0.95, BP ≥ 0.95, SEO = 1.0).
+✅ **Quality gates in CI** (`.github/workflows/ci.yml`): `astro check`, ESLint, html-validate, i18n parity (476 keys × 3 locales), Playwright e2e (107 cases × chromium + firefox + webkit = 321 tests), Lighthouse CI thresholds (Perf ≥ 0.9, A11y ≥ 0.95, BP ≥ 0.95, SEO = 1.0).
 
 The original bootstrap plan that brought the site online lives at [Verbara.Sdk.Pro/docs/plans/completed/2026-05-09-marketing-site-bootstrap.md](https://github.com/verbara/Verbara.Sdk.Pro/blob/main/docs/plans/completed/2026-05-09-marketing-site-bootstrap.md). Operator setup runbook for the issuer Worker is at [`docs/operations/issuer-setup.md`](docs/operations/issuer-setup.md).
 
@@ -110,12 +109,8 @@ verbara-website/
 │   ├── generate-og.mjs           # sharp → og-default.png
 │   └── check-i18n-parity.mjs     # CI gate
 ├── tests/e2e/                    # 11 Playwright spec files, 107 cases × 3 browsers
-├── docs/                         # Option K layout
-│   ├── decisions/                # ADRs
-│   ├── plans/                    # active / completed / archived
-│   ├── specs/                    # Technical designs (incl. 2026-05-09-website-redesign.md)
-│   └── research/                 # Exploratory findings
-├── .github/workflows/ci.yml      # 4 jobs: quality, e2e, lighthouse, openspec
+├── docs/operations/              # Operator runbooks
+├── .github/workflows/ci.yml      # jobs: gate, quality, test, coverage, e2e, lighthouse
 ├── astro.config.mjs              # Astro + Tailwind + sitemap integration + Turnstile vite.define
 ├── wrangler.toml                 # Cloudflare Worker config (D1 + KV + ASSETS bindings)
 ├── lighthouserc.json             # LHCI thresholds
@@ -135,7 +130,7 @@ Three locales, baseline `es-419`:
 
 Astro's native i18n routing is used (no separate library). All locales must remain in parity — `scripts/check-i18n-parity.mjs` flattens every key across the three locale objects and exits non-zero on any missing/extra/empty key. The check runs in CI on every PR. Current footprint: **476 keys × 3 locales**.
 
-EN-US is the canonical authoring locale; ES-419 and PT-BR are human translations preserving voice/tone (see [`docs/specs/2026-05-09-website-redesign.md`](docs/specs/2026-05-09-website-redesign.md) §8 for the voice-and-tone rules + buzzword blacklist).
+EN-US is the canonical authoring locale; ES-419 and PT-BR are human translations preserving voice/tone.
 
 ## Contributing
 

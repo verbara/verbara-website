@@ -7,8 +7,8 @@ name: Dependabot auto-merge
 # - npm majors are filtered upstream by .github/dependabot.yml, so they never
 #   reach this workflow. GitHub Actions majors are NOT ignored upstream, hence
 #   the explicit update-type guard plus the "manual review" comment below.
-# - Auto-merge only completes when all required status checks (quality, test,
-#   coverage, e2e, OpenSpec Validate) pass — main's ruleset enforces that gate.
+# - Auto-merge only completes when all required status checks (quality,
+#   coverage, e2e) pass — main's ruleset enforces that gate.
 # - main runs a merge queue (merge_group), so the queue ruleset — not this
 #   workflow — picks the merge strategy. Requires the AUTOMERGE_PAT secret to
 #   exist in the *Dependabot* secret store (not the Actions one): a workflow

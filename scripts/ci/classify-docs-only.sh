@@ -32,7 +32,7 @@ for f in "${files[@]}"; do
     data/*/*)             echo "docs_only=false"; exit 0 ;;  # only TOP-LEVEL data/*.json is the ledger
   esac
   case "$f" in
-    docs/*|openspec/*|CHANGELOG.md) continue ;;   # docs + specs (+ changelog: parity only)
+    docs/*|CHANGELOG.md) continue ;;              # docs (+ changelog: parity only)
     data/*.json) continue ;;                      # the authorized-digests ledger — §4 website row
     */README.md) continue ;;                      # README at any depth (data/README.md is prose)
   esac
