@@ -508,10 +508,11 @@ async function sendLicenseEmail(apiKey: string, args: SendArgs): Promise<boolean
   <p><strong>This license:</strong></p>
   <ul>
     <li>Tier: Developer (Tier 0.5)</li>
-    <li>Max agents: 5</li>
+    <li>Use: internal use and evaluation only. Serving third parties with Pro features requires Tier 2.</li>
+    <li>Licensed agents: up to 5 (the license never blocks by agent count)</li>
     <li>Max nodes: 1</li>
     <li>Expires: ${expiryDate} (30 days from issuance)</li>
-    <li>Mode: WarnOnly (logs warnings; does not block)</li>
+    <li>While it is valid, Pro features are on. If it expires, your application keeps running; after a grace period, Pro features such as the dialer, analytics and agent assist switch off until you renew.</li>
   </ul>
   <p>To renew (free), submit the form again at
     <a href="https://verbara.io/developer-license/">verbara.io/developer-license</a>
