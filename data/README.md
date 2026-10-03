@@ -1,21 +1,17 @@
 # `authorized-digests.json` — registry of authorized Verbara Platform image digests
 
 This file is the **single source of truth** for which OCI manifest-list digests of
-`ghcr.io/verbara/platform` are eligible to host Verbara Pro features. The license-
-issuance Worker (`functions/api/developer-license/index.ts`) reads it at request
-time and embeds the **last 6 entries from `current`** (sorted by `released_at`
-descending) into every newly-issued `.lic` file as the
-`AuthorizedImageDigests` claim — covered by the same ECDSA signature as the
-rest of the license payload.
+`ghcr.io/verbara/platform` are authorized releases. It is a release ledger: the
+daily drift-detection cron re-verifies every `current` entry against the
+registry, and `npm run validate:digests` guards its structure.
 
-The matching consumer-side check lives in **Verbara.Sdk.Pro.Licensing** v2.3.x:
-`LicenseValidator.Validate(...)` reads the running container's digest from
-`/etc/verbara-image-digest` (preferred) or the `IMAGE_DIGEST` env var
-(fallback) and returns `LicenseValidationResult.UnauthorizedImage` when the
-running digest is not in the license's `AuthorizedImageDigests` list. Empty
-list = back-compat permissive path (no enforcement) for licenses issued before
-the registry has any entries, and for `dotnet run` dev-mode where neither file
-nor env var is set.
+**It is not embedded in licences.** No licence carries `AuthorizedImageDigests`,
+the free Developer licence (Tier 0.5) included (verbara-meta PDR-0003,
+2026-10-03 amendment C6). The issuer
+(`functions/api/developer-license/index.ts`) used to embed the last 6 `current`
+entries into every `.lic`; it no longer reads this file, and issued licences
+omit the field entirely — absent, which Pro's `LicenseValidator` reads as "no
+image binding".
 
 For background, see:
 - Pro ADR-0011 — `Verbara.Sdk.Pro/docs/decisions/0011-image-digest-binding-in-license-keys.md`
@@ -36,9 +32,9 @@ For background, see:
     }
   ],
   "deprecated": [
-    // Same shape as `current`. Entries move here when no longer issued in new
-    // licenses; kept for reproducibility (auditability of old `.lic` files
-    // that referenced them).
+    // Same shape as `current`. Entries move here when superseded; kept for
+    // reproducibility (auditability of old `.lic` files that embedded them
+    // before licences stopped carrying digests).
   ]
 }
 ```
@@ -59,19 +55,11 @@ do not start with `sha256:` or `sha512:`. It cannot distinguish per-arch from
 manifest-list digests by regex — operational discipline at this registry
 prevents per-arch entries from being added.
 
-## Rotation cadence — last 6 entries
+## Rotation
 
-Each Platform patch release produces a new image digest. The Worker embeds
-**only the last 6 entries from `current`** (sorted by `released_at` DESC) into
-newly-issued licenses. This avoids unbounded license-payload growth while
-giving customers ~6 weeks of patch headroom before they need a license refresh
-(at the typical Verbara Platform patch cadence).
-
-When more than 6 entries exist in `current`, the older entries are still
-served to consumers running those older Platform versions until the customer
-requests a license refresh — but newly-issued licenses no longer authorise
-those older digests. After a few rotations, deprecated entries should be
-moved from `current` to `deprecated`.
+Licences no longer embed digests, so there is no licence-side window. Keep the
+recent releases in `current` and move superseded entries to `deprecated` as
+housekeeping, in the same PR that authorizes a new release.
 
 ## How to add a new entry
 
@@ -87,8 +75,7 @@ After a new Platform release ships a cosign-signed image:
 3. Open a PR titled `chore(digests): authorize Platform vX.Y.Z (api + realtime), deprecate vX.Y.Z`
    (actual convention in use — see merged PR history). Merging the PR triggers a Worker re-deploy
    via Cloudflare Workers Builds auto-deploy on push to `main`.
-4. If `current.length` exceeds 6, optionally move the oldest non-current entry
-   to `deprecated` in the same PR for housekeeping.
+4. Optionally move superseded entries to `deprecated` in the same PR for housekeeping.
 
 The daily drift-detection cron in `src/worker.ts` re-fetches each entry's
 manifest-list digest from `ghcr.io` and emails `security@verbara.io` if a
@@ -97,10 +84,8 @@ accidental tag-mutation).
 
 ## Current state
 
-`current` is no longer empty: the image-binding execution plan shipped, and the registry now
-holds the last-6-entries rotation described above (currently 2 entries — the api and realtime
-manifest-list digests for the latest released Platform version, v2.16.0). Every issued `.lic`
-carries a non-empty `AuthorizedImageDigests` claim, activating Layer C of the F+B+C defense
-stack for Pro v2.3.x+ consumers. Older `.lic` files issued before the registry had entries (or
-issued when `dotnet run` dev-mode has neither `/etc/verbara-image-digest` nor `IMAGE_DIGEST` set)
-still fall back to the back-compat permissive path (no enforcement).
+`current` holds the api and realtime manifest-list digests of the released
+Platform versions, re-verified daily by the drift-detection cron. Licences
+issued once this change is deployed carry no `AuthorizedImageDigests` claim.
+Licences issued earlier may still carry one; they expire on their own (Tier 0.5
+lasts 30 days).

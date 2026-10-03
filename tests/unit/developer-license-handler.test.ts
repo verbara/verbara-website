@@ -95,10 +95,10 @@ const validBody = {
 function stubFetch(opts: { captcha?: boolean; resendOk?: boolean } = {}) {
   return vi.fn(async (input: RequestInfo | URL) => {
     const url = String(input);
-    if (url.includes('challenges.cloudflare.com')) {
+    if (new URL(url).hostname === 'challenges.cloudflare.com') {
       return new Response(JSON.stringify({ success: opts.captcha ?? true }), { status: 200 });
     }
-    if (url.includes('api.resend.com')) {
+    if (new URL(url).hostname === 'api.resend.com') {
       return new Response('{}', { status: opts.resendOk ?? true ? 200 : 500 });
     }
     return new Response('unexpected', { status: 500 });
@@ -236,5 +236,84 @@ describe('onRequestPost — issuance pipeline', () => {
     const env = makeEnv({ RATE_LIMIT_KV: kv, VERBARA_LICENSE_SIGNING_KEY: signingKey });
     await onRequestPost(makeCtx(validBody, env));
     expect(kv.store.get('rl:ip:203.0.113.7')).toBe('1');
+  });
+});
+
+describe('onRequestPost — issued licence wire format (Pro parity)', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  /** Issues one licence and returns the .lic JSON captured from the Resend attachment. */
+  async function issue(db = new FakeD1()) {
+    const kp = await crypto.subtle.generateKey({ name: 'ECDSA', namedCurve: 'P-256' }, true, [
+      'sign',
+      'verify',
+    ]);
+    const pkcs8 = Buffer.from(await crypto.subtle.exportKey('pkcs8', kp.privateKey)).toString(
+      'base64',
+    );
+    const pem = `-----BEGIN PRIVATE KEY-----\n${pkcs8.match(/.{1,64}/g)!.join('\n')}\n-----END PRIVATE KEY-----`;
+    let licText = '';
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+        const url = String(input);
+        if (new URL(url).hostname === 'challenges.cloudflare.com') {
+          return new Response(JSON.stringify({ success: true }), { status: 200 });
+        }
+        const sent = JSON.parse(String(init!.body)) as { attachments: { content: string }[] };
+        licText = Buffer.from(sent.attachments[0]!.content, 'base64').toString('utf8');
+        return new Response('{}', { status: 200 });
+      }),
+    );
+    const env = makeEnv({ LICENSE_AUDIT_DB: db, VERBARA_LICENSE_SIGNING_KEY: pem });
+    const res = await onRequestPost(makeCtx(validBody, env));
+    expect(res.status).toBe(202);
+    return { lic: JSON.parse(licText) as Record<string, unknown>, licText, publicKey: kp.publicKey };
+  }
+
+  it('onRequestPost_ShouldSignLicenseFeatureAll_WhenIssuingDeveloperLicence', async () => {
+    const { lic } = await issue();
+    expect(lic.Tier).toBe(1);
+    expect(lic.Features).toBe(4095); // Pro LicenseFeature.All — not the stale 511
+    expect(lic.MaxAgents).toBe(5);
+    expect(lic.MaxNodes).toBe(1);
+  });
+
+  it('onRequestPost_ShouldOmitAuthorizedImageDigests_WhenIssuingAnyLicence', async () => {
+    const { lic, licText } = await issue();
+    expect(licText).not.toContain('AuthorizedImageDigests');
+    expect(Object.keys(lic)).toEqual([
+      'LicenseId',
+      'Licensee',
+      'Tier',
+      'ExpiresAt',
+      'Features',
+      'MaxAgents',
+      'MaxNodes',
+      'Signature',
+    ]);
+  });
+
+  it('onRequestPost_ShouldSignProCanonicalPayload_WhenIssued', async () => {
+    const { lic, publicKey } = await issue();
+    // Pro's LicensePayload canonical JSON: LicenseKey minus Signature, compact,
+    // declaration order, AuthorizedImageDigests absent (null → omitted).
+    const { Signature, ...payload } = lic;
+    const ok = await crypto.subtle.verify(
+      { name: 'ECDSA', hash: 'SHA-256' },
+      publicKey,
+      Buffer.from(String(Signature), 'base64'),
+      new TextEncoder().encode(JSON.stringify(payload)),
+    );
+    expect(ok).toBe(true);
+  });
+
+  it('onRequestPost_ShouldAuditFeatureAllWithoutDigests_WhenIssued', async () => {
+    const db = new FakeD1();
+    await issue(db);
+    const row = db.rows[0] as { query: string; bound: unknown[] };
+    expect(row.query).not.toContain('authorized_image_digests');
+    expect(row.bound).toHaveLength(14);
+    expect(row.bound[8]).toBe(4095);
   });
 });
