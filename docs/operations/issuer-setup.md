@@ -163,7 +163,7 @@ open https://verbara.io/developer-license/
 Submit the real form with your own email. Verify:
 - Form displays "Request received" success state
 - Email arrives within 5 minutes with `verbara-developer-{uuid}.lic` attachment
-- The `.lic` file's JSON has `Tier: 1`, `Features: 511`, `MaxAgents: 5`, `MaxNodes: 1`
+- The `.lic` file's JSON has `Tier: 1`, `Features: 4095` (Pro `LicenseFeature.All` — the 12 bits listed in `functions/api/developer-license/license-features.ts`), `MaxAgents: 5`, `MaxNodes: 1`, and no `AuthorizedImageDigests` key
 - D1 has a row: `npx wrangler d1 execute verbara-license-audit --remote --command "SELECT email, tier, expires_at FROM license_audit ORDER BY issued_at DESC LIMIT 5"`
 
 ## Step 9 — Distribute the public key to Pro consumers

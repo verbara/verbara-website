@@ -59,8 +59,7 @@ gates:
       repo has no product-domain modules, no service-locator risk, and imports no Verbara packages.
       No `no-restricted-imports` rule is configured in eslint.config.mjs (verified) and none is
       warranted — there is no boundary for it to guard. The one real cross-file contract
-      (AuthorizedDigestEntry / loadRegistry defined once, imported by drift-detection + the license
-      handler) is a single-source-of-truth reuse pattern, not a layered dependency rule.
+      (AuthorizedDigestEntry / loadRegistry defined once, imported by drift-detection) is a single-source-of-truth reuse pattern, not a layered dependency rule.
 
   - id: G5
     class: content-invariants
