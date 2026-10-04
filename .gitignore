@@ -48,6 +48,7 @@ docs/specs/
 docs/superpowers/
 .superpowers/
 .worktrees/
+.project-memory/
 
 # Playwright
 test-results/
