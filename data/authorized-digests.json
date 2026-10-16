@@ -2,6 +2,20 @@
   "$schema": "https://verbara.io/schemas/authorized-digests-v1.json",
   "current": [
     {
+      "platform_version": "v2.29.0",
+      "image_ref": "ghcr.io/verbara/platform/api:v2.29.0",
+      "manifest_list_digest": "sha256:411df4863c369c90f1fd8dee35fba9353a6246541828f3b6b3052950e85d65c5",
+      "released_at": "2026-10-16T03:45:26Z"
+    },
+    {
+      "platform_version": "v2.29.0",
+      "image_ref": "ghcr.io/verbara/platform/realtime:v2.29.0",
+      "manifest_list_digest": "sha256:7bacb83444e685583bf94e93d93ede9d20a0c9b35e6558b37516733c9974c538",
+      "released_at": "2026-10-16T03:45:26Z"
+    }
+  ],
+  "deprecated": [
+    {
       "platform_version": "v2.28.0",
       "image_ref": "ghcr.io/verbara/platform/api:v2.28.0",
       "manifest_list_digest": "sha256:9b7c9afeccfc6dc57b265ead6a1eced4e1fc0b155d1ee97787aee52210826073",
@@ -12,9 +26,7 @@
       "image_ref": "ghcr.io/verbara/platform/realtime:v2.28.0",
       "manifest_list_digest": "sha256:2bf98f8674105ee77e4df3067a14dc113f48629fd917fc89e7034017a380a32c",
       "released_at": "2026-10-11T20:09:39Z"
-    }
-  ],
-  "deprecated": [
+    },
     {
       "platform_version": "v2.27.0",
       "image_ref": "ghcr.io/verbara/platform/api:v2.27.0",
