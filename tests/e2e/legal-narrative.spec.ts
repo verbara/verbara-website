@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];
 const LEGAL_PAGES = ['eula', 'privacy', 'terms'];
-// EULA and terms were revised on 2026-10-26 (hosted SaaS tiers removed).
+// EULA and terms were revised on 2026-10-26 (retired hosted tiers removed).
 const LAST_UPDATED: Record<string, string> = {
   eula: '2026-10-26',
   privacy: '2026-05-09',

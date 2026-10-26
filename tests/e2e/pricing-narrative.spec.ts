@@ -15,7 +15,7 @@ for (const prefix of LOCALE_PREFIXES) {
     await expect(page.locator('#group-managed')).toHaveCount(0);
 
     // 7 pricing articles: 2 in free, 3 in self, 2 support plans. Verbara is
-    // self-hosted software only: the hosted SaaS tiers (Tier 3, Tier 4) are gone and
+    // self-hosted software only: the retired hosted tiers (Tier 3, Tier 4) are gone and
     // Tier 5 is a self-hosted white-label licence (PDR-0003 §A).
     const freeArticles = await page.locator('#group-free article').count();
     const selfArticles = await page.locator('#group-self article').count();

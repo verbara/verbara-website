@@ -12,7 +12,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
 
 const apRows = [
-  { label: t.usecases.voiceai_ap_row_1, verbara: '✓ MIT + Apache',     a: '✗ closed SaaS',     b: '✗ closed SaaS',    c: '✓ Apache' },
+  { label: t.usecases.voiceai_ap_row_1, verbara: '✓ MIT + Apache',     a: t.usecases.voiceai_ap_closed_cloud, b: t.usecases.voiceai_ap_closed_cloud,    c: '✓ Apache' },
   { label: t.usecases.voiceai_ap_row_2, verbara: '✓',                   a: '✗',                  b: '✗',                 c: '✓' },
   { label: t.usecases.voiceai_ap_row_3, verbara: '✓ AMI/ARI',           a: 'SIP gateway',        b: 'SIP gateway',       c: '✗ WebRTC only' },
   { label: t.usecases.voiceai_ap_row_4, verbara: '✓ Pro',               a: '✓ enterprise',       b: '✓ enterprise',      c: '✗' },

@@ -1,7 +1,7 @@
 // Shared types for the pricing composites (TierCard, TierGroup, ComparisonMatrix).
 // Centralized so adding a new tier requires one edit, not three.
 
-// Licence tiers (ADR-0010 numbering: Tier 3 and Tier 4 were hosted SaaS and are
+// Licence tiers (ADR-0010 numbering: Tier 3 and Tier 4 were hosted tiers and are
 // retired — Verbara is self-hosted software only; Tier 5 keeps its number).
 export type LicenceTierId =
   | 'tier_0'
