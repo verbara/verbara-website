@@ -15,10 +15,10 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
 
 const placeholderEn = {
-  intro: '<strong>Verbara EULA — placeholder.</strong> The end-user license agreement for the commercial Verbara.Sdk.Pro modules and the SaaS-hosted product tiers will be published here. The open-source components (Verbara.Sdk under MIT and Verbara.Platform under Apache 2.0) are governed by their respective repository LICENSE files, not this EULA.',
+  intro: '<strong>Verbara EULA — placeholder.</strong> The end-user license agreement for the commercial Verbara.Sdk.Pro modules will be published here. The open-source components (Verbara.Sdk under MIT and Verbara.Platform under Apache 2.0) are governed by their respective repository LICENSE files, not this EULA.',
   contact: 'Until the formal text lands, contact <a href="mailto:licensing@verbara.io">licensing@verbara.io</a> for license inquiries.',
   s1_title: '1. Scope',
-  s1_body: '[Placeholder — covers Tier 0.5 evaluator licenses, Tier 1–2 self-host commercial licenses, and Tier 3–5 managed SaaS subscriptions.]',
+  s1_body: '[Placeholder — covers Tier 0.5 evaluator licenses and the Tier 1, Tier 2 and Tier 5 (white-label/OEM) self-host commercial licenses.]',
   s2_title: '2. Permitted use',
   s2_body: '[Placeholder — Pro features may be activated under a valid license; the OSS engine continues to operate without restriction regardless of license status.]',
   s3_title: '3. Termination',
@@ -26,10 +26,10 @@ const placeholderEn = {
 };
 
 const placeholderPt = {
-  intro: '<strong>EULA da Verbara — placeholder.</strong> O contrato de licença de usuário final para os módulos comerciais Verbara.Sdk.Pro e para os tiers SaaS hospedados será publicado aqui. Os componentes open-source (Verbara.Sdk sob MIT e Verbara.Platform sob Apache 2.0) são regidos pelos respectivos arquivos LICENSE de cada repositório, não por este EULA.',
+  intro: '<strong>EULA da Verbara — placeholder.</strong> O contrato de licença de usuário final para os módulos comerciais Verbara.Sdk.Pro será publicado aqui. Os componentes open-source (Verbara.Sdk sob MIT e Verbara.Platform sob Apache 2.0) são regidos pelos respectivos arquivos LICENSE de cada repositório, não por este EULA.',
   contact: 'Até o texto formal sair, entre em contato com <a href="mailto:licensing@verbara.io">licensing@verbara.io</a> para consultas de licenciamento.',
   s1_title: '1. Escopo',
-  s1_body: '[Placeholder — cobre licenças avaliadoras Tier 0.5, licenças self-host comerciais Tier 1–2 e assinaturas SaaS gerenciadas Tier 3–5.]',
+  s1_body: '[Placeholder — cobre licenças avaliadoras Tier 0.5 e licenças self-host comerciais Tier 1, Tier 2 e Tier 5 (white-label/OEM).]',
   s2_title: '2. Uso permitido',
   s2_body: '[Placeholder — features Pro podem ser ativadas com uma licença válida; o motor OSS continua operando sem restrição independentemente do status da licença.]',
   s3_title: '3. Encerramento',
@@ -40,7 +40,7 @@ const copy = locale === 'en-US' ? placeholderEn : placeholderPt;
 ---
 
 <Layout title={`${t.footer.legal_eula} — ${t.meta.site_title}`}>
-  <LegalDoc title={t.footer.legal_eula} lastUpdated="2026-05-09">
+  <LegalDoc title={t.footer.legal_eula} lastUpdated="2026-10-26">
     <p set:html={copy.intro} />
     <p set:html={copy.contact} />
 

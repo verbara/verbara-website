@@ -45,11 +45,11 @@ const t = getMessages(locale);
           ]}
         />
         <TierGroup
-          label={t.pricing.group_managed_label}
-          anchorId="group-managed"
+          label={t.pricing.group_support_label}
+          anchorId="group-support"
           tiers={[
-            { tierId: 'tier_3', cta: 'sales', bestFor: t.pricing.best_for_t3 },
-            { tierId: 'tier_4', cta: 'sales', bestFor: t.pricing.best_for_t4 },
+            { tierId: 'support_business', cta: 'sales', bestFor: t.pricing.best_for_support_business },
+            { tierId: 'support_enterprise', cta: 'sales', bestFor: t.pricing.best_for_support_enterprise },
           ]}
         />
       </div>

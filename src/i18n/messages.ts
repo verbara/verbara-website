@@ -221,20 +221,20 @@ export interface Messages {
     tier_2_f2: string;
     tier_2_f3: string;
     tier_2_f4: string;
-    tier_3_name: string;
-    tier_3_price: string;
-    tier_3_tagline: string;
-    tier_3_f1: string;
-    tier_3_f2: string;
-    tier_3_f3: string;
-    tier_3_f4: string;
-    tier_4_name: string;
-    tier_4_price: string;
-    tier_4_tagline: string;
-    tier_4_f1: string;
-    tier_4_f2: string;
-    tier_4_f3: string;
-    tier_4_f4: string;
+    support_business_name: string;
+    support_business_price: string;
+    support_business_tagline: string;
+    support_business_f1: string;
+    support_business_f2: string;
+    support_business_f3: string;
+    support_business_f4: string;
+    support_enterprise_name: string;
+    support_enterprise_price: string;
+    support_enterprise_tagline: string;
+    support_enterprise_f1: string;
+    support_enterprise_f2: string;
+    support_enterprise_f3: string;
+    support_enterprise_f4: string;
     tier_5_name: string;
     tier_5_price: string;
     tier_5_tagline: string;
@@ -248,7 +248,7 @@ export interface Messages {
 
     group_free_label: string;
     group_self_label: string;
-    group_managed_label: string;
+    group_support_label: string;
 
     matrix_eyebrow: string;
     matrix_h2: string;
@@ -257,8 +257,6 @@ export interface Messages {
     matrix_feat_pro_features: string;
     matrix_feat_multitenant: string;
     matrix_feat_clustering: string;
-    matrix_feat_hosted: string;
-    matrix_feat_sla: string;
     matrix_feat_support: string;
     matrix_feat_max_agents: string;
     matrix_feat_audit_retention: string;
@@ -279,8 +277,8 @@ export interface Messages {
     best_for_t0_5: string;
     best_for_t1: string;
     best_for_t2: string;
-    best_for_t3: string;
-    best_for_t4: string;
+    best_for_support_business: string;    // support plans (not licence tiers)
+    best_for_support_enterprise: string;
     best_for_t5: string;
     subtitle_2: string;                 // new line under hero subtitle
   };
@@ -552,9 +550,9 @@ export interface Messages {
 
 const es_419: Messages = {
   meta: {
-    site_title: 'Verbara — Plataforma open-core honesta para contact center',
+    site_title: 'Verbara — Software open-core honesto para contact center',
     site_description:
-      'Verbara es una plataforma open-core para contact center: motor auditable, módulos comerciales. Self-host gratis o hosted, sin tarifas por minuto.',
+      'Verbara es software open-core para contact center: motor auditable, módulos comerciales. Se instala en tu infraestructura. No ofrecemos servicio alojado. Sin tarifas por minuto.',
   },
   nav: {
     pricing: 'Precios',
@@ -588,7 +586,7 @@ const es_419: Messages = {
   landing: {
     hero_title: 'El contact center open-core honesto.',
     hero_subtitle:
-      'Motor auditable bajo Apache 2.0 + módulos Pro comerciales. Self-host gratis o hosted desde $99 por agente al mes. Sin tarifas por minuto, sin lock-in.',
+      'Motor auditable bajo Apache 2.0 + módulos Pro comerciales. Se instala en tu infraestructura. No ofrecemos servicio alojado. Sin tarifas por minuto, sin lock-in.',
     cta_developer: 'Obtener licencia gratuita de developer',
     cta_pricing: 'Ver precios',
     why_title: '¿Por qué Verbara?',
@@ -597,9 +595,9 @@ const es_419: Messages = {
     why_b1_title: 'Auditable',
     why_b1_body:
       'Backend Apache 2.0, frontend Apache 2.0, SDK MIT. Tu equipo de seguridad puede leer cada línea antes de comprar.',
-    why_b2_title: 'On-premise o hosted',
+    why_b2_title: 'En tu infraestructura',
     why_b2_body:
-      'Corre todo en tu infraestructura (Tier 1–2) o pagas por agente al mes con SLA 99.5–99.9% (Tier 3–4). Tú eliges, sin lock-in.',
+      'Corre todo en tu data center o en tu nube, con tu Asterisk y tus troncales. Verbara no opera un servicio alojado: la instalación y los datos son tuyos, sin lock-in.',
     why_b3_title: 'Sin tarifas por minuto',
     why_b3_body:
       'Twilio cobra $0.014–0.045 por minuto de llamada y por mensaje. Verbara conecta directamente a tu PBX (Asterisk) — paga solo por tu telco.',
@@ -617,7 +615,7 @@ const es_419: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'El runtime open-core de comunicaciones que puedes',
     hero_h1_accent: 'auditar, ejecutar, poseer.',
-    hero_sub: 'Open-core, Asterisk-native. Corre tu contact center, voice AI, omnichannel y más sobre un solo stack auditable. En tu data center, tu nube, o nuestro plano gestionado.',
+    hero_sub: 'Open-core, Asterisk-native. Corre tu contact center, voice AI, omnichannel y más sobre un solo stack auditable. En tu data center o en tu nube: se instala en tu infraestructura.',
     hero_cta_primary: 'Corre el stack →',
     hero_cta_secondary: 'Ver soluciones →',
     hero_cta_dev_license: 'o consigue una licencia developer — gratis, firmada, válida 30 días →',
@@ -685,7 +683,7 @@ const es_419: Messages = {
     cp_card_aot_label: 'compilación nativa anticipada',
 
     pt_eyebrow: 'Precios',
-    pt_h2: 'Gratis para evaluar. Self-host o gestionado cuando escales.',
+    pt_h2: 'Gratis para evaluar. Licencia self-host cuando escales.',
     pt_card_free_title: 'Gratis / Dev',
     pt_card_free_tagline: 'Tier 0 + Tier 0.5',
     pt_card_free_price: '$0',
@@ -696,8 +694,8 @@ const es_419: Messages = {
     pt_card_self_cta: 'Ver planes self-host →',
     pt_card_self_badge: 'Recomendado',
     pt_card_ent_title: 'Enterprise',
-    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
-    pt_card_ent_price: 'desde $99/agente/mes',
+    pt_card_ent_tagline: 'Tier 5 white-label · planes de soporte',
+    pt_card_ent_price: 'A consultar',
     pt_card_ent_cta: 'Hablar con ventas →',
 
     faq_eyebrow: 'FAQ',
@@ -709,7 +707,7 @@ const es_419: Messages = {
     faq_q3: '¿Qué pasa con mi deployment si dejo de pagar Pro?',
     faq_a3: 'El motor OSS (SDK MIT + Platform Apache) sigue corriendo indefinidamente — sin kill switch, sin verificación cloud. Cuando expira tu licencia y pasa la gracia pierdes las features Pro de valor añadido: dialer predictivo, agent assist, analytics, call analytics, CSAT, event store y tipificación avanzada/AI. Lo que mantiene el servicio en pie no se apaga: multi-tenant, routing, realtime y clustering siguen funcionando, igual que las conversaciones. Datos y audit logs siguen siendo tuyos. No podemos ni vamos a desactivar una instalación que dejaste de pagar; simplemente dejamos de enviar releases nuevos de Pro.',
     faq_q4: '¿Hay SLA en la edición OSS?',
-    faq_a4: 'No. La edición OSS (Tier 0) tiene soporte community vía GitHub issues y Discord público. Tiempo de respuesta best-effort. Los SLA arrancan en Tier 3 (SaaS gestionado, 99.5% uptime) y Tier 4 (99.9% con soporte 24/7 + CSM dedicado). Para tiers comerciales self-host (1, 2), soporte es email o email+Slack — rápido pero no respaldado por SLA.',
+    faq_a4: 'No. La edición OSS (Tier 0) tiene soporte community vía GitHub issues y Discord público, con tiempo de respuesta best-effort. Los tiers comerciales self-host incluyen soporte por email (Tier 1) o email + Slack (Tier 2). Si necesitas tiempos de respuesta comprometidos, están los planes Soporte Business (horario laboral, primera respuesta a un incidente crítico en 4 horas hábiles) y Soporte Enterprise (24/7, primera respuesta en 1 hora, contacto técnico asignado), a consultar con ventas. Verbara corre en tu infraestructura, así que comprometemos tiempos de respuesta, nunca disponibilidad.',
     faq_q5: '¿LATAM (ES, PT) es ciudadano de primera o traducción tardía?',
     faq_a5: 'Primera clase. El locale por defecto es es-419 (español LATAM neutro) — verbara.io/ sirve español, la versión inglesa vive en /en-US/. Documentación, soporte y UI del producto se autoran en tres locales (es-419, en-US, pt-BR) con paridad enforced en CI. Ejemplos en pricing, casos y nombres de tier se inclinan a contextos LATAM (BPO, telcos). Verbara está construido por gente que piensa en español.',
     faq_q6: '¿Por dónde empiezo según mi use-case?',
@@ -725,7 +723,7 @@ const es_419: Messages = {
   pricing: {
     title: 'Precios',
     subtitle:
-      'Plataforma open-core honesta — paga por el motor, nunca por la UI ni el backend base.',
+      'Software open-core honesto — paga por el motor, nunca por la UI ni el backend base.',
     cta_developer: 'Licencia gratuita de developer',
     cta_buy: 'Comprar (próximamente)',
     cta_sales: 'Hablar con ventas',
@@ -760,33 +758,33 @@ const es_419: Messages = {
     tier_2_f2: 'Aislamiento multi-tenant',
     tier_2_f3: '≤500 agentes licenciados por despliegue · multi-clúster',
     tier_2_f4: 'Email + Slack SLA 24h',
-    tier_3_name: 'SaaS Business',
-    tier_3_price: '$99 / agente / mes',
-    tier_3_tagline: 'Hospedado por Verbara. SLA 99.5%.',
-    tier_3_f1: 'Todas las funciones Tier 2, hospedado',
-    tier_3_f2: 'SLA 99.5%, soporte horario laboral',
-    tier_3_f3: 'SAML básico',
-    tier_3_f4: 'Mid-market (50–500 agentes)',
-    tier_4_name: 'SaaS Enterprise',
-    tier_4_price: '$249 / agente / mes',
-    tier_4_tagline: 'Soporte 24/7. SLA 99.9%. CSM dedicado.',
-    tier_4_f1: 'Funciones Tier 3 +',
-    tier_4_f2: 'SLA 99.9%, soporte 24/7, CSM dedicado',
-    tier_4_f3: 'SAML, IP allowlist, reportes SOC2/HIPAA/PCI',
-    tier_4_f4: 'SLA personalizado',
+    support_business_name: 'Soporte Business',
+    support_business_price: 'A consultar',
+    support_business_tagline: 'Soporte en horario laboral para tu instalación self-host.',
+    support_business_f1: 'Soporte en horario laboral',
+    support_business_f2: 'Primera respuesta a un incidente crítico en ≤4 horas hábiles',
+    support_business_f3: 'Comprometemos tiempos de respuesta, nunca disponibilidad',
+    support_business_f4: 'Tu instalación corre en tu infraestructura',
+    support_enterprise_name: 'Soporte Enterprise',
+    support_enterprise_price: 'A consultar',
+    support_enterprise_tagline: 'Soporte 24/7 con un contacto técnico asignado.',
+    support_enterprise_f1: 'Soporte 24/7',
+    support_enterprise_f2: 'Primera respuesta a un incidente crítico en ≤1 hora',
+    support_enterprise_f3: 'Contacto técnico asignado',
+    support_enterprise_f4: 'Comprometemos tiempos de respuesta, nunca disponibilidad',
     tier_5_name: 'White-label / OEM',
     tier_5_price: 'tramos de Tier 2 ×1,6 · mínimo $60.000 / año',
     tier_5_tagline: 'Self-host. Eliminación de marca. Sin rev share.',
-    tier_5_f1: 'Funciones Tier 4 +',
+    tier_5_f1: 'Todas las funciones de Tier 2 +',
     tier_5_f2: 'Theming personalizado + eliminación de marca',
     tier_5_f3: 'Acuerdo de reventa',
     tier_5_f4: 'Soporte de partner Tier-2',
     hero_h1: 'Elige el tier que coincide con cómo operas.',
-    hero_sub: 'Gratis para evaluar. Self-host con licencia cuando shipees. Gestionado cuando prefieras no operarlo tú.',
+    hero_sub: 'Gratis para evaluar. Self-host con licencia cuando shipees. Planes de soporte cuando necesites tiempos de respuesta comprometidos.',
 
     group_free_label: 'Gratis · evaluadores · usuarios OSS',
     group_self_label: 'Self-host · pago anual',
-    group_managed_label: 'SaaS gestionado · contact sales',
+    group_support_label: 'Planes de soporte · a consultar',
 
     matrix_eyebrow: 'Comparar features',
     matrix_h2: 'Cada feature, cada tier — sin asteriscos.',
@@ -795,8 +793,6 @@ const es_419: Messages = {
     matrix_feat_pro_features: 'Features Pro',
     matrix_feat_multitenant: 'Multi-tenant',
     matrix_feat_clustering: 'Clustering / multi-clúster',
-    matrix_feat_hosted: 'Hospedado por Verbara',
-    matrix_feat_sla: 'SLA',
     matrix_feat_support: 'Soporte',
     matrix_feat_max_agents: 'Agentes licenciados máx.',
     matrix_feat_audit_retention: 'Retención de audit log',
@@ -807,9 +803,9 @@ const es_419: Messages = {
     matrix_support_dedicated: 'dedicado',
 
     faq_q1: '¿Puedo subir o bajar de tier?',
-    faq_a1: 'Subir, en cualquier momento; bajar, en la renovación. Las features se ajustan al cambio del tier y los datos y la configuración persisten. En self-host, pasar al tramo siguiente de agentes licenciados nunca bloquea la operación: facturamos la diferencia prorrateada hasta la renovación, reemitimos la licencia y no cobramos hacia atrás; bajar de tramo aplica recién en la renovación. Para SaaS gestionado, ajustamos el plan en la próxima factura prorrateada.',
+    faq_a1: 'Subir, en cualquier momento; bajar, en la renovación. Las features se ajustan al cambio del tier y los datos y la configuración persisten. En self-host, pasar al tramo siguiente de agentes licenciados nunca bloquea la operación: facturamos la diferencia prorrateada hasta la renovación, reemitimos la licencia y no cobramos hacia atrás; bajar de tramo aplica recién en la renovación.',
     faq_q2: '¿Hay descuento anual?',
-    faq_a2: 'Tiers self-host (1, 2) se facturan anualmente por adelantado, con un mínimo de 12 meses y de 50 agentes licenciados declarados — no hay versión mensual. Tiers SaaS (3, 4) facturan mensual por defecto; commit anual con prepago da 15% de descuento. Tier 5 (white-label/OEM) también es anual: los tramos de Tier 2 ×1,6.',
+    faq_a2: 'Tiers self-host (1, 2) se facturan anualmente por adelantado, con un mínimo de 12 meses y de 50 agentes licenciados declarados — no hay versión mensual. Tier 5 (white-label/OEM) también es anual: los tramos de Tier 2 ×1,6.',
     faq_q3: '¿Ofrecen descuento académico o non-profit?',
     faq_a3: 'Sí. Organizaciones non-profit registradas y universidades acreditadas obtienen 50% de descuento sobre el tramo base del tier — en Tier 2, los primeros 25 agentes licenciados; los tramos por encima van a precio de lista. No aplica a Tier 5 ni al paquete de implementación. Manda licencia + comprobante a licensing@verbara.io.',
     best_for_label: 'Mejor para',
@@ -817,10 +813,10 @@ const es_419: Messages = {
     best_for_t0_5: 'Cualquier use-case en evaluación de 30 días',
     best_for_t1: 'Tu propia operación',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI productivo',
-    best_for_t3: 'CC hospedado · Voice AI hospedado',
-    best_for_t4: 'CC enterprise · Compliance-grade voice',
+    best_for_support_business: 'Equipos que operan su instalación en horario laboral',
+    best_for_support_enterprise: 'Operación 24/7 · CC enterprise',
     best_for_t5: 'CPaaS white-label · Vertical resellers',
-    subtitle_2: 'Cualquier tier sirve cualquier use-case — la diferencia es escala, multi-tenant y SLA.',
+    subtitle_2: 'Cualquier tier sirve cualquier use-case — la diferencia es escala, multi-tenant y soporte.',
   },
   usecases: {
     index_eyebrow: 'Soluciones',
@@ -841,7 +837,7 @@ const es_419: Messages = {
     voiceai_index_sub: 'Voicebots y agentes IA inbound sobre tu Asterisk PBX. Sin SIP gymnastics.',
     voiceai_index_cap1: '6 STT · 6 TTS · OpenAI Realtime bridge',
     voiceai_index_cap2: 'Smart Turn detection + barge-in',
-    voiceai_index_cap3: 'Self-host o hospedado',
+    voiceai_index_cap3: 'Self-host en tu infraestructura',
     voiceai_index_cta: 'Ver solución →',
 
     omnichannel_index_eyebrow: 'Mensajería',
@@ -889,7 +885,7 @@ const es_419: Messages = {
     cc_faq_eyebrow: 'FAQ · Contact Center',
     cc_faq_h2: 'Preguntas de operadores.',
     cc_faq_q1: '¿Cuántos agentes soporta, y cómo se cuentan?',
-    cc_faq_a1: 'Se cuentan agentes licenciados, no conexiones: cada identidad de agente habilitada de cada cliente, se conecte o no, y cualquiera que atienda; el despliegue paga el día del mes con más contando a la vez, sumando todos sus clientes. Tier 1 self-host está limitado a 25; Tier 2 sube a 500 por despliegue con multi-clúster, y más solo por contrato tras una prueba de carga. SaaS Business (Tier 3) y Enterprise (Tier 4) escalan según contrato. La cuota es por licencia, no técnica — el motor escala horizontalmente con clustering Pro.',
+    cc_faq_a1: 'Se cuentan agentes licenciados, no conexiones: cada identidad de agente habilitada de cada cliente, se conecte o no, y cualquiera que atienda; el despliegue paga el día del mes con más contando a la vez, sumando todos sus clientes. Tier 1 self-host está limitado a 25; Tier 2 sube a 500 por despliegue con multi-clúster, y más solo por contrato tras una prueba de carga. La cuota es por licencia, no técnica — el motor escala horizontalmente con clustering Pro.',
     cc_faq_q2: '¿Multi-tenant para BPOs?',
     cc_faq_a2: 'Sí, desde Tier 2 self-host. Aislamiento estricto por tenant, routing por skill por tenant, impersonation cross-tenant para administración. Cada cliente del BPO ve solo su data y sus agentes.',
     cc_faq_q3: '¿Compatibilidad con mi PBX existente?',
@@ -902,7 +898,7 @@ const es_419: Messages = {
     cc_faq_a6: 'Verbara lo detecta. Un heartbeat de liveness identifica al agente desconectado o "zombie" y reacciona: el trabajo digital huérfano (chats, WhatsApp, email) se re-encola automáticamente al frente de su cola para el siguiente agente vivo, y si una llamada de voz se cae con el cliente en línea, el cliente recibe un callback prioritario al siguiente agente disponible de su cola de origen. Además, defines límites de capacidad concurrente por canal y un MaxTotal entre canales asíncronos, con default por tenant y override por agente — para que nadie quede sobre-asignado.',
     cc_pp_eyebrow: 'Precios CC',
     cc_pp_h2: '¿Qué tier necesitas?',
-    cc_pp_body: 'Tier 1 ($5k/año) para tu propia operación: single-tenant, ≤25 agentes licenciados. Tier 2 (desde $25.500/año · 50 agentes licenciados) para atender a tus clientes: multi-tenant + multi-clúster. Tier 3 ($99/agente/mes) si prefieres hospedado. Tier 4 ($249/agente/mes) para SOC2/HIPAA + 24/7.',
+    cc_pp_body: 'Tier 1 ($5k/año) para tu propia operación: single-tenant, ≤25 agentes licenciados. Tier 2 (desde $25.500/año · 50 agentes licenciados) para atender a tus clientes: multi-tenant + multi-clúster. Soporte Enterprise si tu operación necesita respuesta 24/7.',
     cc_pp_cta: 'Ver pricing completo →',
     cc_final_h2_pre: 'El CC que',
     cc_final_h2_accent: 'puedes auditar.',
@@ -938,8 +934,8 @@ const es_419: Messages = {
     voiceai_faq_a1: 'STT: Deepgram, Google, Whisper, Azure, Cartesia, AssemblyAI, Speechmatics. TTS: ElevenLabs Flash 2.5, Deepgram Aura 2, LMNT, Azure, Cartesia, Speechmatics. Plus bridge directo al OpenAI Realtime API. Swappables vía configuración, no recompilación.',
     voiceai_faq_q2: '¿Cuál es la latencia end-to-end?',
     voiceai_faq_a2: 'Con Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 desde fin-de-frase del humano hasta primer phoneme TTS, midiendo en infra propia con VU 100. Latencia exacta depende de tu infra y el LLM upstream.',
-    voiceai_faq_q3: '¿Self-host sin telefonía propia?',
-    voiceai_faq_a3: 'Necesitas un PBX Asterisk para que el SDK reciba audio (puede ser tuyo, de un cliente, o desplegado junto con Verbara). Si quieres voicebots sin operar telefonía, Tier 3+ SaaS hospedado incluye PBX gestionado.',
+    voiceai_faq_q3: '¿Necesito telefonía propia?',
+    voiceai_faq_a3: 'Sí. Necesitas un PBX Asterisk para que el SDK reciba audio (puede ser tuyo, de un cliente, o desplegado junto con Verbara) y tus propias troncales SIP. Verbara no ofrece telefonía gestionada: el Asterisk y las troncales siempre los aporta tu operación.',
     voiceai_faq_q4: '¿Cómo escalo a agentes humanos cuando el voicebot transfiere?',
     voiceai_faq_a4: 'El voicebot vive sobre el mismo runtime que el contact center, así que un escalamiento a humano aterriza en un agente real con softphone WebRTC en el navegador — sin teléfono de escritorio ni instalación. Y si a ese agente se le cae la conexión a mitad de la llamada transferida, el liveness de presencia lo detecta y dispara un callback prioritario al cliente hacia el siguiente agente vivo. La voz IA y la humana comparten cola, no son dos productos pegados con cinta.',
     voiceai_pp_eyebrow: 'Precios Voice AI',
@@ -986,7 +982,7 @@ const es_419: Messages = {
     omnichannel_faq_a4: 'Tú lo defines. La capacidad concurrente es configurable por canal (chat, email, SMS, voz) más un MaxTotal entre canales asíncronos, con un default por tenant y override por agente — un senior puede llevar más chats que un junior sin tocar a nadie más. Y si un agente se desconecta, su trabajo digital en curso se re-encola al frente de su cola para el siguiente agente vivo, así que la carga no se queda atascada en una pestaña muerta.',
     omnichannel_pp_eyebrow: 'Precios Omnichannel',
     omnichannel_pp_h2: '¿Qué tier necesitas?',
-    omnichannel_pp_body: 'Tier 0 community para evaluación self-host. Tier 2 (desde $25.500/año · 50 agentes licenciados) para multi-tenant en SaaS propio. Tier 3+ ($99/agente/mes) si prefieres hospedado con SLA.',
+    omnichannel_pp_body: 'Tier 0 community para evaluación self-host. Tier 2 (desde $25.500/año · 50 agentes licenciados) para multi-tenant en SaaS propio. Planes de soporte con tiempos de respuesta comprometidos, a consultar.',
     omnichannel_pp_cta: 'Ver pricing completo →',
     omnichannel_final_h2_pre: 'Once canales,',
     omnichannel_final_h2_accent: 'sin per-message.',
@@ -1019,7 +1015,7 @@ const es_419: Messages = {
     cpaas_faq_eyebrow: 'FAQ · CPaaS',
     cpaas_faq_h2: 'Preguntas de telefonía.',
     cpaas_faq_q1: '¿Necesito operar mi propio Asterisk?',
-    cpaas_faq_a1: 'Sí. Verbara es una librería sobre Asterisk; opera el PBX (tuyo, on-prem o en cloud) y conecta el SDK vía AMI/ARI. Si quieres CPaaS sin operar telefonía, mira Tier 3+ SaaS hospedado donde el PBX viene gestionado.',
+    cpaas_faq_a1: 'Sí. Verbara es una librería sobre Asterisk; opera el PBX (tuyo, on-prem o en cloud) y conecta el SDK vía AMI/ARI. Verbara no ofrece telefonía gestionada: el Asterisk y las troncales siempre los aportas tú.',
     cpaas_faq_q2: '¿Qué codecs soporta?',
     cpaas_faq_a2: 'El SDK pasa el audio que Asterisk te entrega — soporta los codecs que tu Asterisk soporte (G.711, G.722, Opus, PCM, etc.). El pipeline VoiceAI hace resampling interno entre formatos cuando el LLM/TTS necesita 16kHz PCM.',
     cpaas_faq_q3: '¿Federación multi-servidor de qué escala?',
@@ -1084,15 +1080,15 @@ const es_419: Messages = {
   },
   legal_terms: {
     title: 'Términos de servicio',
-    body: 'Los Términos de servicio para los tiers SaaS hospedados por Verbara (Tier 3 SaaS Business, Tier 4 SaaS Enterprise) están siendo preparados. Para consultas comerciales, escribe a licensing@verbara.io.',
+    body: 'Los Términos de servicio de la marca Verbara y del sitio verbara.io están siendo preparados. Para consultas comerciales, escribe a licensing@verbara.io.',
   },
 };
 
 const en_US: Messages = {
   meta: {
-    site_title: 'Verbara — Open-core honest contact-center platform',
+    site_title: 'Verbara — Open-core honest contact-center software',
     site_description:
-      'Verbara is an open-core contact-center platform: auditable engine, commercial overlays. Self-host free or hosted, no per-minute fees.',
+      'Verbara is open-core contact-center software: auditable engine, commercial overlays. It installs on your infrastructure. We do not offer a hosted service. No per-minute fees.',
   },
   nav: {
     pricing: 'Pricing',
@@ -1106,7 +1102,7 @@ const en_US: Messages = {
     solutions_all: 'See all solutions →',
   },
   footer: {
-    tagline: 'Open-core honest contact-center platform.',
+    tagline: 'Open-core honest contact-center software.',
     column_resources: 'Resources',
     resources_contact_sales: 'Contact sales',
     column_legal: 'Legal',
@@ -1126,7 +1122,7 @@ const en_US: Messages = {
   landing: {
     hero_title: 'The honest open-core contact center.',
     hero_subtitle:
-      'Apache 2.0 auditable engine + commercial Pro overlays. Self-host free or hosted from $99/agent/month. No per-minute fees, no lock-in.',
+      'Apache 2.0 auditable engine + commercial Pro overlays. It installs on your infrastructure. We do not offer a hosted service. No per-minute fees, no lock-in.',
     cta_developer: 'Get free developer license',
     cta_pricing: 'See pricing',
     why_title: 'Why Verbara?',
@@ -1135,9 +1131,9 @@ const en_US: Messages = {
     why_b1_title: 'Auditable',
     why_b1_body:
       'Apache 2.0 backend, Apache 2.0 frontend, MIT SDK. Your security team can read every line before you buy.',
-    why_b2_title: 'On-premise or hosted',
+    why_b2_title: 'On your infrastructure',
     why_b2_body:
-      'Run everything on your infrastructure (Tier 1–2) or pay per agent per month with 99.5–99.9% SLA (Tier 3–4). Your choice, no lock-in.',
+      'Run everything in your data center or your cloud, with your own Asterisk and trunks. Verbara runs no hosted service: the installation and the data are yours, no lock-in.',
     why_b3_title: 'No per-minute fees',
     why_b3_body:
       'Twilio charges $0.014–0.045 per call minute and per message. Verbara connects directly to your PBX (Asterisk) — pay only your telco.',
@@ -1155,7 +1151,7 @@ const en_US: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'The open-core comms runtime you can',
     hero_h1_accent: 'audit, self-host, own.',
-    hero_sub: 'Open-core, Asterisk-native. Run your contact center, voice AI, omnichannel, and more on one auditable stack. In your data center, your cloud, or our managed plane.',
+    hero_sub: 'Open-core, Asterisk-native. Run your contact center, voice AI, omnichannel, and more on one auditable stack. In your data center or your cloud: it installs on your infrastructure.',
     hero_cta_primary: 'Run the stack →',
     hero_cta_secondary: 'See solutions →',
     hero_cta_dev_license: 'or get a developer license — free, signed, valid 30 days →',
@@ -1223,7 +1219,7 @@ const en_US: Messages = {
     cp_card_aot_label: 'native ahead-of-time',
 
     pt_eyebrow: 'Pricing',
-    pt_h2: 'Free to evaluate. Self-host or managed when you scale.',
+    pt_h2: 'Free to evaluate. A self-host license when you scale.',
     pt_card_free_title: 'Free / Dev',
     pt_card_free_tagline: 'Tier 0 + Tier 0.5',
     pt_card_free_price: '$0',
@@ -1234,8 +1230,8 @@ const en_US: Messages = {
     pt_card_self_cta: 'See self-host plans →',
     pt_card_self_badge: 'Recommended',
     pt_card_ent_title: 'Enterprise',
-    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
-    pt_card_ent_price: 'from $99/agent/mo',
+    pt_card_ent_tagline: 'Tier 5 white-label · support plans',
+    pt_card_ent_price: 'Contact sales',
     pt_card_ent_cta: 'Talk to sales →',
 
     faq_eyebrow: 'FAQ',
@@ -1247,7 +1243,7 @@ const en_US: Messages = {
     faq_q3: 'What happens to my deployment if I stop paying for Pro?',
     faq_a3: "The OSS engine (SDK MIT + Platform Apache) keeps running indefinitely — no kill switch, no cloud check. When your license expires and the grace period ends you lose the value-add Pro features: predictive dialer, agent assist, analytics, call analytics, CSAT, event store and advanced/AI typification. What keeps the service standing is never switched off: multi-tenant, routing, realtime and clustering keep working, and so do conversations. Data and audit logs stay yours. We can't and won't disable an installation you stopped paying for; we just stop shipping new Pro releases to it.",
     faq_q4: 'Is there an SLA on the OSS edition?',
-    faq_a4: "No. The OSS edition (Tier 0) is community-supported via GitHub issues and the public Discord. Response time is best-effort. SLAs start at Tier 3 (Managed SaaS, 99.5% uptime) and Tier 4 (99.9% with 24/7 support + dedicated CSM). For self-hosted commercial tiers (1, 2), support is email or email+Slack — fast but not SLA-backed.",
+    faq_a4: 'No. The OSS edition (Tier 0) is community-supported via GitHub issues and the public Discord, with best-effort response times. The self-hosted commercial tiers include email (Tier 1) or email + Slack (Tier 2) support. If you need committed response times, there are the Business Support plan (business hours, first response to a critical incident within 4 business hours) and the Enterprise Support plan (24/7, first response within 1 hour, an assigned technical contact), priced through sales. Verbara runs on your infrastructure, so we commit to response times, never to uptime.',
     faq_q5: 'Is LATAM (ES, PT) a first-class citizen or a translated afterthought?',
     faq_a5: 'First-class. The default locale is es-419 (Spanish for LATAM) — verbara.io/ serves Spanish, the English version lives at /en-US/. Documentation, support, and product UI are authored in three locales (es-419, en-US, pt-BR) with parity enforced in CI. Examples in pricing, case material, and tier names lean toward LATAM contexts (BPOs, telcos). Verbara is built by people who think in Spanish.',
     faq_q6: 'Where do I start based on my use-case?',
@@ -1263,7 +1259,7 @@ const en_US: Messages = {
   pricing: {
     title: 'Pricing',
     subtitle:
-      'Open-core honest platform — pay for the engine, never for the UI or backend base.',
+      'Open-core honest software — pay for the engine, never for the UI or backend base.',
     cta_developer: 'Get free developer license',
     cta_buy: 'Buy (coming soon)',
     cta_sales: 'Talk to sales',
@@ -1298,33 +1294,33 @@ const en_US: Messages = {
     tier_2_f2: 'Multi-tenant isolation',
     tier_2_f3: '≤500 licensed agents per deployment · multi-cluster',
     tier_2_f4: 'Email + Slack 24h SLA',
-    tier_3_name: 'SaaS Business',
-    tier_3_price: '$99 / agent / mo',
-    tier_3_tagline: 'Hosted by Verbara. 99.5% SLA.',
-    tier_3_f1: 'All Tier 2 features, hosted',
-    tier_3_f2: '99.5% SLA, business-hours support',
-    tier_3_f3: 'Basic SAML',
-    tier_3_f4: 'Mid-market (50–500 agents)',
-    tier_4_name: 'SaaS Enterprise',
-    tier_4_price: '$249 / agent / mo',
-    tier_4_tagline: '24/7 support. 99.9% SLA. Dedicated CSM.',
-    tier_4_f1: 'Tier 3 features +',
-    tier_4_f2: '99.9% SLA, 24/7 support, dedicated CSM',
-    tier_4_f3: 'SAML, IP allowlist, SOC2/HIPAA/PCI reports',
-    tier_4_f4: 'Custom SLA',
+    support_business_name: 'Business Support',
+    support_business_price: 'Contact sales',
+    support_business_tagline: 'Business-hours support for your self-hosted installation.',
+    support_business_f1: 'Business-hours support',
+    support_business_f2: 'First response to a critical incident within 4 business hours',
+    support_business_f3: 'We commit to response times, never to uptime',
+    support_business_f4: 'Your installation runs on your infrastructure',
+    support_enterprise_name: 'Enterprise Support',
+    support_enterprise_price: 'Contact sales',
+    support_enterprise_tagline: '24/7 support with an assigned technical contact.',
+    support_enterprise_f1: '24/7 support',
+    support_enterprise_f2: 'First response to a critical incident within 1 hour',
+    support_enterprise_f3: 'Assigned technical contact',
+    support_enterprise_f4: 'We commit to response times, never to uptime',
     tier_5_name: 'White-label / OEM',
     tier_5_price: 'Tier 2 bands ×1.6 · $60,000 / yr minimum',
     tier_5_tagline: 'Self-host. Branding removal. No rev share.',
-    tier_5_f1: 'Tier 4 features +',
+    tier_5_f1: 'All Tier 2 features +',
     tier_5_f2: 'Custom theming + branding removal',
     tier_5_f3: 'Reseller agreement',
     tier_5_f4: 'Tier-2 partner support',
     hero_h1: 'Pick the tier that matches how you operate.',
-    hero_sub: 'Free to evaluate. Self-host with a license when you ship. Managed when you would rather not run it.',
+    hero_sub: 'Free to evaluate. Self-host with a license when you ship. Support plans when you need committed response times.',
 
     group_free_label: 'Free · evaluators · OSS users',
     group_self_label: 'Self-host · pay-once-per-year',
-    group_managed_label: 'Managed SaaS · contact sales',
+    group_support_label: 'Support plans · contact sales',
 
     matrix_eyebrow: 'Compare features',
     matrix_h2: 'Every feature, every tier — no asterisks.',
@@ -1333,8 +1329,6 @@ const en_US: Messages = {
     matrix_feat_pro_features: 'Pro feature set',
     matrix_feat_multitenant: 'Multi-tenant',
     matrix_feat_clustering: 'Clustering / multi-cluster',
-    matrix_feat_hosted: 'Hosted by Verbara',
-    matrix_feat_sla: 'SLA',
     matrix_feat_support: 'Support',
     matrix_feat_max_agents: 'Max licensed agents',
     matrix_feat_audit_retention: 'Audit log retention',
@@ -1345,9 +1339,9 @@ const en_US: Messages = {
     matrix_support_dedicated: 'dedicated',
 
     faq_q1: 'Can I upgrade or downgrade tiers?',
-    faq_a1: 'Up, anytime; down, at renewal. Features adjust to match the tier change, and data and config persist. On self-host, moving into the next licensed-agent band never blocks the operation: we invoice the difference prorated to renewal, reissue the licence, and never bill backwards; moving down a band takes effect at renewal. For managed SaaS, we prorate the next invoice.',
+    faq_a1: 'Up, anytime; down, at renewal. Features adjust to match the tier change, and data and config persist. On self-host, moving into the next licensed-agent band never blocks the operation: we invoice the difference prorated to renewal, reissue the licence, and never bill backwards; moving down a band takes effect at renewal.',
     faq_q2: 'Is there an annual discount?',
-    faq_a2: 'Self-host tiers (1, 2) are billed annually in advance, on a 12-month minimum and a 50 licensed-agent minimum — there is no monthly version. Managed SaaS tiers (3, 4) bill monthly by default; an annual commit with prepayment gets 15% off. Tier 5 (white-label/OEM) is annual too: Tier 2 bands ×1.6.',
+    faq_a2: 'Self-host tiers (1, 2) are billed annually in advance, on a 12-month minimum and a 50 licensed-agent minimum — there is no monthly version. Tier 5 (white-label/OEM) is annual too: Tier 2 bands ×1.6.',
     faq_q3: 'Do you offer a non-profit or academic discount?',
     faq_a3: 'Yes. Registered non-profits and accredited universities get 50% off the base band of the tier — on Tier 2, the first 25 licensed agents; bands above that are list price. It does not apply to Tier 5 or to the implementation package. Send your license proof + organization paperwork to licensing@verbara.io.',
     best_for_label: 'Best for',
@@ -1355,10 +1349,10 @@ const en_US: Messages = {
     best_for_t0_5: 'Any use-case under 30-day evaluation',
     best_for_t1: 'Your own operation',
     best_for_t2: 'Multi-tenant CC · Omnichannel · Production Voice AI',
-    best_for_t3: 'Hosted CC · Hosted Voice AI',
-    best_for_t4: 'Enterprise CC · Compliance-grade voice',
+    best_for_support_business: 'Teams running their installation in business hours',
+    best_for_support_enterprise: '24/7 operations · Enterprise CC',
     best_for_t5: 'White-label CPaaS · Vertical resellers',
-    subtitle_2: 'Any tier serves any use-case — the difference is scale, multi-tenant, and SLA.',
+    subtitle_2: 'Any tier serves any use-case — the difference is scale, multi-tenant, and support.',
   },
   usecases: {
     index_eyebrow: 'Solutions',
@@ -1379,7 +1373,7 @@ const en_US: Messages = {
     voiceai_index_sub: 'Voicebots and inbound AI agents on your Asterisk PBX. No SIP gymnastics.',
     voiceai_index_cap1: '6 STT · 6 TTS · OpenAI Realtime bridge',
     voiceai_index_cap2: 'Smart Turn detection + barge-in',
-    voiceai_index_cap3: 'Self-host or hosted',
+    voiceai_index_cap3: 'Self-hosted on your infrastructure',
     voiceai_index_cta: 'See solution →',
 
     omnichannel_index_eyebrow: 'Messaging',
@@ -1427,7 +1421,7 @@ const en_US: Messages = {
     cc_faq_eyebrow: 'FAQ · Contact Center',
     cc_faq_h2: 'Operator questions.',
     cc_faq_q1: 'How many agents does it support, and how are they counted?',
-    cc_faq_a1: 'We count licensed agents, not connections: every enabled agent identity of every client, whether or not they log in, and anyone who serves; the deployment pays for the day of the month with the most counting at once, across all of its clients. Tier 1 self-host caps at 25; Tier 2 goes to 500 per deployment with multi-cluster, and beyond that only by contract after a load test. SaaS Business (Tier 3) and Enterprise (Tier 4) scale per contract. The cap is licensing, not technical — the engine scales horizontally with Pro clustering.',
+    cc_faq_a1: 'We count licensed agents, not connections: every enabled agent identity of every client, whether or not they log in, and anyone who serves; the deployment pays for the day of the month with the most counting at once, across all of its clients. Tier 1 self-host caps at 25; Tier 2 goes to 500 per deployment with multi-cluster, and beyond that only by contract after a load test. The cap is licensing, not technical — the engine scales horizontally with Pro clustering.',
     cc_faq_q2: 'Multi-tenant for BPOs?',
     cc_faq_a2: 'Yes, from Tier 2 self-host. Strict per-tenant isolation, per-tenant skill routing, cross-tenant admin impersonation. Each BPO client sees only their data and their agents.',
     cc_faq_q3: 'Compatibility with my existing PBX?',
@@ -1440,7 +1434,7 @@ const en_US: Messages = {
     cc_faq_a6: "Verbara detects it. A liveness heartbeat identifies the disconnected or \"zombie\" agent and reacts: orphaned digital work (chats, WhatsApp, email) is automatically re-queued to the front of its queue for the next live agent, and if a voice call drops with the customer still on the line, the customer gets a priority callback to the next available agent in their origin queue. On top of that, you set concurrent capacity limits per channel plus a MaxTotal across async channels, with a per-tenant default and per-agent override — so no one gets over-assigned.",
     cc_pp_eyebrow: 'CC pricing',
     cc_pp_h2: 'Which tier do you need?',
-    cc_pp_body: 'Tier 1 ($5k/yr) for your own operation: single-tenant, ≤25 licensed agents. Tier 2 (from $25,500/yr · 50 licensed agents) to serve your clients: multi-tenant + multi-cluster. Tier 3 ($99/agent/mo) if you prefer hosted. Tier 4 ($249/agent/mo) for SOC2/HIPAA + 24/7.',
+    cc_pp_body: 'Tier 1 ($5k/yr) for your own operation: single-tenant, ≤25 licensed agents. Tier 2 (from $25,500/yr · 50 licensed agents) to serve your clients: multi-tenant + multi-cluster. Enterprise Support if your operation needs a 24/7 response.',
     cc_pp_cta: 'See full pricing →',
     cc_final_h2_pre: 'The CC',
     cc_final_h2_accent: 'you can audit.',
@@ -1476,8 +1470,8 @@ const en_US: Messages = {
     voiceai_faq_a1: 'STT: Deepgram, Google, Whisper, Azure, Cartesia, AssemblyAI, Speechmatics. TTS: ElevenLabs Flash 2.5, Deepgram Aura 2, LMNT, Azure, Cartesia, Speechmatics. Plus a direct bridge to the OpenAI Realtime API. Swappable via configuration, no recompile.',
     voiceai_faq_q2: 'What is the end-to-end latency?',
     voiceai_faq_a2: 'With Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 from human end-of-utterance to first TTS phoneme, measured on dedicated infra at VU 100. Exact latency depends on your infra and upstream LLM.',
-    voiceai_faq_q3: 'Self-host without my own telephony?',
-    voiceai_faq_a3: "You need an Asterisk PBX so the SDK can receive audio (yours, a customer's, or deployed alongside Verbara). If you want voicebots without operating telephony, Tier 3+ SaaS hosted includes managed PBX.",
+    voiceai_faq_q3: 'Do I need my own telephony?',
+    voiceai_faq_a3: "Yes. You need an Asterisk PBX so the SDK can receive audio (yours, a customer's, or deployed alongside Verbara) plus your own SIP trunks. Verbara does not offer managed telephony: your operation always brings the Asterisk and the trunks.",
     voiceai_faq_q4: 'How do I escalate to human agents when the voicebot transfers?',
     voiceai_faq_a4: 'The voicebot runs on the same runtime as the contact center, so an escalation to a human lands on a real agent using the in-browser WebRTC softphone — no desk phone, no install. And if that agent loses connectivity mid-transfer, presence liveness detects it and fires a priority callback to the customer toward the next live agent. AI voice and human voice share one queue; they are not two products taped together.',
     voiceai_pp_eyebrow: 'Voice AI pricing',
@@ -1524,7 +1518,7 @@ const en_US: Messages = {
     omnichannel_faq_a4: 'You decide. Concurrent capacity is configurable per channel (chat, email, SMS, voice) plus a MaxTotal across async channels, with a per-tenant default and per-agent override — a senior can carry more chats than a junior without touching anyone else. And if an agent disconnects, their in-flight digital work is re-queued to the front of its queue for the next live agent, so load does not get stuck in a dead tab.',
     omnichannel_pp_eyebrow: 'Omnichannel pricing',
     omnichannel_pp_h2: 'Which tier do you need?',
-    omnichannel_pp_body: 'Tier 0 community for self-host evaluation. Tier 2 (from $25,500/yr · 50 licensed agents) for multi-tenant in your own SaaS. Tier 3+ ($99/agent/mo) if you prefer hosted with SLA.',
+    omnichannel_pp_body: 'Tier 0 community for self-host evaluation. Tier 2 (from $25,500/yr · 50 licensed agents) for multi-tenant in your own SaaS. Support plans with committed response times, on request.',
     omnichannel_pp_cta: 'See full pricing →',
     omnichannel_final_h2_pre: 'Eleven channels,',
     omnichannel_final_h2_accent: 'no per-message fees.',
@@ -1557,7 +1551,7 @@ const en_US: Messages = {
     cpaas_faq_eyebrow: 'FAQ · CPaaS',
     cpaas_faq_h2: 'Telephony questions.',
     cpaas_faq_q1: 'Do I need to run my own Asterisk?',
-    cpaas_faq_a1: 'Yes. Verbara is a library on top of Asterisk; you run the PBX (yours, on-prem or in cloud) and connect the SDK via AMI/ARI. If you want CPaaS without operating telephony, check Tier 3+ SaaS hosted where the PBX comes managed.',
+    cpaas_faq_a1: 'Yes. Verbara is a library on top of Asterisk; you run the PBX (yours, on-prem or in cloud) and connect the SDK via AMI/ARI. Verbara does not offer managed telephony: you always bring the Asterisk and the trunks.',
     cpaas_faq_q2: 'Which codecs does it support?',
     cpaas_faq_a2: 'The SDK passes the audio Asterisk delivers — it supports whatever codecs your Asterisk supports (G.711, G.722, Opus, PCM, etc.). The VoiceAI pipeline does internal resampling between formats when the LLM/TTS needs 16kHz PCM.',
     cpaas_faq_q3: 'What scale of multi-server federation?',
@@ -1622,15 +1616,15 @@ const en_US: Messages = {
   },
   legal_terms: {
     title: 'Terms of Service',
-    body: 'Terms of Service for Verbara hosted SaaS tiers (Tier 3 SaaS Business, Tier 4 SaaS Enterprise) are being prepared. For sales inquiries, email licensing@verbara.io.',
+    body: 'Terms of Service for the Verbara brand and the verbara.io site are being prepared. For sales inquiries, email licensing@verbara.io.',
   },
 };
 
 const pt_BR: Messages = {
   meta: {
-    site_title: 'Verbara — Plataforma open-core honesta para contact center',
+    site_title: 'Verbara — Software open-core honesto para contact center',
     site_description:
-      'Verbara é uma plataforma open-core para contact center: motor auditável, módulos comerciais. Self-host gratuito ou hospedado, sem tarifas por minuto.',
+      'Verbara é software open-core para contact center: motor auditável, módulos comerciais. É instalado na sua infraestrutura. Não oferecemos serviço hospedado. Sem tarifas por minuto.',
   },
   nav: {
     pricing: 'Preços',
@@ -1664,7 +1658,7 @@ const pt_BR: Messages = {
   landing: {
     hero_title: 'O contact center open-core honesto.',
     hero_subtitle:
-      'Motor auditável sob Apache 2.0 + módulos Pro comerciais. Self-host gratuito ou hospedado a partir de $99 por agente/mês. Sem tarifas por minuto, sem lock-in.',
+      'Motor auditável sob Apache 2.0 + módulos Pro comerciais. É instalado na sua infraestrutura. Não oferecemos serviço hospedado. Sem tarifas por minuto, sem lock-in.',
     cta_developer: 'Obter licença gratuita de developer',
     cta_pricing: 'Ver preços',
     why_title: 'Por que Verbara?',
@@ -1673,9 +1667,9 @@ const pt_BR: Messages = {
     why_b1_title: 'Auditável',
     why_b1_body:
       'Backend Apache 2.0, frontend Apache 2.0, SDK MIT. Sua equipe de segurança pode ler cada linha antes de comprar.',
-    why_b2_title: 'On-premise ou hospedado',
+    why_b2_title: 'Na sua infraestrutura',
     why_b2_body:
-      'Rode tudo na sua infraestrutura (Tier 1–2) ou pague por agente/mês com SLA 99,5–99,9% (Tier 3–4). Sua escolha, sem lock-in.',
+      'Rode tudo no seu data center ou na sua nuvem, com seu Asterisk e seus troncos. A Verbara não opera serviço hospedado: a instalação e os dados são seus, sem lock-in.',
     why_b3_title: 'Sem tarifas por minuto',
     why_b3_body:
       'Twilio cobra $0.014–0.045 por minuto de chamada e por mensagem. Verbara conecta direto ao seu PBX (Asterisk) — pague só sua telco.',
@@ -1693,7 +1687,7 @@ const pt_BR: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'O runtime open-core de comunicações que você pode',
     hero_h1_accent: 'auditar, executar, possuir.',
-    hero_sub: 'Open-core, nativo no Asterisk. Rode seu contact center, voice AI, omnichannel e mais sobre um único stack auditável. No seu data center, na sua nuvem, ou no nosso plano gerenciado.',
+    hero_sub: 'Open-core, nativo no Asterisk. Rode seu contact center, voice AI, omnichannel e mais sobre um único stack auditável. No seu data center ou na sua nuvem: instalado na sua infraestrutura.',
     hero_cta_primary: 'Rode o stack →',
     hero_cta_secondary: 'Ver soluções →',
     hero_cta_dev_license: 'ou pegue uma licença developer — grátis, assinada, válida 30 dias →',
@@ -1761,7 +1755,7 @@ const pt_BR: Messages = {
     cp_card_aot_label: 'compilação nativa antecipada',
 
     pt_eyebrow: 'Preços',
-    pt_h2: 'Grátis para avaliar. Self-host ou gerenciado quando escalar.',
+    pt_h2: 'Grátis para avaliar. Licença self-host quando escalar.',
     pt_card_free_title: 'Grátis / Dev',
     pt_card_free_tagline: 'Tier 0 + Tier 0.5',
     pt_card_free_price: '$0',
@@ -1772,8 +1766,8 @@ const pt_BR: Messages = {
     pt_card_self_cta: 'Ver planos self-host →',
     pt_card_self_badge: 'Recomendado',
     pt_card_ent_title: 'Enterprise',
-    pt_card_ent_tagline: 'Tier 3 + Tier 4 + Tier 5',
-    pt_card_ent_price: 'a partir de $99/agente/mês',
+    pt_card_ent_tagline: 'Tier 5 white-label · planos de suporte',
+    pt_card_ent_price: 'Sob consulta',
     pt_card_ent_cta: 'Falar com vendas →',
 
     faq_eyebrow: 'FAQ',
@@ -1785,7 +1779,7 @@ const pt_BR: Messages = {
     faq_q3: 'O que acontece com meu deployment se eu parar de pagar Pro?',
     faq_a3: 'O motor OSS (SDK MIT + Platform Apache) continua rodando indefinidamente — sem kill switch, sem verificação cloud. Quando sua licença expira e passa a carência você perde as features Pro de valor agregado: dialer preditivo, agent assist, analytics, call analytics, CSAT, event store e tipificação avançada/IA. O que mantém o serviço de pé não é desligado: multi-tenant, routing, realtime e clustering continuam funcionando, assim como as conversas. Dados e audit logs continuam seus. Não podemos nem vamos desativar uma instalação que você parou de pagar; simplesmente paramos de enviar releases novos de Pro.',
     faq_q4: 'Tem SLA na edição OSS?',
-    faq_a4: 'Não. A edição OSS (Tier 0) tem suporte community via GitHub issues e Discord público. Tempo de resposta best-effort. SLAs começam no Tier 3 (SaaS gerenciado, 99.5% uptime) e Tier 4 (99.9% com suporte 24/7 + CSM dedicado). Para tiers comerciais self-host (1, 2), suporte é e-mail ou e-mail+Slack — rápido mas sem SLA.',
+    faq_a4: 'Não. A edição OSS (Tier 0) tem suporte community via GitHub issues e Discord público, com tempo de resposta best-effort. Os tiers comerciais self-host incluem suporte por e-mail (Tier 1) ou e-mail + Slack (Tier 2). Se você precisa de tempos de resposta acordados, existem os planos Suporte Business (horário comercial, primeira resposta a um incidente crítico em até 4 horas úteis) e Suporte Enterprise (24/7, primeira resposta em até 1 hora, contato técnico designado), sob consulta com vendas. A Verbara roda na sua infraestrutura, então nos comprometemos com tempos de resposta, nunca com disponibilidade.',
     faq_q5: 'LATAM (ES, PT) é cidadão de primeira ou tradução tardia?',
     faq_a5: 'Primeira classe. O locale padrão é es-419 (espanhol LATAM neutro) — verbara.io/ serve espanhol, a versão inglesa vive em /en-US/. Documentação, suporte e UI do produto são autorados em três locales (es-419, en-US, pt-BR) com paridade enforced em CI. Exemplos em preços, casos e nomes de tier se inclinam a contextos LATAM (BPOs, telcos). Verbara é construído por gente que pensa em espanhol.',
     faq_q6: 'Por onde começo de acordo com meu use-case?',
@@ -1801,7 +1795,7 @@ const pt_BR: Messages = {
   pricing: {
     title: 'Preços',
     subtitle:
-      'Plataforma open-core honesta — pague pelo motor, nunca pela UI ou pelo backend base.',
+      'Software open-core honesto — pague pelo motor, nunca pela UI ou pelo backend base.',
     cta_developer: 'Obter licença gratuita de developer',
     cta_buy: 'Comprar (em breve)',
     cta_sales: 'Falar com vendas',
@@ -1836,33 +1830,33 @@ const pt_BR: Messages = {
     tier_2_f2: 'Isolamento multi-tenant',
     tier_2_f3: '≤500 agentes licenciados por implantação · multi-cluster',
     tier_2_f4: 'E-mail + Slack SLA 24h',
-    tier_3_name: 'SaaS Business',
-    tier_3_price: '$99 / agente / mês',
-    tier_3_tagline: 'Hospedado pela Verbara. SLA 99,5%.',
-    tier_3_f1: 'Todas as funcionalidades Tier 2, hospedado',
-    tier_3_f2: 'SLA 99,5%, suporte em horário comercial',
-    tier_3_f3: 'SAML básico',
-    tier_3_f4: 'Mid-market (50–500 agentes)',
-    tier_4_name: 'SaaS Enterprise',
-    tier_4_price: '$249 / agente / mês',
-    tier_4_tagline: 'Suporte 24/7. SLA 99,9%. CSM dedicado.',
-    tier_4_f1: 'Funcionalidades Tier 3 +',
-    tier_4_f2: 'SLA 99,9%, suporte 24/7, CSM dedicado',
-    tier_4_f3: 'SAML, lista de IPs permitidas, relatórios SOC2/HIPAA/PCI',
-    tier_4_f4: 'SLA personalizado',
+    support_business_name: 'Suporte Business',
+    support_business_price: 'Sob consulta',
+    support_business_tagline: 'Suporte em horário comercial para sua instalação self-host.',
+    support_business_f1: 'Suporte em horário comercial',
+    support_business_f2: 'Primeira resposta a um incidente crítico em até 4 horas úteis',
+    support_business_f3: 'Nos comprometemos com tempos de resposta, nunca com disponibilidade',
+    support_business_f4: 'Sua instalação roda na sua infraestrutura',
+    support_enterprise_name: 'Suporte Enterprise',
+    support_enterprise_price: 'Sob consulta',
+    support_enterprise_tagline: 'Suporte 24/7 com um contato técnico designado.',
+    support_enterprise_f1: 'Suporte 24/7',
+    support_enterprise_f2: 'Primeira resposta a um incidente crítico em até 1 hora',
+    support_enterprise_f3: 'Contato técnico designado',
+    support_enterprise_f4: 'Nos comprometemos com tempos de resposta, nunca com disponibilidade',
     tier_5_name: 'White-label / OEM',
     tier_5_price: 'faixas do Tier 2 ×1,6 · mínimo $60.000 / ano',
     tier_5_tagline: 'Self-host. Remoção de marca. Sem rev share.',
-    tier_5_f1: 'Funcionalidades Tier 4 +',
+    tier_5_f1: 'Todas as funcionalidades do Tier 2 +',
     tier_5_f2: 'Theming personalizado + remoção de marca',
     tier_5_f3: 'Acordo de revenda',
     tier_5_f4: 'Suporte de partner Tier-2',
     hero_h1: 'Escolha o tier que combina com como você opera.',
-    hero_sub: 'Grátis para avaliar. Self-host com licença quando shipar. Gerenciado quando preferir não rodar você.',
+    hero_sub: 'Grátis para avaliar. Self-host com licença quando shipar. Planos de suporte quando precisar de tempos de resposta acordados.',
 
     group_free_label: 'Grátis · avaliadores · usuários OSS',
     group_self_label: 'Self-host · pagamento anual',
-    group_managed_label: 'SaaS gerenciado · contact sales',
+    group_support_label: 'Planos de suporte · sob consulta',
 
     matrix_eyebrow: 'Comparar features',
     matrix_h2: 'Cada feature, cada tier — sem asteriscos.',
@@ -1871,8 +1865,6 @@ const pt_BR: Messages = {
     matrix_feat_pro_features: 'Features Pro',
     matrix_feat_multitenant: 'Multi-tenant',
     matrix_feat_clustering: 'Clustering / multi-cluster',
-    matrix_feat_hosted: 'Hospedado pela Verbara',
-    matrix_feat_sla: 'SLA',
     matrix_feat_support: 'Suporte',
     matrix_feat_max_agents: 'Agentes licenciados máx.',
     matrix_feat_audit_retention: 'Retenção de audit log',
@@ -1883,9 +1875,9 @@ const pt_BR: Messages = {
     matrix_support_dedicated: 'dedicado',
 
     faq_q1: 'Posso subir ou descer de tier?',
-    faq_a1: 'Subir, a qualquer momento; descer, na renovação. As features se ajustam à mudança de tier e dados e configuração persistem. No self-host, passar para a faixa seguinte de agentes licenciados nunca bloqueia a operação: faturamos a diferença prorrateada até a renovação, reemitimos a licença e não cobramos retroativo; descer de faixa vale só na renovação. Para SaaS gerenciado, ajustamos o plano no próximo faturamento prorrateado.',
+    faq_a1: 'Subir, a qualquer momento; descer, na renovação. As features se ajustam à mudança de tier e dados e configuração persistem. No self-host, passar para a faixa seguinte de agentes licenciados nunca bloqueia a operação: faturamos a diferença prorrateada até a renovação, reemitimos a licença e não cobramos retroativo; descer de faixa vale só na renovação.',
     faq_q2: 'Tem desconto anual?',
-    faq_a2: 'Tiers self-host (1, 2) são faturados anualmente e antecipado, com mínimo de 12 meses e de 50 agentes licenciados declarados — não tem versão mensal. Tiers SaaS (3, 4) faturam mensal por padrão; commit anual com pré-pagamento ganha 15% de desconto. Tier 5 (white-label/OEM) também é anual: as faixas do Tier 2 ×1,6.',
+    faq_a2: 'Tiers self-host (1, 2) são faturados anualmente e antecipado, com mínimo de 12 meses e de 50 agentes licenciados declarados — não tem versão mensal. Tier 5 (white-label/OEM) também é anual: as faixas do Tier 2 ×1,6.',
     faq_q3: 'Oferecem desconto acadêmico ou non-profit?',
     faq_a3: 'Sim. Organizações non-profit registradas e universidades credenciadas têm 50% de desconto sobre a faixa base do tier — no Tier 2, os primeiros 25 agentes licenciados; faixas acima vão a preço de lista. Não vale para o Tier 5 nem para o pacote de implementação. Envie comprovante da licença + documentação da organização para licensing@verbara.io.',
     best_for_label: 'Melhor para',
@@ -1893,10 +1885,10 @@ const pt_BR: Messages = {
     best_for_t0_5: 'Qualquer use-case em avaliação de 30 dias',
     best_for_t1: 'Sua própria operação',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI produtivo',
-    best_for_t3: 'CC hospedado · Voice AI hospedado',
-    best_for_t4: 'CC enterprise · Compliance-grade voice',
+    best_for_support_business: 'Equipes que operam sua instalação em horário comercial',
+    best_for_support_enterprise: 'Operação 24/7 · CC enterprise',
     best_for_t5: 'CPaaS white-label · Revendedores verticais',
-    subtitle_2: 'Qualquer tier serve qualquer use-case — a diferença é escala, multi-tenant e SLA.',
+    subtitle_2: 'Qualquer tier serve qualquer use-case — a diferença é escala, multi-tenant e suporte.',
   },
   usecases: {
     index_eyebrow: 'Soluções',
@@ -1917,7 +1909,7 @@ const pt_BR: Messages = {
     voiceai_index_sub: 'Voicebots e agentes IA inbound sobre seu Asterisk PBX. Sem SIP gymnastics.',
     voiceai_index_cap1: '6 STT · 6 TTS · OpenAI Realtime bridge',
     voiceai_index_cap2: 'Smart Turn detection + barge-in',
-    voiceai_index_cap3: 'Self-host ou hospedado',
+    voiceai_index_cap3: 'Self-host na sua infraestrutura',
     voiceai_index_cta: 'Ver solução →',
 
     omnichannel_index_eyebrow: 'Mensageria',
@@ -1965,7 +1957,7 @@ const pt_BR: Messages = {
     cc_faq_eyebrow: 'FAQ · Contact Center',
     cc_faq_h2: 'Perguntas de operadores.',
     cc_faq_q1: 'Quantos agentes suporta, e como são contados?',
-    cc_faq_a1: 'Contamos agentes licenciados, não conexões: cada identidade de agente habilitada de cada cliente, conecte-se ou não, e qualquer um que atenda; a implantação paga o dia do mês com mais contando ao mesmo tempo, somando todos os seus clientes. Tier 1 self-host limita a 25; Tier 2 chega a 500 por implantação com multi-cluster, e além disso só por contrato após um teste de carga. SaaS Business (Tier 3) e Enterprise (Tier 4) escalam por contrato. O limite é de licença, não técnico — o motor escala horizontalmente com clustering Pro.',
+    cc_faq_a1: 'Contamos agentes licenciados, não conexões: cada identidade de agente habilitada de cada cliente, conecte-se ou não, e qualquer um que atenda; a implantação paga o dia do mês com mais contando ao mesmo tempo, somando todos os seus clientes. Tier 1 self-host limita a 25; Tier 2 chega a 500 por implantação com multi-cluster, e além disso só por contrato após um teste de carga. O limite é de licença, não técnico — o motor escala horizontalmente com clustering Pro.',
     cc_faq_q2: 'Multi-tenant para BPOs?',
     cc_faq_a2: 'Sim, a partir do Tier 2 self-host. Isolamento estrito por tenant, roteamento por skill por tenant, impersonation cross-tenant para administração. Cada cliente do BPO vê apenas seus dados e seus agentes.',
     cc_faq_q3: 'Compatibilidade com meu PBX existente?',
@@ -1978,7 +1970,7 @@ const pt_BR: Messages = {
     cc_faq_a6: 'O Verbara detecta. Um heartbeat de liveness identifica o agente desconectado ou "zombie" e reage: o trabalho digital órfão (chats, WhatsApp, e-mail) é re-enfileirado automaticamente para a frente da fila para o próximo agente vivo, e se uma chamada de voz cai com o cliente ainda na linha, o cliente recebe um callback prioritário para o próximo agente disponível da fila de origem. Além disso, você define limites de capacidade concorrente por canal mais um MaxTotal entre canais assíncronos, com default por tenant e override por agente — para que ninguém fique sobre-alocado.',
     cc_pp_eyebrow: 'Pricing CC',
     cc_pp_h2: 'Qual tier você precisa?',
-    cc_pp_body: 'Tier 1 ($5k/ano) para sua própria operação: single-tenant, ≤25 agentes licenciados. Tier 2 (a partir de $25.500/ano · 50 agentes licenciados) para atender seus clientes: multi-tenant + multi-cluster. Tier 3 ($99/agente/mês) se preferir hospedado. Tier 4 ($249/agente/mês) para SOC2/HIPAA + 24/7.',
+    cc_pp_body: 'Tier 1 ($5k/ano) para sua própria operação: single-tenant, ≤25 agentes licenciados. Tier 2 (a partir de $25.500/ano · 50 agentes licenciados) para atender seus clientes: multi-tenant + multi-cluster. Suporte Enterprise se sua operação precisa de resposta 24/7.',
     cc_pp_cta: 'Ver pricing completo →',
     cc_final_h2_pre: 'O CC',
     cc_final_h2_accent: 'que você pode auditar.',
@@ -2014,8 +2006,8 @@ const pt_BR: Messages = {
     voiceai_faq_a1: 'STT: Deepgram, Google, Whisper, Azure, Cartesia, AssemblyAI, Speechmatics. TTS: ElevenLabs Flash 2.5, Deepgram Aura 2, LMNT, Azure, Cartesia, Speechmatics. Mais bridge direto para a OpenAI Realtime API. Swappables via configuração, sem recompilação.',
     voiceai_faq_q2: 'Qual a latência end-to-end?',
     voiceai_faq_a2: 'Com Smart Turn detection + Deepgram Nova + ElevenLabs Flash 2.5 + barge-in: ~600ms p95 do fim-de-frase humano até o primeiro phoneme TTS, medido em infra própria com VU 100. Latência exata depende da sua infra e do LLM upstream.',
-    voiceai_faq_q3: 'Self-host sem telefonia própria?',
-    voiceai_faq_a3: 'Você precisa de um PBX Asterisk para o SDK receber áudio (seu, do cliente, ou implantado junto com Verbara). Se quer voicebots sem operar telefonia, Tier 3+ SaaS hospedado inclui PBX gerenciado.',
+    voiceai_faq_q3: 'Preciso de telefonia própria?',
+    voiceai_faq_a3: 'Sim. Você precisa de um PBX Asterisk para o SDK receber áudio (seu, do cliente, ou implantado junto com Verbara) e de seus próprios troncos SIP. A Verbara não oferece telefonia gerenciada: o Asterisk e os troncos sempre vêm da sua operação.',
     voiceai_faq_q4: 'Como escalo para agentes humanos quando o voicebot transfere?',
     voiceai_faq_a4: 'O voicebot roda sobre o mesmo runtime do contact center, então um escalonamento para humano cai em um agente real usando o softphone WebRTC no navegador — sem telefone de mesa, sem instalação. E se esse agente perde a conexão no meio da chamada transferida, o liveness de presença detecta e dispara um callback prioritário ao cliente para o próximo agente vivo. A voz IA e a humana compartilham a mesma fila; não são dois produtos colados com fita.',
     voiceai_pp_eyebrow: 'Pricing Voice AI',
@@ -2062,7 +2054,7 @@ const pt_BR: Messages = {
     omnichannel_faq_a4: 'Você decide. A capacidade concorrente é configurável por canal (chat, e-mail, SMS, voz) mais um MaxTotal entre canais assíncronos, com default por tenant e override por agente — um sênior pode levar mais chats que um júnior sem mexer em mais ninguém. E se um agente desconecta, o trabalho digital em andamento dele é re-enfileirado para a frente da fila para o próximo agente vivo, então a carga não fica presa numa aba morta.',
     omnichannel_pp_eyebrow: 'Pricing Omnichannel',
     omnichannel_pp_h2: 'Qual tier você precisa?',
-    omnichannel_pp_body: 'Tier 0 community para avaliação self-host. Tier 2 (a partir de $25.500/ano · 50 agentes licenciados) para multi-tenant no seu próprio SaaS. Tier 3+ ($99/agente/mês) se preferir hospedado com SLA.',
+    omnichannel_pp_body: 'Tier 0 community para avaliação self-host. Tier 2 (a partir de $25.500/ano · 50 agentes licenciados) para multi-tenant no seu próprio SaaS. Planos de suporte com tempos de resposta acordados, sob consulta.',
     omnichannel_pp_cta: 'Ver pricing completo →',
     omnichannel_final_h2_pre: 'Onze canais,',
     omnichannel_final_h2_accent: 'sem per-message.',
@@ -2095,7 +2087,7 @@ const pt_BR: Messages = {
     cpaas_faq_eyebrow: 'FAQ · CPaaS',
     cpaas_faq_h2: 'Perguntas de telefonia.',
     cpaas_faq_q1: 'Preciso operar meu próprio Asterisk?',
-    cpaas_faq_a1: 'Sim. Verbara é uma biblioteca sobre o Asterisk; você opera o PBX (seu, on-prem ou em nuvem) e conecta o SDK via AMI/ARI. Se quiser CPaaS sem operar telefonia, veja Tier 3+ SaaS hospedado onde o PBX vem gerenciado.',
+    cpaas_faq_a1: 'Sim. Verbara é uma biblioteca sobre o Asterisk; você opera o PBX (seu, on-prem ou em nuvem) e conecta o SDK via AMI/ARI. A Verbara não oferece telefonia gerenciada: o Asterisk e os troncos sempre vêm de você.',
     cpaas_faq_q2: 'Quais codecs suporta?',
     cpaas_faq_a2: 'O SDK passa o áudio que o Asterisk entrega — suporta os codecs que seu Asterisk suportar (G.711, G.722, Opus, PCM, etc.). O pipeline VoiceAI faz resampling interno entre formatos quando o LLM/TTS precisa de 16kHz PCM.',
     cpaas_faq_q3: 'Federação multi-servidor de qual escala?',
@@ -2160,7 +2152,7 @@ const pt_BR: Messages = {
   },
   legal_terms: {
     title: 'Termos de Serviço',
-    body: 'Os Termos de Serviço para os tiers SaaS hospedados pela Verbara (Tier 3 SaaS Business, Tier 4 SaaS Enterprise) estão sendo preparados. Para consultas comerciais, escreva para licensing@verbara.io.',
+    body: 'Os Termos de Serviço da marca Verbara e do site verbara.io estão sendo preparados. Para consultas comerciais, escreva para licensing@verbara.io.',
   },
 };
 
