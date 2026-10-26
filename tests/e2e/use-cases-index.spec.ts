@@ -20,7 +20,7 @@ for (const prefix of LOCALE_PREFIXES) {
       cc:           `${prefix}/use-cases/contact-center/`,
       voiceai:      `${prefix}/use-cases/voice-ai/`,
       omnichannel:  `${prefix}/use-cases/omnichannel/`,
-      cpaas:        `${prefix}/use-cases/cpaas/`,
+      'programmable-telephony': `${prefix}/use-cases/programmable-telephony/`,
     };
 
     for (const [slug, expectedHref] of Object.entries(expectedHrefs)) {

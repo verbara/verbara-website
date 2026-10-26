@@ -37,6 +37,7 @@ export default defineConfig({
         'functions/**/*.{ts,js,mjs}',
         'src/drift-detection.ts',
         'src/i18n/utils.ts',
+        'src/legacy-redirects.ts',
       ],
       exclude: [
         '**/*.astro',

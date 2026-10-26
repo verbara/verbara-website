@@ -19,7 +19,7 @@ for (const prefix of LOCALE_PREFIXES) {
     await expect(solutionsSection).toBeVisible();
     const spokeCards = solutionsSection.locator('[data-spoke]');
     await expect(spokeCards).toHaveCount(4);
-    for (const slug of ['cc', 'voiceai', 'omnichannel', 'cpaas']) {
+    for (const slug of ['cc', 'voiceai', 'omnichannel', 'programmable-telephony']) {
       await expect(solutionsSection.locator(`[data-spoke="${slug}"]`)).toBeVisible();
     }
 
@@ -32,6 +32,8 @@ for (const prefix of LOCALE_PREFIXES) {
     // PricingTeaser — 3 deep-link anchors
     const teaserLinks = await page.locator('a[href*="#group-"]').count();
     expect(teaserLinks).toBeGreaterThanOrEqual(3);
+    await expect(page.locator('a[href$="#group-support"]').first()).toBeAttached();
+    await expect(page.locator('a[href*="#group-managed"]')).toHaveCount(0);
 
     // Faq — 7 toggle buttons (added the signed-artifact verification FAQ)
     const faqButtons = await page.locator('[data-faq-toggle]').count();
@@ -49,7 +51,7 @@ for (const prefix of LOCALE_PREFIXES) {
       cc:           `${prefix}/use-cases/contact-center/`,
       voiceai:      `${prefix}/use-cases/voice-ai/`,
       omnichannel:  `${prefix}/use-cases/omnichannel/`,
-      cpaas:        `${prefix}/use-cases/cpaas/`,
+      'programmable-telephony': `${prefix}/use-cases/programmable-telephony/`,
     };
 
     for (const [slug, expectedHref] of Object.entries(expectedHrefs)) {

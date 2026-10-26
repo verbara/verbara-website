@@ -1,6 +1,6 @@
 # Verbara Website
 
-> Marketing site for the **Verbara** open-core contact-center platform — `verbara.io`.
+> Marketing site for **Verbara** — `verbara.io`. Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure.
 
 Public-facing static site built with [Astro 6](https://astro.build) on the [Tailwind v4](https://tailwindcss.com) "Signal" design system, deployed as a [Cloudflare Worker](https://workers.cloudflare.com) with the Static Assets pattern, with form submissions handled by a bridged Pages-Function endpoint backed by [D1 SQLite](https://developers.cloudflare.com/d1/) (audit log) + [KV](https://developers.cloudflare.com/kv/) (rate-limit) and outbound transactional email via [Resend](https://resend.com).
 
@@ -22,7 +22,7 @@ For licensing, tier model, and how Pro features are gated, see [Verbara.Sdk.Pro/
 ✅ **Signal redesign shipped end-to-end** (5 phases + 2 hotfixes, PRs #2-#8 merged 2026-05-09 → 2026-05-10):
   - Phase A — Design system foundation (tokens, fonts, 7 primitives, NavBar/Footer, testing CI)
   - Phase B — Home narrative (7 sections × 3 locales: Hero, AntiPositioningTable, ArchitectureDiagram, CodeProof, PricingTeaser, FAQ, FinalCta)
-  - Phase C — Pricing Layout A (3 tier groups + 8×10 comparison matrix + 3 pricing-FAQ)
+  - Phase C — Pricing Layout A (3 groups: free / self-host / support plans + 6-column licence-tier comparison matrix + 3 pricing-FAQ)
   - Phase D — Developer-license polish + Legal pages with `LegalDoc` layout + cross-Phase cleanup
   - Phase E — Brand assets (V-mark + 3 lockup SVGs + favicon set + OG image), sitemap, robots.txt, full meta tags
 ✅ **Tier 0.5 Pro Developer self-issuance loop end-to-end operational**:

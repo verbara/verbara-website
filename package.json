@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "Marketing site for the Verbara open-core contact-center platform — verbara.io",
+  "description": "Marketing site for Verbara, omnichannel contact-center software licensed for each company to install and operate on its own infrastructure — verbara.io",
   "license": "MIT",
   "engines": {
     "node": ">=22.12.0"

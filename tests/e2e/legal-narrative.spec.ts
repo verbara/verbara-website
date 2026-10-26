@@ -2,6 +2,12 @@ import { test, expect } from '@playwright/test';
 
 const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];
 const LEGAL_PAGES = ['eula', 'privacy', 'terms'];
+// EULA and terms were revised on 2026-10-26 (retired hosted tiers removed).
+const LAST_UPDATED: Record<string, string> = {
+  eula: '2026-10-26',
+  privacy: '2026-05-09',
+  terms: '2026-10-26',
+};
 
 for (const prefix of LOCALE_PREFIXES) {
   for (const page of LEGAL_PAGES) {
@@ -21,7 +27,7 @@ for (const prefix of LOCALE_PREFIXES) {
       expect(h2Count).toBeGreaterThanOrEqual(1);
 
       // Last-updated metadata is present
-      await expect(pw.locator('article header p').first()).toContainText('2026-05-09');
+      await expect(pw.locator('article header p').first()).toContainText(LAST_UPDATED[page]);
     });
   }
 }

@@ -3,7 +3,7 @@ import Section from '../primitives/Section.astro';
 import Container from '../primitives/Container.astro';
 import { getMessages } from '../../i18n/messages';
 import { getLocaleFromPath } from '../../i18n/utils';
-import type { TierId } from './pricing-types';
+import type { LicenceTierId } from './pricing-types';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = getMessages(locale);
@@ -13,8 +13,6 @@ type FeatureKey =
   | 'matrix_feat_pro_features'
   | 'matrix_feat_multitenant'
   | 'matrix_feat_clustering'
-  | 'matrix_feat_hosted'
-  | 'matrix_feat_sla'
   | 'matrix_feat_support'
   | 'matrix_feat_max_agents'
   | 'matrix_feat_audit_retention'
@@ -23,37 +21,29 @@ type FeatureKey =
 
 interface Row {
   feature: FeatureKey;
-  values: Record<TierId, string>;
+  values: Record<LicenceTierId, string>;
 }
 
 const rows: Row[] = [
   {
     feature: 'matrix_feat_oss_source',
-    values: { tier_0: '✓', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+    values: { tier_0: '✓', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_5: '✓' },
   },
   {
     feature: 'matrix_feat_supply_chain',
-    values: { tier_0: '✓ cosign', tier_05: '✓ cosign', tier_1: '✓ +digest', tier_2: '✓ +digest', tier_3: '✓ +digest', tier_4: '✓ +digest', tier_5: '✓ +digest' },
+    values: { tier_0: '✓ cosign', tier_05: '✓ cosign', tier_1: '✓ +digest', tier_2: '✓ +digest', tier_5: '✓ +digest' },
   },
   {
     feature: 'matrix_feat_pro_features',
-    values: { tier_0: '—', tier_05: 'full', tier_1: 'partial', tier_2: 'full', tier_3: 'full', tier_4: 'full', tier_5: 'full' },
+    values: { tier_0: '—', tier_05: 'full', tier_1: 'partial', tier_2: 'full', tier_5: 'full' },
   },
   {
     feature: 'matrix_feat_multitenant',
-    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '✓', tier_5: '✓' },
   },
   {
     feature: 'matrix_feat_clustering',
-    values: { tier_0: '—', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_3: '✓', tier_4: '✓', tier_5: '✓' },
-  },
-  {
-    feature: 'matrix_feat_hosted',
-    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '✓', tier_4: '✓', tier_5: '—' },
-  },
-  {
-    feature: 'matrix_feat_sla',
-    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '99.5%', tier_4: '99.9%', tier_5: 'custom' },
+    values: { tier_0: '—', tier_05: '✓', tier_1: '✓', tier_2: '✓', tier_5: '✓' },
   },
   {
     feature: 'matrix_feat_support',
@@ -62,26 +52,26 @@ const rows: Row[] = [
       tier_05: t.pricing.matrix_support_community,
       tier_1: 'email',
       tier_2: 'email + Slack',
-      tier_3: 'biz hours',
-      tier_4: '24/7 + CSM',
       tier_5: t.pricing.matrix_support_dedicated,
     },
   },
   {
     feature: 'matrix_feat_max_agents',
-    values: { tier_0: '∞', tier_05: '5', tier_1: '25', tier_2: '500', tier_3: '∞', tier_4: '∞', tier_5: '500' },
+    values: { tier_0: '∞', tier_05: '5', tier_1: '25', tier_2: '500', tier_5: '500' },
   },
   {
     feature: 'matrix_feat_audit_retention',
-    values: { tier_0: 'self', tier_05: 'self', tier_1: '90 d', tier_2: '1 y', tier_3: '1 y', tier_4: '7 y', tier_5: 'custom' },
+    values: { tier_0: 'self', tier_05: 'self', tier_1: '90 d', tier_2: '1 y', tier_5: 'custom' },
   },
   {
     feature: 'matrix_feat_whitelabel',
-    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_3: '—', tier_4: '—', tier_5: '✓' },
+    values: { tier_0: '—', tier_05: '—', tier_1: '—', tier_2: '—', tier_5: '✓' },
   },
 ];
 
-const tierIds: TierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_3', 'tier_4', 'tier_5'];
+// Licence tiers only: the support plans (Business / Enterprise) are not licence
+// tiers and are not compared feature-by-feature here.
+const tierIds: LicenceTierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_5'];
 ---
 
 <Section tone="inset" id="compare">
@@ -122,8 +112,6 @@ const tierIds: TierId[] = ['tier_0', 'tier_05', 'tier_1', 'tier_2', 'tier_3', 't
               <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t0_5}</td>
               <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t1}</td>
               <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t2}</td>
-              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t3}</td>
-              <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t4}</td>
               <td class="px-4 py-3 text-bone-2 font-mono text-xs">{t.pricing.best_for_t5}</td>
             </tr>
             {rows.map((row) => (
