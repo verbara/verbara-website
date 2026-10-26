@@ -32,6 +32,8 @@ for (const prefix of LOCALE_PREFIXES) {
     // PricingTeaser — 3 deep-link anchors
     const teaserLinks = await page.locator('a[href*="#group-"]').count();
     expect(teaserLinks).toBeGreaterThanOrEqual(3);
+    await expect(page.locator('a[href$="#group-support"]').first()).toBeAttached();
+    await expect(page.locator('a[href*="#group-managed"]')).toHaveCount(0);
 
     // Faq — 7 toggle buttons (added the signed-artifact verification FAQ)
     const faqButtons = await page.locator('[data-faq-toggle]').count();

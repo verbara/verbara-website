@@ -57,4 +57,9 @@ for (const prefix of LOCALE_PREFIXES) {
     await page.goto(`${prefix}/pricing/#group-self`, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('#group-self')).toBeAttached();
   });
+
+  test(`home pricing teaser deep-link group-support resolves on pricing at ${url}`, async ({ page }) => {
+    await page.goto(`${prefix}/pricing/#group-support`, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#group-support')).toBeAttached();
+  });
 }
