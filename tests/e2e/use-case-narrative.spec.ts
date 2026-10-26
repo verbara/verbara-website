@@ -6,7 +6,7 @@ const SPOKES = [
   { slug: 'contact-center', expectedFilename: 'CallCenterHost.cs',       faqCount: 6 },
   { slug: 'voice-ai',       expectedFilename: 'VoiceAgent.cs',           faqCount: 4 },
   { slug: 'omnichannel',    expectedFilename: 'OmnichannelRouter.cs',     faqCount: 4 },
-  { slug: 'cpaas',          expectedFilename: 'OutboundCallExample.cs',   faqCount: 4 },
+  { slug: 'programmable-telephony',          expectedFilename: 'OutboundCallExample.cs',   faqCount: 4 },
 ];
 
 for (const prefix of LOCALE_PREFIXES) {

@@ -28,7 +28,7 @@ export interface Messages {
     solutions_cc: string;
     solutions_voiceai: string;
     solutions_omnichannel: string;
-    solutions_cpaas: string;
+    solutions_programmable_telephony: string;
     solutions_all: string;
   };
   footer: {
@@ -46,7 +46,7 @@ export interface Messages {
     solutions_cc: string;
     solutions_voiceai: string;
     solutions_omnichannel: string;
-    solutions_cpaas: string;
+    solutions_programmable_telephony: string;
   };
   landing: {
     hero_title: string;
@@ -96,10 +96,10 @@ export interface Messages {
     solutions_card_omnichannel_title: string;
     solutions_card_omnichannel_sub: string;
     solutions_card_omnichannel_cta: string;
-    solutions_card_cpaas_eyebrow: string;
-    solutions_card_cpaas_title: string;
-    solutions_card_cpaas_sub: string;
-    solutions_card_cpaas_cta: string;
+    solutions_card_programmable_telephony_eyebrow: string;
+    solutions_card_programmable_telephony_title: string;
+    solutions_card_programmable_telephony_sub: string;
+    solutions_card_programmable_telephony_cta: string;
 
     // Anti-positioning (§7.1.2)
     ap_eyebrow: string;
@@ -314,13 +314,13 @@ export interface Messages {
     omnichannel_index_cap3: string;
     omnichannel_index_cta: string;
 
-    cpaas_index_eyebrow: string;
-    cpaas_index_title: string;
-    cpaas_index_sub: string;
-    cpaas_index_cap1: string;
-    cpaas_index_cap2: string;
-    cpaas_index_cap3: string;
-    cpaas_index_cta: string;
+    programmable_telephony_index_eyebrow: string;
+    programmable_telephony_index_title: string;
+    programmable_telephony_index_sub: string;
+    programmable_telephony_index_cap1: string;
+    programmable_telephony_index_cap2: string;
+    programmable_telephony_index_cap3: string;
+    programmable_telephony_index_cta: string;
 
     // (per-spoke detail blocks — added in F.1.6 through F.1.9)
     cc_hero_eyebrow: string;
@@ -456,47 +456,47 @@ export interface Messages {
     omnichannel_final_h2_accent: string;
     omnichannel_final_sub: string;
 
-    cpaas_hero_eyebrow: string;
-    cpaas_hero_h1_pre: string;
-    cpaas_hero_h1_accent: string;
-    cpaas_hero_sub: string;
-    cpaas_hero_cta_primary: string;
-    cpaas_hero_cta_secondary: string;
-    cpaas_ap_eyebrow: string;
-    cpaas_ap_h2: string;
-    cpaas_ap_sub: string;
-    cpaas_ap_col_verbara: string;
-    cpaas_ap_col_a: string;
-    cpaas_ap_col_b: string;
-    cpaas_ap_col_c: string;
-    cpaas_ap_row_1: string;
-    cpaas_ap_row_2: string;
-    cpaas_ap_row_3: string;
-    cpaas_ap_row_4: string;
-    cpaas_ap_row_5: string;
-    cpaas_ap_row_6: string;
-    cpaas_ap_row_7: string;
-    cpaas_cp_eyebrow: string;
-    cpaas_cp_h2: string;
-    cpaas_cp_filename: string;
-    cpaas_cp_caption: string;
-    cpaas_faq_eyebrow: string;
-    cpaas_faq_h2: string;
-    cpaas_faq_q1: string;
-    cpaas_faq_a1: string;
-    cpaas_faq_q2: string;
-    cpaas_faq_a2: string;
-    cpaas_faq_q3: string;
-    cpaas_faq_a3: string;
-    cpaas_faq_q4: string;
-    cpaas_faq_a4: string;
-    cpaas_pp_eyebrow: string;
-    cpaas_pp_h2: string;
-    cpaas_pp_body: string;
-    cpaas_pp_cta: string;
-    cpaas_final_h2_pre: string;
-    cpaas_final_h2_accent: string;
-    cpaas_final_sub: string;
+    programmable_telephony_hero_eyebrow: string;
+    programmable_telephony_hero_h1_pre: string;
+    programmable_telephony_hero_h1_accent: string;
+    programmable_telephony_hero_sub: string;
+    programmable_telephony_hero_cta_primary: string;
+    programmable_telephony_hero_cta_secondary: string;
+    programmable_telephony_ap_eyebrow: string;
+    programmable_telephony_ap_h2: string;
+    programmable_telephony_ap_sub: string;
+    programmable_telephony_ap_col_verbara: string;
+    programmable_telephony_ap_col_a: string;
+    programmable_telephony_ap_col_b: string;
+    programmable_telephony_ap_col_c: string;
+    programmable_telephony_ap_row_1: string;
+    programmable_telephony_ap_row_2: string;
+    programmable_telephony_ap_row_3: string;
+    programmable_telephony_ap_row_4: string;
+    programmable_telephony_ap_row_5: string;
+    programmable_telephony_ap_row_6: string;
+    programmable_telephony_ap_row_7: string;
+    programmable_telephony_cp_eyebrow: string;
+    programmable_telephony_cp_h2: string;
+    programmable_telephony_cp_filename: string;
+    programmable_telephony_cp_caption: string;
+    programmable_telephony_faq_eyebrow: string;
+    programmable_telephony_faq_h2: string;
+    programmable_telephony_faq_q1: string;
+    programmable_telephony_faq_a1: string;
+    programmable_telephony_faq_q2: string;
+    programmable_telephony_faq_a2: string;
+    programmable_telephony_faq_q3: string;
+    programmable_telephony_faq_a3: string;
+    programmable_telephony_faq_q4: string;
+    programmable_telephony_faq_a4: string;
+    programmable_telephony_pp_eyebrow: string;
+    programmable_telephony_pp_h2: string;
+    programmable_telephony_pp_body: string;
+    programmable_telephony_pp_cta: string;
+    programmable_telephony_final_h2_pre: string;
+    programmable_telephony_final_h2_accent: string;
+    programmable_telephony_final_sub: string;
   };
   developer_license: {
     title: string;
@@ -563,7 +563,7 @@ const es_419: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Telefonía programable',
     solutions_all: 'Ver todas las soluciones →',
   },
   footer: {
@@ -582,7 +582,7 @@ const es_419: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Telefonía programable',
   },
   landing: {
     hero_title: 'El contact center open-core honesto.',
@@ -639,10 +639,10 @@ const es_419: Messages = {
     solutions_card_omnichannel_title: 'Omnichannel',
     solutions_card_omnichannel_sub: 'WhatsApp, SMS, email, web — once canales en un inbox.',
     solutions_card_omnichannel_cta: 'Ver solución →',
-    solutions_card_cpaas_eyebrow: 'Telefonía',
-    solutions_card_cpaas_title: 'CPaaS',
-    solutions_card_cpaas_sub: 'API programable sobre Asterisk. Sin tarifas por minuto.',
-    solutions_card_cpaas_cta: 'Ver solución →',
+    solutions_card_programmable_telephony_eyebrow: 'Telefonía',
+    solutions_card_programmable_telephony_title: 'Telefonía programable',
+    solutions_card_programmable_telephony_sub: 'API programable sobre Asterisk. Sin tarifas por minuto.',
+    solutions_card_programmable_telephony_cta: 'Ver solución →',
 
     ap_eyebrow: 'Lo que reemplazas',
     ap_h2_pre: 'Deja de rentar tu contact center.',
@@ -702,7 +702,7 @@ const es_419: Messages = {
     faq_eyebrow: 'FAQ',
     faq_h2: 'Respuestas directas.',
     faq_q1: '¿Necesito Asterisk instalado antes de adoptar Verbara?',
-    faq_a1: 'Sí. Verbara está construido sobre Asterisk PBX como su substrato de telefonía — no lo reemplazamos, modernizamos la UX del operador, el pipeline de AI y los overlays Pro alrededor de él. Si no tienes Asterisk, lo despliegas junto con Verbara (setup único, bien documentado). Si ya corres Asterisk, Verbara se conecta a tu dialplan y configuración existentes. Esto aplica para cualquier use-case: contact center, voice AI, omnichannel o CPaaS.',
+    faq_a1: 'Sí. Verbara está construido sobre Asterisk PBX como su substrato de telefonía — no lo reemplazamos, modernizamos la UX del operador, el pipeline de AI y los overlays Pro alrededor de él. Si no tienes Asterisk, lo despliegas junto con Verbara (setup único, bien documentado). Si ya corres Asterisk, Verbara se conecta a tu dialplan y configuración existentes. Esto aplica para cualquier use-case: contact center, voice AI, omnichannel o telefonía programable.',
     faq_q2: '¿Corre en Kubernetes?',
     faq_a2: 'Sí. La Platform es K8s-native — multi-tenant y multi-clúster desde Tier 2. Los Helm charts vienen en Verbara.Sdk.Pro. También puedes correrlo en una sola VM con Docker Compose si tu escala no justifica K8s todavía — el stack es portable, sin dependencias ocultas de cloud.',
     faq_q3: '¿Qué pasa con mi deployment si dejo de pagar Pro?',
@@ -712,7 +712,7 @@ const es_419: Messages = {
     faq_q5: '¿LATAM (ES, PT) es ciudadano de primera o traducción tardía?',
     faq_a5: 'Primera clase. El locale por defecto es es-419 (español LATAM neutro) — verbara.io/ sirve español, la versión inglesa vive en /en-US/. Documentación, soporte y UI del producto se autoran en tres locales (es-419, en-US, pt-BR) con paridad enforced en CI. Ejemplos en pricing, casos y nombres de tier se inclinan a contextos LATAM (BPO, telcos). Verbara está construido por gente que piensa en español.',
     faq_q6: '¿Por dónde empiezo según mi use-case?',
-    faq_a6: 'Cada solución tiene su propia página con código, anti-positioning y FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonía programable embebida. Saca una licencia Pro Developer (Tier 0.5, gratis, 30 días) que desbloquea las features Pro para uso interno, con hasta 5 agentes licenciados — evalúa el use-case que más te encaje sin compromiso.',
+    faq_a6: 'Cada solución tiene su propia página con código, anti-positioning y FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, programmable-telephony para telefonía programable embebida. Saca una licencia Pro Developer (Tier 0.5, gratis, 30 días) que desbloquea las features Pro para uso interno, con hasta 5 agentes licenciados — evalúa el use-case que más te encaje sin compromiso.',
     faq_q7: '¿Cómo verifico que la imagen que despliego es la real?',
     faq_a7: 'Cada imagen de Verbara Platform (api, realtime, renderer, mail, web) está firmada con cosign y se ancla por digest de manifest-list — el mismo valor que cosign firma. Verificas cualquier imagen con la llave pública que publicamos en verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. El chart de Helm ancla por digest las imágenes api y realtime, y trae una política Kyverno que verifica la firma cosign al admitir el pod: es opcional (exige Kyverno ≥ 1.11 en tu clúster) y viene desactivada por defecto. Las licencias anuales de Tier 2 y Tier 5 (.lic) llevan lo que tienes derecho a usar —tier, funciones, agentes licenciados y vencimiento—, no una lista de digests de imagen. Un cron diario re-verifica los digests publicados contra el registry y avisa si alguno mutó.',
 
@@ -810,13 +810,13 @@ const es_419: Messages = {
     faq_q3: '¿Ofrecen descuento académico o non-profit?',
     faq_a3: 'Sí. Organizaciones non-profit registradas y universidades acreditadas obtienen 50% de descuento sobre el tramo base del tier — en Tier 2, los primeros 25 agentes licenciados; los tramos por encima van a precio de lista. No aplica a Tier 5 ni al paquete de implementación. Manda licencia + comprobante a licensing@verbara.io.',
     best_for_label: 'Mejor para',
-    best_for_t0: 'Voice AI · CPaaS · CC (≤5 agentes evaluación)',
+    best_for_t0: 'Voice AI · Telefonía programable · CC (≤5 agentes evaluación)',
     best_for_t0_5: 'Cualquier use-case en evaluación de 30 días',
     best_for_t1: 'Tu propia operación',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI productivo',
     best_for_support_business: 'Equipos que operan su instalación en horario laboral',
     best_for_support_enterprise: 'Operación 24/7 · CC enterprise',
-    best_for_t5: 'CPaaS white-label · Vertical resellers',
+    best_for_t5: 'Telefonía programable white-label · Vertical resellers',
     subtitle_2: 'Cualquier tier sirve cualquier use-case — la diferencia es escala, multi-tenant y soporte.',
   },
   usecases: {
@@ -849,13 +849,13 @@ const es_419: Messages = {
     omnichannel_index_cap3: 'Multi-tenant white-label',
     omnichannel_index_cta: 'Ver solución →',
 
-    cpaas_index_eyebrow: 'Telefonía',
-    cpaas_index_title: 'CPaaS',
-    cpaas_index_sub: 'AMI · AGI · ARI · Live API. La telefonía como librería, no como servicio rentado.',
-    cpaas_index_cap1: 'Sin tarifas por minuto',
-    cpaas_index_cap2: 'Federación multi-servidor',
-    cpaas_index_cap3: 'Activities state-machines',
-    cpaas_index_cta: 'Ver solución →',
+    programmable_telephony_index_eyebrow: 'Telefonía',
+    programmable_telephony_index_title: 'Telefonía programable',
+    programmable_telephony_index_sub: 'AMI · AGI · ARI · Live API. La telefonía como librería, no como servicio rentado.',
+    programmable_telephony_index_cap1: 'Sin tarifas por minuto',
+    programmable_telephony_index_cap2: 'Federación multi-servidor',
+    programmable_telephony_index_cap3: 'Activities state-machines',
+    programmable_telephony_index_cta: 'Ver solución →',
 
     cc_hero_eyebrow: 'Solución · Contact Center',
     cc_hero_h1_pre: 'El contact center que tu equipo de seguridad',
@@ -990,47 +990,47 @@ const es_419: Messages = {
     omnichannel_final_h2_accent: 'sin per-message.',
     omnichannel_final_sub: 'Licencia developer 30 días, firmada, gratis. WhatsApp Meta directo, sin intermediarios.',
 
-    cpaas_hero_eyebrow: 'Solución · CPaaS',
-    cpaas_hero_h1_pre: 'Telefonía como librería,',
-    cpaas_hero_h1_accent: 'no como renta.',
-    cpaas_hero_sub: 'AMI · AGI · ARI · Live API · Activities. SDK MIT con federación multi-servidor, sin tarifas por minuto. Tu Asterisk, tu telco, tu código.',
-    cpaas_hero_cta_primary: 'dotnet add package Verbara.Sdk',
-    cpaas_hero_cta_secondary: 'Ver código',
-    cpaas_ap_eyebrow: 'Lo que reemplazas',
-    cpaas_ap_h2: 'CPaaS sin per-minute.',
-    cpaas_ap_sub: 'Los CPaaS cobran $0.014–0.045 por minuto y te encierran en su SIP. Verbara conecta directo a tu telco.',
-    cpaas_ap_col_verbara: 'Verbara',
-    cpaas_ap_col_a: 'Twilio',
-    cpaas_ap_col_b: 'Vonage · Plivo',
-    cpaas_ap_col_c: 'Jambonz (OSS)',
-    cpaas_ap_row_1: 'Open-core MIT',
-    cpaas_ap_row_2: 'Sin tarifas por minuto',
-    cpaas_ap_row_3: 'Asterisk-native',
-    cpaas_ap_row_4: 'Federación multi-servidor',
-    cpaas_ap_row_5: 'Activities state-machines',
-    cpaas_ap_row_6: 'Barge-in + turn-taking',
-    cpaas_ap_row_7: 'Multi-tenant licensing',
-    cpaas_cp_eyebrow: 'Lee el código',
-    cpaas_cp_h2: 'Outbound call + bridge + record.',
-    cpaas_cp_filename: 'OutboundCallExample.cs',
-    cpaas_cp_caption: 'Verbara.Sdk.Ari — coloca llamada outbound, hace bridge entre dos canales, graba el resultado →',
-    cpaas_faq_eyebrow: 'FAQ · CPaaS',
-    cpaas_faq_h2: 'Preguntas de telefonía.',
-    cpaas_faq_q1: '¿Necesito operar mi propio Asterisk?',
-    cpaas_faq_a1: 'Sí. Verbara es una librería sobre Asterisk; tú operas el PBX (tuyo, on-prem o en cloud) y conectas el SDK vía AMI/ARI. Verbara no ofrece telefonía gestionada: el Asterisk y las troncales siempre los aportas tú.',
-    cpaas_faq_q2: '¿Qué codecs soporta?',
-    cpaas_faq_a2: 'El SDK pasa el audio que Asterisk te entrega — soporta los codecs que tu Asterisk soporte (G.711, G.722, Opus, PCM, etc.). El pipeline VoiceAI hace resampling interno entre formatos cuando el LLM/TTS necesita 16kHz PCM.',
-    cpaas_faq_q3: '¿Federación multi-servidor de qué escala?',
-    cpaas_faq_a3: 'VerbaraServerPool soporta arbitrarios servidores Asterisk con failover y routing por canal/tenant. Hemos validado pools de hasta 8 nodos en R5.5 production validation; más allá depende de tu infra de PBX.',
-    cpaas_faq_q4: '¿Cómo embebo voz para humanos, no solo APIs?',
-    cpaas_faq_a4: 'Además de AMI/AGI/ARI/Live API para tu telefonía programable, la Platform incluye un softphone WebRTC dentro del workspace completo del agente — un puesto de operador en el navegador, no solo audio WebRTC suelto. Toman y hacen llamadas sin teléfono de escritorio ni softphone que instalar. Y conectas tus troncales SIP y DID desde la UI con un asistente guiado y test de conectividad, sin editar dialplan a mano. Las primitivas crudas siguen ahí cuando quieras construir; el puesto humano viene listo cuando lo necesitas.',
-    cpaas_pp_eyebrow: 'Precios CPaaS',
-    cpaas_pp_h2: '¿Qué necesitas licenciar?',
-    cpaas_pp_body: 'Tier 0 community gratis con SDK MIT directo (community + community telephony primitives). Tier 1 desbloquea un conjunto restringido de features Pro, solo para uso interno: clustering, dialer, event store, enrutamiento, realtime, tipificación avanzada con IA y encuestas CSAT — sin multi-tenant ni agent assist. Para atender clientes propios sobre tu instalación, Tier 2. Tier 5 white-label para resellers.',
-    cpaas_pp_cta: 'Ver pricing completo →',
-    cpaas_final_h2_pre: 'Telefonía',
-    cpaas_final_h2_accent: 'que sí posees.',
-    cpaas_final_sub: 'Licencia developer 30 días, firmada, gratis. SDK MIT — la base es tuya para siempre.',
+    programmable_telephony_hero_eyebrow: 'Solución · Telefonía programable',
+    programmable_telephony_hero_h1_pre: 'Telefonía como librería,',
+    programmable_telephony_hero_h1_accent: 'no como renta.',
+    programmable_telephony_hero_sub: 'AMI · AGI · ARI · Live API · Activities. SDK MIT con federación multi-servidor, sin tarifas por minuto. Tu Asterisk, tu telco, tu código.',
+    programmable_telephony_hero_cta_primary: 'dotnet add package Verbara.Sdk',
+    programmable_telephony_hero_cta_secondary: 'Ver código',
+    programmable_telephony_ap_eyebrow: 'Lo que reemplazas',
+    programmable_telephony_ap_h2: 'Telefonía programable sin per-minute.',
+    programmable_telephony_ap_sub: 'Las plataformas de telefonía en la nube cobran $0.014–0.045 por minuto y te encierran en su SIP. Verbara conecta directo a tu telco.',
+    programmable_telephony_ap_col_verbara: 'Verbara',
+    programmable_telephony_ap_col_a: 'Twilio',
+    programmable_telephony_ap_col_b: 'Vonage · Plivo',
+    programmable_telephony_ap_col_c: 'Jambonz (OSS)',
+    programmable_telephony_ap_row_1: 'Open-core MIT',
+    programmable_telephony_ap_row_2: 'Sin tarifas por minuto',
+    programmable_telephony_ap_row_3: 'Asterisk-native',
+    programmable_telephony_ap_row_4: 'Federación multi-servidor',
+    programmable_telephony_ap_row_5: 'Activities state-machines',
+    programmable_telephony_ap_row_6: 'Barge-in + turn-taking',
+    programmable_telephony_ap_row_7: 'Multi-tenant licensing',
+    programmable_telephony_cp_eyebrow: 'Lee el código',
+    programmable_telephony_cp_h2: 'Outbound call + bridge + record.',
+    programmable_telephony_cp_filename: 'OutboundCallExample.cs',
+    programmable_telephony_cp_caption: 'Verbara.Sdk.Ari — coloca llamada outbound, hace bridge entre dos canales, graba el resultado →',
+    programmable_telephony_faq_eyebrow: 'FAQ · Telefonía programable',
+    programmable_telephony_faq_h2: 'Preguntas de telefonía.',
+    programmable_telephony_faq_q1: '¿Necesito operar mi propio Asterisk?',
+    programmable_telephony_faq_a1: 'Sí. Verbara es una librería sobre Asterisk; tú operas el PBX (tuyo, on-prem o en cloud) y conectas el SDK vía AMI/ARI. Verbara no ofrece telefonía gestionada: el Asterisk y las troncales siempre los aportas tú.',
+    programmable_telephony_faq_q2: '¿Qué codecs soporta?',
+    programmable_telephony_faq_a2: 'El SDK pasa el audio que Asterisk te entrega — soporta los codecs que tu Asterisk soporte (G.711, G.722, Opus, PCM, etc.). El pipeline VoiceAI hace resampling interno entre formatos cuando el LLM/TTS necesita 16kHz PCM.',
+    programmable_telephony_faq_q3: '¿Federación multi-servidor de qué escala?',
+    programmable_telephony_faq_a3: 'VerbaraServerPool soporta arbitrarios servidores Asterisk con failover y routing por canal/tenant. Hemos validado pools de hasta 8 nodos en R5.5 production validation; más allá depende de tu infra de PBX.',
+    programmable_telephony_faq_q4: '¿Cómo embebo voz para humanos, no solo APIs?',
+    programmable_telephony_faq_a4: 'Además de AMI/AGI/ARI/Live API para tu telefonía programable, la Platform incluye un softphone WebRTC dentro del workspace completo del agente — un puesto de operador en el navegador, no solo audio WebRTC suelto. Toman y hacen llamadas sin teléfono de escritorio ni softphone que instalar. Y conectas tus troncales SIP y DID desde la UI con un asistente guiado y test de conectividad, sin editar dialplan a mano. Las primitivas crudas siguen ahí cuando quieras construir; el puesto humano viene listo cuando lo necesitas.',
+    programmable_telephony_pp_eyebrow: 'Precios · Telefonía programable',
+    programmable_telephony_pp_h2: '¿Qué necesitas licenciar?',
+    programmable_telephony_pp_body: 'Tier 0 community gratis con SDK MIT directo (community + community telephony primitives). Tier 1 desbloquea un conjunto restringido de features Pro, solo para uso interno: clustering, dialer, event store, enrutamiento, realtime, tipificación avanzada con IA y encuestas CSAT — sin multi-tenant ni agent assist. Para atender clientes propios sobre tu instalación, Tier 2. Tier 5 white-label para resellers.',
+    programmable_telephony_pp_cta: 'Ver pricing completo →',
+    programmable_telephony_final_h2_pre: 'Telefonía',
+    programmable_telephony_final_h2_accent: 'que sí posees.',
+    programmable_telephony_final_sub: 'Licencia developer 30 días, firmada, gratis. SDK MIT — la base es tuya para siempre.',
   },
   developer_license: {
     title: 'Licencia gratuita de Pro Developer',
@@ -1100,7 +1100,7 @@ const en_US: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Programmable telephony',
     solutions_all: 'See all solutions →',
   },
   footer: {
@@ -1119,7 +1119,7 @@ const en_US: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Programmable telephony',
   },
   landing: {
     hero_title: 'The honest open-core contact center.',
@@ -1176,10 +1176,10 @@ const en_US: Messages = {
     solutions_card_omnichannel_title: 'Omnichannel',
     solutions_card_omnichannel_sub: 'WhatsApp, SMS, email, web — eleven channels in one inbox.',
     solutions_card_omnichannel_cta: 'See solution →',
-    solutions_card_cpaas_eyebrow: 'Telephony',
-    solutions_card_cpaas_title: 'CPaaS',
-    solutions_card_cpaas_sub: 'Programmable API on top of Asterisk. No per-minute fees.',
-    solutions_card_cpaas_cta: 'See solution →',
+    solutions_card_programmable_telephony_eyebrow: 'Telephony',
+    solutions_card_programmable_telephony_title: 'Programmable telephony',
+    solutions_card_programmable_telephony_sub: 'Programmable API on top of Asterisk. No per-minute fees.',
+    solutions_card_programmable_telephony_cta: 'See solution →',
 
     ap_eyebrow: 'What you replace',
     ap_h2_pre: 'Stop renting your contact center.',
@@ -1239,7 +1239,7 @@ const en_US: Messages = {
     faq_eyebrow: 'FAQ',
     faq_h2: 'Direct answers.',
     faq_q1: 'Do I need an Asterisk install before adopting Verbara?',
-    faq_a1: "Yes. Verbara is built on Asterisk PBX as its telephony substrate — we don't replace it, we modernize the operator UX, the AI pipeline, and the Pro overlays around it. If you don't have Asterisk, you deploy it alongside Verbara (one-time, well-documented setup). If you already run Asterisk, Verbara connects to your existing dialplan and config. This applies for any use-case: contact center, voice AI, omnichannel, or CPaaS.",
+    faq_a1: "Yes. Verbara is built on Asterisk PBX as its telephony substrate — we don't replace it, we modernize the operator UX, the AI pipeline, and the Pro overlays around it. If you don't have Asterisk, you deploy it alongside Verbara (one-time, well-documented setup). If you already run Asterisk, Verbara connects to your existing dialplan and config. This applies for any use-case: contact center, voice AI, omnichannel, or programmable telephony.",
     faq_q2: 'Does this run on Kubernetes?',
     faq_a2: "Yes. The Platform is K8s-native — multi-tenant, multi-cluster ready in Tier 2 and up. Helm charts ship in Verbara.Sdk.Pro. You can also run it on a single VM with Docker Compose if your scale doesn't justify K8s yet — the stack is portable, no hidden cloud-only dependencies.",
     faq_q3: 'What happens to my deployment if I stop paying for Pro?',
@@ -1249,7 +1249,7 @@ const en_US: Messages = {
     faq_q5: 'Is LATAM (ES, PT) a first-class citizen or a translated afterthought?',
     faq_a5: 'First-class. The default locale is es-419 (Spanish for LATAM) — verbara.io/ serves Spanish, the English version lives at /en-US/. Documentation, support, and product UI are authored in three locales (es-419, en-US, pt-BR) with parity enforced in CI. Examples in pricing, case material, and tier names lean toward LATAM contexts (BPOs, telcos). Verbara is built by people who think in Spanish.',
     faq_q6: 'Where do I start based on my use-case?',
-    faq_a6: "Each solution has its own page with code, anti-positioning, and use-case-specific FAQ: contact-center for BPO/telco, voice-ai for inbound voicebots, omnichannel for WhatsApp/SMS/email, cpaas for embedded programmable telephony. Grab a Pro Developer license (Tier 0.5, free, 30 days) that unlocks Pro features for internal use, with up to 5 licensed agents — evaluate the use-case that fits without commitment.",
+    faq_a6: "Each solution has its own page with code, anti-positioning, and use-case-specific FAQ: contact-center for BPO/telco, voice-ai for inbound voicebots, omnichannel for WhatsApp/SMS/email, programmable-telephony for embedded programmable telephony. Grab a Pro Developer license (Tier 0.5, free, 30 days) that unlocks Pro features for internal use, with up to 5 licensed agents — evaluate the use-case that fits without commitment.",
     faq_q7: 'How do I verify the image I deploy is the real one?',
     faq_a7: 'Every Verbara Platform image (api, realtime, renderer, mail, web) is cosign-signed and pinned by manifest-list digest — the exact value cosign signs. Verify any image with the public key we publish at verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. The Helm chart pins the api and realtime images by digest, and ships a Kyverno policy that verifies the cosign signature at pod admission: it is optional (it needs Kyverno ≥ 1.11 in your cluster) and disabled by default. Tier 2 and Tier 5 annual licenses (.lic) carry what you are entitled to use — tier, features, licensed agents and expiry — not a list of image digests. A daily cron re-verifies the published digests against the registry and alerts us if any one mutates.',
 
@@ -1347,13 +1347,13 @@ const en_US: Messages = {
     faq_q3: 'Do you offer a non-profit or academic discount?',
     faq_a3: 'Yes. Registered non-profits and accredited universities get 50% off the base band of the tier — on Tier 2, the first 25 licensed agents; bands above that are list price. It does not apply to Tier 5 or to the implementation package. Send your license proof + organization paperwork to licensing@verbara.io.',
     best_for_label: 'Best for',
-    best_for_t0: 'Voice AI · CPaaS · CC (≤5 agents eval)',
+    best_for_t0: 'Voice AI · Programmable telephony · CC (≤5 agents eval)',
     best_for_t0_5: 'Any use-case under 30-day evaluation',
     best_for_t1: 'Your own operation',
     best_for_t2: 'Multi-tenant CC · Omnichannel · Production Voice AI',
     best_for_support_business: 'Teams running their installation in business hours',
     best_for_support_enterprise: '24/7 operations · Enterprise CC',
-    best_for_t5: 'White-label CPaaS · Vertical resellers',
+    best_for_t5: 'White-label programmable telephony · Vertical resellers',
     subtitle_2: 'Any tier serves any use-case — the difference is scale, multi-tenant, and support.',
   },
   usecases: {
@@ -1386,13 +1386,13 @@ const en_US: Messages = {
     omnichannel_index_cap3: 'Multi-tenant white-label',
     omnichannel_index_cta: 'See solution →',
 
-    cpaas_index_eyebrow: 'Telephony',
-    cpaas_index_title: 'CPaaS',
-    cpaas_index_sub: 'AMI · AGI · ARI · Live API. Telephony as a library, not a rented service.',
-    cpaas_index_cap1: 'No per-minute fees',
-    cpaas_index_cap2: 'Multi-server federation',
-    cpaas_index_cap3: 'Activities state-machines',
-    cpaas_index_cta: 'See solution →',
+    programmable_telephony_index_eyebrow: 'Telephony',
+    programmable_telephony_index_title: 'Programmable telephony',
+    programmable_telephony_index_sub: 'AMI · AGI · ARI · Live API. Telephony as a library, not a rented service.',
+    programmable_telephony_index_cap1: 'No per-minute fees',
+    programmable_telephony_index_cap2: 'Multi-server federation',
+    programmable_telephony_index_cap3: 'Activities state-machines',
+    programmable_telephony_index_cta: 'See solution →',
 
     cc_hero_eyebrow: 'Solution · Contact Center',
     cc_hero_h1_pre: 'The contact center your security team',
@@ -1527,47 +1527,47 @@ const en_US: Messages = {
     omnichannel_final_h2_accent: 'no per-message fees.',
     omnichannel_final_sub: '30-day signed developer license, free. WhatsApp Meta direct, no middlemen.',
 
-    cpaas_hero_eyebrow: 'Solution · CPaaS',
-    cpaas_hero_h1_pre: 'Telephony as a library,',
-    cpaas_hero_h1_accent: 'not as a rental.',
-    cpaas_hero_sub: 'AMI · AGI · ARI · Live API · Activities. MIT SDK with multi-server federation, no per-minute fees. Your Asterisk, your telco, your code.',
-    cpaas_hero_cta_primary: 'dotnet add package Verbara.Sdk',
-    cpaas_hero_cta_secondary: 'See the code',
-    cpaas_ap_eyebrow: 'What you replace',
-    cpaas_ap_h2: 'CPaaS without per-minute fees.',
-    cpaas_ap_sub: 'CPaaS platforms charge $0.014–0.045 per minute and lock you into their SIP. Verbara connects direct to your telco.',
-    cpaas_ap_col_verbara: 'Verbara',
-    cpaas_ap_col_a: 'Twilio',
-    cpaas_ap_col_b: 'Vonage · Plivo',
-    cpaas_ap_col_c: 'Jambonz (OSS)',
-    cpaas_ap_row_1: 'Open-core MIT',
-    cpaas_ap_row_2: 'No per-minute fees',
-    cpaas_ap_row_3: 'Asterisk-native',
-    cpaas_ap_row_4: 'Multi-server federation',
-    cpaas_ap_row_5: 'Activities state-machines',
-    cpaas_ap_row_6: 'Barge-in + turn-taking',
-    cpaas_ap_row_7: 'Multi-tenant licensing',
-    cpaas_cp_eyebrow: 'Read the code',
-    cpaas_cp_h2: 'Outbound call + bridge + record.',
-    cpaas_cp_filename: 'OutboundCallExample.cs',
-    cpaas_cp_caption: 'Verbara.Sdk.Ari — places outbound call, bridges two channels, records the result →',
-    cpaas_faq_eyebrow: 'FAQ · CPaaS',
-    cpaas_faq_h2: 'Telephony questions.',
-    cpaas_faq_q1: 'Do I need to run my own Asterisk?',
-    cpaas_faq_a1: 'Yes. Verbara is a library on top of Asterisk; you run the PBX (yours, on-prem or in cloud) and connect the SDK via AMI/ARI. Verbara does not offer managed telephony: you always bring the Asterisk and the trunks.',
-    cpaas_faq_q2: 'Which codecs does it support?',
-    cpaas_faq_a2: 'The SDK passes the audio Asterisk delivers — it supports whatever codecs your Asterisk supports (G.711, G.722, Opus, PCM, etc.). The VoiceAI pipeline does internal resampling between formats when the LLM/TTS needs 16kHz PCM.',
-    cpaas_faq_q3: 'What scale of multi-server federation?',
-    cpaas_faq_a3: 'VerbaraServerPool supports arbitrary Asterisk servers with failover and routing by channel/tenant. We have validated pools of up to 8 nodes in R5.5 production validation; beyond that depends on your PBX infrastructure.',
-    cpaas_faq_q4: 'How do I embed voice for humans, not just APIs?',
-    cpaas_faq_a4: 'Beyond AMI/AGI/ARI/Live API for your programmable telephony, the Platform ships a WebRTC softphone inside the full agent workspace — an operator seat in the browser, not just loose WebRTC audio. Agents take and make calls with no desk phone and no softphone to install. And you wire SIP trunks and DIDs from the UI with a guided wizard and connectivity test, no hand-edited dialplan. The raw primitives stay there when you want to build; the human seat is ready when you need it.',
-    cpaas_pp_eyebrow: 'CPaaS pricing',
-    cpaas_pp_h2: 'What do you need to license?',
-    cpaas_pp_body: 'Tier 0 community free with the MIT SDK directly (community telephony primitives included). Tier 1 unlocks a restricted set of Pro features, for internal use only: clustering, dialer, event store, routing, realtime, AI-assisted advanced typification and CSAT surveys — no multi-tenant, no agent assist. To serve your own clients on your installation, Tier 2. Tier 5 white-label for resellers.',
-    cpaas_pp_cta: 'See full pricing →',
-    cpaas_final_h2_pre: 'Telephony',
-    cpaas_final_h2_accent: 'you actually own.',
-    cpaas_final_sub: '30-day signed developer license, free. MIT SDK — the foundation is yours forever.',
+    programmable_telephony_hero_eyebrow: 'Solution · Programmable telephony',
+    programmable_telephony_hero_h1_pre: 'Telephony as a library,',
+    programmable_telephony_hero_h1_accent: 'not as a rental.',
+    programmable_telephony_hero_sub: 'AMI · AGI · ARI · Live API · Activities. MIT SDK with multi-server federation, no per-minute fees. Your Asterisk, your telco, your code.',
+    programmable_telephony_hero_cta_primary: 'dotnet add package Verbara.Sdk',
+    programmable_telephony_hero_cta_secondary: 'See the code',
+    programmable_telephony_ap_eyebrow: 'What you replace',
+    programmable_telephony_ap_h2: 'Programmable telephony without per-minute fees.',
+    programmable_telephony_ap_sub: 'Cloud telephony platforms charge $0.014–0.045 per minute and lock you into their SIP. Verbara connects direct to your telco.',
+    programmable_telephony_ap_col_verbara: 'Verbara',
+    programmable_telephony_ap_col_a: 'Twilio',
+    programmable_telephony_ap_col_b: 'Vonage · Plivo',
+    programmable_telephony_ap_col_c: 'Jambonz (OSS)',
+    programmable_telephony_ap_row_1: 'Open-core MIT',
+    programmable_telephony_ap_row_2: 'No per-minute fees',
+    programmable_telephony_ap_row_3: 'Asterisk-native',
+    programmable_telephony_ap_row_4: 'Multi-server federation',
+    programmable_telephony_ap_row_5: 'Activities state-machines',
+    programmable_telephony_ap_row_6: 'Barge-in + turn-taking',
+    programmable_telephony_ap_row_7: 'Multi-tenant licensing',
+    programmable_telephony_cp_eyebrow: 'Read the code',
+    programmable_telephony_cp_h2: 'Outbound call + bridge + record.',
+    programmable_telephony_cp_filename: 'OutboundCallExample.cs',
+    programmable_telephony_cp_caption: 'Verbara.Sdk.Ari — places outbound call, bridges two channels, records the result →',
+    programmable_telephony_faq_eyebrow: 'FAQ · Programmable telephony',
+    programmable_telephony_faq_h2: 'Telephony questions.',
+    programmable_telephony_faq_q1: 'Do I need to run my own Asterisk?',
+    programmable_telephony_faq_a1: 'Yes. Verbara is a library on top of Asterisk; you run the PBX (yours, on-prem or in cloud) and connect the SDK via AMI/ARI. Verbara does not offer managed telephony: you always bring the Asterisk and the trunks.',
+    programmable_telephony_faq_q2: 'Which codecs does it support?',
+    programmable_telephony_faq_a2: 'The SDK passes the audio Asterisk delivers — it supports whatever codecs your Asterisk supports (G.711, G.722, Opus, PCM, etc.). The VoiceAI pipeline does internal resampling between formats when the LLM/TTS needs 16kHz PCM.',
+    programmable_telephony_faq_q3: 'What scale of multi-server federation?',
+    programmable_telephony_faq_a3: 'VerbaraServerPool supports arbitrary Asterisk servers with failover and routing by channel/tenant. We have validated pools of up to 8 nodes in R5.5 production validation; beyond that depends on your PBX infrastructure.',
+    programmable_telephony_faq_q4: 'How do I embed voice for humans, not just APIs?',
+    programmable_telephony_faq_a4: 'Beyond AMI/AGI/ARI/Live API for your programmable telephony, the Platform ships a WebRTC softphone inside the full agent workspace — an operator seat in the browser, not just loose WebRTC audio. Agents take and make calls with no desk phone and no softphone to install. And you wire SIP trunks and DIDs from the UI with a guided wizard and connectivity test, no hand-edited dialplan. The raw primitives stay there when you want to build; the human seat is ready when you need it.',
+    programmable_telephony_pp_eyebrow: 'Programmable telephony pricing',
+    programmable_telephony_pp_h2: 'What do you need to license?',
+    programmable_telephony_pp_body: 'Tier 0 community free with the MIT SDK directly (community telephony primitives included). Tier 1 unlocks a restricted set of Pro features, for internal use only: clustering, dialer, event store, routing, realtime, AI-assisted advanced typification and CSAT surveys — no multi-tenant, no agent assist. To serve your own clients on your installation, Tier 2. Tier 5 white-label for resellers.',
+    programmable_telephony_pp_cta: 'See full pricing →',
+    programmable_telephony_final_h2_pre: 'Telephony',
+    programmable_telephony_final_h2_accent: 'you actually own.',
+    programmable_telephony_final_sub: '30-day signed developer license, free. MIT SDK — the foundation is yours forever.',
   },
   developer_license: {
     title: 'Free Pro Developer license',
@@ -1637,7 +1637,7 @@ const pt_BR: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Telefonia programável',
     solutions_all: 'Ver todas as soluções →',
   },
   footer: {
@@ -1656,7 +1656,7 @@ const pt_BR: Messages = {
     solutions_cc: 'Contact Center',
     solutions_voiceai: 'Voice AI',
     solutions_omnichannel: 'Omnichannel',
-    solutions_cpaas: 'CPaaS',
+    solutions_programmable_telephony: 'Telefonia programável',
   },
   landing: {
     hero_title: 'O contact center open-core honesto.',
@@ -1713,10 +1713,10 @@ const pt_BR: Messages = {
     solutions_card_omnichannel_title: 'Omnichannel',
     solutions_card_omnichannel_sub: 'WhatsApp, SMS, email, web — onze canais em um inbox.',
     solutions_card_omnichannel_cta: 'Ver solução →',
-    solutions_card_cpaas_eyebrow: 'Telefonia',
-    solutions_card_cpaas_title: 'CPaaS',
-    solutions_card_cpaas_sub: 'API programável sobre Asterisk. Sem tarifas por minuto.',
-    solutions_card_cpaas_cta: 'Ver solução →',
+    solutions_card_programmable_telephony_eyebrow: 'Telefonia',
+    solutions_card_programmable_telephony_title: 'Telefonia programável',
+    solutions_card_programmable_telephony_sub: 'API programável sobre Asterisk. Sem tarifas por minuto.',
+    solutions_card_programmable_telephony_cta: 'Ver solução →',
 
     ap_eyebrow: 'O que você substitui',
     ap_h2_pre: 'Pare de alugar seu contact center.',
@@ -1776,7 +1776,7 @@ const pt_BR: Messages = {
     faq_eyebrow: 'FAQ',
     faq_h2: 'Respostas diretas.',
     faq_q1: 'Preciso ter Asterisk instalado antes de adotar Verbara?',
-    faq_a1: 'Sim. O Verbara é construído sobre o Asterisk PBX como seu substrato de telefonia — não o substituímos, modernizamos a UX do operador, o pipeline de IA e os overlays Pro ao redor dele. Se você não tem Asterisk, ele é implantado junto com o Verbara (setup único, bem documentado). Se você já roda Asterisk, o Verbara conecta ao seu dialplan e configuração existentes. Isso vale para qualquer use-case: contact center, voice AI, omnichannel ou CPaaS.',
+    faq_a1: 'Sim. O Verbara é construído sobre o Asterisk PBX como seu substrato de telefonia — não o substituímos, modernizamos a UX do operador, o pipeline de IA e os overlays Pro ao redor dele. Se você não tem Asterisk, ele é implantado junto com o Verbara (setup único, bem documentado). Se você já roda Asterisk, o Verbara conecta ao seu dialplan e configuração existentes. Isso vale para qualquer use-case: contact center, voice AI, omnichannel ou telefonia programável.',
     faq_q2: 'Roda em Kubernetes?',
     faq_a2: 'Sim. A Platform é K8s-native — multi-tenant e multi-cluster a partir do Tier 2. Os Helm charts vêm no Verbara.Sdk.Pro. Também dá pra rodar em uma única VM com Docker Compose se sua escala ainda não justifica K8s — o stack é portátil, sem dependências ocultas de cloud.',
     faq_q3: 'O que acontece com meu deployment se eu parar de pagar Pro?',
@@ -1786,7 +1786,7 @@ const pt_BR: Messages = {
     faq_q5: 'LATAM (ES, PT) é cidadão de primeira ou tradução tardia?',
     faq_a5: 'Primeira classe. O locale padrão é es-419 (espanhol LATAM neutro) — verbara.io/ serve espanhol, a versão inglesa vive em /en-US/. Documentação, suporte e UI do produto são autorados em três locales (es-419, en-US, pt-BR) com paridade enforced em CI. Exemplos em preços, casos e nomes de tier se inclinam a contextos LATAM (BPOs, telcos). Verbara é construído por gente que pensa em espanhol.',
     faq_q6: 'Por onde começo de acordo com meu use-case?',
-    faq_a6: 'Cada solução tem sua própria página com código, anti-positioning e FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, cpaas para telefonia programável embarcada. Gere uma licença Pro Developer (Tier 0.5, gratuita, 30 dias) que desbloqueia as features Pro para uso interno, com até 5 agentes licenciados — avalie o use-case que se encaixa sem compromisso.',
+    faq_a6: 'Cada solução tem sua própria página com código, anti-positioning e FAQ específicos: contact-center para BPO/telco, voice-ai para voicebots inbound, omnichannel para WhatsApp/SMS/email, programmable-telephony para telefonia programável embarcada. Gere uma licença Pro Developer (Tier 0.5, gratuita, 30 dias) que desbloqueia as features Pro para uso interno, com até 5 agentes licenciados — avalie o use-case que se encaixa sem compromisso.',
     faq_q7: 'Como verifico que a imagem que eu faço deploy é a real?',
     faq_a7: 'Cada imagem do Verbara Platform (api, realtime, renderer, mail, web) é assinada com cosign e ancorada por digest de manifest-list — o mesmo valor que o cosign assina. Você verifica qualquer imagem com a chave pública que publicamos em verbara.io/keys/cosign.pub: `cosign verify --key https://verbara.io/keys/cosign.pub --insecure-ignore-tlog ghcr.io/verbara/platform/api:vX.Y.Z`. O chart Helm ancora por digest as imagens api e realtime, e traz uma política Kyverno que verifica a assinatura cosign na admissão do pod: é opcional (exige Kyverno ≥ 1.11 no seu cluster) e vem desativada por padrão. As licenças anuais de Tier 2 e Tier 5 (.lic) levam o que você tem direito de usar — tier, funcionalidades, agentes licenciados e vencimento —, não uma lista de digests de imagem. Um cron diário re-verifica os digests publicados contra o registry e nos alerta se algum sofrer mutação.',
 
@@ -1884,13 +1884,13 @@ const pt_BR: Messages = {
     faq_q3: 'Oferecem desconto acadêmico ou non-profit?',
     faq_a3: 'Sim. Organizações non-profit registradas e universidades credenciadas têm 50% de desconto sobre a faixa base do tier — no Tier 2, os primeiros 25 agentes licenciados; faixas acima vão a preço de lista. Não vale para o Tier 5 nem para o pacote de implementação. Envie comprovante da licença + documentação da organização para licensing@verbara.io.',
     best_for_label: 'Melhor para',
-    best_for_t0: 'Voice AI · CPaaS · CC (≤5 agentes avaliação)',
+    best_for_t0: 'Voice AI · Telefonia programável · CC (≤5 agentes avaliação)',
     best_for_t0_5: 'Qualquer use-case em avaliação de 30 dias',
     best_for_t1: 'Sua própria operação',
     best_for_t2: 'CC multi-tenant · Omnichannel · Voice AI produtivo',
     best_for_support_business: 'Equipes que operam sua instalação em horário comercial',
     best_for_support_enterprise: 'Operação 24/7 · CC enterprise',
-    best_for_t5: 'CPaaS white-label · Revendedores verticais',
+    best_for_t5: 'Telefonia programável white-label · Revendedores verticais',
     subtitle_2: 'Qualquer tier serve qualquer use-case — a diferença é escala, multi-tenant e suporte.',
   },
   usecases: {
@@ -1923,13 +1923,13 @@ const pt_BR: Messages = {
     omnichannel_index_cap3: 'Multi-tenant white-label',
     omnichannel_index_cta: 'Ver solução →',
 
-    cpaas_index_eyebrow: 'Telefonia',
-    cpaas_index_title: 'CPaaS',
-    cpaas_index_sub: 'AMI · AGI · ARI · Live API. Telefonia como biblioteca, não como serviço alugado.',
-    cpaas_index_cap1: 'Sem tarifas por minuto',
-    cpaas_index_cap2: 'Federação multi-servidor',
-    cpaas_index_cap3: 'Activities state-machines',
-    cpaas_index_cta: 'Ver solução →',
+    programmable_telephony_index_eyebrow: 'Telefonia',
+    programmable_telephony_index_title: 'Telefonia programável',
+    programmable_telephony_index_sub: 'AMI · AGI · ARI · Live API. Telefonia como biblioteca, não como serviço alugado.',
+    programmable_telephony_index_cap1: 'Sem tarifas por minuto',
+    programmable_telephony_index_cap2: 'Federação multi-servidor',
+    programmable_telephony_index_cap3: 'Activities state-machines',
+    programmable_telephony_index_cta: 'Ver solução →',
 
     cc_hero_eyebrow: 'Solução · Contact Center',
     cc_hero_h1_pre: 'O contact center que sua equipe de segurança',
@@ -2064,47 +2064,47 @@ const pt_BR: Messages = {
     omnichannel_final_h2_accent: 'sem per-message.',
     omnichannel_final_sub: 'Licença developer 30 dias, assinada, gratuita. WhatsApp Meta direto, sem intermediários.',
 
-    cpaas_hero_eyebrow: 'Solução · CPaaS',
-    cpaas_hero_h1_pre: 'Telefonia como biblioteca,',
-    cpaas_hero_h1_accent: 'não como aluguel.',
-    cpaas_hero_sub: 'AMI · AGI · ARI · Live API · Activities. SDK MIT com federação multi-servidor, sem tarifas por minuto. Seu Asterisk, sua telco, seu código.',
-    cpaas_hero_cta_primary: 'dotnet add package Verbara.Sdk',
-    cpaas_hero_cta_secondary: 'Ver código',
-    cpaas_ap_eyebrow: 'O que você substitui',
-    cpaas_ap_h2: 'CPaaS sem per-minute.',
-    cpaas_ap_sub: 'Os CPaaS cobram $0.014–0.045 por minuto e te prendem no SIP deles. Verbara conecta direto à sua telco.',
-    cpaas_ap_col_verbara: 'Verbara',
-    cpaas_ap_col_a: 'Twilio',
-    cpaas_ap_col_b: 'Vonage · Plivo',
-    cpaas_ap_col_c: 'Jambonz (OSS)',
-    cpaas_ap_row_1: 'Open-core MIT',
-    cpaas_ap_row_2: 'Sem tarifas por minuto',
-    cpaas_ap_row_3: 'Asterisk-native',
-    cpaas_ap_row_4: 'Federação multi-servidor',
-    cpaas_ap_row_5: 'Activities state-machines',
-    cpaas_ap_row_6: 'Barge-in + turn-taking',
-    cpaas_ap_row_7: 'Multi-tenant licensing',
-    cpaas_cp_eyebrow: 'Leia o código',
-    cpaas_cp_h2: 'Outbound call + bridge + record.',
-    cpaas_cp_filename: 'OutboundCallExample.cs',
-    cpaas_cp_caption: 'Verbara.Sdk.Ari — faz chamada outbound, bridge entre dois canais, grava o resultado →',
-    cpaas_faq_eyebrow: 'FAQ · CPaaS',
-    cpaas_faq_h2: 'Perguntas de telefonia.',
-    cpaas_faq_q1: 'Preciso operar meu próprio Asterisk?',
-    cpaas_faq_a1: 'Sim. Verbara é uma biblioteca sobre o Asterisk; você opera o PBX (seu, on-prem ou em nuvem) e conecta o SDK via AMI/ARI. A Verbara não oferece telefonia gerenciada: o Asterisk e os troncos sempre vêm de você.',
-    cpaas_faq_q2: 'Quais codecs suporta?',
-    cpaas_faq_a2: 'O SDK passa o áudio que o Asterisk entrega — suporta os codecs que seu Asterisk suportar (G.711, G.722, Opus, PCM, etc.). O pipeline VoiceAI faz resampling interno entre formatos quando o LLM/TTS precisa de 16kHz PCM.',
-    cpaas_faq_q3: 'Federação multi-servidor de qual escala?',
-    cpaas_faq_a3: 'VerbaraServerPool suporta servidores Asterisk arbitrários com failover e roteamento por canal/tenant. Validamos pools de até 8 nós na validação de produção R5.5; além disso depende da sua infra de PBX.',
-    cpaas_faq_q4: 'Como embarco voz para humanos, não só APIs?',
-    cpaas_faq_a4: 'Além de AMI/AGI/ARI/Live API para sua telefonia programável, a Platform inclui um softphone WebRTC dentro do workspace completo do agente — um posto de operador no navegador, não só áudio WebRTC solto. Os agentes atendem e fazem chamadas sem telefone de mesa e sem softphone para instalar. E você conecta seus troncos SIP e DIDs pela UI com um assistente guiado e teste de conectividade, sem dialplan editado na mão. As primitivas cruas continuam ali quando você quiser construir; o posto humano vem pronto quando você precisa.',
-    cpaas_pp_eyebrow: 'Pricing CPaaS',
-    cpaas_pp_h2: 'O que você precisa licenciar?',
-    cpaas_pp_body: 'Tier 0 community gratuito com SDK MIT direto (primitivas de telefonia community incluídas). Tier 1 desbloqueia um conjunto restrito de features Pro, só para uso interno: clustering, dialer, event store, roteamento, realtime, tipificação avançada com IA e pesquisas CSAT — sem multi-tenant nem agent assist. Para atender clientes próprios na sua instalação, Tier 2. Tier 5 white-label para revendedores.',
-    cpaas_pp_cta: 'Ver pricing completo →',
-    cpaas_final_h2_pre: 'Telefonia',
-    cpaas_final_h2_accent: 'que você de fato possui.',
-    cpaas_final_sub: 'Licença developer 30 dias, assinada, gratuita. SDK MIT — a base é sua para sempre.',
+    programmable_telephony_hero_eyebrow: 'Solução · Telefonia programável',
+    programmable_telephony_hero_h1_pre: 'Telefonia como biblioteca,',
+    programmable_telephony_hero_h1_accent: 'não como aluguel.',
+    programmable_telephony_hero_sub: 'AMI · AGI · ARI · Live API · Activities. SDK MIT com federação multi-servidor, sem tarifas por minuto. Seu Asterisk, sua telco, seu código.',
+    programmable_telephony_hero_cta_primary: 'dotnet add package Verbara.Sdk',
+    programmable_telephony_hero_cta_secondary: 'Ver código',
+    programmable_telephony_ap_eyebrow: 'O que você substitui',
+    programmable_telephony_ap_h2: 'Telefonia programável sem per-minute.',
+    programmable_telephony_ap_sub: 'As plataformas de telefonia na nuvem cobram $0.014–0.045 por minuto e te prendem no SIP delas. Verbara conecta direto à sua telco.',
+    programmable_telephony_ap_col_verbara: 'Verbara',
+    programmable_telephony_ap_col_a: 'Twilio',
+    programmable_telephony_ap_col_b: 'Vonage · Plivo',
+    programmable_telephony_ap_col_c: 'Jambonz (OSS)',
+    programmable_telephony_ap_row_1: 'Open-core MIT',
+    programmable_telephony_ap_row_2: 'Sem tarifas por minuto',
+    programmable_telephony_ap_row_3: 'Asterisk-native',
+    programmable_telephony_ap_row_4: 'Federação multi-servidor',
+    programmable_telephony_ap_row_5: 'Activities state-machines',
+    programmable_telephony_ap_row_6: 'Barge-in + turn-taking',
+    programmable_telephony_ap_row_7: 'Multi-tenant licensing',
+    programmable_telephony_cp_eyebrow: 'Leia o código',
+    programmable_telephony_cp_h2: 'Outbound call + bridge + record.',
+    programmable_telephony_cp_filename: 'OutboundCallExample.cs',
+    programmable_telephony_cp_caption: 'Verbara.Sdk.Ari — faz chamada outbound, bridge entre dois canais, grava o resultado →',
+    programmable_telephony_faq_eyebrow: 'FAQ · Telefonia programável',
+    programmable_telephony_faq_h2: 'Perguntas de telefonia.',
+    programmable_telephony_faq_q1: 'Preciso operar meu próprio Asterisk?',
+    programmable_telephony_faq_a1: 'Sim. Verbara é uma biblioteca sobre o Asterisk; você opera o PBX (seu, on-prem ou em nuvem) e conecta o SDK via AMI/ARI. A Verbara não oferece telefonia gerenciada: o Asterisk e os troncos sempre vêm de você.',
+    programmable_telephony_faq_q2: 'Quais codecs suporta?',
+    programmable_telephony_faq_a2: 'O SDK passa o áudio que o Asterisk entrega — suporta os codecs que seu Asterisk suportar (G.711, G.722, Opus, PCM, etc.). O pipeline VoiceAI faz resampling interno entre formatos quando o LLM/TTS precisa de 16kHz PCM.',
+    programmable_telephony_faq_q3: 'Federação multi-servidor de qual escala?',
+    programmable_telephony_faq_a3: 'VerbaraServerPool suporta servidores Asterisk arbitrários com failover e roteamento por canal/tenant. Validamos pools de até 8 nós na validação de produção R5.5; além disso depende da sua infra de PBX.',
+    programmable_telephony_faq_q4: 'Como embarco voz para humanos, não só APIs?',
+    programmable_telephony_faq_a4: 'Além de AMI/AGI/ARI/Live API para sua telefonia programável, a Platform inclui um softphone WebRTC dentro do workspace completo do agente — um posto de operador no navegador, não só áudio WebRTC solto. Os agentes atendem e fazem chamadas sem telefone de mesa e sem softphone para instalar. E você conecta seus troncos SIP e DIDs pela UI com um assistente guiado e teste de conectividade, sem dialplan editado na mão. As primitivas cruas continuam ali quando você quiser construir; o posto humano vem pronto quando você precisa.',
+    programmable_telephony_pp_eyebrow: 'Pricing · Telefonia programável',
+    programmable_telephony_pp_h2: 'O que você precisa licenciar?',
+    programmable_telephony_pp_body: 'Tier 0 community gratuito com SDK MIT direto (primitivas de telefonia community incluídas). Tier 1 desbloqueia um conjunto restrito de features Pro, só para uso interno: clustering, dialer, event store, roteamento, realtime, tipificação avançada com IA e pesquisas CSAT — sem multi-tenant nem agent assist. Para atender clientes próprios na sua instalação, Tier 2. Tier 5 white-label para revendedores.',
+    programmable_telephony_pp_cta: 'Ver pricing completo →',
+    programmable_telephony_final_h2_pre: 'Telefonia',
+    programmable_telephony_final_h2_accent: 'que você de fato possui.',
+    programmable_telephony_final_sub: 'Licença developer 30 dias, assinada, gratuita. SDK MIT — a base é sua para sempre.',
   },
   developer_license: {
     title: 'Licença gratuita de Pro Developer',

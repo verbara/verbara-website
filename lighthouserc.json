@@ -13,7 +13,7 @@
         "http://localhost/use-cases/contact-center/index.html",
         "http://localhost/use-cases/voice-ai/index.html",
         "http://localhost/use-cases/omnichannel/index.html",
-        "http://localhost/use-cases/cpaas/index.html"
+        "http://localhost/use-cases/programmable-telephony/index.html"
       ],
       "settings": {
         "preset": "desktop",

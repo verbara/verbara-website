@@ -12,7 +12,7 @@ const PAGES = [
   { path: '/use-cases/contact-center/',   title: /Verbara/, h1: /.+/ },
   { path: '/use-cases/voice-ai/',         title: /Verbara/, h1: /.+/ },
   { path: '/use-cases/omnichannel/',      title: /Verbara/, h1: /.+/ },
-  { path: '/use-cases/cpaas/',            title: /Verbara/, h1: /.+/ },
+  { path: '/use-cases/programmable-telephony/',            title: /Verbara/, h1: /.+/ },
 ];
 
 const LOCALE_PREFIXES = ['', '/en-US', '/pt-BR'];

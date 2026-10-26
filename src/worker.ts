@@ -19,6 +19,7 @@
 
 import { onRequestPost as developerLicensePost } from '../functions/api/developer-license/index';
 import { runDriftDetection } from './drift-detection';
+import { legacyRedirectTarget } from './legacy-redirects';
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
@@ -50,6 +51,12 @@ export default {
       // Cast Env to the shape the function expects (it has its own ambient interface).
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return developerLicensePost({ request, env: env as any, waitUntil: ctx.waitUntil.bind(ctx) });
+    }
+
+    // Retired paths (e.g. /use-cases/cpaas/) -> 301 to where the page lives now.
+    const redirectTo = legacyRedirectTarget(url);
+    if (redirectTo !== null) {
+      return Response.redirect(redirectTo, 301);
     }
 
     // Anything else -> static assets binding (built Astro site).

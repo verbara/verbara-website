@@ -19,7 +19,7 @@ for (const prefix of LOCALE_PREFIXES) {
     await expect(solutionsSection).toBeVisible();
     const spokeCards = solutionsSection.locator('[data-spoke]');
     await expect(spokeCards).toHaveCount(4);
-    for (const slug of ['cc', 'voiceai', 'omnichannel', 'cpaas']) {
+    for (const slug of ['cc', 'voiceai', 'omnichannel', 'programmable-telephony']) {
       await expect(solutionsSection.locator(`[data-spoke="${slug}"]`)).toBeVisible();
     }
 
@@ -51,7 +51,7 @@ for (const prefix of LOCALE_PREFIXES) {
       cc:           `${prefix}/use-cases/contact-center/`,
       voiceai:      `${prefix}/use-cases/voice-ai/`,
       omnichannel:  `${prefix}/use-cases/omnichannel/`,
-      cpaas:        `${prefix}/use-cases/cpaas/`,
+      'programmable-telephony': `${prefix}/use-cases/programmable-telephony/`,
     };
 
     for (const [slug, expectedHref] of Object.entries(expectedHrefs)) {

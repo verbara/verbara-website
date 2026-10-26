@@ -54,7 +54,7 @@ for (const prefix of LOCALE_PREFIXES) {
     await summary.click();
 
     // After expanding, the spoke links should be visible inside the details.
-    const spokeLinks = details.locator('a').filter({ hasText: /Center|AI|Omnichannel|CPaaS/ });
+    const spokeLinks = details.locator('a').filter({ hasText: /Center|AI|Omnichannel|[Tt]elephony|Telefon/ });
     expect(await spokeLinks.count()).toBeGreaterThanOrEqual(4);
   });
 }
