@@ -550,9 +550,9 @@ export interface Messages {
 
 const es_419: Messages = {
   meta: {
-    site_title: 'Verbara — Software open-core honesto para contact center',
+    site_title: 'Verbara — Software open-core honesto para contact center omnicanal',
     site_description:
-      'Verbara es software open-core para contact center: motor auditable, módulos comerciales. Se instala en tu infraestructura. No ofrecemos servicio alojado. Sin tarifas por minuto.',
+      'Verbara es software de contact center omnicanal que se licencia para que cada empresa lo instale y opere en su propia infraestructura. Open-core: motor auditable y módulos comerciales, sin tarifas por minuto.',
   },
   nav: {
     pricing: 'Precios',
@@ -566,7 +566,7 @@ const es_419: Messages = {
     solutions_all: 'Ver todas las soluciones →',
   },
   footer: {
-    tagline: 'Software open-core honesto para contact center.',
+    tagline: 'Verbara es software de contact center omnicanal que se licencia para que cada empresa lo instale y opere en su propia infraestructura.',
     column_resources: 'Recursos',
     resources_contact_sales: 'Contactar ventas',
     column_legal: 'Legal',
@@ -615,7 +615,7 @@ const es_419: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'El runtime open-core de comunicaciones que puedes',
     hero_h1_accent: 'auditar, ejecutar, poseer.',
-    hero_sub: 'Open-core, Asterisk-native. Corre tu contact center, voice AI, omnichannel y más sobre un solo stack auditable. En tu data center o en tu nube: se instala en tu infraestructura.',
+    hero_sub: 'Verbara es software de contact center omnicanal que se licencia para que cada empresa lo instale y opere en su propia infraestructura. Open-core y Asterisk-native: contact center, voice AI, omnichannel y más sobre un solo stack auditable, en tu data center o en tu nube.',
     hero_cta_primary: 'Corre el stack →',
     hero_cta_secondary: 'Ver soluciones →',
     hero_cta_dev_license: 'o consigue una licencia developer — gratis, firmada, válida 30 días →',
@@ -1086,9 +1086,9 @@ const es_419: Messages = {
 
 const en_US: Messages = {
   meta: {
-    site_title: 'Verbara — Open-core honest contact-center software',
+    site_title: 'Verbara — Open-core honest omnichannel contact-center software',
     site_description:
-      'Verbara is open-core contact-center software: auditable engine, commercial overlays. It installs on your infrastructure. We do not offer a hosted service. No per-minute fees.',
+      'Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure. Open-core: auditable engine and commercial overlays, no per-minute fees.',
   },
   nav: {
     pricing: 'Pricing',
@@ -1102,7 +1102,7 @@ const en_US: Messages = {
     solutions_all: 'See all solutions →',
   },
   footer: {
-    tagline: 'Open-core honest contact-center software.',
+    tagline: 'Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure.',
     column_resources: 'Resources',
     resources_contact_sales: 'Contact sales',
     column_legal: 'Legal',
@@ -1151,7 +1151,7 @@ const en_US: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'The open-core comms runtime you can',
     hero_h1_accent: 'audit, self-host, own.',
-    hero_sub: 'Open-core, Asterisk-native. Run your contact center, voice AI, omnichannel, and more on one auditable stack. In your data center or your cloud: it installs on your infrastructure.',
+    hero_sub: 'Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure. Open-core and Asterisk-native: contact center, voice AI, omnichannel, and more on one auditable stack, in your data center or your cloud.',
     hero_cta_primary: 'Run the stack →',
     hero_cta_secondary: 'See solutions →',
     hero_cta_dev_license: 'or get a developer license — free, signed, valid 30 days →',
@@ -1622,9 +1622,9 @@ const en_US: Messages = {
 
 const pt_BR: Messages = {
   meta: {
-    site_title: 'Verbara — Software open-core honesto para contact center',
+    site_title: 'Verbara — Software open-core honesto para contact center omnichannel',
     site_description:
-      'Verbara é software open-core para contact center: motor auditável, módulos comerciais. É instalado na sua infraestrutura. Não oferecemos serviço hospedado. Sem tarifas por minuto.',
+      'A Verbara é um software de contact center omnichannel, licenciado para que cada empresa o instale e opere em sua própria infraestrutura. Open-core: motor auditável e módulos comerciais, sem tarifas por minuto.',
   },
   nav: {
     pricing: 'Preços',
@@ -1638,7 +1638,7 @@ const pt_BR: Messages = {
     solutions_all: 'Ver todas as soluções →',
   },
   footer: {
-    tagline: 'Software open-core honesto para contact center.',
+    tagline: 'A Verbara é um software de contact center omnichannel, licenciado para que cada empresa o instale e opere em sua própria infraestrutura.',
     column_resources: 'Recursos',
     resources_contact_sales: 'Contatar vendas',
     column_legal: 'Legal',
@@ -1687,7 +1687,7 @@ const pt_BR: Messages = {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
     hero_h1_pre: 'O runtime open-core de comunicações que você pode',
     hero_h1_accent: 'auditar, executar, possuir.',
-    hero_sub: 'Open-core, nativo no Asterisk. Rode seu contact center, voice AI, omnichannel e mais sobre um único stack auditável. No seu data center ou na sua nuvem: instalado na sua infraestrutura.',
+    hero_sub: 'A Verbara é um software de contact center omnichannel, licenciado para que cada empresa o instale e opere em sua própria infraestrutura. Open-core e nativo no Asterisk: contact center, voice AI, omnichannel e mais sobre um único stack auditável, no seu data center ou na sua nuvem.',
     hero_cta_primary: 'Rode o stack →',
     hero_cta_secondary: 'Ver soluções →',
     hero_cta_dev_license: 'ou pegue uma licença developer — grátis, assinada, válida 30 dias →',

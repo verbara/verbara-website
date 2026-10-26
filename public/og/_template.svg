@@ -34,12 +34,18 @@
         fill="#e8eef5">you can <tspan fill="#ffb547">audit, self-host, own.</tspan></text>
 
   <!-- Subline -->
-  <text x="80" y="470"
+  <text x="80" y="466"
         font-family="'Geist Sans', 'Helvetica Neue', sans-serif"
         font-weight="500"
-        font-size="28"
+        font-size="26"
         letter-spacing="-0.5"
-        fill="rgba(232,238,245,0.65)">Self-hosted, open-core contact-center software. Asterisk-native.</text>
+        fill="rgba(232,238,245,0.65)">Omnichannel contact-center software licensed for each company</text>
+  <text x="80" y="502"
+        font-family="'Geist Sans', 'Helvetica Neue', sans-serif"
+        font-weight="500"
+        font-size="26"
+        letter-spacing="-0.5"
+        fill="rgba(232,238,245,0.65)">to install and operate on its own infrastructure.</text>
 
   <!-- Bottom strip: URL + license badges -->
   <text x="80" y="570"

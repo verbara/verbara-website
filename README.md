@@ -1,6 +1,6 @@
 # Verbara Website
 
-> Marketing site for **Verbara**, self-hosted open-core contact-center software — `verbara.io`.
+> Marketing site for **Verbara** — `verbara.io`. Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure.
 
 Public-facing static site built with [Astro 6](https://astro.build) on the [Tailwind v4](https://tailwindcss.com) "Signal" design system, deployed as a [Cloudflare Worker](https://workers.cloudflare.com) with the Static Assets pattern, with form submissions handled by a bridged Pages-Function endpoint backed by [D1 SQLite](https://developers.cloudflare.com/d1/) (audit log) + [KV](https://developers.cloudflare.com/kv/) (rate-limit) and outbound transactional email via [Resend](https://resend.com).
 
