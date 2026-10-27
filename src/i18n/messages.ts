@@ -614,7 +614,7 @@ const es_419: Messages = {
   },
   home: {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
-    hero_h1_pre: 'El runtime open-core de comunicaciones que puedes',
+    hero_h1_pre: 'El runtime de comunicaciones que puedes',
     hero_h1_accent: 'auditar, ejecutar, poseer.',
     hero_sub: 'Verbara es software de contact center omnicanal que se licencia para que cada empresa lo instale y opere en su propia infraestructura. Open-core: motor auditable y módulos comerciales, sin tarifas por minuto. Asterisk-native: contact center, voice AI, omnichannel y más sobre un solo stack auditable, en tu data center o en tu nube.',
     hero_cta_primary: 'Corre el stack →',
@@ -1151,7 +1151,7 @@ const en_US: Messages = {
   },
   home: {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
-    hero_h1_pre: 'The open-core comms runtime you can',
+    hero_h1_pre: 'The comms runtime you can',
     hero_h1_accent: 'audit, self-host, own.',
     hero_sub: 'Verbara is omnichannel contact-center software, licensed for each company to install and operate on its own infrastructure. Open-core: auditable engine and commercial overlays, no per-minute fees. Asterisk-native: contact center, voice AI, omnichannel, and more on one auditable stack, in your data center or your cloud.',
     hero_cta_primary: 'Run the stack →',
@@ -1688,7 +1688,7 @@ const pt_BR: Messages = {
   },
   home: {
     hero_eyebrow: 'MIT SDK · Apache Platform · 0 vulns',
-    hero_h1_pre: 'O runtime open-core de comunicações que você pode',
+    hero_h1_pre: 'O runtime de comunicações que você pode',
     hero_h1_accent: 'auditar, executar, possuir.',
     hero_sub: 'A Verbara é um software de contact center omnichannel, licenciado para que cada empresa o instale e opere em sua própria infraestrutura. Open-core: motor auditável e módulos comerciais, sem tarifas por minuto. Nativo no Asterisk: contact center, voice AI, omnichannel e mais sobre um único stack auditável, no seu data center ou na sua nuvem.',
     hero_cta_primary: 'Rode o stack →',
