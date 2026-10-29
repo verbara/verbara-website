@@ -35,3 +35,11 @@ dotnet run --project scripts/licence-parity/StjVectors -- tests/fixtures/stj-can
 Regenerate only with this generator, never by hand. Re-run it when the validator moves to a new
 .NET version: if the default encoder changed, the diff shows it and the unit tests go red. Apart
 from `metadata`, the output is deterministic.
+
+## ProValidate and pro-parity.ts: the end-to-end check
+
+`pro-parity.ts` issues licences through the real `onRequestPost` handler with an ephemeral key and
+`ProValidate/` checks them with the real licence reader and validator. It is a maintainer-only
+check: it needs a local checkout of the licensing validator, passed as the required `--pro-dir`
+argument, and never runs in CI. How to run it and read its output:
+`docs/operations/issuer-setup.md`, "Licence parity check".

@@ -206,6 +206,43 @@ diff /tmp/dotnet-canonical /tmp/worker-canonical
 
 Then verify both `.lic` files validate against the same public key inside a Pro consumer (see Pro test suite for the validator harness).
 
+## Licence parity check (maintainer-only)
+
+The validator re-serializes each licence with System.Text.Json and checks the signature over those
+bytes, so the issuer must sign exactly what System.Text.Json writes, including for licensees with
+`+`, `&`, quotes, angle brackets or non-ASCII characters. The unit tests pin that against committed
+golden vectors (`scripts/licence-parity/README.md`). This check goes one step further and runs the
+real validator. It is a maintainer-only check: it needs the .NET 10 SDK and a local checkout of the
+licensing validator, which is not part of this repository, and it never runs in CI.
+
+From the repository root:
+
+```sh
+npx tsx scripts/licence-parity/pro-parity.ts --pro-dir <dir>
+```
+
+`--pro-dir` is required and has no default: it is a checkout of the licensing validator. The script
+issues one licence per case (plain ASCII, `+` tags, `&`, quotes, non-ASCII, a character outside the
+BMP, a company cut before a surrogate pair, and lone surrogates) through the real `onRequestPost`
+handler, signed with an ephemeral P-256 key. It then loads each `.lic` with the licence reader and
+checks it with the licence validator, and prints one line per licence:
+
+```text
+plus-tag-company.lic	Valid
+```
+
+The result is a validator result (`Valid`, `Invalid`, ...) or `LoadFailed` when the reader rejects
+the file. The script exits 0 only when every licence is `Valid`. The checkout is only read: the
+build output, a fresh restore lock file and the issued licences go to a temporary directory
+(`--out <dir>` keeps the licences somewhere else).
+
+To compare with an older issuer, pass `--ref <git-ref>`: the handler is then taken as committed at
+that ref. An issuer that signs `JSON.stringify` output shows the escaped licensees `Invalid` and the
+plain ASCII ones `Valid`.
+
+Re-run this check when the validator moves to a new .NET version, together with the golden-vector
+generator.
+
 ## Recovery scenarios
 
 | Scenario | Recovery |
