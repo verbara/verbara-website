@@ -1,0 +1,6 @@
+<Project>
+  <!--
+    Stops MSBuild from importing a Directory.Build.targets from any folder above
+    this repo, so the generator builds the same way on every machine.
+  -->
+</Project>

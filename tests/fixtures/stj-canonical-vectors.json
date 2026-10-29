@@ -1,0 +1,1996 @@
+{
+  "metadata": {
+    "generator": "scripts/licence-parity/StjVectors",
+    "runtime": ".NET 10.0.14",
+    "systemTextJson": "10.0.14+0427b9abbead3fa64c6655eb4290c537397131fa",
+    "generatedOn": "2026-10-29",
+    "serializer": "JsonSerializer.Serialize through a source-generated JsonSerializerContext with default options (JavaScriptEncoder.Default)",
+    "encoding": "`input` and `fields.Licensee` are arrays of UTF-16 code units; `stj` is the exact serializer output"
+  },
+  "strings": [
+    {
+      "label": "U+0000",
+      "input": [
+        0
+      ],
+      "stj": "\"\\u0000\""
+    },
+    {
+      "label": "U+0001",
+      "input": [
+        1
+      ],
+      "stj": "\"\\u0001\""
+    },
+    {
+      "label": "U+0002",
+      "input": [
+        2
+      ],
+      "stj": "\"\\u0002\""
+    },
+    {
+      "label": "U+0003",
+      "input": [
+        3
+      ],
+      "stj": "\"\\u0003\""
+    },
+    {
+      "label": "U+0004",
+      "input": [
+        4
+      ],
+      "stj": "\"\\u0004\""
+    },
+    {
+      "label": "U+0005",
+      "input": [
+        5
+      ],
+      "stj": "\"\\u0005\""
+    },
+    {
+      "label": "U+0006",
+      "input": [
+        6
+      ],
+      "stj": "\"\\u0006\""
+    },
+    {
+      "label": "U+0007",
+      "input": [
+        7
+      ],
+      "stj": "\"\\u0007\""
+    },
+    {
+      "label": "U+0008",
+      "input": [
+        8
+      ],
+      "stj": "\"\\b\""
+    },
+    {
+      "label": "U+0009",
+      "input": [
+        9
+      ],
+      "stj": "\"\\t\""
+    },
+    {
+      "label": "U+000A",
+      "input": [
+        10
+      ],
+      "stj": "\"\\n\""
+    },
+    {
+      "label": "U+000B",
+      "input": [
+        11
+      ],
+      "stj": "\"\\u000B\""
+    },
+    {
+      "label": "U+000C",
+      "input": [
+        12
+      ],
+      "stj": "\"\\f\""
+    },
+    {
+      "label": "U+000D",
+      "input": [
+        13
+      ],
+      "stj": "\"\\r\""
+    },
+    {
+      "label": "U+000E",
+      "input": [
+        14
+      ],
+      "stj": "\"\\u000E\""
+    },
+    {
+      "label": "U+000F",
+      "input": [
+        15
+      ],
+      "stj": "\"\\u000F\""
+    },
+    {
+      "label": "U+0010",
+      "input": [
+        16
+      ],
+      "stj": "\"\\u0010\""
+    },
+    {
+      "label": "U+0011",
+      "input": [
+        17
+      ],
+      "stj": "\"\\u0011\""
+    },
+    {
+      "label": "U+0012",
+      "input": [
+        18
+      ],
+      "stj": "\"\\u0012\""
+    },
+    {
+      "label": "U+0013",
+      "input": [
+        19
+      ],
+      "stj": "\"\\u0013\""
+    },
+    {
+      "label": "U+0014",
+      "input": [
+        20
+      ],
+      "stj": "\"\\u0014\""
+    },
+    {
+      "label": "U+0015",
+      "input": [
+        21
+      ],
+      "stj": "\"\\u0015\""
+    },
+    {
+      "label": "U+0016",
+      "input": [
+        22
+      ],
+      "stj": "\"\\u0016\""
+    },
+    {
+      "label": "U+0017",
+      "input": [
+        23
+      ],
+      "stj": "\"\\u0017\""
+    },
+    {
+      "label": "U+0018",
+      "input": [
+        24
+      ],
+      "stj": "\"\\u0018\""
+    },
+    {
+      "label": "U+0019",
+      "input": [
+        25
+      ],
+      "stj": "\"\\u0019\""
+    },
+    {
+      "label": "U+001A",
+      "input": [
+        26
+      ],
+      "stj": "\"\\u001A\""
+    },
+    {
+      "label": "U+001B",
+      "input": [
+        27
+      ],
+      "stj": "\"\\u001B\""
+    },
+    {
+      "label": "U+001C",
+      "input": [
+        28
+      ],
+      "stj": "\"\\u001C\""
+    },
+    {
+      "label": "U+001D",
+      "input": [
+        29
+      ],
+      "stj": "\"\\u001D\""
+    },
+    {
+      "label": "U+001E",
+      "input": [
+        30
+      ],
+      "stj": "\"\\u001E\""
+    },
+    {
+      "label": "U+001F",
+      "input": [
+        31
+      ],
+      "stj": "\"\\u001F\""
+    },
+    {
+      "label": "U+0020",
+      "input": [
+        32
+      ],
+      "stj": "\" \""
+    },
+    {
+      "label": "U+0021",
+      "input": [
+        33
+      ],
+      "stj": "\"!\""
+    },
+    {
+      "label": "U+0022",
+      "input": [
+        34
+      ],
+      "stj": "\"\\u0022\""
+    },
+    {
+      "label": "U+0023",
+      "input": [
+        35
+      ],
+      "stj": "\"#\""
+    },
+    {
+      "label": "U+0024",
+      "input": [
+        36
+      ],
+      "stj": "\"$\""
+    },
+    {
+      "label": "U+0025",
+      "input": [
+        37
+      ],
+      "stj": "\"%\""
+    },
+    {
+      "label": "U+0026",
+      "input": [
+        38
+      ],
+      "stj": "\"\\u0026\""
+    },
+    {
+      "label": "U+0027",
+      "input": [
+        39
+      ],
+      "stj": "\"\\u0027\""
+    },
+    {
+      "label": "U+0028",
+      "input": [
+        40
+      ],
+      "stj": "\"(\""
+    },
+    {
+      "label": "U+0029",
+      "input": [
+        41
+      ],
+      "stj": "\")\""
+    },
+    {
+      "label": "U+002A",
+      "input": [
+        42
+      ],
+      "stj": "\"*\""
+    },
+    {
+      "label": "U+002B",
+      "input": [
+        43
+      ],
+      "stj": "\"\\u002B\""
+    },
+    {
+      "label": "U+002C",
+      "input": [
+        44
+      ],
+      "stj": "\",\""
+    },
+    {
+      "label": "U+002D",
+      "input": [
+        45
+      ],
+      "stj": "\"-\""
+    },
+    {
+      "label": "U+002E",
+      "input": [
+        46
+      ],
+      "stj": "\".\""
+    },
+    {
+      "label": "U+002F",
+      "input": [
+        47
+      ],
+      "stj": "\"/\""
+    },
+    {
+      "label": "U+0030",
+      "input": [
+        48
+      ],
+      "stj": "\"0\""
+    },
+    {
+      "label": "U+0031",
+      "input": [
+        49
+      ],
+      "stj": "\"1\""
+    },
+    {
+      "label": "U+0032",
+      "input": [
+        50
+      ],
+      "stj": "\"2\""
+    },
+    {
+      "label": "U+0033",
+      "input": [
+        51
+      ],
+      "stj": "\"3\""
+    },
+    {
+      "label": "U+0034",
+      "input": [
+        52
+      ],
+      "stj": "\"4\""
+    },
+    {
+      "label": "U+0035",
+      "input": [
+        53
+      ],
+      "stj": "\"5\""
+    },
+    {
+      "label": "U+0036",
+      "input": [
+        54
+      ],
+      "stj": "\"6\""
+    },
+    {
+      "label": "U+0037",
+      "input": [
+        55
+      ],
+      "stj": "\"7\""
+    },
+    {
+      "label": "U+0038",
+      "input": [
+        56
+      ],
+      "stj": "\"8\""
+    },
+    {
+      "label": "U+0039",
+      "input": [
+        57
+      ],
+      "stj": "\"9\""
+    },
+    {
+      "label": "U+003A",
+      "input": [
+        58
+      ],
+      "stj": "\":\""
+    },
+    {
+      "label": "U+003B",
+      "input": [
+        59
+      ],
+      "stj": "\";\""
+    },
+    {
+      "label": "U+003C",
+      "input": [
+        60
+      ],
+      "stj": "\"\\u003C\""
+    },
+    {
+      "label": "U+003D",
+      "input": [
+        61
+      ],
+      "stj": "\"=\""
+    },
+    {
+      "label": "U+003E",
+      "input": [
+        62
+      ],
+      "stj": "\"\\u003E\""
+    },
+    {
+      "label": "U+003F",
+      "input": [
+        63
+      ],
+      "stj": "\"?\""
+    },
+    {
+      "label": "U+0040",
+      "input": [
+        64
+      ],
+      "stj": "\"@\""
+    },
+    {
+      "label": "U+0041",
+      "input": [
+        65
+      ],
+      "stj": "\"A\""
+    },
+    {
+      "label": "U+0042",
+      "input": [
+        66
+      ],
+      "stj": "\"B\""
+    },
+    {
+      "label": "U+0043",
+      "input": [
+        67
+      ],
+      "stj": "\"C\""
+    },
+    {
+      "label": "U+0044",
+      "input": [
+        68
+      ],
+      "stj": "\"D\""
+    },
+    {
+      "label": "U+0045",
+      "input": [
+        69
+      ],
+      "stj": "\"E\""
+    },
+    {
+      "label": "U+0046",
+      "input": [
+        70
+      ],
+      "stj": "\"F\""
+    },
+    {
+      "label": "U+0047",
+      "input": [
+        71
+      ],
+      "stj": "\"G\""
+    },
+    {
+      "label": "U+0048",
+      "input": [
+        72
+      ],
+      "stj": "\"H\""
+    },
+    {
+      "label": "U+0049",
+      "input": [
+        73
+      ],
+      "stj": "\"I\""
+    },
+    {
+      "label": "U+004A",
+      "input": [
+        74
+      ],
+      "stj": "\"J\""
+    },
+    {
+      "label": "U+004B",
+      "input": [
+        75
+      ],
+      "stj": "\"K\""
+    },
+    {
+      "label": "U+004C",
+      "input": [
+        76
+      ],
+      "stj": "\"L\""
+    },
+    {
+      "label": "U+004D",
+      "input": [
+        77
+      ],
+      "stj": "\"M\""
+    },
+    {
+      "label": "U+004E",
+      "input": [
+        78
+      ],
+      "stj": "\"N\""
+    },
+    {
+      "label": "U+004F",
+      "input": [
+        79
+      ],
+      "stj": "\"O\""
+    },
+    {
+      "label": "U+0050",
+      "input": [
+        80
+      ],
+      "stj": "\"P\""
+    },
+    {
+      "label": "U+0051",
+      "input": [
+        81
+      ],
+      "stj": "\"Q\""
+    },
+    {
+      "label": "U+0052",
+      "input": [
+        82
+      ],
+      "stj": "\"R\""
+    },
+    {
+      "label": "U+0053",
+      "input": [
+        83
+      ],
+      "stj": "\"S\""
+    },
+    {
+      "label": "U+0054",
+      "input": [
+        84
+      ],
+      "stj": "\"T\""
+    },
+    {
+      "label": "U+0055",
+      "input": [
+        85
+      ],
+      "stj": "\"U\""
+    },
+    {
+      "label": "U+0056",
+      "input": [
+        86
+      ],
+      "stj": "\"V\""
+    },
+    {
+      "label": "U+0057",
+      "input": [
+        87
+      ],
+      "stj": "\"W\""
+    },
+    {
+      "label": "U+0058",
+      "input": [
+        88
+      ],
+      "stj": "\"X\""
+    },
+    {
+      "label": "U+0059",
+      "input": [
+        89
+      ],
+      "stj": "\"Y\""
+    },
+    {
+      "label": "U+005A",
+      "input": [
+        90
+      ],
+      "stj": "\"Z\""
+    },
+    {
+      "label": "U+005B",
+      "input": [
+        91
+      ],
+      "stj": "\"[\""
+    },
+    {
+      "label": "U+005C",
+      "input": [
+        92
+      ],
+      "stj": "\"\\\\\""
+    },
+    {
+      "label": "U+005D",
+      "input": [
+        93
+      ],
+      "stj": "\"]\""
+    },
+    {
+      "label": "U+005E",
+      "input": [
+        94
+      ],
+      "stj": "\"^\""
+    },
+    {
+      "label": "U+005F",
+      "input": [
+        95
+      ],
+      "stj": "\"_\""
+    },
+    {
+      "label": "U+0060",
+      "input": [
+        96
+      ],
+      "stj": "\"\\u0060\""
+    },
+    {
+      "label": "U+0061",
+      "input": [
+        97
+      ],
+      "stj": "\"a\""
+    },
+    {
+      "label": "U+0062",
+      "input": [
+        98
+      ],
+      "stj": "\"b\""
+    },
+    {
+      "label": "U+0063",
+      "input": [
+        99
+      ],
+      "stj": "\"c\""
+    },
+    {
+      "label": "U+0064",
+      "input": [
+        100
+      ],
+      "stj": "\"d\""
+    },
+    {
+      "label": "U+0065",
+      "input": [
+        101
+      ],
+      "stj": "\"e\""
+    },
+    {
+      "label": "U+0066",
+      "input": [
+        102
+      ],
+      "stj": "\"f\""
+    },
+    {
+      "label": "U+0067",
+      "input": [
+        103
+      ],
+      "stj": "\"g\""
+    },
+    {
+      "label": "U+0068",
+      "input": [
+        104
+      ],
+      "stj": "\"h\""
+    },
+    {
+      "label": "U+0069",
+      "input": [
+        105
+      ],
+      "stj": "\"i\""
+    },
+    {
+      "label": "U+006A",
+      "input": [
+        106
+      ],
+      "stj": "\"j\""
+    },
+    {
+      "label": "U+006B",
+      "input": [
+        107
+      ],
+      "stj": "\"k\""
+    },
+    {
+      "label": "U+006C",
+      "input": [
+        108
+      ],
+      "stj": "\"l\""
+    },
+    {
+      "label": "U+006D",
+      "input": [
+        109
+      ],
+      "stj": "\"m\""
+    },
+    {
+      "label": "U+006E",
+      "input": [
+        110
+      ],
+      "stj": "\"n\""
+    },
+    {
+      "label": "U+006F",
+      "input": [
+        111
+      ],
+      "stj": "\"o\""
+    },
+    {
+      "label": "U+0070",
+      "input": [
+        112
+      ],
+      "stj": "\"p\""
+    },
+    {
+      "label": "U+0071",
+      "input": [
+        113
+      ],
+      "stj": "\"q\""
+    },
+    {
+      "label": "U+0072",
+      "input": [
+        114
+      ],
+      "stj": "\"r\""
+    },
+    {
+      "label": "U+0073",
+      "input": [
+        115
+      ],
+      "stj": "\"s\""
+    },
+    {
+      "label": "U+0074",
+      "input": [
+        116
+      ],
+      "stj": "\"t\""
+    },
+    {
+      "label": "U+0075",
+      "input": [
+        117
+      ],
+      "stj": "\"u\""
+    },
+    {
+      "label": "U+0076",
+      "input": [
+        118
+      ],
+      "stj": "\"v\""
+    },
+    {
+      "label": "U+0077",
+      "input": [
+        119
+      ],
+      "stj": "\"w\""
+    },
+    {
+      "label": "U+0078",
+      "input": [
+        120
+      ],
+      "stj": "\"x\""
+    },
+    {
+      "label": "U+0079",
+      "input": [
+        121
+      ],
+      "stj": "\"y\""
+    },
+    {
+      "label": "U+007A",
+      "input": [
+        122
+      ],
+      "stj": "\"z\""
+    },
+    {
+      "label": "U+007B",
+      "input": [
+        123
+      ],
+      "stj": "\"{\""
+    },
+    {
+      "label": "U+007C",
+      "input": [
+        124
+      ],
+      "stj": "\"|\""
+    },
+    {
+      "label": "U+007D",
+      "input": [
+        125
+      ],
+      "stj": "\"}\""
+    },
+    {
+      "label": "U+007E",
+      "input": [
+        126
+      ],
+      "stj": "\"~\""
+    },
+    {
+      "label": "U+007F",
+      "input": [
+        127
+      ],
+      "stj": "\"\\u007F\""
+    },
+    {
+      "label": "latin1 U+0080",
+      "input": [
+        128
+      ],
+      "stj": "\"\\u0080\""
+    },
+    {
+      "label": "latin1 U+009F",
+      "input": [
+        159
+      ],
+      "stj": "\"\\u009F\""
+    },
+    {
+      "label": "latin1 NBSP U+00A0",
+      "input": [
+        160
+      ],
+      "stj": "\"\\u00A0\""
+    },
+    {
+      "label": "latin1 inverted exclamation U+00A1",
+      "input": [
+        161
+      ],
+      "stj": "\"\\u00A1\""
+    },
+    {
+      "label": "latin1 copyright U+00A9",
+      "input": [
+        169
+      ],
+      "stj": "\"\\u00A9\""
+    },
+    {
+      "label": "latin1 soft hyphen U+00AD",
+      "input": [
+        173
+      ],
+      "stj": "\"\\u00AD\""
+    },
+    {
+      "label": "latin1 inverted question U+00BF",
+      "input": [
+        191
+      ],
+      "stj": "\"\\u00BF\""
+    },
+    {
+      "label": "latin1 A grave U+00C0",
+      "input": [
+        192
+      ],
+      "stj": "\"\\u00C0\""
+    },
+    {
+      "label": "latin1 c cedilla U+00E7",
+      "input": [
+        231
+      ],
+      "stj": "\"\\u00E7\""
+    },
+    {
+      "label": "latin1 e acute U+00E9",
+      "input": [
+        233
+      ],
+      "stj": "\"\\u00E9\""
+    },
+    {
+      "label": "latin1 n tilde U+00F1",
+      "input": [
+        241
+      ],
+      "stj": "\"\\u00F1\""
+    },
+    {
+      "label": "latin1 o stroke U+00F8",
+      "input": [
+        248
+      ],
+      "stj": "\"\\u00F8\""
+    },
+    {
+      "label": "latin1 u diaeresis U+00FC",
+      "input": [
+        252
+      ],
+      "stj": "\"\\u00FC\""
+    },
+    {
+      "label": "latin1 sharp s U+00DF",
+      "input": [
+        223
+      ],
+      "stj": "\"\\u00DF\""
+    },
+    {
+      "label": "latin1 y diaeresis U+00FF",
+      "input": [
+        255
+      ],
+      "stj": "\"\\u00FF\""
+    },
+    {
+      "label": "latin ext S caron U+0160",
+      "input": [
+        352
+      ],
+      "stj": "\"\\u0160\""
+    },
+    {
+      "label": "cjk zhongwen",
+      "input": [
+        20013,
+        25991
+      ],
+      "stj": "\"\\u4E2D\\u6587\""
+    },
+    {
+      "label": "cjk nihon",
+      "input": [
+        26085,
+        26412
+      ],
+      "stj": "\"\\u65E5\\u672C\""
+    },
+    {
+      "label": "hiragana a U+3042",
+      "input": [
+        12354
+      ],
+      "stj": "\"\\u3042\""
+    },
+    {
+      "label": "hangul han U+D55C",
+      "input": [
+        54620
+      ],
+      "stj": "\"\\uD55C\""
+    },
+    {
+      "label": "hebrew shalom",
+      "input": [
+        1513,
+        1500,
+        1493,
+        1501
+      ],
+      "stj": "\"\\u05E9\\u05DC\\u05D5\\u05DD\""
+    },
+    {
+      "label": "arabic marhaban",
+      "input": [
+        1605,
+        1585,
+        1581,
+        1576,
+        1575
+      ],
+      "stj": "\"\\u0645\\u0631\\u062D\\u0628\\u0627\""
+    },
+    {
+      "label": "right-to-left mark U+200F",
+      "input": [
+        8207
+      ],
+      "stj": "\"\\u200F\""
+    },
+    {
+      "label": "zero width joiner U+200D",
+      "input": [
+        8205
+      ],
+      "stj": "\"\\u200D\""
+    },
+    {
+      "label": "line separator U+2028",
+      "input": [
+        8232
+      ],
+      "stj": "\"\\u2028\""
+    },
+    {
+      "label": "paragraph separator U+2029",
+      "input": [
+        8233
+      ],
+      "stj": "\"\\u2029\""
+    },
+    {
+      "label": "euro sign U+20AC",
+      "input": [
+        8364
+      ],
+      "stj": "\"\\u20AC\""
+    },
+    {
+      "label": "byte order mark U+FEFF",
+      "input": [
+        65279
+      ],
+      "stj": "\"\\uFEFF\""
+    },
+    {
+      "label": "replacement character U+FFFD",
+      "input": [
+        65533
+      ],
+      "stj": "\"\\uFFFD\""
+    },
+    {
+      "label": "noncharacter U+FFFF",
+      "input": [
+        65535
+      ],
+      "stj": "\"\\uFFFF\""
+    },
+    {
+      "label": "emoji U+1F600 (surrogate pair)",
+      "input": [
+        55357,
+        56832
+      ],
+      "stj": "\"\\uD83D\\uDE00\""
+    },
+    {
+      "label": "emoji U+1F680 in text",
+      "input": [
+        82,
+        111,
+        99,
+        107,
+        101,
+        116,
+        32,
+        55357,
+        56960,
+        32,
+        76,
+        97,
+        98,
+        115
+      ],
+      "stj": "\"Rocket \\uD83D\\uDE80 Labs\""
+    },
+    {
+      "label": "lone high surrogate U+D83D",
+      "input": [
+        55357
+      ],
+      "stj": "\"\\uFFFD\""
+    },
+    {
+      "label": "lone low surrogate U+DE00",
+      "input": [
+        56832
+      ],
+      "stj": "\"\\uFFFD\""
+    },
+    {
+      "label": "lone high surrogate between ASCII",
+      "input": [
+        97,
+        55296,
+        98
+      ],
+      "stj": "\"a\\uFFFDb\""
+    },
+    {
+      "label": "lone low surrogate between ASCII",
+      "input": [
+        97,
+        56320,
+        98
+      ],
+      "stj": "\"a\\uFFFDb\""
+    },
+    {
+      "label": "reversed surrogate pair",
+      "input": [
+        56832,
+        55357
+      ],
+      "stj": "\"\\uFFFD\\uFFFD\""
+    },
+    {
+      "label": "high surrogate at end after text",
+      "input": [
+        65,
+        99,
+        109,
+        101,
+        32,
+        55357
+      ],
+      "stj": "\"Acme \\uFFFD\""
+    },
+    {
+      "label": "licensee plus tag",
+      "input": [
+        100,
+        101,
+        118,
+        43,
+        116,
+        114,
+        105,
+        97,
+        108,
+        64,
+        101,
+        120,
+        97,
+        109,
+        112,
+        108,
+        101,
+        46,
+        99,
+        111,
+        109
+      ],
+      "stj": "\"dev\\u002Btrial@example.com\""
+    },
+    {
+      "label": "licensee plus tag with company",
+      "input": [
+        100,
+        101,
+        118,
+        43,
+        116,
+        114,
+        105,
+        97,
+        108,
+        64,
+        101,
+        120,
+        97,
+        109,
+        112,
+        108,
+        101,
+        46,
+        99,
+        111,
+        109,
+        32,
+        40,
+        67,
+        97,
+        102,
+        233,
+        32,
+        38,
+        32,
+        83,
+        248,
+        110,
+        39,
+        115,
+        32,
+        60,
+        76,
+        116,
+        100,
+        62,
+        41
+      ],
+      "stj": "\"dev\\u002Btrial@example.com (Caf\\u00E9 \\u0026 S\\u00F8n\\u0027s \\u003CLtd\\u003E)\""
+    },
+    {
+      "label": "licensee quotes and backslash",
+      "input": [
+        111,
+        39,
+        110,
+        101,
+        105,
+        108,
+        64,
+        101,
+        120,
+        97,
+        109,
+        112,
+        108,
+        101,
+        46,
+        99,
+        111,
+        109,
+        32,
+        40,
+        65,
+        38,
+        66,
+        32,
+        34,
+        81,
+        117,
+        111,
+        116,
+        101,
+        115,
+        34,
+        32,
+        92,
+        32,
+        98,
+        97,
+        99,
+        107,
+        41
+      ],
+      "stj": "\"o\\u0027neil@example.com (A\\u0026B \\u0022Quotes\\u0022 \\\\ back)\""
+    },
+    {
+      "label": "licensee plain ascii",
+      "input": [
+        100,
+        101,
+        118,
+        64,
+        101,
+        120,
+        97,
+        109,
+        112,
+        108,
+        101,
+        46,
+        99,
+        111,
+        109,
+        32,
+        40,
+        65,
+        110,
+        97,
+        108,
+        121,
+        116,
+        105,
+        99,
+        97,
+        108,
+        32,
+        69,
+        110,
+        103,
+        105,
+        110,
+        101,
+        115,
+        41
+      ],
+      "stj": "\"dev@example.com (Analytical Engines)\""
+    }
+  ],
+  "payloads": [
+    {
+      "label": "ascii",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          65,
+          110,
+          97,
+          108,
+          121,
+          116,
+          105,
+          99,
+          97,
+          108,
+          32,
+          69,
+          110,
+          103,
+          105,
+          110,
+          101,
+          115,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev@example.com (Analytical Engines)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "ascii email only",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev@example.com\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "plus tag",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          43,
+          116,
+          114,
+          105,
+          97,
+          108,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev\\u002Btrial@example.com\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "plus tag with company",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          43,
+          116,
+          114,
+          105,
+          97,
+          108,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          67,
+          97,
+          102,
+          233,
+          32,
+          38,
+          32,
+          83,
+          248,
+          110,
+          39,
+          115,
+          32,
+          60,
+          76,
+          116,
+          100,
+          62,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev\\u002Btrial@example.com (Caf\\u00E9 \\u0026 S\\u00F8n\\u0027s \\u003CLtd\\u003E)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "quotes and backslash",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          111,
+          39,
+          110,
+          101,
+          105,
+          108,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          65,
+          38,
+          66,
+          32,
+          34,
+          81,
+          117,
+          111,
+          116,
+          101,
+          115,
+          34,
+          32,
+          92,
+          32,
+          98,
+          97,
+          99,
+          107,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"o\\u0027neil@example.com (A\\u0026B \\u0022Quotes\\u0022 \\\\ back)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "emoji company",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          82,
+          111,
+          99,
+          107,
+          101,
+          116,
+          32,
+          55357,
+          56960,
+          32,
+          76,
+          97,
+          98,
+          115,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev@example.com (Rocket \\uD83D\\uDE80 Labs)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "company truncated before a surrogate pair",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          100,
+          101,
+          118,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          65,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"dev@example.com (AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "lone surrogates sanitized to U+FFFD",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          68,
+          101,
+          118,
+          65533,
+          64,
+          69,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          65,
+          99,
+          109,
+          101,
+          32,
+          65533,
+          32,
+          76,
+          116,
+          100,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"Dev\\uFFFD@Example.com (Acme \\uFFFD Ltd)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "lone surrogates unsanitized",
+      "fields": {
+        "LicenseId": "00000000-0000-4000-8000-000000000001",
+        "Licensee": [
+          68,
+          101,
+          118,
+          56320,
+          64,
+          69,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          99,
+          111,
+          109,
+          32,
+          40,
+          65,
+          99,
+          109,
+          101,
+          32,
+          55296,
+          32,
+          76,
+          116,
+          100,
+          41
+        ],
+        "Tier": 1,
+        "ExpiresAt": "2026-11-27T23:59:59+00:00",
+        "Features": 4095,
+        "MaxAgents": 5,
+        "MaxNodes": 1
+      },
+      "stj": "{\"LicenseId\":\"00000000-0000-4000-8000-000000000001\",\"Licensee\":\"Dev\\uFFFD@Example.com (Acme \\uFFFD Ltd)\",\"Tier\":1,\"ExpiresAt\":\"2026-11-27T23:59:59+00:00\",\"Features\":4095,\"MaxAgents\":5,\"MaxNodes\":1}"
+    },
+    {
+      "label": "other integer values",
+      "fields": {
+        "LicenseId": "11111111-2222-4333-8444-555555555555",
+        "Licensee": [
+          111,
+          112,
+          115,
+          43,
+          98,
+          105,
+          108,
+          108,
+          105,
+          110,
+          103,
+          64,
+          101,
+          120,
+          97,
+          109,
+          112,
+          108,
+          101,
+          46,
+          111,
+          114,
+          103
+        ],
+        "Tier": 3,
+        "ExpiresAt": "2027-01-31T23:59:59+00:00",
+        "Features": 1,
+        "MaxAgents": 250,
+        "MaxNodes": 12
+      },
+      "stj": "{\"LicenseId\":\"11111111-2222-4333-8444-555555555555\",\"Licensee\":\"ops\\u002Bbilling@example.org\",\"Tier\":3,\"ExpiresAt\":\"2027-01-31T23:59:59+00:00\",\"Features\":1,\"MaxAgents\":250,\"MaxNodes\":12}"
+    }
+  ]
+}
