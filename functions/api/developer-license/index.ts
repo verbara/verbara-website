@@ -38,6 +38,7 @@
  * LicenseId, Licensee, Tier, ExpiresAt, Features, MaxAgents, MaxNodes.
  */
 
+import { replaceLoneSurrogates, stjCanonical, truncateUtf16Safe } from './canonical-json';
 import { FEATURES_ALL } from './license-features';
 
 interface Env {
@@ -219,7 +220,11 @@ function validateBody(body: unknown): ValidationResult {
   const b = body as Record<string, unknown>;
   const errors: Record<string, string> = {};
 
-  const email = typeof b.email === 'string' ? b.email.trim() : '';
+  // Lone surrogates become U+FFFD here, before the email is normalised for the
+  // dedup lookup and before the licensee is built, so the signed bytes, the
+  // .lic and the audit row all carry the same well-formed string (the
+  // validator's JSON reader rejects an unpaired surrogate escape).
+  const email = typeof b.email === 'string' ? replaceLoneSurrogates(b.email.trim()) : '';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
     errors.email = 'must be a valid email address';
   }
@@ -231,7 +236,7 @@ function validateBody(body: unknown): ValidationResult {
 
   const company =
     typeof b.company === 'string' && b.company.trim().length > 0
-      ? b.company.trim().slice(0, 200)
+      ? truncateUtf16Safe(replaceLoneSurrogates(b.company.trim()), 200)
       : null;
   const useCase =
     typeof b.useCase === 'string' && b.useCase.trim().length > 0
@@ -326,7 +331,9 @@ async function findRecentLicenseByEmail(
 //
 // Canonical JSON byte order MUST match the .NET LicensePayload record
 // declaration order: LicenseId, Licensee, Tier, ExpiresAt, Features,
-// MaxAgents, MaxNodes. JSON.stringify preserves insertion order.
+// MaxAgents, MaxNodes. The signed bytes come from `stjCanonical`
+// (canonical-json.ts), which writes each field as System.Text.Json writes
+// its .NET type, strings escaped by STJ's default encoder.
 //
 // AuthorizedImageDigests is never written (PDR-0003 C6) — neither in the
 // signed payload nor in the .lic. Pro serializes it with
@@ -353,10 +360,9 @@ async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<
   const key = await importPrivateKey(privateKeyPem);
 
   const expiresAtIso = formatDotNetDateTimeOffset(input.expiresAt);
-  // Build the payload in EXACTLY the .NET LicensePayload record-declaration
-  // order. JSON.stringify preserves insertion order, so this matches the STJ
-  // source-gen output byte-for-byte.
-  const payload: Record<string, unknown> = {
+  // The payload in the .NET LicensePayload record-declaration order;
+  // stjCanonical writes it byte for byte as the validator's STJ re-serialization.
+  const canonical = stjCanonical({
     LicenseId: input.licenseId,
     Licensee: input.licensee,
     Tier: input.tier,
@@ -364,8 +370,7 @@ async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<
     Features: input.features,
     MaxAgents: input.maxAgents,
     MaxNodes: input.maxNodes,
-  };
-  const canonical = JSON.stringify(payload);
+  });
 
   const signature = await crypto.subtle.sign(
     { name: 'ECDSA', hash: 'SHA-256' },
@@ -375,7 +380,9 @@ async function signLicense(input: LicenseInput, privateKeyPem: string): Promise<
   const signatureB64 = bytesToBase64(new Uint8Array(signature));
 
   // The .lic file is the LicenseKey record: LicenseId..MaxNodes, Signature.
-  // Pro's trailing AuthorizedImageDigests is null here and so absent.
+  // Pro's trailing AuthorizedImageDigests is null here and so absent. The
+  // .lic stays standard JSON: the validator parses it, so any valid escaping
+  // decodes to the same strings it then re-serializes for verification.
   const licenseKey: Record<string, unknown> = {
     LicenseId: input.licenseId,
     Licensee: input.licensee,
